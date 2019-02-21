@@ -57,6 +57,7 @@ static struct argp_option options[] = {
 
     {"uuid", 14, 0, 0, "Output UUID"},
     {"no-uuid", 15, 0, OPTION_ALIAS, "Output read file"},
+    {"post-output-file", 16,"filename", 0, "File to write posterior matrix to"},
     {0}
 };
 
@@ -79,6 +80,7 @@ struct arguments {
     float varseg_thresh;
     char ** files;
     bool uuid;
+    FILE * post_output;
 };
 
 static struct arguments args = {
@@ -96,7 +98,8 @@ static struct arguments args = {
     .varseg_chunk = 100,
     .varseg_thresh = 0.0f,
     .files = NULL,
-    .uuid = true
+    .uuid = true,
+    .post_output = NULL
 };
 
 
@@ -195,6 +198,12 @@ static error_t parse_arg(int key, char * arg, struct  argp_state * state){
     case 15:
         args.uuid = false;
         break;
+    case 16:
+        args.post_output = fopen(arg,"wb");
+        if(NULL == args.post_output){
+            errx(EXIT_FAILURE, "Failed to open \"%s\" for output.", arg);
+        }
+        break;
     case ARGP_KEY_NO_ARGS:
         argp_usage (state);
         break;
@@ -214,7 +223,7 @@ static error_t parse_arg(int key, char * arg, struct  argp_state * state){
 static struct argp argp = {options, parse_arg, args_doc, doc};
 
 
-static struct _raw_basecall_info calculate_post(char * filename, enum model_type model){
+static struct _raw_basecall_info calculate_post(char * filename, enum model_type model, FILE * post_output){
     RETURN_NULL_IF(NULL == filename, (struct _raw_basecall_info){0});
 
     raw_table rt = read_raw(filename, true);
@@ -242,6 +251,12 @@ static struct _raw_basecall_info calculate_post(char * filename, enum model_type
     float score = NAN;
 
     flappie_matrix posterior = transpost_crf_flipflop(trans_weights, true);
+    if (NULL != post_output) {
+        float * arr = array_from_flappie_matrix(posterior);
+        const size_t nelt = posterior->nr * posterior->nc;
+        fwrite(arr,sizeof(float),nelt,post_output);
+        free(arr);
+    }
     score = decode_crf_flipflop(posterior, false, path, qpath);
     size_t path_nidx = change_positions(path, nblock, path_idx);
 
@@ -326,12 +341,15 @@ int main(int argc, char * argv[]){
             reads_started += 1;
 
             char * filename = globbuf.gl_pathv[fn2];
-            struct _raw_basecall_info res = calculate_post(filename, args.model);
+            struct _raw_basecall_info res = calculate_post(filename, args.model, args.post_output);
             if(NULL == res.basecall){
                 warnx("No basecall returned for %s", filename);
                 continue;
             }
-
+            if (NULL != args.post_output) {
+                free_raw_basecall_info(&res);
+                continue; // don't write basecalled reads here
+            }
             fprintf_format(args.outformat, args.output, res.rt.uuid, 
                            basename(filename), args.uuid, args.prefix, res);
 
@@ -352,6 +370,8 @@ int main(int argc, char * argv[]){
     if(stdout != args.output){
         fclose(args.output);
     }
-
+    if(NULL != args.post_output){
+        fclose(args.post_output);
+    }
     return EXIT_SUCCESS;
 }
