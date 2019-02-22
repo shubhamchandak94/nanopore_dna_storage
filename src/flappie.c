@@ -229,9 +229,12 @@ static struct _raw_basecall_info calculate_post(char * filename, enum model_type
     raw_table rt = read_raw(filename, true);
     RETURN_NULL_IF(NULL == rt.raw, (struct _raw_basecall_info){0});
 
-    rt = trim_and_segment_raw(rt, args.trim_start, args.trim_end, args.varseg_chunk, args.varseg_thresh);
-    RETURN_NULL_IF(NULL == rt.raw, (struct _raw_basecall_info){0});
-
+    if (NULL == post_output) {
+        // don't perform trimming and segmenting if post_output asked for, because the input only has the "good" part
+        // TODO: still to be tested with real data
+        rt = trim_and_segment_raw(rt, args.trim_start, args.trim_end, args.varseg_chunk, args.varseg_thresh);
+        RETURN_NULL_IF(NULL == rt.raw, (struct _raw_basecall_info){0});
+    }
     medmad_normalise_array(rt.raw + rt.start, rt.end - rt.start);
 
     flappie_matrix trans_weights = flipflop_transitions(rt, args.temperature, model);

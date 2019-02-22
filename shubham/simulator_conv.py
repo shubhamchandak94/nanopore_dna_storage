@@ -1,20 +1,22 @@
 import sys
 import numpy as np
 import scrappy
+from uuid import uuid4
 import scipy.stats as st
 import subprocess
+from fast5_research import Fast5
 import os
 import distance
 import util
 PATH_TO_CPP_EXEC = "/raid/nanopore/shubham/flappie/shubham/viterbi_nanopore.out"
 PATH_TO_FLAPPIE = "/raid/nanopore/shubham/flappie/flappie"
-NUM_TRIALS = 100
+NUM_TRIALS = 10
 SYN_SUB_PROB = 0.0
 SYN_DEL_PROB = 0.0
 SYN_INS_PROB = 0.0
 msg_len = 139 # after attaching sync markers
 # Note: markers not attached for the padding.
-sync_marker = '110'
+sync_marker = ''#'110'
 sync_marker_period = 9 # first marker at 0, second at sync_marker_period
 msg_len_before_sync_markers = msg_len - (msg_len//sync_marker_period)*len(sync_marker) - min([msg_len%sync_marker_period,len(sync_marker)]) # subtract marker lengths from complete periods and last incomplete period
 print('msg_len_before_sync_markers',msg_len_before_sync_markers)
@@ -92,10 +94,58 @@ for _ in range(NUM_TRIALS):
 
     print('Length of raw signal: ', len(raw_data))
 
-    # flappie
+    # flappie needs fast5 file
+    # create fast5 (from https://nanoporetech.github.io/fast5_research/examples.html)
+    fast5_filename='tmp.'+rnd+'.fast5'
 
+    # example of how to digitize data
+    start, stop = int(min(raw_data - 1)), int(max(raw_data + 1))
+    rng = stop - start
+    digitisation = 8192.0
+    bins = np.arange(start, stop, rng / digitisation)
+    # np.int16 is required, the library will refuse to write anything other
+    raw_data_binned = np.digitize(raw_data, bins).astype(np.int16)
 
-    decoded_msg = scrappy.basecall_raw_viterbi_conv(raw_data,PATH_TO_CPP_EXEC, msg_len)
+    # The following are required meta data
+    channel_id = {
+        'digitisation': digitisation,
+        'offset': 0,
+        'range': rng,
+        'sampling_rate': 4000,
+        'channel_number': 1,
+        }
+    read_id = {
+        'start_time': 0,
+        'duration': len(raw_data),
+        'read_number': 1,
+        'start_mux': 1,
+        'read_id': str(uuid4()),
+        'scaling_used': 1,
+        'median_before': 0,
+    }
+    tracking_id = {
+        'exp_start_time': '1970-01-01T00:00:00Z',
+        'run_id': str(uuid4()).replace('-',''),
+        'flow_cell_id': 'FAH00000',
+    }
+    context_tags = {}
+
+    with Fast5.New(fast5_filename, 'w', tracking_id=tracking_id, context_tags=context_tags, channel_id=channel_id) as h:
+        h.set_raw(raw_data_binned, meta=read_id, read_number=1)
+
+    # call flappie to generate transition posterior table
+    post_filename = 'tmp.'+rnd+'.post'
+    decoded_filename = 'tmp.'+rnd+'.dec'
+    subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+    subprocess.run([PATH_TO_CPP_EXEC,'decode',post_filename,decoded_filename,str(msg_len)])
+    with open(decoded_filename) as f:
+        decoded_msg = f.read()
+
+    # remove temporary files
+    os.remove(fast5_filename)
+    os.remove(post_filename)
+    os.remove(decoded_filename)
+
     print(decoded_msg)
     hamming_list.append(distance.hamming(msg,decoded_msg))
     print('Hamming distance',hamming_list[-1])
