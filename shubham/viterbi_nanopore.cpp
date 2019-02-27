@@ -1,10 +1,12 @@
 #include <array>
+#include <unordered_map>
 #include <fstream>
 #include <iostream>
 #include <limits>
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <numeric>
 
 const uint8_t NBASE = 4;
 const char int2base[NBASE] = {'A', 'C', 'G', 'T'};
@@ -20,7 +22,7 @@ typedef std::array<std::array<float, nstate_crf>, NBASE + 1> crf_mat_t;
 // convolutional code related parameters
 const uint8_t mem_conv =
     // 6; // mem 6 from CCSDS
-    //    8;  // mem 8 from GL paper
+//        8;  // mem 8 from GL paper
     11;  // mem 11 from GL paper
 // 14; // mem 14 from GL paper
 const uint32_t nstate_conv = 1 << mem_conv;
@@ -28,25 +30,26 @@ const uint8_t n_out_conv = 2;
 typedef std::array<std::array<uint32_t, 2>, nstate_conv> conv_arr_t;
 const uint32_t G[n_out_conv] =  // octal
                                 // {0171, 0133};  // mem 6 from CCSDS
-    //    {0515, 0677};  // mem 8 from GL paper
+//        {0515, 0677};  // mem 8 from GL paper
     {05537, 06131};  // mem 11 from GL paper
 // {075063, 056711}; // mem 14 from GL paper
 const uint32_t initial_state_conv =  // binary
     //    0;                               // 0 initial state
-    // 0b100101; // mem 6
-    // 0b10010110; // mem 8
-    0b10010110001;  // mem 11
+//     0b100101; // mem 6
+//     0b10010110; // mem 8
+   0b10010110001;  // mem 11
 // 0b10010110001101; // mem 14
 
 // when using sync_markers, initial_state = 0 should work just fine
-const uint32_t sync_marker_length = 0;
+const uint32_t sync_marker_length = //0;
 // 1
 // 2;
-// 3;
-const char sync_marker[sync_marker_length] = {};
+3;
+const char sync_marker[sync_marker_length] = 
+// {};
 // {1};
 // {1,0};
-// {1, 1, 0};
+{1, 1, 0};
 const uint32_t sync_marker_period = 9;
 
 void generate_conv_arrays(conv_arr_t &prev_state, conv_arr_t &next_state,
@@ -66,7 +69,21 @@ void write_char_array(const std::vector<char> &vec, const std::string &outfile);
 void write_bit_array_in_bases(const std::vector<bool> &outvec,
                               const std::string &outfile);
 
+template <class T>
+void write_vector(const std::vector<T> &outvec, const std::string &outfile) {
+    // write values in vector, one per line
+    std::ofstream fout(outfile);
+    for (auto v : outvec) {
+        fout << v << "\n";
+    }
+    fout.close();
+}
+
 std::vector<crf_mat_t> read_crf_post(const std::string &infile);
+
+std::vector<std::vector<uint8_t>> read_vocab_file(const std::string &infile);
+
+uint8_t to_idx_crf_in_post(uint8_t st2_crf);
 
 std::vector<char> decode_post_no_conv(const std::vector<crf_mat_t> &post);
 
@@ -83,6 +100,10 @@ std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
                                    const conv_arr_t *output,
                                    const uint32_t msg_len);
 
+std::vector<uint32_t> decode_post_vocab(const std::vector<crf_mat_t> &post,
+                                   const uint32_t msg_len,
+                                   const std::vector<std::vector<uint8_t>> &vocab);
+
 std::vector<bool> viterbi_decode(const std::vector<bool> &channel_output,
                                  const conv_arr_t &prev_state,
                                  const conv_arr_t &next_state,
@@ -90,18 +111,19 @@ std::vector<bool> viterbi_decode(const std::vector<bool> &channel_output,
                                  const bool must_be_perfect = false);
 
 int main(int argc, char **argv) {
-  // generate convolutional code matrices
-  conv_arr_t prev_state, next_state, output[n_out_conv];
-  generate_conv_arrays(prev_state, next_state, output);
+
   if (argc < 4)
     throw std::runtime_error(
         "not enough arguments. Call as ./a.out [encode/decode] infile outfile "
-        "[msg_len_for_decode]");
+        "[msg_len_for_decode] [infile_for_vocab]");
   std::string mode = std::string(argv[1]);
   if (mode != "encode" && mode != "decode")
     throw std::runtime_error("invalid mode");
   std::string infile = std::string(argv[2]), outfile = std::string(argv[3]);
   if (mode == "encode") {
+    // generate convolutional code matrices
+    conv_arr_t prev_state, next_state, output[n_out_conv];
+    generate_conv_arrays(prev_state, next_state, output);
     std::vector<bool> msg = read_bit_array(infile);
     std::vector<bool> encoded_msg = encode(msg, next_state, output);
     write_bit_array_in_bases(encoded_msg, outfile);
@@ -110,12 +132,23 @@ int main(int argc, char **argv) {
     if (argc < 5)
       throw std::runtime_error(
           "not enough arguments. Call as ./a.out [encode/decode] infile "
-          "outfile [msg_len_for_decode]");
+          "outfile [msg_len_for_decode] [infile_for_vocab]");
     uint32_t msg_len = std::stoull(std::string(argv[4]));
     std::vector<crf_mat_t> post = read_crf_post(infile);
-    std::vector<bool> decoded_msg =
-        decode_post_conv(post, prev_state, next_state, output, msg_len);
-    write_bit_array(decoded_msg, outfile);
+    if (argc == 5) {
+        // conv decoding
+        // generate convolutional code matrices
+        conv_arr_t prev_state, next_state, output[n_out_conv];
+        generate_conv_arrays(prev_state, next_state, output);
+        std::vector<bool> decoded_msg =
+            decode_post_conv(post, prev_state, next_state, output, msg_len);
+        write_bit_array(decoded_msg, outfile);
+    } else {
+        std::string infile_vocab = std::string(argv[5]);
+        auto vocab = read_vocab_file(infile_vocab);
+        auto decoded_msg = decode_post_vocab(post, msg_len, vocab);
+        write_vector(decoded_msg, outfile);
+    }
     // for testing
     //        std::vector<char> basecall = decode_post_no_conv(post);
     //        write_char_array(basecall, outfile);
@@ -202,6 +235,20 @@ void write_bit_array_in_bases(const std::vector<bool> &outvec,
   for (uint32_t i = 0; i < len / 2; i++)
     fout << int2base[2 * outvec[2 * i] + outvec[2 * i + 1]];
   fout.close();
+}
+
+std::vector<std::vector<uint8_t>> read_vocab_file(const std::string &infile) {
+    std::vector<std::vector<uint8_t>> vocab;
+    std::unordered_map<char,uint8_t> char2int = {{'A',0},{'C',1},{'G',2},{'T',3}};
+    std::ifstream fin(infile);
+    std::string line;
+    while(std::getline(fin,line)) {
+        std::vector<uint8_t> line_vector;
+        for (char c: line)
+            line_vector.push_back(char2int[c]);
+        vocab.push_back(line_vector);
+    }
+    return vocab;
 }
 
 std::vector<crf_mat_t> read_crf_post(const std::string &infile) {
@@ -304,6 +351,178 @@ uint32_t state_idx_to_pos(const uint32_t st) {
   return st / ((uint32_t)nstate_conv * nstate_crf);
 }
 
+uint8_t to_idx_crf_in_post(uint8_t st2_crf) {
+    // return index of the st2_crf state in the post matrix, we need this because we 
+    // have 5 by 8 matrix and transitions to flop states are stored in the last row to save space
+    // since not all transitions to the flop state are allowed
+    return (st2_crf >= NBASE) ? NBASE : st2_crf;
+} 
+
+std::vector<uint32_t> decode_post_vocab(const std::vector<crf_mat_t> &post,
+                                   const uint32_t msg_len,
+                                   const std::vector<std::vector<uint8_t>> &vocab) {
+  float INF = std::numeric_limits<float>::infinity();
+  uint32_t nstate_init = nstate_crf; // initial states (same as CRF states)
+  // these represent stuff before the first word occurs and can only transition to the 
+  // same state or to a position 0 state
+  uint32_t nstate_pos =
+      msg_len;  // number of states denoting the position
+  std::vector<uint32_t> wordlen_vocab;
+  for (auto word: vocab)
+      wordlen_vocab.push_back(word.size());
+  uint32_t nstate_vocab = std::accumulate(wordlen_vocab.begin(),wordlen_vocab.end(),0);// sum of lengths of words
+  uint64_t nstate_total_64 = nstate_pos * nstate_vocab * 2 + nstate_init; // 2 for flip/flop
+  if (nstate_total_64 >= ((uint64_t)1 << 32))
+    throw std::runtime_error("Too many states, can't fit in 32 bits");
+  uint32_t nstate_total = (uint32_t)nstate_total_64;
+  uint32_t nblk = post.size();
+  if (post.size() < msg_len)
+    throw std::runtime_error("Too small post matrix");
+
+  // create unordered_map from state tuple to idx and back (does not include init states, which are the first nstate_crf states)
+  std::unordered_map<uint32_t,std::unordered_map<uint32_t,std::unordered_map<uint32_t,std::unordered_map<uint32_t,uint32_t>>>> state_tuple2idx;
+  std::unordered_map<uint32_t,std::array<uint32_t,4>> state_idx2tuple;
+  uint32_t st = nstate_crf; // first nstate_crf states are the init states
+  for (uint32_t pos = 0; pos < nstate_pos; pos++) {
+      for (uint32_t word_idx = 0; word_idx < wordlen_vocab.size(); word_idx++) {
+          for (uint32_t pos_in_word = 0; pos_in_word < wordlen_vocab[word_idx]; pos_in_word++) {
+              for (uint32_t flip_flop_bit = 0; flip_flop_bit < 2; flip_flop_bit++) {
+                  state_tuple2idx[pos][word_idx][pos_in_word][flip_flop_bit] = st;
+                  state_idx2tuple[st] = {pos,word_idx,pos_in_word,flip_flop_bit};
+                  st++;
+              }
+          }
+      }
+  }
+
+  if (st != nstate_total) throw std::runtime_error("Number of states don't match");
+
+  std::vector<std::vector<uint32_t>> traceback(
+      nblk, std::vector<uint32_t>(nstate_total));
+  std::vector<float> curr_score(nstate_total, -INF), prev_score(nstate_total);
+
+  // only init states allowed at the beginning, so the actual data starts at first transition out of init state
+  for (uint32_t st = 0; st < nstate_crf; st++)
+      curr_score[st] = 0.0;
+
+  // forward Viterbi pass
+  for (uint32_t t = 0; t < nblk; t++) {
+    prev_score = curr_score;
+    // st2 is next state, st1 is previous
+    // First handle st2 being one of the init states, in this case only one transition allowed
+    for (uint32_t st2 = 0; st2 < nstate_crf; st2++) {
+        uint32_t st1 = st2;
+        traceback[t][st2] = st1;
+        curr_score[st2] = prev_score[st1] + post[t][to_idx_crf_in_post(st2)][st1];
+    }
+    
+    // Now do all other states
+    for (uint32_t st2_pos = 0; st2_pos < nstate_pos; st2_pos++) {
+        for (uint32_t st2_word_idx = 0; st2_word_idx < wordlen_vocab.size(); st2_word_idx++) {
+            for (uint32_t st2_pos_in_word = 0; st2_pos_in_word < wordlen_vocab[st2_word_idx]; st2_pos_in_word++) {
+                for (uint32_t st2_flip_flop_bit = 0; st2_flip_flop_bit < 2; st2_flip_flop_bit++) {
+                    uint32_t st2 = state_tuple2idx[st2_pos][st2_word_idx][st2_pos_in_word][st2_flip_flop_bit];
+                    uint8_t st2_crf = vocab[st2_word_idx][st2_pos_in_word] + st2_flip_flop_bit*NBASE;
+                    curr_score[st2] = -INF;
+
+                    // first, transitions from the exact same state
+                    uint32_t st1 = st2;
+                    uint8_t st1_crf = st2_crf;
+                    traceback[t][st2] = st1;
+                    curr_score[st2] = prev_score[st1] + post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
+                    
+                    // now look at transitions from init states if pos = pos_in_word = 0
+                    if (st2_pos == 0 && st2_pos_in_word == 0) {
+                        for (uint32_t st1 = 0; st1 < nstate_crf; st1++) {
+                            if (st1 == st2_crf) continue; // not allowed since no change in base
+                            if (st2_crf >= NBASE && st1 != (uint8_t)(st2_crf-NBASE)) continue; // can only enter flop base from
+                            // same flip base
+                            float score = prev_score[st1] + post[t][to_idx_crf_in_post(st2_crf)][st1];
+                            if (score > curr_score[st2]) {
+                                curr_score[st2] = score;
+                                traceback[t][st2] = st1;
+                            }
+                        }
+                    }
+
+                    // now look at transitions from end of other words if pos != 0 and pos_in_word = 0
+                    if (st2_pos != 0 && st2_pos_in_word == 0) {
+                        uint32_t st1_pos = st2_pos - 1;
+                        for (uint32_t st1_word_idx = 0; st1_word_idx < wordlen_vocab.size(); st1_word_idx++) {
+                            uint32_t st1_pos_in_word = wordlen_vocab[st1_word_idx] - 1;
+                            for (uint32_t st1_flip_flop_bit = 0; st1_flip_flop_bit < 2; st1_flip_flop_bit++) {
+                                uint32_t st1 = state_tuple2idx[st1_pos][st1_word_idx][st1_pos_in_word][st1_flip_flop_bit];
+                                uint8_t st1_crf = vocab[st1_word_idx][st1_pos_in_word] + st1_flip_flop_bit*NBASE;
+                                if (st1_crf == st2_crf) continue; // not allowed since no change in base
+                                if (st2_crf >= NBASE && st1_crf != st2_crf-NBASE) continue; // can only enter flop base from
+                                // same flip base
+                                float score = prev_score[st1] + post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
+                                if (score > curr_score[st2]) {
+                                    curr_score[st2] = score;
+                                    traceback[t][st2] = st1;
+                                }
+                            }
+                        }
+                    }
+
+                    // finally look at transitions from same word if pos_in_word != 0
+                    if (st2_pos_in_word != 0) {
+                        uint32_t st1_pos = st2_pos;
+                        uint32_t st1_word_idx = st2_word_idx;
+                        uint32_t st1_pos_in_word = st2_pos_in_word - 1;
+                        for (uint32_t st1_flip_flop_bit = 0; st1_flip_flop_bit < 2; st1_flip_flop_bit++) {
+                            uint32_t st1 = state_tuple2idx[st1_pos][st1_word_idx][st1_pos_in_word][st1_flip_flop_bit];
+                            uint8_t st1_crf = vocab[st1_word_idx][st1_pos_in_word] + st1_flip_flop_bit*NBASE;
+                            if (st1_crf == st2_crf) continue; // not allowed since no change in base
+                            if (st2_crf >= NBASE && st1_crf != st2_crf-NBASE) continue; // can only enter flop base from
+                            // same flip base
+                            float score = prev_score[st1] + post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
+                            if (score > curr_score[st2]) {
+                                curr_score[st2] = score;
+                                traceback[t][st2] = st1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+  }
+  // traceback
+  std::vector<uint32_t> path(nblk + 1);
+  float score = -INF;
+  uint32_t st_pos = nstate_pos-1; // pos is at end for last state
+  for (uint32_t st_word_idx = 0; st_word_idx < wordlen_vocab.size(); st_word_idx++) {
+      uint32_t st_pos_in_word = wordlen_vocab[st_word_idx] - 1; // last state at end of word
+      for (uint32_t st_flip_flop_bit = 0; st_flip_flop_bit < 2; st_flip_flop_bit++) {
+          uint32_t st = state_tuple2idx[st_pos][st_word_idx][st_pos_in_word][st_flip_flop_bit];
+          if (curr_score[st] > score) {
+              score = curr_score[st];
+              path[nblk] = st;
+          }
+      }
+  }
+  
+  for (uint32_t t = nblk; t > 0; t--) path[t - 1] = traceback[t - 1][path[t]];
+  // decode the msg from the state sequence
+  std::vector<uint32_t> decoded_msg;
+  int64_t cur_pos = -1;
+  for (uint32_t t = 0; t <= nblk; t++) {
+      // look for non-init states where pos increases
+      uint32_t st = path[t];
+      if (st < nstate_crf) continue; // init state, skip
+      auto st_tuple = state_idx2tuple[st];
+      if (st_tuple[0] > cur_pos) {
+          if (st_tuple[0] != cur_pos + 1) throw std::runtime_error("pos increase not 1");
+          if (st_tuple[2] != 0) throw std::runtime_error("pos_in_word at transition not 0");
+          cur_pos = st_tuple[0];
+          decoded_msg.push_back(st_tuple[1]);
+      }
+  }
+  if(decoded_msg.size() != msg_len) throw std::runtime_error("Decoded message length does not match msg_len");
+  return decoded_msg;
+}
+
 std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
                                    const conv_arr_t &prev_state,
                                    const conv_arr_t &next_state,
@@ -356,12 +575,8 @@ std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
             if (st2_crf == st1_crf) {
               // at same base
               uint32_t st1 = st2;
-              uint8_t to_idx_crf_in_post =
-                  (st2_crf >= NBASE) ? NBASE
-                                     : st2_crf;  // if st2_crf is flop, then
-              // transitions stored in 5th row of transition matrix
               float score =
-                  prev_score[st1] + post[t][to_idx_crf_in_post][st1_crf];
+                  prev_score[st1] + post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
               if (score > curr_score[st2]) {
                 curr_score[st2] = score;
                 traceback[t][st2] = st1;
@@ -386,12 +601,8 @@ std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
                         output[1][st1_conv][curr_conv_bit] ==
                     st2_crf_base) {
                   uint32_t st1 = get_state_idx(st1_pos, st1_conv, st1_crf);
-                  uint8_t to_idx_crf_in_post =
-                      (st2_crf >= NBASE) ? NBASE
-                                         : st2_crf;  // if st2_crf is flop, then
-                  // transitions stored in 5th row of transition matrix
                   float score =
-                      prev_score[st1] + post[t][to_idx_crf_in_post][st1_crf];
+                      prev_score[st1] + post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
                   if (score > curr_score[st2]) {
                     curr_score[st2] = score;
                     traceback[t][st2] = st1;
