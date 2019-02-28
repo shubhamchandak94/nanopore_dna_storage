@@ -58,6 +58,7 @@ static struct argp_option options[] = {
     {"uuid", 14, 0, 0, "Output UUID"},
     {"no-uuid", 15, 0, OPTION_ALIAS, "Output read file"},
     {"post-output-file", 16,"filename", 0, "File to write posterior matrix to"},
+    {"trans-output-file", 17,"filename", 0, "File to write base transitions positions in post"},
     {0}
 };
 
@@ -81,6 +82,7 @@ struct arguments {
     char ** files;
     bool uuid;
     FILE * post_output;
+    FILE * trans_output;
 };
 
 static struct arguments args = {
@@ -99,7 +101,8 @@ static struct arguments args = {
     .varseg_thresh = 0.0f,
     .files = NULL,
     .uuid = true,
-    .post_output = NULL
+    .post_output = NULL,
+    .trans_output = NULL
 };
 
 
@@ -204,6 +207,12 @@ static error_t parse_arg(int key, char * arg, struct  argp_state * state){
             errx(EXIT_FAILURE, "Failed to open \"%s\" for output.", arg);
         }
         break;
+    case 17:
+        args.trans_output = fopen(arg,"w");
+        if(NULL == args.trans_output){
+            errx(EXIT_FAILURE, "Failed to open \"%s\" for output.", arg);
+        }
+        break;
     case ARGP_KEY_NO_ARGS:
         argp_usage (state);
         break;
@@ -223,14 +232,15 @@ static error_t parse_arg(int key, char * arg, struct  argp_state * state){
 static struct argp argp = {options, parse_arg, args_doc, doc};
 
 
-static struct _raw_basecall_info calculate_post(char * filename, enum model_type model, FILE * post_output){
+static struct _raw_basecall_info calculate_post(char * filename, enum model_type model, FILE * post_output, FILE * trans_output){
     RETURN_NULL_IF(NULL == filename, (struct _raw_basecall_info){0});
 
     raw_table rt = read_raw(filename, true);
     RETURN_NULL_IF(NULL == rt.raw, (struct _raw_basecall_info){0});
 
-    if (NULL == post_output) {
+    if (NULL == post_output || NULL != trans_output) {
         // don't perform trimming and segmenting if post_output asked for, because the input only has the "good" part
+        // do perform trimming if trans_output specified
         // TODO: still to be tested with real data
         rt = trim_and_segment_raw(rt, args.trim_start, args.trim_end, args.varseg_chunk, args.varseg_thresh);
         RETURN_NULL_IF(NULL == rt.raw, (struct _raw_basecall_info){0});
@@ -267,6 +277,9 @@ static struct _raw_basecall_info calculate_post(char * filename, enum model_type
     char * quality = calloc(path_nidx + 1, sizeof(char));
     for(size_t i=0 ; i < path_nidx ; i++){
         const size_t idx = path_idx[i];
+        if (NULL != trans_output){
+            fprintf(trans_output,"%llu\n",idx); 
+        }
         basecall[i] = base_lookup[path[idx] % nbase];
         quality[i] = phredf(expf(qpath[idx]));
     }
@@ -344,12 +357,12 @@ int main(int argc, char * argv[]){
             reads_started += 1;
 
             char * filename = globbuf.gl_pathv[fn2];
-            struct _raw_basecall_info res = calculate_post(filename, args.model, args.post_output);
+            struct _raw_basecall_info res = calculate_post(filename, args.model, args.post_output, args.trans_output);
             if(NULL == res.basecall){
                 warnx("No basecall returned for %s", filename);
                 continue;
             }
-            if (NULL != args.post_output) {
+            if (NULL != args.post_output && NULL == args.trans_output) {
                 free_raw_basecall_info(&res);
                 continue; // don't write basecalled reads here
             }
@@ -375,6 +388,9 @@ int main(int argc, char * argv[]){
     }
     if(NULL != args.post_output){
         fclose(args.post_output);
+    }
+    if(NULL != args.trans_output){
+        fclose(args.trans_output);
     }
     return EXIT_SUCCESS;
 }
