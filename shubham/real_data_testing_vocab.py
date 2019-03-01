@@ -18,7 +18,7 @@ PATH_TO_CPP_EXEC = "/raid/nanopore/shubham/flappie/shubham/viterbi_nanopore.out"
 PATH_TO_FLAPPIE = "/raid/nanopore/shubham/flappie/flappie"
 NUM_TRIALS = 100 # in each trial pick one read at random from real data
 KMER_LEN = 10 # kmer length for when we artificially create a vocabulary
-ADD_VOCAB = 10 # add additional random kmers to vocab to make things harder
+ADD_VOCAB = 80 # add additional random kmers to vocab to make things harder
 
 with open(OLIGO_FILE,'r') as f:
     oligos = [l.rstrip('\n') for l in f.readlines()]
@@ -75,6 +75,8 @@ for _ in range(NUM_TRIALS):
     (start_pos, end_pos) = util.find_barcode_pos_in_post(trans_filename,fastq_filename,START_BARCODE,END_BARCODE)
     if start_pos == -1:
         raise NameError('error in find_barcode_pos_in_post')
+    if end_pos - start_pos + 1 < msg_len:
+        raise NameError('Too short start_pos - end_pos')
     new_post_filename = 'tmp.'+rnd+'.post.new'
     util.truncate_post_file(post_filename, new_post_filename, start_pos, end_pos)
 
