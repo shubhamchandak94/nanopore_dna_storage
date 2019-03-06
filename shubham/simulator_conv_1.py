@@ -11,12 +11,12 @@ import util
 PATH_TO_CPP_EXEC = "/raid/nanopore/shubham/flappie/shubham/viterbi_nanopore.out"
 PATH_TO_FLAPPIE = "/raid/nanopore/shubham/flappie/flappie"
 NUM_TRIALS = 1
-SYN_SUB_PROB = 0.02
-SYN_DEL_PROB = 0.02
-SYN_INS_PROB = 0.005
-msg_len = 139 # after attaching sync markers
+SYN_SUB_PROB = 0.0
+SYN_DEL_PROB = 0.0
+SYN_INS_PROB = 0.0
+msg_len = 142 # after attaching sync markers
 # Note: markers not attached for the padding.
-sync_marker = '110'
+sync_marker = ''
 sync_marker_period = 9 # first marker at 0, second at sync_marker_period
 msg_len_before_sync_markers = msg_len - (msg_len//sync_marker_period)*len(sync_marker) - min([msg_len%sync_marker_period,len(sync_marker)]) # subtract marker lengths from complete periods and last incomplete period
 print('msg_len_before_sync_markers',msg_len_before_sync_markers)
@@ -57,14 +57,15 @@ for _ in range(NUM_TRIALS):
     post_filename = 'tmp.'+rnd+'.post'
     decoded_filename = 'tmp.'+rnd+'.dec'
     subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+    subprocess.run([PATH_TO_CPP_EXEC,'decode',post_filename,decoded_filename,str(msg_len),'-l','1','1','30'])
     subprocess.run([PATH_TO_CPP_EXEC,'decode',post_filename,decoded_filename,str(msg_len)])
     with open(decoded_filename) as f:
         decoded_msg = f.read()
 
     # remove temporary files
-    os.remove(fast5_filename)
-    os.remove(post_filename)
-    os.remove(decoded_filename)
+#    os.remove(fast5_filename)
+#    os.remove(post_filename)
+#    os.remove(decoded_filename)
 
     print(decoded_msg)
     hamming_list.append(distance.hamming(msg,decoded_msg))

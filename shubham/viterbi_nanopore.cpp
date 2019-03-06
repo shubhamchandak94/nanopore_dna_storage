@@ -7,6 +7,10 @@
 #include <string>
 #include <vector>
 #include <numeric>
+#include <algorithm>
+#include <cmath>
+#include <bitset>
+#include <omp.h>
 
 const uint8_t NBASE = 4;
 const char int2base[NBASE] = {'A', 'C', 'G', 'T'};
@@ -19,37 +23,58 @@ typedef std::array<std::array<float, nstate_crf>, NBASE + 1> crf_mat_t;
 // for each input state, we have five (4+1) possible output states: e.g., A+ ->
 // A+,C+,G+,T+,A-; A- -> A+,C+,G+,T+,A-; A-; etc.
 
+struct path_t {
+    std::string msg;
+    uint32_t st_pos;
+    uint32_t st_conv;
+    uint8_t st_crf;
+    float score;
+}; 
+// structure storing path for list decoding
+// note that st_pos and st_conv are not really needed (can be obtained from msg) 
+// but we keep them for convenience
+// msg stored as string to allow hashing
+
+// for parallel LVA
+const uint8_t BITSET_SIZE = 192; // 24 bytes
+typedef std::bitset<BITSET_SIZE> bitset_t;
+struct LVA_path_t {
+    bitset_t msg;
+    float score;
+};
+
+
 // convolutional code related parameters
 const uint8_t mem_conv =
     // 6; // mem 6 from CCSDS
-//        8;  // mem 8 from GL paper
-    11;  // mem 11 from GL paper
+        8;  // mem 8 from GL paper
+//    11;  // mem 11 from GL paper
 // 14; // mem 14 from GL paper
 const uint32_t nstate_conv = 1 << mem_conv;
 const uint8_t n_out_conv = 2;
 typedef std::array<std::array<uint32_t, 2>, nstate_conv> conv_arr_t;
 const uint32_t G[n_out_conv] =  // octal
                                 // {0171, 0133};  // mem 6 from CCSDS
-//        {0515, 0677};  // mem 8 from GL paper
-    {05537, 06131};  // mem 11 from GL paper
+        {0515, 0677};  // mem 8 from GL paper
+//    {05537, 06131};  // mem 11 from GL paper
 // {075063, 056711}; // mem 14 from GL paper
 const uint32_t initial_state_conv =  // binary
     //    0;                               // 0 initial state
 //     0b100101; // mem 6
-//     0b10010110; // mem 8
-   0b10010110001;  // mem 11
+     0b10010110; // mem 8
+//   0b10010110001;  // mem 11
 // 0b10010110001101; // mem 14
 
 // when using sync_markers, initial_state = 0 should work just fine
-const uint32_t sync_marker_length = //0;
+const uint32_t sync_marker_length = 0;
 // 1
 // 2;
-3;
+// 3;
 const char sync_marker[sync_marker_length] = 
-// {};
+{};
 // {1};
 // {1,0};
-{1, 1, 0};
+// {1, 1, 0};
 const uint32_t sync_marker_period = 9;
 
 void generate_conv_arrays(conv_arr_t &prev_state, conv_arr_t &next_state,
@@ -79,6 +104,11 @@ void write_vector(const std::vector<T> &outvec, const std::string &outfile) {
     fout.close();
 }
 
+float logsumexpf(float x, float y){
+    float max_x_y = std::max(x,y);
+    return max_x_y + logf(expf(x-max_x_y)+expf(y-max_x_y));
+}
+
 std::vector<crf_mat_t> read_crf_post(const std::string &infile);
 
 std::vector<std::vector<uint8_t>> read_vocab_file(const std::string &infile);
@@ -100,6 +130,22 @@ std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
                                    const conv_arr_t *output,
                                    const uint32_t msg_len);
 
+std::vector<path_t> decode_post_conv_list(const std::vector<crf_mat_t> &post,
+                                          const conv_arr_t &next_state,
+                                          const conv_arr_t *output,
+                                          const uint32_t msg_len,
+                                          const uint8_t list_decoding_mode,
+                                          const uint32_t list_size);
+
+std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(const std::vector<crf_mat_t> &post,
+                                          const conv_arr_t &prev_state,
+                                          const conv_arr_t &next_state,
+                                          const conv_arr_t *output,
+                                          const uint32_t msg_len,
+                                          const uint8_t list_decoding_mode,
+                                          const uint32_t list_size,
+                                          const uint32_t num_thr);
+
 std::vector<uint32_t> decode_post_vocab(const std::vector<crf_mat_t> &post,
                                    const uint32_t msg_len,
                                    const std::vector<std::vector<uint8_t>> &vocab);
@@ -115,7 +161,7 @@ int main(int argc, char **argv) {
   if (argc < 4)
     throw std::runtime_error(
         "not enough arguments. Call as ./a.out [encode/decode] infile outfile "
-        "[msg_len_for_decode] [infile_for_vocab]");
+        "[msg_len_for_decode] [infile_for_vocab] [-l list_decoding_mode list_size]");
   std::string mode = std::string(argv[1]);
   if (mode != "encode" && mode != "decode")
     throw std::runtime_error("invalid mode");
@@ -132,27 +178,57 @@ int main(int argc, char **argv) {
     if (argc < 5)
       throw std::runtime_error(
           "not enough arguments. Call as ./a.out [encode/decode] infile "
-          "outfile [msg_len_for_decode] [infile_for_vocab]");
+          "outfile [msg_len_for_decode] [infile_for_vocab] [-l list_decoding_mode list_size num_threads]");
     uint32_t msg_len = std::stoull(std::string(argv[4]));
     std::vector<crf_mat_t> post = read_crf_post(infile);
+    if (argc > 5) {
+        if (std::string(argv[5]) != "-l") {
+            std::string infile_vocab = std::string(argv[5]);
+            auto vocab = read_vocab_file(infile_vocab);
+            auto decoded_msg = decode_post_vocab(post, msg_len, vocab);
+            write_vector(decoded_msg, outfile);
+            return 0;
+        }
+    }
+    // conv decoding
+    // generate convolutional code matrices
+    conv_arr_t prev_state, next_state, output[n_out_conv];
+    generate_conv_arrays(prev_state, next_state, output);
     if (argc == 5) {
-        // conv decoding
-        // generate convolutional code matrices
-        conv_arr_t prev_state, next_state, output[n_out_conv];
-        generate_conv_arrays(prev_state, next_state, output);
         std::vector<bool> decoded_msg =
             decode_post_conv(post, prev_state, next_state, output, msg_len);
         write_bit_array(decoded_msg, outfile);
-    } else {
-        std::string infile_vocab = std::string(argv[5]);
-        auto vocab = read_vocab_file(infile_vocab);
-        auto decoded_msg = decode_post_vocab(post, msg_len, vocab);
-        write_vector(decoded_msg, outfile);
+    }
+    else {
+        // list decoding
+        if (argc != 9 || std::string(argv[5]) != "-l") throw std::runtime_error("Invalid arguments.");
+        uint8_t list_decoding_mode = std::stoull(std::string(argv[6]));
+        uint32_t list_size = std::stoull(std::string(argv[7]));
+        uint32_t num_thr = std::stoull(std::string(argv[8]));
+        // do list decoding
+        // modes:
+        // 0: best sequence (not best path) list decoding (NOT WORKING SO WELL)
+        // 1: find list_size top paths using Parallel LVA as described in https://github.com/shubhamchandak94/kBestViterbi/blob/master/kBestViterbi.py or in ieeexplore.ieee.org/iel1/26/12514/00577040.pdf - if you get two paths coming to same state at same time with same message, then keep only one and take the max score - thus we try to get list_size unique msg at each stage (if we don't do this, we observed that most of the paths at the end correspond to the same msg)
+        // 2: similar to above, but instead of taking max score, we do logsumexp to capture the idea that we want highest probability msg, not highest probability path - this has less formal guarantees than 1.
+        if (list_decoding_mode == 0) {
+            auto decoded_msg_list = decode_post_conv_list(post,next_state,output,msg_len,list_decoding_mode,list_size);
+        } else {
+            auto decoded_msg_list = decode_post_conv_parallel_LVA(post,prev_state,next_state,output,msg_len,list_decoding_mode,list_size,num_thr);
+            std::ofstream fout(outfile);
+            for (auto decoded_msg: decoded_msg_list) {
+                for (auto decoded_msg_bit: decoded_msg)
+                   fout << std::to_string(decoded_msg_bit);
+                fout << "\n";
+            }
+            fout.close();
+        }
+
     }
     // for testing
     //        std::vector<char> basecall = decode_post_no_conv(post);
     //        write_char_array(basecall, outfile);
   }
+  // TODO: improve the command line options 
   return 0;
 }
 
@@ -523,6 +599,108 @@ std::vector<uint32_t> decode_post_vocab(const std::vector<crf_mat_t> &post,
   return decoded_msg;
 }
 
+std::vector<path_t> decode_post_conv_list(const std::vector<crf_mat_t> &post,
+                                          const conv_arr_t &next_state,
+                                          const conv_arr_t *output,
+                                          const uint32_t msg_len,
+                                          const uint8_t list_decoding_mode,
+                                          const uint32_t list_size) {
+    if (post.size() < msg_len + mem_conv)
+        throw std::runtime_error("Too small post matrix");
+    uint32_t nblk = post.size();
+    if (list_decoding_mode != 0)
+        throw std::runtime_error("Invalid list decoding mode"); // currently only mode 0 supported
+    std::vector<path_t> prev_path_list, curr_path_list;
+    // initialize path list
+    // states with msg = '', pos = 0, st_conv = initial_state_conv, all st_crf's, score = 0
+    for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++)
+        curr_path_list.push_back({std::string(""),0,initial_state_conv,st_crf});
+
+    for (uint32_t t = 0; t < nblk; t++) {
+        prev_path_list = curr_path_list;
+        curr_path_list.clear();
+        // create maps from msg to position in curr_list 
+        // (need two maps since msg can correspond to 2 states in some cases
+        // basically the difference between A+A-A+ and A-A+A- which have
+        // same message but end up at different CRF states
+        // These maps are used for combining paths (where relevant)
+        std::unordered_map<std::string, uint32_t> msg2listpos[2]; // 0 - flip, 1 - flop
+        std::vector<path_t> new_path_list; // stores new paths with possible duplicates (resolved when inserting to curr_path_list)
+        path_t new_path;
+        // now go through the paths one by one, extending them in all possible ways
+        for (auto prev_path: prev_path_list) {
+            // first do transition to same state
+            new_path.msg = prev_path.msg;
+            new_path.st_pos = prev_path.st_pos;
+            new_path.st_conv = prev_path.st_conv;
+            new_path.st_crf = prev_path.st_crf;
+            new_path.score = prev_path.score + post[t][to_idx_crf_in_post(new_path.st_crf)][prev_path.st_crf];
+            new_path_list.push_back(new_path);
+            
+            if (prev_path.st_pos == msg_len + mem_conv) // at final stage, so no more next states to go to.
+                continue;
+
+            // now transition to next state when next input is 0/1
+            for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
+                // first check if that's not allowed due to sync constraints
+                // note that st_pos is sort of 1 indexed and so prev_path.st_pos actually represents the position of 
+                // the upcoming  conv_bit
+                if (prev_path.st_pos < msg_len && prev_path.st_pos % sync_marker_period < sync_marker_length)
+                    if (conv_bit != sync_marker[prev_path.st_pos % sync_marker_period])
+                        continue;
+                
+                // if we are at msg_len, bit must be 0
+                if (prev_path.st_pos >= msg_len && conv_bit == 1)
+                   continue; 
+
+                new_path.msg = prev_path.msg + std::to_string(conv_bit);
+                new_path.st_pos = prev_path.st_pos + 1;
+                new_path.st_conv = next_state[prev_path.st_conv][conv_bit];
+                uint8_t prev_st_crf_base = prev_path.st_crf % NBASE;
+                uint8_t new_st_crf_base = 2 * output[0][prev_path.st_conv][conv_bit] + output[1][prev_path.st_conv][conv_bit];
+                // next crf_state depends on whether the prev and new bases are same
+                if (new_st_crf_base != prev_st_crf_base) //  going to flip state
+                    new_path.st_crf = new_st_crf_base;
+                else // flip or flop according to whether current is flop or flip
+                    new_path.st_crf = (prev_path.st_crf < NBASE)? (prev_path.st_crf+ NBASE):(prev_path.st_crf-NBASE);
+                new_path.score = prev_path.score + post[t][to_idx_crf_in_post(new_path.st_crf)][prev_path.st_crf]+20;
+                new_path_list.push_back(new_path); 
+            }
+        }
+        // now put the paths into curr_path_list merging when relevant
+        for (auto new_path : new_path_list) {
+            // check if already exists, if so combine
+            if (msg2listpos[(new_path.st_crf<NBASE)].count(new_path.msg) == 1) {
+                uint32_t pos_in_curr = msg2listpos[(new_path.st_crf<NBASE)][new_path.msg];
+                curr_path_list[pos_in_curr].score =// std::max(new_path.score,curr_path_list[pos_in_curr].score);
+                    logsumexpf(new_path.score,curr_path_list[pos_in_curr].score);
+            } else {
+                msg2listpos[(new_path.st_crf<NBASE)][new_path.msg] = curr_path_list.size();
+                curr_path_list.push_back(new_path);                
+            }
+        }
+        
+        // finally take only top list_size paths in the list
+        std::nth_element(curr_path_list.begin(),curr_path_list.begin()+list_size,curr_path_list.end(),
+                [](const path_t &p1, const path_t &p2) -> bool { 
+                    return p1.score > p2.score; 
+                });
+//        std::sort(curr_path_list.begin(),curr_path_list.end(),[](const path_t &p1, const path_t &p2) -> bool {
+//         return p1.score > p2.score; 
+//        });       
+        if (curr_path_list.size() > list_size)
+            curr_path_list.resize(list_size);    
+
+        // FOR DEBUGGING: PRINT THE STATES IN THE LIST
+        std::cout << "t: " << t << "\n";
+        for (auto curr_path : curr_path_list) {
+            std::cout << curr_path.msg << "\n" << curr_path.st_pos << "\n" << curr_path.score << "\n";
+        std::cout << "\n";
+        }
+    }
+    return curr_path_list;
+} 
+
 std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
                                    const conv_arr_t &prev_state,
                                    const conv_arr_t &next_state,
@@ -615,6 +793,7 @@ std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
       }
     }
   }
+
   // traceback
   std::vector<uint32_t> path(nblk + 1);
   std::vector<uint8_t> crfpath(nblk + 1);
@@ -627,6 +806,7 @@ std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
       path[nblk] = st;
     }
   }
+  std::cout << "Best path score: " << score << "\n";
   for (uint32_t t = nblk; t > 0; t--) path[t - 1] = traceback[t - 1][path[t]];
   for (uint32_t t = 0; t < nblk + 1; t++) crfpath[t] = path[t] % nstate_crf;
   std::vector<char> basecall = crfpath_to_basecall(crfpath);
@@ -658,6 +838,225 @@ std::vector<bool> decode_post_conv(const std::vector<crf_mat_t> &post,
     }
   }
   return viterbi_decode(channel_output, prev_state, next_state, output, true);
+}
+
+std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(const std::vector<crf_mat_t> &post,
+                                          const conv_arr_t &prev_state,
+                                          const conv_arr_t &next_state,
+                                          const conv_arr_t *output,
+                                          const uint32_t msg_len,
+                                          const uint8_t list_decoding_mode,
+                                          const uint32_t list_size,
+                                          const uint32_t num_thr) {
+  omp_set_num_threads(num_thr);
+  float INF = std::numeric_limits<float>::infinity();
+  uint32_t nstate_pos =
+      msg_len + mem_conv +
+      1;  // number of states denoting the position in convolution trellis
+  // 0 to msg_len + mem_conv
+  uint64_t nstate_total_64 = nstate_pos * nstate_crf * nstate_conv;
+  if (nstate_total_64 >= ((uint64_t)1 << 32))
+    throw std::runtime_error("Too many states, can't fit in 32 bits");
+  uint32_t nstate_total = (uint32_t)nstate_total_64;
+  uint32_t nblk = post.size();
+  if (post.size() < msg_len + mem_conv)
+    throw std::runtime_error("Too small post matrix");
+
+  // instead of traceback, store the msg till now as a bitset
+  if (msg_len > BITSET_SIZE) throw std::runtime_error("msg_len can't be above BITSET_SIZE");
+
+  bitset_t **curr_best_msg = new bitset_t * [list_size];
+  bitset_t **prev_best_msg = new bitset_t * [list_size];
+  float ** curr_score = new float* [list_size];
+  float ** prev_score = new float* [list_size];
+  for (uint32_t i = 0; i < list_size; i++) {
+      curr_best_msg[i] = new bitset_t [nstate_total];
+      prev_best_msg[i] = new bitset_t [nstate_total];
+      curr_score[i] = new float [nstate_total];
+      prev_score[i] = new float [nstate_total];
+      for (uint32_t j = 0; j < nstate_total; j++) {
+          curr_score[i][j] = -INF;
+          prev_score[i][j] = -INF;
+      }
+  }
+
+  for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++) {
+    curr_score[0][get_state_idx(0, initial_state_conv, st_crf)] =
+        0.0;  // only valid initial state is pos 0, conv code at
+              // initial_state_conv. crf state can be anything since we will
+              // later ignore everything before the first transition
+              // only populate one position in list (0), rest -INF
+  }
+
+  // forward Viterbi pass
+  for (uint32_t t = 0; t < nblk; t++) {
+    // swap prev and curr arrays
+    std::swap(curr_score, prev_score);
+    std::swap(curr_best_msg, prev_best_msg);
+    
+    // st2 is next state, st1 is previous
+    #pragma omp parallel
+    #pragma omp for
+    for (uint32_t st2_pos = std::max((int64_t)(nstate_pos-2-(nblk-1-t)),(int64_t)0); st2_pos < std::min(t+2,nstate_pos); st2_pos++) {
+      // only allow pos which can have non -INF scores or will lead to useful final states
+      // initially large pos is not allowed, and at the end small pos not allowed (since those can't
+      // lead to correct st2_pos at the end).
+      for (uint32_t st2_conv = 0; st2_conv < nstate_conv; st2_conv++) {
+        for (uint8_t st2_crf = 0; st2_crf < nstate_crf; st2_crf++) {
+          uint32_t st2 = get_state_idx(st2_pos, st2_conv, st2_crf);
+          // as opposed to best path Viterbi, now we first store all 
+          // incoming paths in a vector 
+          std::vector<LVA_path_t> LVA_path_list;
+
+          // now we have two possibilities, st2_crf can be flip or flop state.
+          // if flip, then we go through all input states, and except for the
+          // case when st1_crf == st2_crf, previous state has one less pos and
+          // may or may have a valid previous conv state depending on the base
+          // in question if st2_crf is flop, then there are only two possible
+          // input states the flip and flop state for the same base. For the
+          // flop state, everything else stays the same. For the flip input
+          // state, it has one less pos (and so on).
+
+          for (uint8_t st1_crf = 0; st1_crf < nstate_crf; st1_crf++) {
+            if (st2_crf >= NBASE &&
+                !((st1_crf == st2_crf) || st1_crf == st2_crf - NBASE))
+              continue;  // unallowed transition
+            if (st2_crf == st1_crf) {
+              // at same base
+              uint32_t st1 = st2;
+              for (uint32_t list_pos = 0; list_pos < list_size; list_pos++) 
+              {
+                  if (prev_score[list_pos][st1] == -INF)
+                      continue;
+                  float score =
+                      prev_score[list_pos][st1] + post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
+                  LVA_path_list.push_back({prev_best_msg[list_pos][st1],score});
+              }
+            } else {
+              // new base, new position
+              // look at two possible previous states of convolutional code and
+              // see if the output for the transition matches the base st2_crf
+              bool curr_conv_bit = (st2_conv >> (mem_conv - 1));
+              if (st2_pos > msg_len && curr_conv_bit == 1)
+                  continue; // invalid state since padding is all 0's
+              uint8_t st2_crf_base = st2_crf % NBASE;
+              if (st2_pos == 0) continue;  // can't go to new state while still being at position 0
+              uint32_t st1_pos = st2_pos - 1;
+
+              // sync_markers
+              if (st1_pos < msg_len &&
+                  (st1_pos % sync_marker_period < sync_marker_length))
+                if (curr_conv_bit != sync_marker[st1_pos % sync_marker_period])
+                  continue;  // invalid transition
+              for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
+                uint32_t st1_conv = prev_state[st2_conv][conv_bit];
+                if (2 * output[0][st1_conv][curr_conv_bit] +
+                        output[1][st1_conv][curr_conv_bit] ==
+                    st2_crf_base) {
+                  uint32_t st1 = get_state_idx(st1_pos, st1_conv, st1_crf);
+                  for (uint32_t list_pos = 0; list_pos < list_size; list_pos++) 
+                  {
+                    if (prev_score[list_pos][st1] == -INF)
+                      continue;  
+                    float score =
+                        prev_score[list_pos][st1] + post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
+                    bitset_t next_msg;
+                    if (st2_pos > msg_len) { 
+                        next_msg = prev_best_msg[list_pos][st1]; // no need to push in 0 in this case since padding is known to be 0
+                    } else {
+                        next_msg = (prev_best_msg[list_pos][st1]<<1);
+                        next_msg |= curr_conv_bit;    
+                    }
+                    LVA_path_list.push_back({next_msg,score});
+                  }
+                }
+              }
+            }
+          }
+        
+          // deduplicate LVA_path_list
+          std::vector<LVA_path_t> dedup_LVA_path_list;
+          std::unordered_map<bitset_t,uint32_t> pos_in_list_map; // store position in list if already occurred
+          for (auto LVA_path: LVA_path_list) {
+              if (pos_in_list_map.count(LVA_path.msg) == 1) {
+                  uint32_t pos_of_msg = pos_in_list_map[LVA_path.msg];
+                  float score_1 = LVA_path.score;
+                  float score_2 = dedup_LVA_path_list[pos_of_msg].score;
+                  if (list_decoding_mode == 1) 
+                    dedup_LVA_path_list[pos_of_msg].score = std::max(score_1,score_2);
+                  else
+                    dedup_LVA_path_list[pos_of_msg].score = logsumexpf(score_1,score_2);  
+              } else {
+                  dedup_LVA_path_list.push_back(LVA_path);
+                  pos_in_list_map[LVA_path.msg] = dedup_LVA_path_list.size()-1;
+              }
+          }
+
+          // pick top list_size elements from dedup_LVA_path_list
+          if (dedup_LVA_path_list.size() > list_size)
+              std::nth_element(dedup_LVA_path_list.begin(),dedup_LVA_path_list.begin()+list_size,dedup_LVA_path_list.end(),
+                  [](const LVA_path_t &p1, const LVA_path_t &p2) -> bool { 
+                      return p1.score > p2.score; 
+                  });
+
+          // update curr_best_msg and curr_score (fill rest with -INF)
+          for (uint32_t list_pos = 0; list_pos < list_size; list_pos++) {
+              if (list_pos < dedup_LVA_path_list.size()) {
+                  curr_score[list_pos][st2] = dedup_LVA_path_list[list_pos].score;
+                  curr_best_msg[list_pos][st2] = dedup_LVA_path_list[list_pos].msg;
+              } else {
+                  curr_score[list_pos][st2] = -INF;
+              }
+          }
+        }
+      }
+    }
+  }
+
+  std::vector<LVA_path_t> LVA_path_list;
+  uint32_t st_pos = msg_len + mem_conv, st_conv = 0;  // last state
+  for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++) {
+    uint32_t st = get_state_idx(st_pos, st_conv, st_crf);
+    for (uint32_t list_pos = 0; list_pos < list_size; list_pos++) {
+        if (curr_score[list_pos][st] != -INF)
+            LVA_path_list.push_back({curr_best_msg[list_pos][st],curr_score[list_pos][st]});
+    }
+  }
+
+  // sort 
+  std::sort(LVA_path_list.begin(),LVA_path_list.end(),
+          [](const LVA_path_t &p1, const LVA_path_t &p2) -> bool {
+            return p1.score > p2.score;
+          });
+
+  std::vector<std::vector<bool>> decoded_msg_list;
+
+  // now convert bitset to bool vectors
+  for (auto LVA_path: LVA_path_list) {
+      std::vector<bool> decoded_msg(msg_len);
+      for (uint8_t i = 0; i < msg_len; i++)
+          decoded_msg[i] = LVA_path.msg[msg_len-1-i]; // due to way bitset is stored in reverse
+      decoded_msg_list.push_back(decoded_msg);
+      // FOR DEBUGGING
+      
+      std::cout << "score: " << LVA_path.score << "\n";
+      for (auto b: decoded_msg_list.back())
+          std::cout << b;
+      std::cout << "\n\n";
+  }
+  std::cout << "Final list size: " << decoded_msg_list.size() << "\n";
+  
+  for (uint8_t i = 0; i < list_size; i++) {
+      delete[] curr_best_msg[i];
+      delete[] prev_best_msg[i];
+      delete[] curr_score[i];
+      delete[] prev_score[i];
+  }
+  delete[] curr_best_msg;
+  delete[] prev_best_msg;
+  delete[] curr_score;
+  delete[] prev_score;
+  return decoded_msg_list;
 }
 
 std::vector<bool> viterbi_decode(const std::vector<bool> &channel_output,
