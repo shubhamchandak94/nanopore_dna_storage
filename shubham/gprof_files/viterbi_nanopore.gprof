@@ -1,0 +1,211 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 69.95      9.59     9.59                             decode_post_conv_list(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int)
+  9.26     10.86     1.27 109995799    11.55    25.46  std::__detail::_Map_base<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](std::bitset<192ul> const&)
+  6.78     11.79     0.93 82348003    11.29    18.58  std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<std::bitset<192ul> const, unsigned int>, false>*)
+  4.67     12.43     0.64 97958735     6.53     6.53  void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t&&)
+  4.38     13.03     0.60 51803076    11.58    11.58  std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, unsigned long const&)
+  3.87     13.56     0.53 79840056     6.64     6.64  void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t const&>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t const&)
+  0.58     13.64     0.08                             std::vector<path_t, std::allocator<path_t> >::_M_default_append(unsigned long)
+  0.29     13.68     0.04                             std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<path_t> >, std::is_move_constructible<path_t>, std::is_move_assignable<path_t> >::value, void>::type std::swap<path_t>(path_t&, path_t&)
+  0.15     13.70     0.02                             void std::vector<unsigned int, std::allocator<unsigned int> >::_M_realloc_insert<unsigned int>(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned int&&)
+  0.07     13.71     0.01                             decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)
+  0.00     13.71     0.00  2507947     0.00     0.00  frame_dummy
+  0.00     13.71     0.00       10     0.00     0.00  void std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > >::_M_realloc_insert<std::array<std::array<float, 8ul>, 5ul> const&>(__gnu_cxx::__normal_iterator<std::array<std::array<float, 8ul>, 5ul>*, std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > >, std::array<std::array<float, 8ul>, 5ul> const&)
+  0.00     13.71     0.00        3     0.00     0.00  void std::vector<std::vector<bool, std::allocator<bool> >, std::allocator<std::vector<bool, std::allocator<bool> > > >::_M_realloc_insert<std::vector<bool, std::allocator<bool> > const&>(__gnu_cxx::__normal_iterator<std::vector<bool, std::allocator<bool> >*, std::vector<std::vector<bool, std::allocator<bool> >, std::allocator<std::vector<bool, std::allocator<bool> > > > >, std::vector<bool, std::allocator<bool> > const&)
+  0.00     13.71     0.00        2     0.00     0.00  void std::__introsort_loop<__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}> >(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}>, long, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}>)
+  0.00     13.71     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z10logsumexpfff
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.07% of 13.71 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     98.9    9.59    3.97                 decode_post_conv_list(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int) [1]
+                1.27    1.53 109995799/109995799     std::__detail::_Map_base<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](std::bitset<192ul> const&) [2]
+                0.64    0.00 97958732/97958735     void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t&&) [4]
+                0.53    0.00 79840056/79840056     void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t const&>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t const&) [6]
+                0.00    0.00 2507947/2507947     frame_dummy [11]
+-----------------------------------------------
+                1.27    1.53 109995799/109995799     decode_post_conv_list(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int) [1]
+[2]     20.4    1.27    1.53 109995799         std::__detail::_Map_base<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](std::bitset<192ul> const&) [2]
+                0.93    0.60 82348003/82348003     std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<std::bitset<192ul> const, unsigned int>, false>*) [3]
+-----------------------------------------------
+                0.93    0.60 82348003/82348003     std::__detail::_Map_base<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](std::bitset<192ul> const&) [2]
+[3]     11.2    0.93    0.60 82348003         std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<std::bitset<192ul> const, unsigned int>, false>*) [3]
+                0.60    0.00 51803076/51803076     std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, unsigned long const&) [5]
+-----------------------------------------------
+                0.00    0.00       3/97958735     decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int) [10]
+                0.64    0.00 97958732/97958735     decode_post_conv_list(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int) [1]
+[4]      4.7    0.64    0.00 97958735         void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t&&) [4]
+-----------------------------------------------
+                0.60    0.00 51803076/51803076     std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<std::bitset<192ul> const, unsigned int>, false>*) [3]
+[5]      4.4    0.60    0.00 51803076         std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, unsigned long const&) [5]
+-----------------------------------------------
+                0.53    0.00 79840056/79840056     decode_post_conv_list(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int) [1]
+[6]      3.9    0.53    0.00 79840056         void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t const&>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t const&) [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]      0.6    0.08    0.00                 std::vector<path_t, std::allocator<path_t> >::_M_default_append(unsigned long) [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      0.3    0.04    0.00                 std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<path_t> >, std::is_move_constructible<path_t>, std::is_move_assignable<path_t> >::value, void>::type std::swap<path_t>(path_t&, path_t&) [8]
+-----------------------------------------------
+                                                 <spontaneous>
+[9]      0.1    0.02    0.00                 void std::vector<unsigned int, std::allocator<unsigned int> >::_M_realloc_insert<unsigned int>(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned int&&) [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[10]     0.1    0.01    0.00                 decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int) [10]
+                0.00    0.00       3/97958735     void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t&&) [4]
+                0.00    0.00       3/3           void std::vector<std::vector<bool, std::allocator<bool> >, std::allocator<std::vector<bool, std::allocator<bool> > > >::_M_realloc_insert<std::vector<bool, std::allocator<bool> > const&>(__gnu_cxx::__normal_iterator<std::vector<bool, std::allocator<bool> >*, std::vector<std::vector<bool, std::allocator<bool> >, std::allocator<std::vector<bool, std::allocator<bool> > > > >, std::vector<bool, std::allocator<bool> > const&) [19]
+                0.00    0.00       2/2           void std::__introsort_loop<__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}> >(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}>, long, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}>) [20]
+-----------------------------------------------
+                0.00    0.00 2507947/2507947     decode_post_conv_list(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int) [1]
+[11]     0.0    0.00    0.00 2507947         frame_dummy [11]
+-----------------------------------------------
+                0.00    0.00      10/10          read_crf_post(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [25]
+[18]     0.0    0.00    0.00      10         void std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > >::_M_realloc_insert<std::array<std::array<float, 8ul>, 5ul> const&>(__gnu_cxx::__normal_iterator<std::array<std::array<float, 8ul>, 5ul>*, std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > >, std::array<std::array<float, 8ul>, 5ul> const&) [18]
+-----------------------------------------------
+                0.00    0.00       3/3           decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int) [10]
+[19]     0.0    0.00    0.00       3         void std::vector<std::vector<bool, std::allocator<bool> >, std::allocator<std::vector<bool, std::allocator<bool> > > >::_M_realloc_insert<std::vector<bool, std::allocator<bool> > const&>(__gnu_cxx::__normal_iterator<std::vector<bool, std::allocator<bool> >*, std::vector<std::vector<bool, std::allocator<bool> >, std::allocator<std::vector<bool, std::allocator<bool> > > > >, std::vector<bool, std::allocator<bool> > const&) [19]
+-----------------------------------------------
+                0.00    0.00       2/2           decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int) [10]
+[20]     0.0    0.00    0.00       2         void std::__introsort_loop<__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}> >(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}>, long, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}>) [20]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [82]
+[21]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z10logsumexpfff [21]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [21] _GLOBAL__sub_I__Z10logsumexpfff [6] void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t const&>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t const&) [9] void std::vector<unsigned int, std::allocator<unsigned int> >::_M_realloc_insert<unsigned int>(__gnu_cxx::__normal_iterator<unsigned int*, std::vector<unsigned int, std::allocator<unsigned int> > >, unsigned int&&)
+   [1] decode_post_conv_list(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int) [4] void std::vector<LVA_path_t, std::allocator<LVA_path_t> >::_M_realloc_insert<LVA_path_t>(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, LVA_path_t&&) [2] std::__detail::_Map_base<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](std::bitset<192ul> const&)
+  [10] decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int) [7] std::vector<path_t, std::allocator<path_t> >::_M_default_append(unsigned long) [20] void std::__introsort_loop<__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}> >(__gnu_cxx::__normal_iterator<LVA_path_t*, std::vector<LVA_path_t, std::allocator<LVA_path_t> > >, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}>, long, __gnu_cxx::__ops::_Iter_comp_iter<decode_post_conv_parallel_LVA(std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const&, std::array<std::array<unsigned int, 2ul>, 256ul> const*, unsigned int, unsigned char, unsigned int, unsigned int)::{lambda(LVA_path_t const&, LVA_path_t const&)#2}>)
+   [3] std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<std::bitset<192ul> const, unsigned int>, false>*) [19] void std::vector<std::vector<bool, std::allocator<bool> >, std::allocator<std::vector<bool, std::allocator<bool> > > >::_M_realloc_insert<std::vector<bool, std::allocator<bool> > const&>(__gnu_cxx::__normal_iterator<std::vector<bool, std::allocator<bool> >*, std::vector<std::vector<bool, std::allocator<bool> >, std::allocator<std::vector<bool, std::allocator<bool> > > > >, std::vector<bool, std::allocator<bool> > const&) [8] std::enable_if<std::__and_<std::__not_<std::__is_tuple_like<path_t> >, std::is_move_constructible<path_t>, std::is_move_assignable<path_t> >::value, void>::type std::swap<path_t>(path_t&, path_t&)
+   [5] std::_Hashtable<std::bitset<192ul>, std::pair<std::bitset<192ul> const, unsigned int>, std::allocator<std::pair<std::bitset<192ul> const, unsigned int> >, std::__detail::_Select1st, std::equal_to<std::bitset<192ul> >, std::hash<std::bitset<192ul> >, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, unsigned long const&) [18] void std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > >::_M_realloc_insert<std::array<std::array<float, 8ul>, 5ul> const&>(__gnu_cxx::__normal_iterator<std::array<std::array<float, 8ul>, 5ul>*, std::vector<std::array<std::array<float, 8ul>, 5ul>, std::allocator<std::array<std::array<float, 8ul>, 5ul> > > >, std::array<std::array<float, 8ul>, 5ul> const&) [11] frame_dummy
