@@ -49,35 +49,35 @@ struct LVA_path_t {
 
 // convolutional code related parameters
 const uint8_t mem_conv =
-    // 6; // mem 6 from CCSDS
-    8;  // mem 8 from GL paper
-//    11;  // mem 11 from GL paper
+//     6; // mem 6 from CCSDS
+//    8;  // mem 8 from GL paper
+    11;  // mem 11 from GL paper
 // 14; // mem 14 from GL paper
 const uint32_t nstate_conv = 1 << mem_conv;
 const uint8_t n_out_conv = 2;
 typedef std::array<std::array<uint32_t, 2>, nstate_conv> conv_arr_t;
 const uint32_t G[n_out_conv] =  // octal
-                                // {0171, 0133};  // mem 6 from CCSDS
-    {0515, 0677};               // mem 8 from GL paper
-//    {05537, 06131};  // mem 11 from GL paper
+//                                {0171, 0133};  // mem 6 from CCSDS
+//    {0515, 0677};               // mem 8 from GL paper
+    {05537, 06131};  // mem 11 from GL paper
 // {075063, 056711}; // mem 14 from GL paper
 const uint32_t initial_state_conv =  // binary
                                      //    0;                               // 0
                                      //    initial state
-                                     //     0b100101; // mem 6
-    0b10010110;                      // mem 8
-//   0b10010110001;  // mem 11
+//                                          0b100101; // mem 6
+//    0b10010110;                      // mem 8
+    0b10010110001;  // mem 11
 // 0b10010110001101; // mem 14
 
 // when using sync_markers, initial_state = 0 should work just fine
-const uint32_t sync_marker_length = //0;
+const uint32_t sync_marker_length = 0;
 // 1
 // 2;
-3;
-const char sync_marker[sync_marker_length] = //{};
+// 3;
+const char sync_marker[sync_marker_length] = {};
 // {1};
 // {1,0};
-{1, 1, 0};
+// {1, 1, 0};
 const uint32_t sync_marker_period = 9;
 
 void generate_conv_arrays(conv_arr_t &prev_state, conv_arr_t &next_state,
@@ -1028,7 +1028,7 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
           uint8_t st1_crf = st2_crf;
           uint32_t st1 = st2;
           for (uint32_t list_pos = 0; list_pos < list_size; list_pos++) {
-            if (prev_score[list_pos][st1] == -INF) continue;
+            if (prev_score[list_pos][st1] == -INF) break;
             float score = prev_score[list_pos][st1] +
                       post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
             LVA_path_list[tid][pos_in_Lpl++] = {prev_best_msg[list_pos][st1], score};
@@ -1067,7 +1067,7 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
                   uint32_t st1 = get_state_idx(st1_pos, st1_conv, st1_crf);
                   for (uint32_t list_pos = 0; list_pos < list_size;
                        list_pos++) {
-                    if (prev_score[list_pos][st1] == -INF) continue;
+                    if (prev_score[list_pos][st1] == -INF) break;
                     float score = prev_score[list_pos][st1] +
                                   post[t][to_idx_crf_in_post(st2_crf)][st1_crf];
                     bitset_t next_msg;
