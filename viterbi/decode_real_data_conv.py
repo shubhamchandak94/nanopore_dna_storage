@@ -6,8 +6,8 @@ import binascii
 import struct
 import numpy as np
 
-LIST_SIZE = 1
-NUM_THREADS = 32
+LIST_SIZE = 64
+NUM_THREADS = 8
 START_BARCODE = 'ATGTTCGGAACGTCAAGACCGAGGA'
 END_BARCODE = 'TGGCTCCATTATGCTACAATCACTA'
 JSON_FILE_WITH_RAW_DATA = '/raid/nanopore/shubham/20190306_2044_MN19956_FAK54380_79e29d9c/conv_m6_9sync110/merged_rl_250_no_reverse.ids.shuf.20000.raw.json'
@@ -115,9 +115,10 @@ for raw_data in raw_data_list:
 #    if num_attempted == 100:
 #        exit(0)
 
-tmpfile = 'tmpfile'+str(np.random.randint(1000000))
+print(json.dumps(data, indent=2, separators=(',',': ')))
+tmpfile = 'tmpfile.m6_sync.l_64.'+str(np.random.randint(1000000))
 f_tmp = open(tmpfile,'w')
 f_tmp.write(json.dumps(data, indent=2, separators=(',',': ')))
 f_tmp.close()
 ret = subprocess.call([decode_raptor_script+" "+tmpfile +" "+DECODED_FILE], shell=True)
-os.remove(tmpfile)
+# os.remove(tmpfile)
