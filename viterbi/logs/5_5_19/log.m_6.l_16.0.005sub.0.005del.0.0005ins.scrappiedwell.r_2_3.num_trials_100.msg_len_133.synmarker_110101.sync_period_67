@@ -1,0 +1,2005 @@
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+msg_len_before_sync_markers 121
+1101010101011010011100001010111101110000100010001011001101110100001110101011010010001011101010010010000101010001110010000100101011100
+Length of seq:  104
+GGTACTAGTTCGGCTCCGCGCAGACAAATGCTTTGTTTGCTATCTAACCTGGCAGTTGCGGTATTGGGAGGCCCGGAGCAAACAATACAAAATAAGAGTTCGTA
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTAGTTCGGCTCCGCGCAGACAAATGCTTTGTTTGCTGTCTAACCCGGCAGTTGCGGTATTGGGAGGCCCGGAGCAACAATACAAAATAAGAGTTCGTA
+Length of raw signal:  858
+Top message:
+1101010101011010011100001010111101110000100010001011001101110100001110101011010010001011101010010010000101010001110010000100101011100
+List size: 16
+Top correct: True
+List correct: True
+1101011000111110110001000010100110001100110001101111110101100010000110101010001000101100000011011111001011010110011101011000110000001
+Length of seq:  104
+GGTAAGCCTCGTCCGAAATCCATCGCTGTAACTTCGTCTGACTAGCCAAGGGTCCTAAATATTTACATTTGTGTGTCAGGGGGGCGACGGAAAGTATTTTCTAT
+len(seq): 104
+Length of synthesized sequence 103
+GGTAAGCCTCGTCCGAAATCCATCGCTGTACTTCGTCTGACTAGCCAAGGGTCCTAAATATTTACATTTGTGTGTCAGGGGGGCGACGGAAAGTATTTTCTAT
+Length of raw signal:  841
+Top message:
+0110001111101100010000101001100011001100011011111101011000100001101010100010001011000000110111110010110101100111010110001100000010000
+List size: 16
+Top correct: False
+List correct: True
+1101011010010011001110010011011101010001001000101011001001011111001110101011011101100011111011101000001110001110011111101011111000000
+Length of seq:  104
+GGTAAGGCGCCCAGAAGCATCACTAAGTCATAGGCTTGTGTTCTCCAGTCTATAGTTGATACTGCTCGTCAAAACTGCGAGCGGATAGGACTACCTGTGTAAAA
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGGCGCCCAGAAGCATCACTAAGTCATAGGCTTGTGTTCTCCAGTCTATAGTTGATACTGCTCGTCAAAACTGCGAGCGGATAGGACTACCTGTGTAAAA
+Length of raw signal:  842
+Top message:
+1101011010010011001110010011011101010001001000101011001001011111001110101011011101100011111011101000001110001110011111101011111000000
+List size: 16
+Top correct: True
+List correct: True
+1101010010100110100100110011011011001011011001001100110110101011100110101110000011001010110010001010111101111110000011010010011110100
+Length of seq:  104
+GGTACACGGTTAATGCCCAGATCACGGTTCCAAGTCTGTACAGAGCTTCTCTGCCATTCGAGAATGATCTGATTCAGACAATAAGTGAGTCCCGGTGCTCTCTA
+len(seq): 104
+Length of synthesized sequence 103
+GGTACACGGTTAATGCCCAGATACGGTTCCAAGTCTGTACAGAGCTTCTCTGCCATTCGAGACTGATCTGATTCAGACAATAAGTGAGTCCCGGTGCTCTCTA
+Length of raw signal:  823
+Top message:
+1101010010100110100100100110100101110001010101110011110111011011100110101110000011001010110010001010111101111110000011010010011111010
+List size: 16
+Top correct: False
+List correct: False
+1101011101101011011000111100100011111011111110010001110010011100010110101101010011101011101011010101000010111100110011011000010111011
+Length of seq:  104
+GGTAACTCTCAAGAAGCTCTCGAATACCGAATATCGAGTATACATCGAGGTGTGCCGGTACCCTCACGAGCGGTTACTGGGGACGTTACAGCACGAGCATTACC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTCTCAAGAAGCTCTCGAATACCGAATATCGAGTATACATCGAGGTGTGCCGGTACCCTCACGAGCGGTTACTGGGGACGTTACAGCACGAGCATTACC
+Length of raw signal:  860
+Top message:
+1101011101101011011000111100100011111011111110010001110010011100010110101101010011101011101011010101000010111100110011011000010010001
+List size: 16
+Top correct: False
+List correct: False
+1101010001101111000010101011100000110001010101100110110101101100000110101110100100100100001110001011000111011100010010101011101001100
+Length of seq:  104
+GGTACAGAGTCTCGGCGCACTCTGGACCCGAGAATGCGTAACGGGGGGATACTCCATAAGCCGGTGACGGAGCCGCGGTTTTATGGAAAGACTCGACCATGGTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACAGAGTCTCGGCGCACTCTGGACCCGAGAATGCGTAACGGTGGGATACTCCATAAGCCGGTGACGGAGCCGCGGTTTTATGGAAAGACTCGACCATGGTA
+Length of raw signal:  861
+Top message:
+1101010001101111000010101011100000111000011111110001011011000001101011101001001001000011100010110001110111000100101010111010011000000
+List size: 16
+Top correct: False
+List correct: True
+1101011011000101100011110001010000000000011100101010111110101010101110101010010110101001101111000000001101010110000111110011111110111
+Length of seq:  104
+GGTAAGGGGAATGGAGGCGGCAGTGGTAAAAGGGAAGAATGAGGTGTATCTCGAGTAAGCCTGCGCGAGTGCCCTACCCGCTTGCACGACTCTAAATAAACGGC
+len(seq): 104
+Length of synthesized sequence 103
+GGTAAGGGGAATGGAGGCGCAGTGGTAAAAGGGAAGAATGAGGTGTATCTCGAGTAAGCCTTCGCGAGTGCCCTACCCGCTTGCACGACTCTAAATAAACGGC
+Length of raw signal:  844
+Top message:
+1101011011000101100011110001010000000000011100101010111110101010101110111010110010111101101111000000001101110110000101001000010010111
+List size: 16
+Top correct: False
+List correct: False
+1101010111101011100001111011010010110010101010110110101011100011111110101001000111011001011100000110110010001101001000000000010010111
+Length of seq:  104
+GGTACTTGCGTACTGGTGCCATTGGGCCTTGAATCTGAACATTGTTATCGATATGGCCATATTTTTTAGTTGGACTAGTGATCTCCCGACTAAATTAACGTGGC
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTTGCGTACTGGTGCCATTGGGCCTTGAATCTGAACATTGTTATCGATATGGCCATATTTTTTAGTTGGACTAGTGATCTCCCGCCTAAATTAACGTGGC
+Length of raw signal:  844
+Top message:
+1101010111101011100001111011010010110010101010110110101011100011111110101001000111011001011100000110110010001101001000000000010010111
+List size: 16
+Top correct: True
+List correct: True
+1101011001001100111010010000011110111011101001010010010100100001110110101011111101110000111000111010000100100011101011111001010000111
+Length of seq:  104
+GGTAAGCTCTGTAACTAGCAACAGCCAAATAAACACGGCGTCGGCGAGGCTTGGCTTCCAAGAATGCCGAATCCACTGCGGGCACCAGAAGTGACTGTGGAGGC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGCTCTGTAACTAGCAACAGCCAAATAAACACGGCGTCGGCGAGGCTTGGCTTCCAAGAATGCCGAATCCACTGCGGGCACCAGAAGTGACTGTGGAGGC
+Length of raw signal:  854
+Top message:
+1101011001001100111010010000011110111011101001010010010100100001110110101011111101110000111000111010000100100011101011111001010000111
+List size: 16
+Top correct: True
+List correct: True
+1101010001101001101011010101000000010110101101101011000101110110111110101011101000110110101111001101110111011000101010010000111111100
+Length of seq:  104
+GGTACAGAGTTGGACCCGGTTACTCGTGCCGAAGAACAAGGGATGTCTCTTGGTGTTCGACGAGTACAACACGTAGGATAATTAGCCAACCAAGCCCCAGTGTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACAGAGTTGGACCCGGTTACTCGTGCCGAAGAACAAGGGATGTCTCTTGGCGTTCGACGAGTACAACACGTAGGATAATTAGCCAACCAAGCCCCAGTGTA
+Length of raw signal:  861
+Top message:
+0100011010011010110101010000000101101011011010110001011101101111101010111010001101101011110011011101110110001010100110011010100001000
+List size: 16
+Top correct: False
+List correct: False
+1101010111100100001010101010101001010111110100000100111011011010111110101011011010000101010011110111001110110101110101100110110011101
+Length of seq:  104
+GGTACTTGCCACACCAGATCATCAAGCGCCACCTGTCCTATCTTCCAGCAAGGTGTTGAACCCTAACAACCGGAAAGTATTTTCATAAAGCGTAAGTACTACTT
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTTGCCACACCAGATCATCAAGCGCCACCTGTCCGATCTTCCAGCAAGGTGTTGAACCCTAACAACCGGAAAGTATTTTCATAAAGCGTAAGTACTACTT
+Length of raw signal:  819
+Top message:
+1111010111100100001010101010101001010111110100000100111011011010111110101011011010000101010011110111001110110101110101100110110011101
+List size: 16
+Top correct: False
+List correct: True
+1101010000001001001110010010000000100110010110111011111000111111010110101111010001011111111001000000100001100011001010010111110001110
+Length of seq:  104
+GGTACAGGTTCAGCCTGCATGGACTCGTAATCGCTCTATATTGGTCGAATGACGCAACCCCCTGAGATAGACAATTCTACCATTGATGCCCGGACGCTCGCGGG
+len(seq): 104
+Length of synthesized sequence 103
+GGTACAGGTTCAGCCTGCATGGACACGTAATCGCTCTATATTGGTCGAATGACGCAACCCCTGAGATAGACAATTCTACCATTGATGCCCGGACGCTCGCGGG
+Length of raw signal:  810
+Top message:
+1110010100000111101000010100000000100110010110111011111000111111010110101010000011100000111001000000100001100011001010010111110001110
+List size: 16
+Top correct: False
+List correct: False
+1101011110111010010100011001011101110001101001010010111110011111111110101110001111101011100100001100000110010011001111010001001100100
+Length of seq:  104
+GGTAACATAAAACACGTAAAATAGTCAATCTCCGACGGCCTAGTGTCCATTTATGATTATCGTCTACTCAGAGAATTACGATTCAGAACGTGATACAGTCACTA
+len(seq): 104
+Length of synthesized sequence 103
+GGTAACATAAAACACGTAAAATAGTCAATCTCCGACGGCCTAGTGTCCATTTAGATTATCGTCTACTCAGAGAATTACGATTCAGAACGTGATACAGTCACTA
+Length of raw signal:  827
+Top message:
+0101011110111010010100011001011101110001101001010010111110011111111111001100101111010101000000000100000011000000100100000001001100100/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+
+List size: 16
+Top correct: False
+List correct: False
+1101010011101110111110001110010100001001011100100011110010101001101110101011011110001100110010001111001000001001001100111001101011100
+Length of seq:  104
+GGTACACCCTGAAGTGTCCGGAGGGTTGTAGGGTGACCACTCGCGAACGAGTAAGTTGATTGCCTAACTAGATACGTACACACAGCCAGAAGCTGCCATTCGTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACACCCTGAAGTGTCCGGAGGGTTGTAGGGTGACCACTCGCAAACGAGTAAGTTGATTGCCTAACTAGATACGCACACACAGCCAGAAGCTGCCATTCGTA
+Length of raw signal:  849
+Top message:
+1101010011101110111110001110010100001001010001101101101110001001101110101011011110001100110010001111001000001001001100111001101011100
+List size: 16
+Top correct: False
+List correct: True
+1101011111110100000010110100100001111110101001011111000011001100111110101011111101011011111011011100101111101110100010110000110100110
+Length of seq:  104
+GGTAACAATATCCGTTAGCCGGTAACGCGACTTAGCCAGTAGCAAACTAAGCGTGTTCCAATGACCTTTCCCCGTCCCGCTCAAAACATGCGCCATCCGATCGG
+len(seq): 104
+Length of synthesized sequence 103
+GGTAACAATATCCGTTAGCCGGTAACGCGACTTAGCCAGTAGCAAACTAAGCGTGTTCCAATGACTTTCCCCGTCCCGCTCAAAACAGGCGCCATCCGATCGG
+Length of raw signal:  802
+Top message:
+1101011111110100000010110100100001111110101001011111000011001100111110101011111101011011111011011100101111101110100101101000101011001
+List size: 16
+Top correct: False
+List correct: True
+1101010101111000011101100111111010101011010100001101010000111011111110101110010001010111001111010000111110000110011111111111000110110
+Length of seq:  104
+GGTACTATCAGCGTGGTTGGAGGACTTTCTGCCTCTGATCTAGTGGCTATATATGATTGCATTCCCTGTACGTGTGCCCTCGTCAAAGGTTTTAACTCGAACGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTATCAGCGTGGTGGAGGACTTTCTGCCTCTGATCTATTGGCTATATATGATTGCATTTCCCTGTACGTGTCCCCTCGTCAAAGGTTTTAAATCGAACGG
+Length of raw signal:  832
+Top message:
+1101010101111000011101100111111010101011010100001101010000111011111110101110010001010111001111010000111110000110011111111111000110110
+List size: 16
+Top correct: True
+List correct: True
+1101010101001011010000111010111000000110010101000001110111100111011110101011001111010101111010100101000000011101101010001001001000100
+Length of seq:  104
+GGTACTAGACGCCCGCTGGCAGATTCGTGCACGGAAGGACCTTCCCCACTATTTGTTGTAACGTCTTGCGTTAGCGTTCGTCCTTGGCGGAGAGCGGCTAGCTA
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTAGACGCCCGCTGGCAGATTCGTGCACGGAAGGACCTTCCCCACTATTTGTTGTAACGTCTTGCGTTAGCGTTCGTCCTTGGCGGAGGCGGCTAGCTA
+Length of raw signal:  858
+Top message:
+1101010101001011010000111010111000000110010101000001110111100111011110101011001111010101111010100101000000011101101010011100110111100
+List size: 16
+Top correct: False
+List correct: True
+1101010101110101010110101110001100110010010010000010010110001101010110101100110001011001110001110001111100110001110001000011001011100
+Length of seq:  104
+GGTACTATCTAGTGTTCGCATTATGAATGTCTGTCAAGGTCCCGAGTTCTTTCGCCCTCTTATGGTAAAGTCGCCTGCTCTTTGTTAGGATCGCATGTTTCGTA
+len(seq): 104
+Length of synthesized sequence 102
+GGTACTATCTAGTGTTCGCATTATGAATGTCTGTCAAGGTCCCGAGTTCTTTCGCCCTCTTATGTAAAGTCCCTGCTCTTTGTTAGGATCGCATGTTTCGTA
+Length of raw signal:  803
+Top message:
+1101010101110101010110101110001100110010010010000010010110001101010110101100110001011001110001110001111100110001110001000011001011100
+List size: 16
+Top correct: True
+List correct: True
+1101011111100011001110011111010010110010001101001111101110110010011110101000001111001010111101001111101011111111011001011110000110111
+Length of seq:  104
+GGTAACAAAGGTGAAAGCTCCTTCGGCCTTCCAGGGGCGCGAAATTCTCGTGCTGGGTGCGTCGCGAGACCCGCGCGTGAAGCTAGTGTGCACCTCGTGTCGGC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACAAAGGTGAAAGCTCCTTCGGCCTTCCAGGGGCGCGAAATTCTCGTGCTGGGTGCGTCGCGAGACCCGCGCGTGAAGCTAGTGTGCACCTCGTGTCGGC
+Length of raw signal:  847
+Top message:
+1101011111100011001110011111010010110010001101001111101110110010011110101000001111001010111101001111101011111111011001011110000110111
+List size: 16
+Top correct: True
+List correct: True
+1101011101110111110111100010111110111111011101100100000011111111110110101001111110100001111010010110001010110110111011100110010100110
+Length of seq:  104
+GGTAACTCAACATCCACCCGATCAGGAATAAGAACTGTCAATTTCCCTTGCAGGCGCGTCAATCTGGAGGGGCGCCCATGTGAACTAAGATTTTCGGGGATCGG
+len(seq): 104
+Length of synthesized sequence 103
+GGTAACTCAACATCCACCCGATCAGGAATAAGAACTGTCAATTTCCCTTGCAGGCGCGTCAATCTGGAGGGGCGCCATGTGAACTAAGATTTTCGGGGATCGG
+Length of raw signal:  839
+Top message:
+1101011101110111110111100010111110111111011101100100000011111111110110101001111110100001111010010110001010110110111011100110010100110
+List size: 16
+Top correct: True
+List correct: True
+1101011100100100000000001001101010010011111010100110011110100111101110101111000100111000001011010010110111000100100111011100111010011
+Length of seq:  104
+GGTAACTGACTGAATAAATCACACCGCCCCTATCTTATATAAGCTCCTGCAAAAGAACGCAACTGGGAGAAGGCCCGGCGTGGAACTCGTTATCGCTAGGCTCC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTGACTGAATAAATCACACCGCCCCTATCTTATATAAGCTCCTGCAAAAGAACGCAACTGGGAGAAGGCCCGGCGTGGAACTCGTTAACGCTAGGCTCC
+Length of raw signal:  825
+Top message:
+1101011100100100000000001001101010010011111010100110011110100111101110101111000100111000001011010010110111000100100111011101110011111
+List size: 16
+Top correct: False
+List correct: False
+1101011011100001110010101100110001100010000110011000011010011110011110101100011010001000000001110100111010001111010000001100110000101
+Length of seq:  104
+GGTAAGGTATCCGCACCGATCTCTTCGATAAGGGGAATTCTCTTGGTGCCAGCTGCCACGTTCAGTATAAGGGGCGCCTACAACGCCCGTTGAACTTGCATGTT
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGGTATCCGCACCGATCTCTTCGATAAGGGGAATTCTCTTGGTGCCAGCTGCCACGTTCAGTATAAGGGGCGCCTACAACGCCCGTTGAACTTGCATGTT
+Length of raw signal:  832
+Top message:
+0101001111100001110010101100110001100010000110011000011010011110011110101100011010001000000001110100111010001111010000001100110000101
+List size: 16
+Top correct: False
+List correct: True
+1101010010011010010010110110111110110111010001100001111100011110011110101001011011010110000011000101010000000010110101001111000100010
+Length of seq:  104
+GGTACACTTCACGAGTACCAACTTGGATGTAACCAGAGCGACTACTGGCCAGCTGGCCGCGGCGGGCAGAGATATCAAGGTACGAAGGTACCGGGCACTTCACG
+len(seq): 104
+Length of synthesized sequence 105
+GGTACACTTCACGAGTACCAACTTGGATGTAACCAGAGCGACTACTGGGCCAGCTGGCCGCGGCGGGCAGAGATATCAAGATACGAAGGTACCGGGCACTTCACG
+Length of raw signal:  884
+Top message:
+1101010010011010010010110110111110110111010001100001111100011110011110101001011011010110000011000101010000000010110101001111000100010
+List size: 16
+Top correct: True
+List correct: True
+1101010111100011001000011011101110000100010011111111001010111000000110101101100101000000001010111011000010011100001001011000010101011
+Length of seq:  104
+GGTACTTGCCGTGATCAGGTGTATACGGGTTTAATGCCTACAGATCTGGCTCTCCCGCCTTCTGGTACGAGTCGTTACCTACGAGACTCCCGACGACATTAACC
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTTGCCGTGATCAGGTGTATACGGGTTTAATGCCTACAGATCTGGCTCTCCCGCCTTCTGGTACGAGTCGTTACCTACGAGACTCCCGACGACATTAACC
+Length of raw signal:  835
+Top message:
+1101010111100011001000011011101110000100010011111111001010111000000110101101100101000000001010111011000010011100001001010100011101111
+List size: 16
+Top correct: False
+List correct: True
+1101010100000011001110111111000000101100011101000101111101000101100110101100000100110010010001000011011100000101101100111110100000100
+Length of seq:  104
+GGTACTACTCTCCAAATTATAAAGGTGAACACCGGCCCTGAGTTCCCTGGTAGCCCCATAGGCAGTCTGATATCGCTTATGGCAGTCACAAATCGCTGGTGCTA
+len(seq): 104
+Length of synthesized sequence 105
+GGTACTACTCTCCAAATTATAAAGGTGAACACCGGCCCTGAGTTCCCTGGGTAGCCCCATAGGCAGTCTGATATCGCTTATGGCAGTCACAAATCGCTGGTGCTA
+Length of raw signal:  856
+Top message:
+0101000000110011101111110000001011000111010001011111010001011001101011000001001100100100010000110111000001011011001111101000001000000
+List size: 16
+Top correct: False
+List correct: True
+1101010111111000110111100000111010111110111011111111111011100111110110101011000100101000111100010111101011101100111101111110101101001
+Length of seq:  104
+GGTACTTGGACCCTTGTCCTGATGTCACCTCAAAGTGCTTTACAATTAGTCAGGCTTGGGAAGCCGAACGGCATGATTGATATGTAGGAATAACTAGCGGTAAT
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTTGGACCCTTGTCCTGATGTCACCTCAAAGTGCTTTACAATTAGTCAGGCTTGGGAAGCCGAACGGCATGATTGATATGTAGGAATAACTAGCGGTAAT
+Length of raw signal:  859
+Top message:
+1110011110001101111000001110101111101110111111111110111001111101101010110001001010001111000101111010111011001000000001011101100010000/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+
+List size: 16
+Top correct: False
+List correct: False
+1101011100001000100010100011101000011111010011100101101001100111100110101101110111000110000101101011110000010101110100101110010011101
+Length of seq:  104
+GGTAACTTGCTTTGTTTCTAACCACTGGACTTCGCCAGGCTGGCATAAGAGTGCCCGCGATATGTGAGCCCCGAACACCCAGAATTAATCCTTTGCTTCTACTT
+len(seq): 104
+Length of synthesized sequence 103
+GGTAACTTGCTTTGTTTCAACCACTGGACTTCGCCAGGCTGGCATAAGAGTGCCCGCGATATGTGAGCCCCGAACACCCAGAATTAATCCTTTGCTTCTACTT
+Length of raw signal:  798
+Top message:
+1101011100001000100010100011101000011111010011100101101001100111100110101101110111000110000101101011110000010101110100101110010011101
+List size: 16
+Top correct: True
+List correct: True
+1101011110011100111100101100100111000100100110000101111010001101001110101111010100001011110010110000010111011001100001111011110000111
+Length of seq:  104
+GGTAACAGGTAACGGGTAGGCTGTCGAGGAACTCCTCGAGACGGCACTCCGTTAGAACCGTCTGGGGACGCCCGCGCAGCATTTATTCTGCCAAGCCAGGAGGC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACAGGTAACGGGTAGGCTGTCGAGGAACTCCTCGAGTCGGCACTCCGTTAGAACCGTCTGGGGACGCCCGCGCAGCATTTATTCTGCCAAGCCAGGAGGC
+Length of raw signal:  851
+Top message:
+1101011110011100111100101100100111000100100110000100110111101000110100111010111101010000101111001011000001011101100110000111101111001
+List size: 16
+Top correct: False
+List correct: True
+1101010110011000111011011110010011001001001110111001001101011110110110101110011100111010110010000011110001100110100100111010000010001
+Length of seq:  104
+GGTACTTATATTGGGTTCCTCCACTGTAGTGCCTTTACCATCAACAGCGCCCAGCATTTACATATAGCCTGAAGCGTCCTGAATATGCCCTTACTCACTTGTAT
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTTATATTGGGTTCCTCCACTGTAGTGCCTTTACCATCAACAGCGCACAGCATTTACATATAGCCTGAAGCGTCCTGAATATGCCCTTACTCACTTGTAT
+Length of raw signal:  797
+Top message:
+1101010110011000110100000110101001001101001110111001001101011110101011110110010101110010100001101010001001110110010110110100111011100
+List size: 16
+Top correct: False
+List correct: False
+1101010000111011011100000011000010101001001010110011011011100101010110101100110101111001101110101010101101011011001001111010100001110
+Length of seq:  104
+GGTACAGTGGCTTGTATGGTCCCCCGCAACCCGCATGTATCACTATGGGATTCGCCCTCACGCAGGTGGTAAGTATCTGCCACCACTCGTGCTGGGTCGGCGGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTACAGTGGCTTGTATGGTCCCCCGCAACCCGGATGTATCACTATGGGATTCGCCCTCACGCAGGTGGTAAGTATCTGCCACCACTCGTGCTGGGTCGGCGGG
+Length of raw signal:  824
+Top message:
+1101010000111011011100000011000010101001001010110011011011100101010110101100110101111001101110101010101101011011001001111010100001110
+List size: 16
+Top correct: True
+List correct: True
+1101011010111111110110010100110001010010001001101101101000101101101110101100001101100000011111001010110010000000111011001111101101001
+Length of seq:  104
+GGTAAGGAACCATGCATTTCTCATTATCGCGCTAAAAACCAGGGTTAGCACTAAGCCAGGCTAGAGTGGCTGGCGATCTGAATATTGTTGTAGCGATTGGTAAT
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGGAACCATGCATTTCTCATTATCGCGCTAAAAACCAGGGTTAGCACTAAGCCAGGCTAGAGTGGCTGGCGATCTGAATATTGTTGTAGCGATTGGTAAT
+Length of raw signal:  863
+Top message:
+1101011010111111110110010100100111010010001001101101101000101101101110101100001101100000011111001010110010000000111011001111101101001
+List size: 16
+Top correct: False
+List correct: True
+1101010110110101001100000111011111110110101110111000100011110111011110101101001001001111111111110010000100010111110110010001000100110
+Length of seq:  104
+GGTACTTCCATCTAGATCGAGGTATATAGTCAACGTACGCATTACGAAACATTTGCGGCCGTGTTGCCTTTTACACAGCTTTTGACCATTTGTTCTTACATCGG
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTTCCATCTAGATCGAGGTATATAGTCACGTACGCATTACGAAACATTTGCGGCCGTGTTGCCTTTTACACAGCTTTTGACCATTTGTTCTTACATCGG
+Length of raw signal:  815
+Top message:
+1101010110110101001100000111011111110110101110111000100011110111011110101101001001001111111111110010000100010111110110010001000100110
+List size: 16
+Top correct: True
+List correct: True
+1101010000101100111010000010010100110111100100100100001110100110011110101000111000111011010001111101110110001111000001100100101000100
+Length of seq:  104
+GGTACAGTCAACTACTACTGGTCCGGGACTTGGATGGTGACGGCACCATAAGCTGGGAAGAATCCTTTGCACCTCAAATTAGGCGGGGACACCTAGTATAGCTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACAGTCAACTACTACTGGTCCGGGACTTGGATGGTGACGGCACCATAAGCTGGGAAGAATCCTTTGCACCTCAAATTAGGCGGGGACACCTAGTATAGCTA
+Length of raw signal:  856
+Top message:
+1101010000101100111010000010010100110111100100100100001110100110011110101000111000111011010001111101110110001111000001100100110001011
+List size: 16
+Top correct: False
+List correct: True
+1101010010001111101101100100011000100111101010001011101101000001001110101001001110110111101110010000011000110010101001100000001111110
+Length of seq:  104
+GGTACACTATACCGATGAGTCAGGATAAATGCTGGGATGGGTTTGCGAGGCTTAGGCCCCTTTTGTTTAACCAGACACATTGATGAAATATGGTCCGGAAAGGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTACACTATACCGATGAGTCAGGATAAATGCTGGGATGGGTTTGCGAGGCTTAGGCCCCTTTTGTTTAACCAGACACATTGATGAAATATGGTCCGGAAAGGG
+Length of raw signal:  864
+Top message:
+1101010010001111101101100100011000100111101010001011101101000001001110101001001110110111101110010000011000110010101001100000001011010
+List size: 16
+Top correct: False
+List correct: True
+1101010010011111001010001010101111100111001100001110101000010001111110101010100111010010001000100010110111000001110001000101111000101
+Length of seq:  104
+GGTACACTTCTCTCAGCGATCACTCCTGCACATTTCCCGTCTACGCTTAGCAATGTATACGGTATCGCTATTATTTAGCGTGCACCAGGATTTGACCGATTGTT
+len(seq): 104
+Length of synthesized sequence 103
+GGTACACTTCTCTCAGCGATCACTCCTGCACATTTCCCGTCTACGCTTAGCAATGTATACGGTATCGCTATTATTAGCGTGCACCAGGATTTGACCGATTGTT
+Length of raw signal:  813
+Top message:
+1101010010011111001010001010101111100111001100001110101000010001111110101010100111010010001000100010001100011111110001000101111000101
+List size: 16
+Top correct: False
+List correct: True
+1101010100100001111111110100010001010010011000001000100011110011001110101011001000001111001011001101011101111110100111011100010101010
+Length of seq:  104
+GGTACTAACGAGGACATTATCCCATTTCGCGGATGGACTTGTTACGTTTGAATAGTTGTTCACATCGTAGGCTCACGCTCATAACGGGGTTATGGTCATACTCG
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTAACGAGGACATTATCCCATTTCGCGGATGGACTTGTTACGTTTGAATAGTTGTTCACATCGTAGGCTCACGCTCATAACGGGGTTATGGTCATACTG
+Length of raw signal:  836
+Top message:
+1101010100100001111111110100010001010010011000001000100011110011001110101011001000001111001011001101011101111110100111011100010101010
+List size: 16
+Top correct: True
+List correct: True
+1101011000100001010000110000001101011110100110101001110101000000111110101111101001000001000010101010000111011101100011011011010000001
+Length of seq:  104
+GGTAAGCCAAGGCATGTGCCCGTCCGCAGCGGGGACCGCGGTACAGGTTTCCGTGAAGGTCAGAAAGTAGGCACAACGGCTTAATTAGTTGACATGCGTTCTAT
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGCCAAGGCATGTGCCCGTCCGCAGCGGGGACCGCGGTACAGGTTTCCGTGAAGGTCAGAAAGTAGGCACAACGGCTTAATTAGTTGACATGCGTTCTAT
+Length of raw signal:  872
+Top message:
+1110011011000010100000110001101101100001010001101101010000001111101011111010010000010000101010100001110111011000110110110100000010000
+List size: 16
+Top correct: False
+List correct: False
+1101010011011110001111110000010110100100000010110000000101111001001110101101100001001101010101010000100101011010111101000010011101111
+Length of seq:  104
+GGTACACAAGTCCGTCGAAAGGCAGTGGAGAATTAGCGCGGTGCGAGGATCTTAGCGCCACGTAGACTTAGTACTGTAGTATCGCAACCCCTCTATCTATGCGC
+len(seq): 104
+Length of synthesized sequence 104
+GGTACACAAGTCCGTCGAAAGGCAGTGGAGAATTAGCGCGGTGCGAGGATCTTAGCGCCACGTAGACTTAGTACTGTAATATCGCAACCCCTCTATCTATGCGC
+Length of raw signal:  860
+Top message:
+1101010011011110001111110000010110100100000010110000000101111001001110101101100001001101010101010000100101011010111101000010011101111
+List size: 16
+Top correct: True
+List correct: True
+1101010100111000001000000111010111111100001011010100100011101101011110101011110011111011001100010010111100101010010111111011110010001
+Length of seq:  104
+GGTACTAAGTGGGAGTGCTGGGGGAGGAGGCACAAGGTACTATAGTTCGGCATTGTTCACGGGCGATCATTGAAGCTACTAGAAAGCCAGAAAAGCGAATGTAT
+len(seq): 104
+Length of synthesized sequence 102
+GGTACTAAGTGGGAGTGCTGGGGGAGGAGGCACAAGGTACTATAGTTCGGCATTGTTCACGGGCGAGCTTGAACTACTAGAAAGCCAGAAAAGCGAATGTAT
+Length of raw signal:  895
+Top message:
+1101010100111000001000000111001011111100001011010100100011101101011110101011110010101001101010110110111000100101111110111100100010000/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+
+List size: 16
+Top correct: False
+List correct: False
+1101010111111010111110111011001101001011010010111011010111100010000110101011101000100010100100111000010100000001000011101001000100110
+Length of seq:  104
+GGTACTTGGAATGAAGGAAATTCATAGGGCCCGGGCGGTTTCAGCCGAAGGGTCCTTCGACGTATTTTCCCCTGGGGACTTCGTGTAGCGTAGCATTACATCGG
+len(seq): 104
+Length of synthesized sequence 103
+GGTCTTGGAATGAAGGAAATTCATAGGGCCCGGGCGGTTTCAGCCGAAGGGTCCTTCGACGTATTTTCCCCTGGGGACTTCGTGTAGCGTAGCATTACATCGG
+Length of raw signal:  850
+Top message:
+1111010111111010111110111011001101001011010010111011010111100010000110101011101000100010100100111000010100000001000011101001000100110
+List size: 16
+Top correct: False
+List correct: True
+1101011011111110001000001010100011011000110110001000000001000011001110101100000000000010110110011010100001001000101111101011010100100
+Length of seq:  104
+GGTAAGGTTGCAGGAAGCAACAAGACTGCAGTTGCAGATATAATTTCGCAAATAGCCATTAAAACGAAGCCTAGCCGGTATACATTGGCTCTAGCCTACGACTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGGTTGCAGGAAGCAACAAGACTGCAGTTGCAGATATAATTTCGCAAATAGCCATTAAAACGAAGCCTAGCCGGTATACATTGGCTCTAGCCTACGACTA
+Length of raw signal:  838
+Top message:
+1101011011111110001000001010100011011000110110001000000001000011001110101100000000000010110110011010100001001000101111101011010100100
+List size: 16
+Top correct: True
+List correct: True
+1101011101001111111001110100001011101001000110001101111111011011110110101001101100000101011001000111110001110101110000100011101111111
+Length of seq:  104
+GGTAACTACGCGCCAGCACGCCTCACTAAGCATAATGTTGTGAGCAGCTGGAGGCGCGAGAACGCACCGCTCAGCCTGCTCGGGATTGACTTACCTATATCCGC
+len(seq): 104
+Length of synthesized sequence 103
+GGTAGCTACGCGCCAGCACGCCTCACTAAGCATAATGTTGTGAGCAGCTGGAGGCGCGAGAACGCACCGCTCAGCCTGCTCGGGATGACTTACCTATATCCGC
+Length of raw signal:  820
+Top message:
+0111010011111110011101000010111010010001100011011111110110111101101010011011000001010110010001111100011101011100001000111011111110011
+List size: 16
+Top correct: False
+List correct: False
+1101011010101110110010010000100010011000111101100111001010101110000110101101100011011011111110010111000010100110110110111111100101101
+Length of seq:  104
+GGTAAGGATTGTATGTGTGAAGTTTGACCTGGCGATGGACAAGAATGTTCCGTCCCGCCAGTTGACTTATCGAAGTTGCGCTTAAACCACTTATCGAACGCCTT
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGGATTGTATGTGTGAAGTTTGACCCGGCGATGGACAAGAATGTTCCGTCCCGCCAGTTGAATTATCGAAGTTGCGCTTAAACCACTTATCGAACGCCTT
+Length of raw signal:  834
+Top message:
+1101011010101110110010010000100010011000111101100111001010101110000110101101100011011011111110010111000010100110110110111111100101100
+List size: 16
+Top correct: False
+List correct: True
+1101010000001111100000110100011000111001001110001101100101100111011110101101001000111101110010110010000001010100101111011010010100111
+Length of seq:  104
+GGTACAGGTTTCCTCGACCGGCAGATTCACATCTGGCTTGCTTACCGACTATTTGCGGCCGCACTGAATCCCCTTCACTTACAACGCGAGAGGGACGGGTGGGC
+len(seq): 104
+Length of synthesized sequence 103
+GGTACAGGTTTCCTCGACCGGCAGATTCACATCTGGCTTGCTTACCGACTTTTGCGGCCGCACTGAATCCCCTTCACTTACAACGCGAGAGGGACGGGTGGGC
+Length of raw signal:  832
+Top message:
+1101010000001111100000110100011000111001001110001101001101111010110100100011110111001011001000000101010010111101101001010011100001000
+List size: 16
+Top correct: False
+List correct: False
+1101011100000011011101110001001010001100001111111000000111111011010110101110110100100101010001000101101111100010000000010111100000111
+Length of seq:  104
+GGTAACTTGGTCCTTACAATCAAGCCGACATGGGGATCCGCTCACAAATTCACGCATATCGCCGTCGAAGCATTTGTCTTTGGAAGCTATGCGAGCGACGAGGC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTTGGTCCTTACAATCAAGCCGACATGGGGATCCGCTCACAAATTCACGCATATCGCCGTCGAAGCATTTGTCTTTGGAAGCTATGCGAGCGACGAGGC
+Length of raw signal:  852
+Top message:
+1101011100000011011101110001001010001100001111111000000111111011010110101110110100100101010001000101101111100010000000010111100000111
+List size: 16
+Top correct: True
+List correct: True
+1101011001111100000000111110001011101101011010111010010011000101000110101101000111110000010010111100011111111101011000001111001001111
+Length of seq:  104
+GGTAAGCGAGTGCCTACCGGTGGATCTATCGGGGAACGACAGTGTTATCTAACCCCGGAAAGCTAGGCTAACGACCTCCGTTGCTAGCAGATCGTACGTGACGC
+len(seq): 104
+Length of synthesized sequence 103
+GGTAAGCGAGTGCCTACCGGTGGATCTATCGGGGACGACAGTGTTATCTAACCCCGGAAAGCTAGGCTAACAACCTCCGTTGCTAGCAGATCGTACGTGACGC
+Length of raw signal:  838
+Top message:
+1011110000000011111000101110110101101011101001001100010100011010110100011111000001001011001111000111111111010110000011110010011110001
+List size: 16
+Top correct: False
+List correct: True
+1101011100010001000011011000000000010111111010111100010011010100000110101100001011001001001000010100010101101100011001110110111110111
+Length of seq:  104
+GGTAACTTCACTTCAGATGCACCAAATGCGAAACTACACCGAAGACTAGGACTCCCCAGCAACTGTGCGGAGCATGCTCCGGGGACGAAACTTCTTGGAACGGC
+len(seq): 104
+Length of synthesized sequence 102
+GGTAACTTCACTTCAGATGCACCAAACGCGAAACTACACCGAAGACTAGGACTCCCAGCAACTGTGCGGAGCATGCTCCGGGGACGAAACTTCTTGAACGGC
+Length of raw signal:  791
+Top message:
+0101011100010001000011011000000000010111111010111100010011010100000110101100001011001001001000010100010101101100011001110110111110111
+List size: 16
+Top correct: False
+List correct: True
+1101011000101110000010101001001110101111011111010111100010010001000110101000011001101010111010001001100111111110011011100111010110001
+Length of seq:  104
+GGTAAGCCATCTTCGAACAACCCCTTAGAACAATCCTACAGCCAAGATTCTACCCGGTCCAATAGTTGTAACAGACCAACCATAGCTACATTACGGAAAGATAT
+len(seq): 104
+Length of synthesized sequence 103
+GGTAAGCCATCTTCGAACAACCCCTTAGAACAATCCTACAGCCAAGATTCTACCCGGTCCAATGTTGTAACAGACCAACCATAGCTACATTACGGAAAGATAT
+Length of raw signal:  809
+Top message:
+1101011000101110000010101001001110101111011111010111100010010001000110101000011001101010111010001001100111111110011010100100000101000
+List size: 16
+Top correct: False
+List correct: False
+1101011101010100101100110011110100100000110010100101011111100110111110101010111001111010000110111011101111110101001000011000100010011
+Length of seq:  104
+GGTAACTAGTGACGCCTATGAACGTTCGACAGAATGTGCGCCAAAGCTACTGGTGTATGTTTAGCTCTGGTGTATAATATAATGTACGAGGGTGATTGACCTCC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTAGTGACGCCTATGAACGTTCGACAGAATGTGCGCCAAAGCTACTGGTGTATGTTTAGCTCTGGTGTATAATATAATGTACGAGGGTGATTGACCTCC
+Length of raw signal:  854
+Top message:
+1101011101010100101100110011110100100000110010100101011111100110111110101010111001111010000110111011111101010010000110110100011111010
+List size: 16
+Top correct: False
+List correct: False
+1101011000111011010011100101001100101100110101101110000001011000111110101011110011011010100111101100100101011101010000011000111001001
+Length of seq:  104
+GGTAAGCCTCCTTTGGCCAGGGGGAGTGGCTCACGGGTATCGTTAGGAGGCCGTGTTCACGTAGAGCGCGTGGCGTGTGTATTAACAGGACGTGGGAGCTCAAT
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGCCTCCTTTGGCCAGGGGGAGTGGCTCACGGGTATCGTTAGCAGGCCGTGTTCACGTAGAGCGCGTGGCGTGTGTATTAACAGGACGTGGGAGCTCAAT
+Length of raw signal:  924
+Top message:
+1101011000111011010011100100110111111101010010101110110101010010000101110011011010100011000111100011001011101000111000001110010010000
+List size: 16
+Top correct: False
+List correct: False
+1101010110000000111110000101100111110000110110000000101010111101100110101010110111010100111000101110011101111101111110100100010100001
+Length of seq:  104
+GGTACTTAACCATTCCTCGGAGGTACCTAGCATGCACCATACACTCAGATTAGCCTATTGCGAACACCCAAATCTTTACTATCCACGAATCAGATTCTTGTTAT
+len(seq): 104
+Length of synthesized sequence 102
+GGTACTTAACCATTCCTCGGAGGTACCTAGCATGCACCATACACCAGATTAGCCTATTGCGAACACCCAAATCTTTACTATCCACGAATAGATTCTTGTGAT
+Length of raw signal:  787
+Top message:
+0101100000001111100001011001111100001101100000001101011111011001101010101101110101001110001011100111011111011111101001000101000010010
+List size: 16
+Top correct: False
+List correct: False
+1101010101111111100111111000011110111100011101100010101010111111100110101101101001111110001101101110011111000011100010110001010101011
+Length of seq:  104
+GGTACTATCAATTCGTCCACCGTGCCAAGCCTCGTTGCATGATCTCCATCGTGCCCGCAGGCTGGAGGTGTACTATTAGTGCAGGAGCCGCGGAGAAGTTAACC
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTATCAATTCGTCCACCGTGCCAAGCCCGTTGCATGATCTCCATCGTGCCCGCAGGCTGGAGGTGTACGATTAGTGCAGGAGCCGCGGAGAAGTTAACC
+Length of raw signal:  867
+Top message:
+1101010101111111100111111000011110111100011101100010101010111111100110101101101001111110001101101100101001000001011010011011000111000/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+
+List size: 16
+Top correct: False
+List correct: False
+1101010111000110100011001100010101000010111011000001000110001111000110101111111011011100011100011100101010000101101110001011000101011
+Length of seq:  104
+GGTACTTTTGTGTTCACAACTTATCAAGTCACTATGATAGTTAATGGCGGCTCCCAAGCACCCCGTGTCGCCTTACCGAAGTAAGTCTCGCCGCGGAGATAACC
+len(seq): 104
+Length of synthesized sequence 102
+GGTACTTTTGTGTTCACAACTTATCAAGTCACTTGATAGTTAATGGCGGCTCCCAAGCACCCCGTGTCGCCTACCGAAGTAAGTCTCGCCGCGGAGATAACC
+Length of raw signal:  801
+Top message:
+1101010111000110100011001100010101000010111000000001000110001111000110101111111011011100011100011100101010000101101110001011000101011
+List size: 16
+Top correct: False
+List correct: False
+1101011100010110101010010000000101011010101000100011101010001110000110101101101100110110000101111101001101111000011111011110100100011
+Length of seq:  104
+GGTAACTTCATCGATTACCAACGTGAATCGCTAAATATACCAGGGAAGACCGTCCCGCACACATCAGACCCGACCTTGACTTGCGTGCTCACCGGGCATAATCC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTTCATCGATTACCAACGTGAATCGCTAAATATACCAGGGAAGACCGTCCCGCACACATCAGACCCGACCTTGACTTGCGTGCTCACCGGGCATAATCC
+Length of raw signal:  805
+Top message:
+1101011100010110101010010000000101011010101000100011101010001110000110101101101100110110000101111101001101111000011111011110100100011
+List size: 16
+Top correct: True
+List correct: True
+1101010100010001101100011011001110000100110001101111001000100100001110101010010011010111110101000100010010010111000001000001101001100
+Length of seq:  104
+GGTACTACATCTACGAAGTCGACAAGGGGTAGTTCGTCTCTACCTACGACGGCAGTAAGGTGACGCACCTCAGCATTAACTGGGTTGGCTTAACTCGCATGGTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTACATCTACGAAGTCGACAAGGGGTAGTTCGTCTCTACCTACGACGGCAGTAAGGTGACGCACCTCTGCATTAACTGGGTTGGCTTAACTCGCATGGTA
+Length of raw signal:  859
+Top message:
+1101010100010001101100011011001110000100110001101111001000100100001110101010010011010111110101000100010010010111000001000001101001100
+List size: 16
+Top correct: True
+List correct: True
+1101011111110010001010111000110010010011111011101100111101000001001110101000010011110000101000101101101110010011111101111000111011111
+Length of seq:  104
+GGTAACAATACACCTTGTCTGCTAAGTGCCTATCAAATGTAGGCCCGAGGCTTAGGGTATATGGGGCGCTATTAGCACTCCATCTAAAGATGCCGGTGTGTCGC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACAATACACCTTGTCTGCTAAGTGCCTATCAAATGTAGGCCCGAGGCTTAGGGTATATGGGGCGCTATTAGCACTCCATCTAAAGATGCCGGTGTGTCGC
+Length of raw signal:  858
+Top message:
+0101011111110010001010111000110010010011111011101100111101000001001110101000010011110000101000101101101110010011111101111000111011111
+List size: 16
+Top correct: False
+List correct: True
+1101011110100000101000000010000010110110111111110101101110011010010110101011000111110001010110101000001011101110011110000101111011100
+Length of seq:  104
+GGTAACATTCTCAACTCCTCGTGCAAGCAACTTGCTATGACCTCCTGCGACCTGCTTGGGTGCTACAGATCGCGGTGGACTAGATTAGACGGAGACGAATCGTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACATTCTCAACTCCTCGTGCAAGCAACTTGCTATGACCTCCTGCGACCTGCTTGGGTGCTACAGATCGCGGTGGACTAGATTAGACGGAGACGAATCGTA
+Length of raw signal:  845
+Top message:
+1101011110100000101000000010000010110110111111110101101110011010010110101011000111110001010110100001111100000001001011010110000011101
+List size: 16
+Top correct: False
+List correct: False
+1101010000111010000011111000011111111000100111101001011001011110011110101101000000011100000110001010011110111101101011111101010001100
+Length of seq:  104
+GGTACAGTGGCACTCATCCTCGTGCGTTCCCAACTGGGGCGCCTGCACCCAGCTGCGGATCGTCCAGCACGTGCCTTTGCAAGGAGGCAAGACTCAGAGAGGTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACAGTGGCACTCATCCTCGTGCGTTCCCAACTGGGGCGCCTGCACCCAGCTGCGGATCGTCCAGCACGTGCCTTTGCAAGGAGGCAAGACTCAGAGAGGTA
+Length of raw signal:  857
+Top message:
+1101010000111010000011111000011111111000100111101001011001011110011110101101000000011100000110001010011110111101101011111101010001101
+List size: 16
+Top correct: False
+List correct: True
+1101010010010111100111001001111100100111000101111000010111101111101110101011100010010110100000010010101111001000000001101101000011110
+Length of seq:  104
+GGTACACTTGGGAGGTAACATCTCTCACGTCCCATGAGCGGAGACGATGGAAAAGTTCTGCAAGGCGCCTTTGGGCATCACGAAATAAGCTACGATGCCGGGGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTACACTTGGGAGGTAACATCTCTCACGTCCCATCAGCGGAGACGATGGAAAAGTTCTGCAAGGCGCCTTTGGGCATCACGAAATAAGCTACGATGCCGGGGG
+Length of raw signal:  861
+Top message:
+0111100111001001111100100111000101110111100001011110111110111010101110001001011010000001001010111100100000000110110100001111000000000
+List size: 16
+Top correct: False
+List correct: False
+1101011001101001111000100011100110001111010010000001100101110001100110101110100110101001001001101110101011111101111010010001000111011
+Length of seq:  104
+GGTAAGCGTATGGTGCGAATACACTTTGGCGCCGTAATTCGATAGTTCTAAAGCCATAAGGACCGCCCGGGAACAACTTGAGACACCGGGCATTCTATTTTACC
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGCGTATGGTGCGAATACACTTTGGCGCCGTAATTCGATAGTTCTAAAGCCATAAGGACCGCCCGGGAACAACTTGAGACACCGGGCATTCTATTTTACC
+Length of raw signal:  828
+Top message:
+0000111010011110001000111001100011110100100000011001011100011001101011101001101010010010011011101010111111011110100100010001110111001
+List size: 16
+Top correct: False
+List correct: True
+1101011110111001111110111001001000011001100000110011011010011000010110101001111000111010011000010111010110101111010011110110111011000
+Length of seq:  104
+GGTAACATAACCTCCAAAACCATGGAGGGAATTCACCAATCACCGGCTCGAGTGCGCGTGCGTCCACCATGCCCGTAGACGCAACCCGCGGATCTAATGATTAA
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACATAACCTCCAAAACCATGGAGGGAATTCACCAATCACCGGCTCGAGTGCGCGTGCGTCCACCATGCCCGTAGACGCAACCCGCGGATCTAATGATTAA
+Length of raw signal:  819
+Top message:
+1101011110111001111110111001001000011001100000110011011010011000010110101001111000111010011000010111010110101111010011110110111011000
+List size: 16
+Top correct: True
+List correct: True
+1101010111100111111100100110111100001011000111011101100001100010111110101001000011011011010110101111101001101110001010100111111100100
+Length of seq:  104
+GGTACTTGCCCAGGTACACGAACTCGGCGGCGGTTTTAATTACTCATATCAGGTGGCCAAGATGACATCACGCAAGGTCCAACATAATGAATTGGTACACACTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTTGCCCAGGTACACGAACTCGGCGGCGGTTTTAATTACTCATATCAGGTGGCCAAGATGACATCACGCAAGGTCCAACATAATGAATTGGTACACACTA
+Length of raw signal:  836
+Top message:
+1101010111100111111100100110111100001011000111011101100001100010111110101001000011011011010110101111101001101110001010100111111100100
+List size: 16
+Top correct: True
+List correct: True
+1101011100001110000000111111011100000101000110101011011101011000101110101110111100100011110011100011010010000110011111110110101110000
+Length of seq:  104
+GGTAACTTGCCGACGTCCGGAAGAATGGCACTAACCCTTGATAAGAAAGCGGGAGATAGTCTACCACTCGGCAATGGGGTAACCAAAGGTAGTCAACTGGCAAA
+len(seq): 104
+Length of synthesized sequence 105
+GGTAACTTGCCGACGTCCGGAAGAATTGCACTAACCCCTTGATAAGAAAGGGGGAGATAGTCTACCACTCGGCAATGGGGTAACCAAAGGTAGTCAACTGGCAAA
+Length of raw signal:  870
+Top message:
+0100011111101000011100101010110110111010011001101100010010111010111011110010001111001110001101001000011001111111011010111000000000010
+List size: 16
+Top correct: False
+List correct: False
+1101011111011010110010110110111110100011001000010111110101011000111110101000000011010110101110010011110101011000010111000100101101110
+Length of seq:  104
+GGTAACACCAGGCCCTTCCAACTTGGTCGAGATCAGCCGACCTCTTAAGGCCGTGGGTTATGTCGGGAACTCATCTCGTCTTAACGAGCTGGAAACCATATGGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACGCCAGGCCCTTCCAACTTGGTCGAGATCAGCCGACCTCTTAAGGCCGTGGGTTATGTCGGGAACTCATCTCGTCTTAACGAGCTGGAAACCATATGGG
+Length of raw signal:  827
+Top message:
+0000000011011010110010110110111110100011001000010111110101011000111110101000000011010110101110010011110101011000010111000100101101110
+List size: 16
+Top correct: False
+List correct: False
+1101011100100001010001000101001010100010111001001011100010010110001110101110010011101000001111000110011000110000010011100011110011101
+Length of seq:  104
+GGTAACTGACAGCATGCATTTCGCCAAAATTCTTGCTACGTGCAAGGCCCTCCAGATTGCTTCTACTGCGTCCTGAATTTTGCCGCTATCAATCTCGGCTACTT
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTGACAGCATGCATTTCGCCAAAATTCTTGCTACGTGCAAGGCCCTCCAGATTGCTTCTACTGCGTCCTGAATTTTGCCGCTATCAATCTCGGCTACTT
+Length of raw signal:  808
+Top message:
+1110000010010101111010101010101000101110010010111000100101100011101011100100111010000011110001100110001101100011001001111010001111010/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+
+List size: 16
+Top correct: False
+List correct: False
+1101010111111100100110001000010110000100111110111011010010000001101110101010100111001001100010111000111101111010100001111110010111000
+Length of seq:  104
+GGTACTTGGAGGGATCCTGATAAAGGACGTATGCGAAATTTGGTAATTCTGTAAGTATACGGACATCCTGCGGTGCGCGAATTTGGGTCGCGAGAGCCTGCTAA
+len(seq): 104
+Length of synthesized sequence 102
+GGTACTTGGAGGGATCCTGATAAAGGACGTATGCGAAATTGGTAATTCTGTAAGTATACGGACATCCTGCGGTGCGCGAATTTGGTCGCGAGAGCCTGCTAA
+Length of raw signal:  837
+Top message:
+1110011110011111011111100101100110010110101100110100100000011011011100111010010011010000011011010100100000010001010111101110101000001
+List size: 16
+Top correct: False
+List correct: False
+1101010001110001101111011010100011101100001010010100000101100111001110101111010000011110111100111111010100001010110001000000001001010
+Length of seq:  104
+GGTACAGACGCCTCGTGGAGGCGGAAGTTGAGCATCCTTGGAGCCCGACATATAGAACCCCGACAGGATCTTAAAATGTCTGGCATCAAATATACGTCCGTTCG
+len(seq): 104
+Length of synthesized sequence 104
+GGTACAGACGCCTCGTGGAGGCGGAAGTTGAGCATCCTTGGAGCCCGACATATAGAACCCCGACAGGATCTTAAAATGTCTGGCATCAAATATACGTCCGTTCG
+Length of raw signal:  841
+Top message:
+1111100101101101111010110000011100110011100100111010100110100110011011001101001011011101101111110101000010101100010000000010010100001
+List size: 16
+Top correct: False
+List correct: False
+1101010010110010111011000010010110010100011001111001011101100110001110101110111001011101000100001111110111101010100000010101010111010
+Length of seq:  104
+GGTACACGCCTTGTTATGAGCTCCCGTTCTGAGAAAGAGAAGTCTGGTTTTCCAGATAGATGGCCAAGATCAGCCCACACCGTTTAGTTTGAAAGTTTAAGTCG
+len(seq): 104
+Length of synthesized sequence 104
+AGTACACGCGTTGTTATGAGCTCCCGTTCTGAGGAAGAGAAGTCTGGTTTTCCAGATAGATGGCCAAGATCAGCCCACACCGTTTAGTTTGATAGTTTAAGTCG
+Length of raw signal:  862
+Top message:
+1110101100101110110000100101100101000110011110010111011001100011101011101110010111010001000011111101111010101000000101010101010111010
+List size: 16
+Top correct: False
+List correct: False
+1101011000110011000110110001001110111110110111001100011100010001110110101001011011110101111011011101001010001100000111110111001000111
+Length of seq:  104
+GGTAAGCCTGAATTGTCGAAGAACTTTATTCCCCGTCTTTCCGCCACTATTTGGCGCCGCGTTCCGAGCGCCCGAATCCCGACATTACACTGAAGACCACAGGC
+len(seq): 104
+Length of synthesized sequence 102
+GGTAAGCCTGAATTGTCGAAGAATTTATTCCCGTCTTTCCGCCACTATTTGGCGCCGCGTTCCGAGCGCCCGAATCCCGACATTACACTGAAGACCACAGGC
+Length of raw signal:  790
+Top message:
+0110001100110001101100010011101111101101110011000111000100011101101010010110111101011110110111010010100011000001111101110010001110000
+List size: 16
+Top correct: False
+List correct: True
+1101010101110110001010101000000001011100011100010011111111011010001110101101110111011010100011100111000101111000101101100000100000000
+Length of seq:  104
+GGTACTATCTCTGCATGATAGTTAATAGCTGTCGCCAACTAATGCAGGGGACCAGCGCGATAATGGCGGAAGATACCCATGAGCCCGCAAGAGACTATAAAAAA
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTATCTCTGCATGATAGTTAATAGCTGTCGCCAACTAATGCAGGGGACCAGCGCGATAATGGCGGAAGATACCCATGAGCCCGCAAGAGACTATAAAAA
+Length of raw signal:  839
+Top message:
+1101010101110110001010101000000001011100011100010011111111011010001110101101110111011010100011100111000101111000101101100000100000000
+List size: 16
+Top correct: True
+List correct: True
+1101010010001100001110111111110111010001011111111110111010100001001110101010001111010010111000001001111011001111100010001101001110000
+Length of seq:  104
+GGTACACTATCATGGGCTATATGCAAAAGATTGAATTTACAAACTACGCGCTTAGTAAAACTGTTCCTTTCGACACTGGCGTAGCTCCATTCTCCGTGGGCAAA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACACTATCATGGGCTATATGCAAAAGATTGAATTTACAAACTACGCGCTTAGTAAAACTGTTCCTTTCGACACTGGCGTAGCTCCATTCTCCGTGGGCAAA
+Length of raw signal:  811
+Top message:
+1101010010001100001110111111110111010001011111111110111010100001001110101010001111010010111000001001111011001111100010001101001001000
+List size: 16
+Top correct: False
+List correct: False
+1101010011011111001001101111010011110001000101010001100100010110000110101110101000110000001111000111001101010001010101111110001101101
+Length of seq:  104
+GGTACACAAGTGTCACGAACTCCCGCGGGCACTTGAACAAAATGTTTCCACGTCCATACTAAAGCCGTCGTCCTCGATTACTCATGAATCAAAGGTGTACCCTT
+len(seq): 104
+Length of synthesized sequence 102
+GGTACACAGTGTCACGAACTCCCGCGGGCACTTGAACAAAATGTTTCCACGTCCATACTAAAGCCGTCGTCCTCGACTACTCATGAATCAAGGTGTACCCTT
+Length of raw signal:  785
+Top message:
+1100110111110010011011110100111100010001010100011001000101100001101011101010001100000011110001110011010100010101011111100011011110001
+List size: 16
+Top correct: False
+List correct: False
+1101011111001100111100110111100011010100011111010100110111101011001110101101101101111001100100111110000111101001110011001100001000001
+Length of seq:  104
+GGTAACACGGTTAAGGTTTCTTGCCTTCTAGACCTCTCACAAGTCGTAGTAATAGCGCACAGTTGGTTATTCTATGTCGAGGGGGGACTTACTTGCTGCACTAT
+len(seq): 104
+Length of synthesized sequence 103
+GGTAACACGGTTAAGGTTTCTTGCCTTCTAGACCTCTCACAAGTCGTAGTATAGCGCACAGTTGGTTATTCTATGTCGAGGGGGGACTTACTTGCTGCACTAT
+Length of raw signal:  841
+Top message:
+1101011111001100111100110111100011010100011111010100110111101011001110101101101101111001100100111110000111101001110011001100001000001
+List size: 16
+Top correct: True
+List correct: True
+1101011100000000101000010110010100001010110010111100100010011111111110101110000101101011000101011110100110101100001110100110001100101
+Length of seq:  104
+GGTAACTTGGGATACTCGCCCCTGGTTGGCATCTTCGACGAATGACTCATTTATGATTCCCCCGAAGGGAGATGCGGGGACCCCAGGGCACCATTTGATGCGTT
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTTGGGATACTCGCCCCTGGTTGGCATCTTCGACGAATGACTCATTTATGATTCCCCCGAAGGGAGATGCGGGGACCCCAGGGCACCATTTGATGCGTT
+Length of raw signal:  860
+Top message:
+0011000000001010000101100101000010101100101111001000100111111111101011100001011010110001010111101001101011000011101001100011001010000
+List size: 16
+Top correct: False
+List correct: False
+1101010101111101100111011010011110110010110011000010110110110101001110101101011101010110010000010001010000011110100110000010010010110
+Length of seq:  104
+GGTACTATCACCATTAATTGGGCTGCATCTGGCTCTTGCAAGCACATCTAGTTAGCGGGCTAGTTGCTCAAAGTTTGTGGACAGGGGGCTCAGTCGTACCGCGG
+len(seq): 104
+Length of synthesized sequence 102
+GGTACTATCACCATTAATTGGGCAGCATCTGGCTCTTGCAAGCACATCTAGTTAGCGGGTAGTTGCTCAAAGTTTGTGGACAGGGGGCTCAGTCGTACCGCG
+Length of raw signal:  845
+Top message:
+1101010101111101100111011010011010001010010011000010110110110101001110101101011101010110010000010001010000011110100110000010010010110
+List size: 16
+Top correct: False
+List correct: True
+1101011000011010110101011000111100111100000010011010111101010000001110101001010100100101110010111011101000011001100010111110011101111
+Length of seq:  104
+GGTAAGCACGTCCCGGTTTAAGGCGTTACCCCTTCACACCAACCGTCTCTCGCAGGCCTAAACGTCCCTCCCGGTAAACTGGGAATTGCGGCTGCACTATGCGC
+len(seq): 104
+Length of synthesized sequence 103
+GGTAAGCACGTCCCGGTTTAAGGCGTTCCCCTTCACACCAACCGTCTCTCGCAGGCCTAAACGTCCCTCCCGGTAAACTGGGAATTGCGGCTGCACTATGCGC
+Length of raw signal:  816
+Top message:
+1100000000101001110110001111001111000000100110101111010100000011101010010101001001011100101110111010000110001011111001110111100011111
+List size: 16
+Top correct: False
+List correct: False
+1101010101111100000100100101100010110011111011110011111010000010010110101000010101001000001111110101100010001001010101000011111100111
+Length of seq:  104
+GGTACTATCACGCCAGGGGTCCGAGCGCTAAATCATCTTAATCGCTGGTCCCTGCGGTAACAACTAAGCGGAATGAAAGATTGAGTAAGAGTGGGAACTAGGGC
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTATCACGCCAGGGGTCCGAGCGCTAAATCATCTTAATCGCCGGTCCCTGCGGTAACAACTAAGCGGAATGAAAGATTGAGTAAGAGTGGGAACTAGGGC
+Length of raw signal:  873
+Top message:
+1101010101111100000100100101100010110011111011110011111010000010010110101000010101001000001111110101100101110111111000001100110010000
+List size: 16
+Top correct: False
+List correct: False
+1101010001001110110001001001111000101100011100001110001101110000010110101110010010100110100100001011000100100110101100101010101001000
+Length of seq:  104
+GGTACAGCAATCTTGAAAACTCTGCGATACACCGCGCCGAATGTTATGGCAGTGCATTGCTAGTTAATGCAAGGGCGGAAGGGAAGAGTTGAATCAAGGAATAA
+len(seq): 104
+Length of synthesized sequence 103
+GGTACAGCAATCTTGAAAACTCTGCGATACACCGCGCCGAATGTTATGGCAGTGCATGCTAGTTAATGCAAGGGCGGAAGGGAAGAGTTGAATCAAGGAATAA
+Length of raw signal:  863
+Top message:
+1101010001001110110001001001111000101100011100001110001101110000010110101110010010100110100100001011000100100110101100101010101001000/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+
+List size: 16
+Top correct: True
+List correct: True
+1101010001110110100100011111100000011110010111000101010011011100101110101110010001110011101101100111001000011101010111001101011101010
+Length of seq:  104
+GGTACAGACGTTCCGCATAGCACCGCTCAGCAGCCTGGTCAACAAGGTCCCGGAGATTGCAGCGATATTTGAGGACAACAGGCTACTTTTCTACGCTAGTCTCG
+len(seq): 104
+Length of synthesized sequence 104
+GGTACAGACGTTCCGCATAGCACCGCTCAGCAGCCTGGTCAACAAGGTCCCGGAGATTGCAGCGATATTTGAGGACAACAGGCTACTTTTCTACGCTAGTCTCG
+Length of raw signal:  829
+Top message:
+1101010001110110100100011111100000011110010111000101010011011100101110101110010001110011101101100111001000011101010111001101011101010
+List size: 16
+Top correct: True
+List correct: True
+1101010101010011010010100000001001101000010111110000111100101100111110101110010111100100011110001010000010110001010110111110011111010
+Length of seq:  104
+GGTACTAGTAAGAAGGGGTCCTCGTAAATCTAAGAGTAGCCCGTAGGCTAGCGTGATTGGCACCACAGCCACCCCTCCAAGCGGAGATCCTTTGCAGTCTGTCG
+len(seq): 104
+Length of synthesized sequence 102
+GGTACTAGTAAGAAGGGGTCCTCGTAAATCTAAGAGTAGCCGTAGGCTAGCGTGATTGGCACCACGCCACCCCTCCAAGCGGAGATCCTTTGCAGTCTGTCG
+Length of raw signal:  823
+Top message:
+1101010101010011010010100000001001101000010111110000111100101100111110101110010111100100011110001010000010110001010110111110011111010
+List size: 16
+Top correct: True
+List correct: True
+1101010001001101001011100001111110101001110100000100110110111111100110101110111111000101110110110111111001000001110011110111010101000
+Length of seq:  104
+GGTACAGCAAGACCCCTTTCCGACAATGGCGGTAGTCCTAGAGACTTATCGTGCCATAGTGAGCGTGCATGCAGTTAAGACAAACCACGGGAAAAGTGAGGTAA
+len(seq): 104
+Length of synthesized sequence 103
+GGTACAGCAAGACCCCTTTCCGACAATGGCGGTAGTCCTAGAGACTTATCGTGCCATAGTGAGCTGCATGCAGTTAAGACAAACCACGGGAAAAGTGAGGTAA
+Length of raw signal:  851
+Top message:
+1101010001001101001011100001111110101001110100000100110110111111100110101110111111000101110110110111111001000001110011110111010101000
+List size: 16
+Top correct: True
+List correct: True
+1101010111011001110110111110110101001101001100111011101001011010010110101100001100101111111001110110000110011011100010010101110100011
+Length of seq:  104
+GGTACTTTATTTAATTGCTTTCCCGTACAACCGAGAATTAAACACCTGGACCTGCCCAGGCATGTAGCAGCACTTGACGGAAGGTCGCAAGTATTAAGAAATCC
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTTTATTTAATTGCGTTCCGTACAACCGAGAATTAAACTCCTGGACCTGCCCAGGCATGTAGCAGCACTTGACGGAAGGTCGCAAGTATTAAGAAATCC
+Length of raw signal:  830
+Top message:
+1101010111011001110111110100000001010100111100111111001001011010010110101100001100101111111001110110000110011011100010010101110100000
+List size: 16
+Top correct: False
+List correct: False
+1101010010110100001001011100000100100000000101000010101110100010011110101010111110011000000101101011110100100011010111110011101111100
+Length of seq:  104
+GGTACACGCCCGCTCTCCCCTGCAGGGGACTATGATGTCAGTCGACGTAATGCTGTATGAGTGTTTCCTGCCGAACAGTTCGCAGGCAGGTCTATTATTGTGTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTACACGCCCGCTCTCCCCTGCAGGGGACTATGATGTCAGTCGACGTAATGCTGTATGAGTGTTTCCTGCCGAACAGTTCGCAGGCAGGTCTATTATTGTGTA
+Length of raw signal:  866
+Top message:
+1101010010110100001001011100000100100000000101000010101110100010011110101010111110011000000101101011110100100011100011101011101111100
+List size: 16
+Top correct: False
+List correct: True
+1101010101000101110111101100011001100110011101000101111110110000001110101101010001001010110000101100110010100111011100111100011011110
+Length of seq:  104
+GGTACTAGAGCTGCATCCGCGACGAATTATTAACGCCCTGAGAAATACGTCGCAGCGGTAGCAAAGATCAGCAACTCTATGTTTCTAAGTACCCTGTCTCGGGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTACTAGAGCTGCATCCGCGACGAATTATTAACGCCCTGAGAAATACGTCGCAGCGGTAGCAAAGATCAGCAACTCTATGTTTCTAAGTACCCTGTCTCGGGG
+Length of raw signal:  829
+Top message:
+1101010101000101110111101100011001100110011101000101111110110000001110101101010001001010110000101100110010100111011100111100011011110
+List size: 16
+Top correct: True
+List correct: True
+1101011100111010010100111000010001100000011101110110001001101010000110101100000011101000110110000010000010000001111100110010100100110
+Length of seq:  104
+GGTAACTGTATACACGGGTGGGGTTGGAGGTGGGTAACTGCAAAAAGTACGGTCCCCATTTTGTACACTGCACAGTGCACTATTCACTCTTGTGCCCCCATCGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTGTATACACGGGTGGGGTTGGAGGTGGGTAACTGCAAAAAGTACGGTCCCCATTTTGTACACTGCACAGTGCACTGTTCACTCTTGTGCCCCCATCGG
+Length of raw signal:  853
+Top message:
+1101011100111010010100111000010001100000011101110110001001101010000110101100000011101000110110000010000010000001111100110010100100110
+List size: 16
+Top correct: True
+List correct: True
+1101010010110110100100100010011011101111111100100001001001110110101110101110011001000100000110111101000011010001111101101101011011110
+Length of seq:  104
+GGTACACGCCAACCGCCGGCTAAAACAAGTGCTACACAGCGGGGTCTTCAACGAGATTTTTCCATATAACTGTGGTGTGATCAAAGCTGTCGCGGGGTTCGGGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTACACGCCAACCGCCGGCTAAAACAAGTGCTACACAGCGGGGTCTTCAACGAGATTTTTCCATATAACTGTGGTGGGATCAAAGCTGTCGCGGGGTTCGGGG
+Length of raw signal:  861
+Top message:
+1101010010110110100100100010011011101111111100100001001001110110101110101110011001000100000110111101000011010001111101101101011011110
+List size: 16
+Top correct: True
+List correct: True
+1101011001000010101010010100110111110000100010000100000001010101001110101101010110111101110011001000010101011011001100000011110000001
+Length of seq:  104
+GGTAAGCTCACCAGATACCTTCAAGTGTAGCTTTGTAATTATATACATAAGTTAGCGGTTTCCTGGAATCTTAGAAAACATTCCACATTCGTCGTCCCTTCTAT
+len(seq): 104
+Length of synthesized sequence 103
+GGTAAGCTCACCAGATACCTTCAAGTGTAGCTTTGTAATTATATACATAAGTTAGCGGTTTCCTGGAATCTTGAAAACATTCCACATTCGTCGTCCCTTCTAT
+Length of raw signal:  812
+Top message:
+1101011001000010101010010100110111110000100010000100000001010101001110101101010110111101110011001000010101011011001100000011110000001
+List size: 16
+Top correct: True
+List correct: True
+1101010111101010110100101010100011001010111001000100101010000001101110101001101011101000001001111101010100010111000100110000101001110
+Length of seq:  104
+GGTACTTGCGTTTTGGCCCAATAGACAATGAGTTGCATAAAGAAGTTTCTGTAAGGCGACCATAACTGGTATGTCTCTACATTGTTCAACATCCGCTTTCCGGG
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTTGCGTTTTGGCCCAATAGACAATGAGTTGCATAAAGAAGTTTCTGTAAGGCGACCATAACTGGTATGTCTCTACATTGTTCAACATCCCTTTCCGGG
+Length of raw signal:  823
+Top message:
+1101010111101010110100101010100011001010111001000100101010000001101110101001101011101000001001111101010100010111000100110000100011001
+List size: 16
+Top correct: False
+List correct: False
+1101011001111010000110100000110001001101011011011011111100001001111110101110110010110010001110001000010111000101000010110000111110100
+Length of seq:  104
+GGTAAGCGAGCTCTGGTCGTCAGATAAAGACGGGGCCACTTAAAGCTACTCAATGATATGTTCCTTCCACAGCATAAAGCTGGTCTTGGGCGCCCCCGTCTCTA
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGCGAGCTCTGGTCGTCAGATTAAGACGGGGCCACTTAAAGCTACTCAATGATATGTTCCTTCGACAGCATAAAGCTGGTCTTGGGCGCCCCCGTCTCTA
+Length of raw signal:  843
+Top message:
+1101011001111010000110100000110001001101011011011011111100001001111110101110110010110010001110001000010111000101000010110000111110100
+List size: 16
+Top correct: True
+List correct: True
+1101011010101011111000110110011101101101101101011111110010111010000110101000000010010111101001101000101010010010101011110110111101010
+Length of seq:  104
+GGTAAGGATTCTCCTGGTGTAGGACTTCGCCACATCAGGAGGGCCGGACTGGTCCGGTTATCAGGGATTCCAATCATCAACCCGCAATGACATCTTCCGTCTCG
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGGATTCTCCTGGTGTAGGACTTCGCCACATCAGGAGGGCCGGACTGGTCCGGTTATCAGGGATTCCAATCATCGACCCGCAATGACATCTTCCGTCTCG
+Length of raw signal:  832
+Top message:
+0110101010111110001101010011011111000001100000101111110010111010000110100010101111010010101010101010100100101010111101101111010100001
+List size: 16
+Top correct: False
+List correct: False
+1101010111001101100010111001000011101010001100010101100110000001111110101111000000100011001100011100110000110010011010111010010000110
+Length of seq:  104
+GGTACTTTTCTAGCAGCGGTCAGAGCGTCTAAAGCGAGATATATTCCTCACAATGAACGGGTGTTAGAATTGTTACTTTGGCATCGAAGACGACAGACGCCCGG
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTTTTCTAGCAGCGGTCAGAGCGTCTAAAGCGAGATATATTCTCACAATGAACGGGTGTTAGAATTGTTACTTTGGCATCGAAGACGACAGACGCCCGG
+Length of raw signal:  855
+Top message:
+1101010111001101100010111001000011101010001100010101100110000001111110101111000000100011001100011100110000110010011010111010010000110/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+/home/schandak/miniconda3/lib/python3.6/site-packages/numpy/lib/type_check.py:546: DeprecationWarning: np.asscalar(a) is deprecated since NumPy v1.16, use a.item() instead
+  'a.item() instead', DeprecationWarning, stacklevel=1)
+
+List size: 16
+Top correct: True
+List correct: True
+1101011001110011000110110101111001100101001011010100100010011010010110101010111000000110110010000010110101000110100010011101110001110
+Length of seq:  104
+GGTAAGCGACATTTGTCGATCAGCCCTTCGGGCCGGGTACTATGACACGACCTGCTATGTTCGTGCTAGTGAAGGAAGGTAGAGTTCAGACGTTATGTCGCGGG
+len(seq): 104
+Length of synthesized sequence 104
+GGTAAGCGACATTTGTCGATCAGCCCTTCGGGCCGGGTACTATGACACGACCTGCTATGTTCGTGCTAGTGAAGGAAGGTAGAGTTCAGACGTTATGTCGCGGG
+Length of raw signal:  872
+Top message:
+1101011001110011000110110101111001100101001011010100100010011010010110101010111000000110110010000010110101000110100010011101110001110
+List size: 16
+Top correct: True
+List correct: True
+1101010110110100111100110001010111000011111111111001100001001000010110101101000011100110101101111010011011111101111001100001001010111
+Length of seq:  104
+GGTACTTCCATGGCGGTTTTGAGATTTGAGGGATTTTCGTTTCGTACAAAAGTGCCGGATGCGATTAGAGATTTTCCAACTGACACCCCTTGCCGGCATCTGGC
+len(seq): 104
+Length of synthesized sequence 103
+GGTACTTCCATGGCGGTTTTGAGATTTGCGGGATTTTCGTTTCGTACAAAAGTGCCGGATGCGATTAGAGATTTTCCAACTGACACCCCTTGCGGCATCTGGC
+Length of raw signal:  848
+Top message:
+1101010110110100101001111001100010111111111110011000010010000101101011010000111001101011011110100110111111011110011000000001101111100
+List size: 16
+Top correct: False
+List correct: True
+1101011010100110111011100100101011111110001001100101001110111011111110101011011001000001000011110111001010011000011000111011010100110
+Length of seq:  104
+GGTAAGGATATAACAAGATGCTAGAGAGCAGGAAAATCGGGGTTTAATATATATGTTGAAGTCAAAGTAGCCGAAAGAGCCGCTCTCATTCCTTTCTAGATCGG
+len(seq): 104
+Length of synthesized sequence 105
+GGTAAGGATATAACAAGATGCTAGAGAGCGAGGAAAATCGGGGTTTAATATATATGTTGAAGTCAAAGTAGCCGAAAGAGCCGCTCTCATTCCTTTCTAGATCGG
+Length of raw signal:  853
+Top message:
+1011011010100110111011100100101010001110001001100101001110111011111110101011011001000001000011110111001010011000011000111011010100110
+List size: 16
+Top correct: False
+List correct: False
+1101011101011111011110001100000010110001010100010101011101001100101110101111000011001001110001001001001100101101010000010101000111101
+Length of seq:  104
+GGTAACTAGAGGTGATGCCTATTTTAGCGGAGAACATGAATCTACGATATCGGAGAACGGCAAAGTCGAGGAACTGCCAGTGGGGTAGGAGAAACAAGGGGCTT
+len(seq): 104
+Length of synthesized sequence 104
+GGTAACTAGAGGTGATGCCTATTTTAGCGGAGAACATGAATCTACGATATCGGAGAACGGCAAAGTCGAGGAACTGCCAGTGGGGTAGGAGAAACAAGGGGCTT
+Length of raw signal:  902
+Top message:
+0101000110001000011010101101110101111011111111010111111101001101101001101110111011010001100101100000000001101100010011010001111001001
+List size: 16
+Top correct: False
+List correct: False
+1101011000110110011111001001101001101100111110011010010110100010100110101011111101111011111110010100011111001111011101110000101001000
+Length of seq:  104
+GGTAAGCCTGTAGGAGTGGATCACGCAAAGTAGCTGTGCGACCTGGGTTTCGACCTTCCAAGATTAATATCGACTGACCTGGGGGAAACAATGCGCTGGAATAA
+len(seq): 104
+Length of synthesized sequence 103
+GGTAAGCCTGTAGGAGTGGATACGCAAAGTAGCTGTGCGACCTGGGTTTCGACCTTCCAAGATAAATATCGACTGACCTGGGGGAAACAATGCGCTGGAATAA
+Length of raw signal:  858
+Top message:
+1101011000110110011111001001101001101100111110011010010110100010100110101011111101111011111110010100011111001111011101110000101001000
+List size: 16
+Top correct: True
+List correct: True
+1101010011101101010010010100111001001110000001100000101001001100010110101011101101111101111001000111001111111011010111001101001100101
+Length of seq:  104
+GGTACACCCTTCGTACTTGTTCCCAGCTTCACGTGCAGGAACTGGTGTTATGTGCTTCGTTGTTCCACCCACAGCGATAAATAATTCATTCTACCGAGTGCGTT
+len(seq): 104
+Length of synthesized sequence 104
+GGTACACCCTTCGTACTTGTTCCCAGCTTCACGTGCAGGAACTGGTGTTATGTGCTTCGTTGTTCCACCCACAGCGATAAATAATTCATTCCACCGAGTGCGTT
+Length of raw signal:  833
+Top message:
+1101010011101101010010010100111001001110000001100000101001001100010110101011101101111101111001000111001111111011010111001101001100101
+List size: 16
+Top correct: True
+List correct: True
+1101011101011101101000000111101000110111000000011001001010110110110110101110100011110111111010110001010011100010010000010000110101111
+Length of seq:  104
+GGTAACTAGATATGGGTCTGGCCTCGAGTTATGGGTCGATTGCATGAACGCCAGCATAACAACGAATAACTAGGGAGTCCCAAAACGAAAGTAGATCGCAGCGC
+len(seq): 104
+Length of synthesized sequence 103
+GGTAACTAGATATGGGTCTGGCCTCGAGTTATGGGTCGATTGCATGAACGCCAGCATACAACGAATAACTAGGGAGTCCCAAAACGAAAGTAGATCGCAGCGC
+Length of raw signal:  849
+Top message:
+1101011101011101101000000111101000110111000000011001001010110110110110101110101101101100010000011011000110101111011110000110010011111
+List size: 16
+Top correct: False
+List correct: False
+1101011100110110001011001110000100010111110010001111100101001111011110101011110110010000111100000111010010001011000000000011011111011
+Length of seq:  104
+GGTAACTGTTCAGCATACTACACCCTTTTGACGGAATACCTGACTCCGGAATTTGTTCAGATTTGAGCCGGGGAGGGCGTATTGCGCGGAACCCTTTCCATACC
+len(seq): 104
+Length of synthesized sequence 103
+GGTAACTGTTCAGCATACACATCCTTTTGACGGAATACCTGACTCCGGAATTTGTTCAGATTTGAGCCGGGGAGGGCGTATTGCGCGGAACCCTTTCCATACC
+Length of raw signal:  844
+Top message:
+0111001101100110111000010001011111001000111110010100111101111010101111011001000011110000011101001000101100000000001101111101100011000
+List size: 16
+Top correct: False
+List correct: False
+1101011001001011001000001110111011110101111011100000101010100101101110101000001100100010001101111111101111010101011101011010100101001
+Length of seq:  104
+GGTAAGCTCTACCTTCACATGTGAAGTCCGAGCGAATCGAACACAAGCCTCTAAGGGTGCCATCCTATAGTTTATTAAAGGTCTATCTAGACGCGCCTTCTAAT
+len(seq): 104
+Length of synthesized sequence 102
+GGTAAGCTCTACCTTCACATGTGAAGTCCGAGCGAATCGAACACGAGCCTCTAAGGGTGCCATCTATAGTTATTAAAGGTCTATCTAGACGCGCCTTCTAAT
+Length of raw signal:  805
+Top message:
+1101011001001011001000001110111011100000110001101110101110101100110010101000001100100010001101111111101111010101011101011010100101001
+List size: 16
+Top correct: False
+List correct: False
+Summary statistics:
+Number total: 100
+Number top correct: 35
+Number list correct: 60
