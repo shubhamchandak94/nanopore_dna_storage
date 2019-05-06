@@ -54,6 +54,8 @@ struct heap_elem_t {
   bool operator<(const heap_elem_t &h) { return (score < h.score); }
 };
 
+bool rc_flag = false;
+
 // convolutional code related parameters
 // (set in set_conv_params())
 
@@ -66,8 +68,14 @@ uint32_t final_state_conv;
 uint32_t sync_marker_length;
 bool sync_marker[BITSET_SIZE];
 uint32_t sync_marker_period;
+const uint8_t MAX_PUNCTURING_PATTERN_SIZE = 16;
+uint8_t puncturing_pattern[MAX_PUNCTURING_PATTERN_SIZE];
+uint8_t puncturing_pattern_len;
+uint32_t nstate_pos;
+uint32_t st_pos2msg_pos[BITSET_SIZE];  // map st_pos to position in message
 
-int set_conv_params(uint8_t mem_conv_param,
+int set_conv_params(uint8_t mem_conv_param, uint8_t rate_param,
+                    uint32_t msg_len_param,
                     const std::string sync_marker_param = "",
                     const uint32_t sync_marker_period_param = 0);
 
@@ -120,7 +128,10 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
     const uint32_t list_size, const uint32_t num_thr);
 
 std::vector<prev_state_info_t> find_prev_states(const uint32_t &st2_conv,
-                                                const uint32_t &st2_crf);
+                                                const uint32_t &st2_crf,
+                                                const uint8_t &punc_pattern);
+
+uint32_t reverse_integer_bits (const uint32_t &num, const uint32_t numbits);
 
 int main(int argc, char **argv) {
   cxxopts::Options options("viterbi_nanopore",
@@ -131,7 +142,7 @@ int main(int argc, char **argv) {
       "Infile with message (encoding) or posterior matrix (decoding)",
       cxxopts::value<std::string>())(
       "o,outfile", "Outfile with encoded/decoded message (list)",
-      cxxopts::value<std::string>())("msg-len", "Message length (for decoding)",
+      cxxopts::value<std::string>())("msg-len", "Message length",
                                      cxxopts::value<uint32_t>())(
       "mem-conv", "Code memory for convolutional code",
       cxxopts::value<uint8_t>())(
@@ -143,6 +154,12 @@ int main(int argc, char **argv) {
       cxxopts::value<uint32_t>())(
       "l,list-size", "List size for convolutional code decoding (default 1)",
       cxxopts::value<uint32_t>()->default_value("1"))(
+      "r,rate",
+      "Rate of convolutional code: options 1 (1/2), 2 (2/3), 3 (3/4), 4 (4/5), 5 (5/6), 7 (7/8) "
+      "(default 1). Use standard puncturing patterns, expects appropriate "
+      "padding (at most 1 bit needed) to make output length even.",
+      cxxopts::value<uint8_t>()->default_value("1"))(
+      "rc","Reverse complement read (for decoding)")(
       "t,num-thr",
       "Number of threads for convolutional code decoding (default 1)",
       cxxopts::value<uint32_t>()->default_value("1"))("h,help",
@@ -168,20 +185,35 @@ int main(int argc, char **argv) {
       std::cout << options.help() << "\n";
       return -1;
     }
+    if (!result.count("msg-len")) {
+      std::cout << "msg-len not specified.\n";
+      std::cout << options.help() << "\n";
+      return -1;
+    }
+    uint32_t msg_len = result["msg-len"].as<uint32_t>();
     int status = 0;
+    if (mode == "decode")
+        rc_flag = result["rc"].as<bool>();
+    if (rc_flag)
+        std::cout << "Reverse complement flag detected.\n";
     std::string sync_marker_param = result["sync-marker"].as<std::string>();
     if (sync_marker_param == "")
-      status = set_conv_params(result["mem-conv"].as<uint8_t>());
+      status = set_conv_params(result["mem-conv"].as<uint8_t>(),
+                               result["rate"].as<uint8_t>(), msg_len);
     else
-      status =
-          set_conv_params(result["mem-conv"].as<uint8_t>(), sync_marker_param,
-                          result["sync-period"].as<uint32_t>());
+      status = set_conv_params(
+          result["mem-conv"].as<uint8_t>(), result["rate"].as<uint8_t>(),
+          msg_len, sync_marker_param, result["sync-period"].as<uint32_t>());
     if (status != 0) {
       std::cout << options.help() << "\n";
       return -1;
     }
     if (mode == "encode") {
       std::vector<bool> msg = read_bit_array(infile);
+      if (msg.size() != msg_len) {
+        std::cout << "Message length does not match msg_len parameter.\n";
+        return -1;
+      }
       std::vector<bool> encoded_msg = conv_encode(msg);
       write_bit_array_in_bases(encoded_msg, outfile);
     } else {
@@ -195,17 +227,12 @@ int main(int argc, char **argv) {
       // msg at each stage (if we don't do this, we observed that most of the
       // paths at the end correspond to the same msg)
       //
-
-      if (!result.count("msg-len")) {
-        std::cout << "msg-len not specified.\n";
-        std::cout << options.help() << "\n";
-        return -1;
-      }
+      
       std::vector<crf_mat_t> post = read_crf_post(infile);
       uint32_t list_size = result["list-size"].as<uint32_t>();
       uint32_t num_thr = result["num-thr"].as<uint32_t>();
-      auto decoded_msg_list = decode_post_conv_parallel_LVA(
-          post, result["msg-len"].as<uint32_t>(), list_size, num_thr);
+      auto decoded_msg_list =
+          decode_post_conv_parallel_LVA(post, msg_len, list_size, num_thr);
       std::ofstream fout(outfile);
       for (auto decoded_msg : decoded_msg_list) {
         for (auto decoded_msg_bit : decoded_msg)
@@ -222,7 +249,8 @@ int main(int argc, char **argv) {
   return 0;
 }
 
-int set_conv_params(uint8_t mem_conv_param, const std::string sync_marker_param,
+int set_conv_params(uint8_t mem_conv_param, uint8_t rate_param,
+                    uint32_t msg_len_param, const std::string sync_marker_param,
                     const uint32_t sync_marker_period_param) {
   mem_conv = mem_conv_param;
   nstate_conv = 1 << mem_conv;
@@ -252,6 +280,94 @@ int set_conv_params(uint8_t mem_conv_param, const std::string sync_marker_param,
       return -1;
   }
   final_state_conv = 0;
+
+  // puncturing pattern representing using an array: 0 representing 1\n1, 1
+  // representing 0,1\n1,0, 2 representing 1,0\n0,1, 3 representing 0,0\n1,1
+  // (these are the only patterns supported right now)
+  switch (rate_param) {
+    case 1:
+      puncturing_pattern[0] = 0;
+      puncturing_pattern_len = 1;
+      break;
+    case 2:
+      puncturing_pattern[0] = 0;
+      puncturing_pattern[1] = 1;
+      puncturing_pattern[2] = 0;
+      puncturing_pattern_len = 3;
+      break;
+    case 3:
+      puncturing_pattern[0] = 0;
+      puncturing_pattern[1] = 1;
+      puncturing_pattern_len = 2;
+      break;
+    case 4:
+      puncturing_pattern[0] = 0;
+      puncturing_pattern[1] = 3;
+      puncturing_pattern[2] = 0;
+      puncturing_pattern[3] = 1;
+      puncturing_pattern[4] = 1;
+      puncturing_pattern_len = 5;
+      break;
+    case 5:
+      puncturing_pattern[0] = 0;
+      puncturing_pattern[1] = 1;
+      puncturing_pattern[2] = 2;
+      puncturing_pattern_len = 3;
+      break;
+    case 7:
+      puncturing_pattern[0] = 0;
+      puncturing_pattern[1] = 3;
+      puncturing_pattern[2] = 1;
+      puncturing_pattern[3] = 1;
+      puncturing_pattern_len = 4;
+      break;
+    default:
+      std::cout << "Invalid rate parameter (allowed: 1, 3, 5, 7)\n";
+      return -1;
+  }
+  // verify that msg_len is such that output length is even (for converting to
+  // DNA). also set nstate_pos (which corresponds now to the output position
+  // rather than input). also set st_pos2msg_pos (where the msg_pos is indexed
+  // by 1 (so ranges from 1 to msg_len_param + mem_conv)).
+  nstate_pos = 1;  // state 0 (init)
+  st_pos2msg_pos[0] = 0;
+  uint32_t i = 0;
+  while (i < msg_len_param + mem_conv) {
+    i += ((puncturing_pattern[(nstate_pos - 1) % puncturing_pattern_len] == 0)
+              ? 1
+              : 2);
+    st_pos2msg_pos[nstate_pos++] = i;
+  }
+  if (i != msg_len_param + mem_conv) {
+    std::cout
+        << "Output length not even. Try padding with a single 0 at end.\n";
+    return -1;
+  }
+
+  if (rc_flag) {
+      // basically reverse everything
+      G[0] = reverse_integer_bits(G[0], mem_conv + 1);
+      G[1] = reverse_integer_bits(G[1], mem_conv + 1);
+      uint32_t temp = reverse_integer_bits(initial_state_conv, mem_conv);
+      initial_state_conv = reverse_integer_bits(final_state_conv, mem_conv);
+      final_state_conv = temp;
+
+      // now do st_pos2msg_pos and puncturing_pattern
+      uint32_t temp_puncturing_pattern[BITSET_SIZE];
+      for (uint32_t i = 0; i < puncturing_pattern_len; i++)
+          temp_puncturing_pattern[i] = puncturing_pattern[i];
+      // first find where end of forward read lies in terms of puncturing pattern
+      uint32_t punc_pattern_end_idx = (nstate_pos - 2)%puncturing_pattern_len; // -2 because st_pos is 1 indexed 
+      uint8_t punc_pattern_reverse_map[4] = {0, 2, 1, 3}; // 1 <-> 2 when pattern looked in opposite direction
+      for (uint32_t i = 0; i < puncturing_pattern_len; i++) {
+          uint32_t j = (puncturing_pattern_len - i + punc_pattern_end_idx)%puncturing_pattern_len;
+          puncturing_pattern[i] = punc_pattern_reverse_map[temp_puncturing_pattern[j]];
+      }
+      std::reverse(st_pos2msg_pos, st_pos2msg_pos + nstate_pos);
+      for (uint32_t i = 0; i < nstate_pos; i++) 
+          st_pos2msg_pos[i] = msg_len_param + mem_conv - st_pos2msg_pos[i];
+  }
+
   if (sync_marker_param == "") return 0;
 
   sync_marker_length = sync_marker_param.length();
@@ -281,6 +397,15 @@ int set_conv_params(uint8_t mem_conv_param, const std::string sync_marker_param,
   return 0;
 }
 
+uint32_t reverse_integer_bits (const uint32_t &num, const uint32_t numbits) {
+    uint32_t ret = 0;
+    for (uint32_t i = 0; i < numbits; i++) {
+        ret <<= 1;
+        ret |= ((num>>i)&1);
+    }
+    return ret;
+}
+
 uint32_t conv_next_state(const uint32_t cur_state, const bool bit) {
   if (bit)
     return ((cur_state | nstate_conv) >> 1);
@@ -297,10 +422,11 @@ uint32_t conv_prev_state(const uint32_t cur_state, const bool bit) {
 
 uint32_t conv_output(const uint8_t output_idx, const uint32_t cur_state,
                      const bool bit) {
+  // XOR with rc_flag to capture reverse complementation of base
   if (bit)
-    return __builtin_parity(((cur_state | nstate_conv) & G[output_idx]));
+    return (__builtin_parity(((cur_state | nstate_conv) & G[output_idx])))^(rc_flag);
   else
-    return __builtin_parity((cur_state & G[output_idx]));
+    return (__builtin_parity((cur_state & G[output_idx])))^(rc_flag);
 }
 
 std::vector<bool> conv_encode(const std::vector<bool> &msg) {
@@ -313,12 +439,45 @@ std::vector<bool> conv_encode(const std::vector<bool> &msg) {
   }
   // add terminating bits
   for (uint8_t i = 0; i < mem_conv; i++) {
-    encoded_msg.push_back(conv_output(0, cur_state, 0));
-    encoded_msg.push_back(conv_output(1, cur_state, 0));
-    cur_state = conv_next_state(cur_state, 0);
+    bool padding_bit = (final_state_conv >> i) & 1;
+    encoded_msg.push_back(conv_output(0, cur_state, padding_bit));
+    encoded_msg.push_back(conv_output(1, cur_state, padding_bit));
+    cur_state = conv_next_state(cur_state, padding_bit);
   }
-  if (cur_state != 0) throw std::runtime_error("state after encoding not 0");
-  return encoded_msg;
+  if (cur_state != final_state_conv)
+    throw std::runtime_error(
+        "state after encoding does not match final_state_conv");
+  std::vector<bool> encoded_msg_punctured;
+  // puncture
+  uint32_t i = 0;  // position in encoded message
+  for (uint32_t st_pos = 0; st_pos < nstate_pos - 1; st_pos++) {
+    uint8_t punc_pattern = puncturing_pattern[st_pos % puncturing_pattern_len];
+    switch (punc_pattern) {
+      case 0:
+        encoded_msg_punctured.push_back(encoded_msg[i]);
+        encoded_msg_punctured.push_back(encoded_msg[i + 1]);
+        i += 2;
+        break;
+      case 1:
+        encoded_msg_punctured.push_back(encoded_msg[i + 1]);
+        encoded_msg_punctured.push_back(encoded_msg[i + 2]);
+        i += 4;
+        break;
+      case 2:
+        encoded_msg_punctured.push_back(encoded_msg[i]);
+        encoded_msg_punctured.push_back(encoded_msg[i + 3]);
+        i += 4;
+        break;
+      case 3:
+        encoded_msg_punctured.push_back(encoded_msg[i + 1]);
+        encoded_msg_punctured.push_back(encoded_msg[i + 3]);
+        i += 4;
+        break;
+    }
+  }
+  if (i != encoded_msg.size())
+    throw std::runtime_error("error in encoding, lengths don't match");
+  return encoded_msg_punctured;
 }
 
 std::vector<bool> read_bit_array(const std::string &infile) {
@@ -406,16 +565,12 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
     const uint32_t list_size, const uint32_t num_thr) {
   omp_set_num_threads(num_thr);
   float INF = std::numeric_limits<float>::infinity();
-  uint32_t nstate_pos =
-      msg_len + mem_conv +
-      1;  // number of states denoting the position in convolution trellis
-  // 0 to msg_len + mem_conv
   uint64_t nstate_total_64 = nstate_pos * nstate_crf * nstate_conv;
   if (nstate_total_64 >= ((uint64_t)1 << 32))
     throw std::runtime_error("Too many states, can't fit in 32 bits");
   uint32_t nstate_total = (uint32_t)nstate_total_64;
   uint32_t nblk = post.size();
-  if (post.size() < msg_len + mem_conv)
+  if (post.size() < nstate_pos+1)
     throw std::runtime_error("Too small post matrix");
 
   // instead of traceback, store the msg till now as a bitset
@@ -445,20 +600,27 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
   for (uint32_t st_pos = 0; st_pos < nstate_pos; st_pos++)
     for (uint32_t st_conv = 0; st_conv < nstate_conv; st_conv++)
       valid_state_array[nstate_conv * st_pos + st_conv] =
-          is_valid_state(st_pos, st_conv, msg_len);
+          is_valid_state(st_pos2msg_pos[st_pos], st_conv, msg_len);
 
   // precompute the previous states and associated info for all states now
   // note that this is valid only for st_pos > 0 (if st_pos = 0, only previous
   // state allowed is same state - which is always first entry in the
   // prev_state_vector)
-  std::vector<std::vector<prev_state_info_t>> prev_state_vector(nstate_conv *
-                                                                nstate_crf);
+  std::vector<std::vector<std::vector<prev_state_info_t>>> prev_state_vector(4);
 #pragma omp parallel
 #pragma omp for
-  for (uint32_t st_conv = 0; st_conv < nstate_conv; st_conv++)
-    for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++)
-      prev_state_vector[nstate_crf * st_conv + st_crf] =
-          find_prev_states(st_conv, st_crf);
+  for (uint8_t punc_pattern = 0; punc_pattern < 4; punc_pattern++) {
+    // only fill if this punc_pattern is relevant for this rate
+    if (std::find(puncturing_pattern,
+                  puncturing_pattern + puncturing_pattern_len,
+                  punc_pattern) == puncturing_pattern + puncturing_pattern_len)
+      continue;
+    prev_state_vector[punc_pattern].resize(nstate_conv * nstate_crf);
+    for (uint32_t st_conv = 0; st_conv < nstate_conv; st_conv++)
+      for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++)
+        prev_state_vector[punc_pattern][nstate_crf * st_conv + st_crf] =
+            find_prev_states(st_conv, st_crf, punc_pattern);
+  }
 
   // unordered_sets used for finding duplicate messages while building list
   //  std::vector<std::unordered_set<bitset_t>> already_seen_set(num_thr);
@@ -496,14 +658,20 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
       // prev_state_vector and the position in the list
       std::vector<heap_elem_t> heap;
 
+      uint8_t punc_pattern = 0;
+      if (st_pos != 0)
+        punc_pattern =
+            puncturing_pattern[(st_pos - 1) % puncturing_pattern_len];
+
       for (uint32_t st_conv = 0; st_conv < nstate_conv; st_conv++) {
         // check if this is a valid state, otherwise continue
         if (!valid_state_array[nstate_conv * st_pos + st_conv]) continue;
         for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++) {
           uint32_t st = get_state_idx(st_pos, st_conv, st_crf);
 
+
           const auto &prev_states_st =
-              prev_state_vector[nstate_crf * st_conv + st_crf];
+              prev_state_vector[punc_pattern][nstate_crf * st_conv + st_crf];
           if (st_pos == 0) {
             // only allowed previous state is st (which is 0th index in
             // prev_states)
@@ -519,7 +687,7 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
               uint32_t best_score_idx = 0;
               uint32_t best_prev_state = 0;
               for (uint32_t psidx = 0; psidx < prev_states_st.size(); psidx++) {
-                uint32_t prev_st_pos = st_pos - prev_states_st[psidx].msg_shift;
+                uint32_t prev_st_pos = st_pos - ((psidx==0)?0:1);
                 uint32_t prev_state =
                     get_state_idx(prev_st_pos, prev_states_st[psidx].st_conv,
                                   prev_states_st[psidx].st_crf);
@@ -549,7 +717,7 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
 
               // put things in heap
               for (uint32_t psidx = 0; psidx < prev_states_st.size(); psidx++) {
-                uint32_t prev_st_pos = st_pos - prev_states_st[psidx].msg_shift;
+                uint32_t prev_st_pos = st_pos - ((psidx==0)?0:1);
                 uint32_t prev_state =
                     get_state_idx(prev_st_pos, prev_states_st[psidx].st_conv,
                                   prev_states_st[psidx].st_crf);
@@ -605,7 +773,7 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
     }
   }
   std::vector<LVA_path_t> LVA_path_list_final;
-  uint32_t st_pos = msg_len + mem_conv, st_conv = 0;  // last state
+  uint32_t st_pos = nstate_pos - 1, st_conv = final_state_conv;  // last state
   for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++) {
     uint32_t st = get_state_idx(st_pos, st_conv, st_crf);
     for (uint32_t list_pos = 0; list_pos < list_size; list_pos++) {
@@ -633,6 +801,8 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
       decoded_msg[i] =
           LVA_path.msg[msg_len + mem_conv - 1 -
                        i];  // due to way bitset is stored in reverse
+    if (rc_flag)
+        std::reverse(decoded_msg.begin(), decoded_msg.end());
     decoded_msg_list.push_back(decoded_msg);
 
     // FOR DEBUGGING
@@ -658,10 +828,12 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
 }
 
 std::vector<prev_state_info_t> find_prev_states(const uint32_t &st2_conv,
-                                                const uint32_t &st2_crf) {
+                                                const uint32_t &st2_crf,
+                                                const uint8_t &punc_pattern) {
   std::vector<prev_state_info_t> prev_state_vec;
   prev_state_info_t prev_state_info;
-  bool curr_conv_bit = (st2_conv >> (mem_conv - 1));
+  uint8_t curr_conv_bit = (st2_conv >> (mem_conv - 1));
+  uint8_t curr_conv_bit_1 = (st2_conv >> (mem_conv - 2)) & 1;
   // first do stay
   uint32_t st1_conv = st2_conv;
   uint8_t st1_crf = st2_crf;
@@ -685,32 +857,71 @@ std::vector<prev_state_info_t> find_prev_states(const uint32_t &st2_conv,
     // look at two possible previous states of convolutional code and
     // see if the output for the transition matches the base st2_crf
     uint8_t st2_crf_base = st2_crf % NBASE;
-    for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
-      uint32_t st1_conv = conv_prev_state(st2_conv, conv_bit);
-      if (2 * conv_output(0, st1_conv, curr_conv_bit) +
-              conv_output(1, st1_conv, curr_conv_bit) ==
-          st2_crf_base) {
-        prev_state_info.st_conv = st1_conv;
-        prev_state_info.st_crf = st1_crf;
-        prev_state_info.post_idx_0 = to_idx_crf_in_post(st2_crf);
-        prev_state_info.post_idx_1 = st1_crf;
-        prev_state_info.msg_shift = 1;
-        prev_state_info.msg_newbits = curr_conv_bit;
-        prev_state_vec.push_back(prev_state_info);
+    if (punc_pattern == 0) {
+      for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
+        uint32_t st1_conv = conv_prev_state(st2_conv, conv_bit);
+        if (2 * conv_output(0, st1_conv, curr_conv_bit) +
+                conv_output(1, st1_conv, curr_conv_bit) ==
+            st2_crf_base) {
+          prev_state_info.st_conv = st1_conv;
+          prev_state_info.st_crf = st1_crf;
+          prev_state_info.post_idx_0 = to_idx_crf_in_post(st2_crf);
+          prev_state_info.post_idx_1 = st1_crf;
+          prev_state_info.msg_shift = 1;
+          prev_state_info.msg_newbits = curr_conv_bit;
+          prev_state_vec.push_back(prev_state_info);
+        }
+      }
+    } else {
+      for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
+        for (uint8_t conv_bit_1 = 0; conv_bit_1 < 2; conv_bit_1++) {
+          uint32_t st1_5_conv = conv_prev_state(st2_conv, conv_bit);
+          uint32_t st1_conv = conv_prev_state(st1_5_conv, conv_bit_1);
+          uint8_t bit_0, bit_1, bit_2, bit_3;
+          bit_0 = conv_output(0, st1_conv, curr_conv_bit_1);
+          bit_1 = conv_output(1, st1_conv, curr_conv_bit_1);
+          bit_2 = conv_output(0, st1_5_conv, curr_conv_bit);
+          bit_3 = conv_output(1, st1_5_conv, curr_conv_bit);
+          uint8_t base = 0;
+          switch (punc_pattern) {
+            case 1:
+              base = rc_flag?(2*bit_2+bit_1):(2 * bit_1 + bit_2);
+              break;
+            case 2:
+              base = rc_flag?(2*bit_3+bit_0):(2 * bit_0 + bit_3);
+              break;
+            case 3:
+              base = rc_flag?(2*bit_3+bit_1):(2 * bit_1 + bit_3);
+              break;
+          }
+          if (base == st2_crf_base) {
+            prev_state_info.st_conv = st1_conv;
+            prev_state_info.st_crf = st1_crf;
+            prev_state_info.post_idx_0 = to_idx_crf_in_post(st2_crf);
+            prev_state_info.post_idx_1 = st1_crf;
+            prev_state_info.msg_shift = 2;
+            prev_state_info.msg_newbits = 2 * curr_conv_bit_1 + curr_conv_bit;
+            prev_state_vec.push_back(prev_state_info);
+          }
+        }
       }
     }
   }
+  prev_state_vec.shrink_to_fit();
   return prev_state_vec;
 }
 
-bool is_valid_state(const uint32_t &st2_pos, const uint32_t &st2_conv,
+bool is_valid_state(const uint32_t &msg_pos, const uint32_t &st_conv,
                     const uint32_t &msg_len) {
   bool valid_state = true;
   for (uint32_t shift = 0; shift < mem_conv; shift++) {
     int64_t pos_in_msg =
-        (int64_t)(st2_pos)-1 -
+        (int64_t)(msg_pos)-1 -
         (int64_t)shift;  // can be from -mem_conv to msg_len+mem_conv-1
-    bool bit_at_shift = (st2_conv >> (mem_conv - 1 - shift)) & 1;
+    int64_t pos_in_msg_fwd = pos_in_msg; // for sync marker, convert to forward strand position if rc_flag
+    if (rc_flag)
+        pos_in_msg_fwd = msg_len - 1 - pos_in_msg;
+    bool bit_at_shift = (st_conv >> (mem_conv - 1 - shift)) & 1;
     if (pos_in_msg < 0) {
       // initial state should match
       if (bit_at_shift !=
@@ -721,15 +932,15 @@ bool is_valid_state(const uint32_t &st2_pos, const uint32_t &st2_conv,
     } else if (pos_in_msg >= msg_len) {
       // final state
       if (bit_at_shift != ((final_state_conv >>
-                            ((int64_t)msg_len + mem_conv - 1 - pos_in_msg)) &
+                            (pos_in_msg - msg_len)) &
                            1)) {
         valid_state = false;
         break;
       }
     } else if (sync_marker_length > 0 &&
-               pos_in_msg % sync_marker_period < sync_marker_length) {
+               pos_in_msg_fwd % sync_marker_period < sync_marker_length) {
       // sync marker should match
-      if (bit_at_shift != sync_marker[pos_in_msg % sync_marker_period]) {
+      if (bit_at_shift != sync_marker[pos_in_msg_fwd % sync_marker_period]) {
         valid_state = false;
         break;
       }

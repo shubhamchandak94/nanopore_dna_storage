@@ -196,3 +196,9 @@ def truncate_post_file(old_post_filename, new_post_filename, start_pos, end_pos,
     with open(new_post_filename,'wb') as f:
         f.write(data[start_pos*bytes_per_blk:(end_pos+1)*bytes_per_blk])
     return
+
+# below function from https://codereview.stackexchange.com/questions/151329/reverse-complement-of-a-dna-string
+def reverse_complement(dna):
+    complement = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A', 'N': 'N'}
+    return ''.join([complement[base] for base in dna[::-1]])
+
