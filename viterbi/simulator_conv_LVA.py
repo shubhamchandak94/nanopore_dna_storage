@@ -9,6 +9,10 @@ import os
 import distance
 import util
 import argparse
+import math
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
+
 
 parser = argparse.ArgumentParser(description='Simulation for convolutional code.')
 parser.add_argument('--num_trials',type=int,default=100)
@@ -19,6 +23,7 @@ parser.add_argument('--rate',type=int,default=1)
 parser.add_argument('--msg_len',type=int,default=100)
 parser.add_argument('--deepsimdwell',type=str,default="False")
 parser.add_argument('--reversecomp',type=str,default="False")
+
 args = parser.parse_args()
 print(args)
 
@@ -52,6 +57,10 @@ print('msg_len_before_sync_markers',msg_len_before_sync_markers)
 
 correct_list_top = []
 correct_list_list = []
+hamming_list = []
+hamming_list_8 = []
+hamming_list_16 = []
+edit_list = []
 
 for _ in range(NUM_TRIALS):
     msg_before_markers = np.random.choice(['0','1'], msg_len_before_sync_markers)
@@ -90,7 +99,7 @@ for _ in range(NUM_TRIALS):
     rc_flag = ''
     if revcomp:
         rc_flag = '--rc'
-    subprocess.run([PATH_TO_CPP_EXEC,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(MEM_CONV),'--msg-len',str(msg_len),'-l',str(LIST_SIZE),'-t',str(NUM_THR),'-r',str(RATE),rc_flag])
+    subprocess.run([PATH_TO_CPP_EXEC,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(MEM_CONV),'--msg-len',str(msg_len),'-l',str(LIST_SIZE),'-t',str(NUM_THR),'-r',str(RATE),rc_flag,'--max-deviation','20'])
     with open(decoded_filename) as f:
         decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
 
@@ -103,6 +112,18 @@ for _ in range(NUM_TRIALS):
     print('List correct:', list_correct)
     correct_list_top.append(top_correct)
     correct_list_list.append(list_correct)
+    hamming_list.append(distance.hamming(msg,decoded_msg_list[0]))
+    hamming_list_8.append(np.sum([(decoded_msg_list[0][i*8:(i+1)*8] != msg[i*8:(i+1)*8]) for i in range(math.ceil(len(msg)/8))]))
+    hamming_list_16.append(np.sum([(decoded_msg_list[0][i*16:(i+1)*16] != msg[i*16:(i+1)*16]) for i in range(math.ceil(len(msg)/16))]))
+    print('Hamming distance of top:',hamming_list[-1])
+    print('Hamming distance of top (8 blocks):',hamming_list_8[-1])
+    print('Hamming distance of top (16 blocks):',hamming_list_16[-1])
+    edit_list.append(distance.levenshtein(msg,decoded_msg_list[0]))
+    print('Edit distance',edit_list[-1])
+    if not top_correct:
+        print('Error pattern (original, errors):')
+        print(msg)
+        print(''.join([msg[i] if (msg[i] == decoded_msg_list[0][i]) else '*' for i in range(len(msg))]))
 
     # remove temporary files
     os.remove(file_msg)
@@ -116,3 +137,7 @@ print('Summary statistics:')
 print('Number total:', NUM_TRIALS)
 print('Number top correct:', sum(correct_list_top))
 print('Number list correct:', sum(correct_list_list))
+print('Average bit error rate of top:', sum(hamming_list)/(msg_len_before_sync_markers*NUM_TRIALS))
+print('Average 8 block error rate of top:', sum(hamming_list_8)/(math.ceil(msg_len/8)*NUM_TRIALS))
+print('Average 16 block error rate of top:', sum(hamming_list_16)/(math.ceil(msg_len/16)*NUM_TRIALS))
+print('Average edit distance rate of top:', sum(edit_list)/(msg_len_before_sync_markers*NUM_TRIALS))
