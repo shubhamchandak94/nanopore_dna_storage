@@ -1,0 +1,480 @@
+i 0
+bytes_per_oligo 10
+RS_redundancy 0.3
+conv_m 8
+conv_r 1
+pad False
+msg_len 100
+num_oligos_data 1128
+num_oligos_RS 338
+num_oligos 1466
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+oligo_len 108
+writing rate (bits per base): 0.5699560406245263
+i 1
+bytes_per_oligo 10
+RS_redundancy 0.3
+conv_m 11
+conv_r 1
+pad False
+msg_len 100
+num_oligos_data 1128
+num_oligos_RS 338
+num_oligos 1466
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+oligo_len 111
+writing rate (bits per base): 0.5545518233103499
+i 2
+bytes_per_oligo 10
+RS_redundancy 0.3
+conv_m 14
+conv_r 1
+pad False
+msg_len 100
+num_oligos_data 1128
+num_oligos_RS 338
+num_oligos 1466
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65197,338]
+oligo_len 114
+writing rate (bits per base): 0.539958354275867
+i 3
+bytes_per_oligo 18
+RS_redundancy 0.3
+conv_m 8
+conv_r 3
+pad False
+msg_len 164
+num_oligos_data 627
+num_oligos_RS 188
+num_oligos 815
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+oligo_len 115
+writing rate (bits per base): 0.9628167511336356
+i 4
+bytes_per_oligo 18
+RS_redundancy 0.3
+conv_m 11
+conv_r 3
+pad False
+msg_len 164
+num_oligos_data 627
+num_oligos_RS 188
+num_oligos 815
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+oligo_len 117
+writing rate (bits per base): 0.9463583451313513
+i 5
+bytes_per_oligo 18
+RS_redundancy 0.3
+conv_m 14
+conv_r 3
+pad False
+msg_len 164
+num_oligos_data 627
+num_oligos_RS 188
+num_oligos 815
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+oligo_len 119
+writing rate (bits per base): 0.9304531628602362
+i 6
+bytes_per_oligo 20
+RS_redundancy 0.3
+conv_m 8
+conv_r 5
+pad False
+msg_len 180
+num_oligos_data 564
+num_oligos_RS 169
+num_oligos 733
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+oligo_len 113
+writing rate (bits per base): 1.0894734935831654
+i 7
+bytes_per_oligo 20
+RS_redundancy 0.3
+conv_m 11
+conv_r 5
+pad False
+msg_len 180
+num_oligos_data 564
+num_oligos_RS 169
+num_oligos 733
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+oligo_len 115
+writing rate (bits per base): 1.070526128477371
+i 8
+bytes_per_oligo 20
+RS_redundancy 0.3
+conv_m 14
+conv_r 5
+pad True
+msg_len 181
+num_oligos_data 564
+num_oligos_RS 169
+num_oligos 733
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65366,169]
+oligo_len 117
+writing rate (bits per base): 1.052226536537587
+i 9
+bytes_per_oligo 18
+RS_redundancy 0.2
+conv_m 11
+conv_r 3
+pad False
+msg_len 164
+num_oligos_data 627
+num_oligos_RS 125
+num_oligos 752
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65410,125]
+oligo_len 117
+writing rate (bits per base): 1.0256410256410255
+i 10
+bytes_per_oligo 18
+RS_redundancy 0.4
+conv_m 11
+conv_r 3
+pad False
+msg_len 164
+num_oligos_data 627
+num_oligos_RS 250
+num_oligos 877
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65285,250]
+oligo_len 117
+writing rate (bits per base): 0.8794550185656229
+i 11
+bytes_per_oligo 18
+RS_redundancy 0.3
+conv_m 11
+conv_r 3
+pad False
+msg_len 164
+num_oligos_data 627
+num_oligos_RS 188
+num_oligos 815
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+oligo_len 117
+writing rate (bits per base): 0.9463583451313513
+i 12
+bytes_per_oligo 18
+RS_redundancy 0.3
+conv_m 11
+conv_r 3
+pad False
+msg_len 164
+num_oligos_data 627
+num_oligos_RS 188
+num_oligos 815
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialinput.dat
+/raid/nanopore/shubham/RSCode_schifra/schifra-master//trialoutput.schifra
+Encoder Parameters [65535,65347,188]
+oligo_len 117
+writing rate (bits per base): 0.9463583451313513
