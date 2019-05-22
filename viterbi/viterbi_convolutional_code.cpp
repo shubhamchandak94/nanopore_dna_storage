@@ -81,12 +81,12 @@ int set_conv_params(uint8_t mem_conv_param, uint8_t rate_param,
 
 std::vector<bool> conv_encode(const std::vector<bool> &msg);
 
-std::vector<bool> read_bit_array(const std::string &infile);
+std::vector<std::vector<bool>> read_bit_array(const std::string &infile);
 
 void write_bit_array(const std::vector<bool> &outvec,
                      const std::string &outfile);
 
-void write_bit_array_in_bases(const std::vector<bool> &outvec,
+void write_bit_array_in_bases(const std::vector<std::vector<bool>> &outvec_vec,
                               const std::string &outfile);
 
 template <class T>
@@ -213,13 +213,16 @@ int main(int argc, char **argv) {
       return -1;
     }
     if (mode == "encode") {
-      std::vector<bool> msg = read_bit_array(infile);
-      if (msg.size() != msg_len) {
-        std::cout << "Message length does not match msg_len parameter.\n";
-        return -1;
+      std::vector<std::vector<bool>> msg_vec = read_bit_array(infile);
+      std::vector<std::vector<bool>> encoded_msg_vec;
+      for (auto msg : msg_vec) {
+        if (msg.size() != msg_len) {
+          std::cout << "Message length does not match msg_len parameter.\n";
+          return -1;
+        }
+        encoded_msg_vec.push_back(conv_encode(msg));
       }
-      std::vector<bool> encoded_msg = conv_encode(msg);
-      write_bit_array_in_bases(encoded_msg, outfile);
+      write_bit_array_in_bases(encoded_msg_vec, outfile);
     } else {
       // do list decoding
       //
@@ -495,8 +498,9 @@ std::vector<bool> conv_encode(const std::vector<bool> &msg) {
   return encoded_msg_punctured;
 }
 
-std::vector<bool> read_bit_array(const std::string &infile) {
+std::vector<std::vector<bool>> read_bit_array(const std::string &infile) {
   std::ifstream fin(infile);
+  std::vector<std::vector<bool>> vec_vec;
   std::vector<bool> vec;
   char ch;
   while (fin >> std::noskipws >> ch) {
@@ -507,12 +511,16 @@ std::vector<bool> read_bit_array(const std::string &infile) {
       case '1':
         vec.push_back(1);
         break;
+      case '\n':
+        vec_vec.push_back(vec);
+        vec.clear();
+        break;
       default:
         throw std::runtime_error("invalid character in input file");
     }
   }
   fin.close();
-  return vec;
+  return vec_vec;
 }
 
 void write_bit_array(const std::vector<bool> &outvec,
@@ -529,13 +537,16 @@ void write_char_array(const std::vector<char> &vec,
   fout.close();
 }
 
-void write_bit_array_in_bases(const std::vector<bool> &outvec,
+void write_bit_array_in_bases(const std::vector<std::vector<bool>> &outvec_vec,
                               const std::string &outfile) {
   std::ofstream fout(outfile);
-  uint32_t len = outvec.size();
-  if (len % 2 != 0) throw std::runtime_error("length not even");
-  for (uint32_t i = 0; i < len / 2; i++)
-    fout << int2base[2 * outvec[2 * i] + outvec[2 * i + 1]];
+  for (auto outvec : outvec_vec) {
+    uint32_t len = outvec.size();
+    if (len % 2 != 0) throw std::runtime_error("length not even");
+    for (uint32_t i = 0; i < len / 2; i++)
+      fout << int2base[2 * outvec[2 * i] + outvec[2 * i + 1]];
+    fout << "\n";
+  }
   fout.close();
 }
 
