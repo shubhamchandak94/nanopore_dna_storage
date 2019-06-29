@@ -1,0 +1,19 @@
+Determining if the include file hdf5.h exists failed with the following output:
+Change Dir: /raid/nanopore/shubham/flappie_new/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/home/schandak/miniconda3/bin/make" "cmTC_57c2e/fast"
+make[1]: Entering directory '/raid/nanopore/shubham/flappie_new/build/CMakeFiles/CMakeTmp'
+/home/schandak/miniconda3/bin/make -f CMakeFiles/cmTC_57c2e.dir/build.make CMakeFiles/cmTC_57c2e.dir/build
+make[2]: Entering directory '/raid/nanopore/shubham/flappie_new/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_57c2e.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_57c2e.dir/CheckIncludeFile.c.o   -c /raid/nanopore/shubham/flappie_new/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:10: fatal error: hdf5.h: No such file or directory
+ #include <hdf5.h>
+          ^~~~~~~~
+compilation terminated.
+make[2]: *** [CMakeFiles/cmTC_57c2e.dir/build.make:66: CMakeFiles/cmTC_57c2e.dir/CheckIncludeFile.c.o] Error 1
+make[2]: Leaving directory '/raid/nanopore/shubham/flappie_new/build/CMakeFiles/CMakeTmp'
+make[1]: *** [Makefile:126: cmTC_57c2e/fast] Error 2
+make[1]: Leaving directory '/raid/nanopore/shubham/flappie_new/build/CMakeFiles/CMakeTmp'
+
+

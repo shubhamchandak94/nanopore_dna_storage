@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -Wunused-function -Wunused-value -Wunused-parameter -fstack-protector-all -fgnu89-inline -O3 -march=native -std=c99 -DUSE_SSE2 -D__USE_MISC -D_POSIX_SOURCE -DNDEBUG  -rdynamic CMakeFiles/flappie.dir/src/fast5_interface.c.o CMakeFiles/flappie.dir/src/flappie.c.o  -o flappie libflappie.a -lblas -lhdf5_serial -lm 

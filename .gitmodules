@@ -1,0 +1,3 @@
+[submodule "RSCode_schifra"]
+	path = RSCode_schifra
+	url = https://github.com/jmardia/RSCode_schifra

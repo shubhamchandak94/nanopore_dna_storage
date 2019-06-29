@@ -1,0 +1,14 @@
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/install/strip.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/install.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/list_install_components.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/edit_cache.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/install/local.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/test.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/package_source.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/rebuild_cache.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_static.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_unittest.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/test-verbose.dir
+/raid/nanopore/shubham/flappie_new/build/CMakeFiles/package.dir
