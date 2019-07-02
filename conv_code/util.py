@@ -180,7 +180,7 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
     print('end_bcmatch',basecall[end_bc_first_base:end_bc_first_base+end_barcode_len])
 
     assert end_pos >= start_pos
-    return (start_pos,end_pos)
+    return (start_pos,end_pos,min(start_bc_edit_distance),min(end_bc_edit_distance))
 
 def truncate_post_file(old_post_filename, new_post_filename, start_pos, end_pos, bytes_per_blk = 160):
     '''
