@@ -165,6 +165,24 @@ def bitstring2bytestring(bitstring, bitstring_len):
 def bytestring2bitstring(bytestring, bitstring_len):
     return bin(int(binascii.hexlify(bytestring), 16))[2:].zfill(bitstring_len)
 
+def decode_list_CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
+    for decoded_msg_ in decoded_msg_list:
+        # remove padding, if any
+        if pad:
+            decoded_msg = decoded_msg_[:-1]
+        else:
+            decoded_msg = decoded_msg_
+        length_with_crc = math.ceil(len(decoded_msg)/8)*8
+        bytestring_with_crc = bitstring2bytestring(decoded_msg, length_with_crc)
+        crc = crc8.crc8(bytestring_with_crc[:-crc_len//8])
+        if crc.digest() == bytestring_with_crc[-crc_len//8:]:
+            index_bit_string = bytestring2bitstring(bytestring_with_crc[:math.ceil(index_len/8)], 8*math.ceil(index_len/8))
+            index_bit_string = index_bit_string[-index_len:]
+            index = (prp_a_inv*((int(index_bit_string,2))-prp_b))%(2**index_len)
+            payload_bytes = bitstring2bytestring(decoded_msg[index_len:-crc_len], bytes_per_oligo*8)
+            if index < num_oligos:
+                return (index, payload_bytes, decoded_msg_)
+    return (None, None, None)
 # testing encode + simulate_and_decode
 # infile = 'myfile_1K'
 # infile_size = 1000

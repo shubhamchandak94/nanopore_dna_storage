@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /raid/nanopore/shubham/flappie_new
+CMAKE_SOURCE_DIR = /raid/nanopore/shubham/nanopore_dna_storage/flappie
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /raid/nanopore/shubham/flappie_new/build
+CMAKE_BINARY_DIR = /raid/nanopore/shubham/nanopore_dna_storage/flappie/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/flappie_static.dir/depend.make
@@ -62,15 +62,15 @@ flappie_static_OBJECTS =
 
 # External object files for target flappie_static
 flappie_static_EXTERNAL_OBJECTS = \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/decode.c.o" \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/layers.c.o" \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/networks.c.o" \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/nnfeatures.c.o" \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/flappie_common.c.o" \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/flappie_matrix.c.o" \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/flappie_output.c.o" \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/flappie_structures.c.o" \
-"/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/util.c.o"
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/decode.c.o" \
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/layers.c.o" \
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/networks.c.o" \
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/nnfeatures.c.o" \
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/flappie_common.c.o" \
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/flappie_matrix.c.o" \
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/flappie_output.c.o" \
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/flappie_structures.c.o" \
+"/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/util.c.o"
 
 libflappie.a: CMakeFiles/flappie_objects.dir/src/decode.c.o
 libflappie.a: CMakeFiles/flappie_objects.dir/src/layers.c.o
@@ -83,7 +83,7 @@ libflappie.a: CMakeFiles/flappie_objects.dir/src/flappie_structures.c.o
 libflappie.a: CMakeFiles/flappie_objects.dir/src/util.c.o
 libflappie.a: CMakeFiles/flappie_static.dir/build.make
 libflappie.a: CMakeFiles/flappie_static.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking C static library libflappie.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Linking C static library libflappie.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/flappie_static.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/flappie_static.dir/link.txt --verbose=$(VERBOSE)
 
@@ -101,6 +101,6 @@ CMakeFiles/flappie_static.dir/clean:
 .PHONY : CMakeFiles/flappie_static.dir/clean
 
 CMakeFiles/flappie_static.dir/depend:
-	cd /raid/nanopore/shubham/flappie_new/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /raid/nanopore/shubham/flappie_new /raid/nanopore/shubham/flappie_new /raid/nanopore/shubham/flappie_new/build /raid/nanopore/shubham/flappie_new/build /raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_static.dir/DependInfo.cmake --color=$(COLOR)
+	cd /raid/nanopore/shubham/nanopore_dna_storage/flappie/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /raid/nanopore/shubham/nanopore_dna_storage/flappie /raid/nanopore/shubham/nanopore_dna_storage/flappie /raid/nanopore/shubham/nanopore_dna_storage/flappie/build /raid/nanopore/shubham/nanopore_dna_storage/flappie/build /raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_static.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/flappie_static.dir/depend
 

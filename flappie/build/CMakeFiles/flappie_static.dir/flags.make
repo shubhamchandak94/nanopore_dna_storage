@@ -6,5 +6,5 @@ C_FLAGS =  -Wall -Wunused-function -Wunused-value -Wunused-parameter -fstack-pro
 
 C_DEFINES = 
 
-C_INCLUDES = -I/raid/nanopore/shubham/flappie_new/build/include -I/usr/include/hdf5/serial 
+C_INCLUDES = -I/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/include -I/usr/include/hdf5/serial 
 

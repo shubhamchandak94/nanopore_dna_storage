@@ -4,15 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/raid/nanopore/shubham/flappie_new/src/decode.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/decode.c.o"
-  "/raid/nanopore/shubham/flappie_new/src/flappie_common.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/flappie_common.c.o"
-  "/raid/nanopore/shubham/flappie_new/src/flappie_matrix.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/flappie_matrix.c.o"
-  "/raid/nanopore/shubham/flappie_new/src/flappie_output.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/flappie_output.c.o"
-  "/raid/nanopore/shubham/flappie_new/src/flappie_structures.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/flappie_structures.c.o"
-  "/raid/nanopore/shubham/flappie_new/src/layers.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/layers.c.o"
-  "/raid/nanopore/shubham/flappie_new/src/networks.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/networks.c.o"
-  "/raid/nanopore/shubham/flappie_new/src/nnfeatures.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/nnfeatures.c.o"
-  "/raid/nanopore/shubham/flappie_new/src/util.c" "/raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_objects.dir/src/util.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/decode.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/decode.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_common.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/flappie_common.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/flappie_matrix.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_output.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/flappie_output.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/flappie_structures.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/layers.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/layers.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/networks.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/networks.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/nnfeatures.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/nnfeatures.c.o"
+  "/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.c" "/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_objects.dir/src/util.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

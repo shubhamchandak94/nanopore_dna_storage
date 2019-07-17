@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /raid/nanopore/shubham/flappie_new
+CMAKE_SOURCE_DIR = /raid/nanopore/shubham/nanopore_dna_storage/flappie
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /raid/nanopore/shubham/flappie_new/build
+CMAKE_BINARY_DIR = /raid/nanopore/shubham/nanopore_dna_storage/flappie/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/flappie_unittest.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/flappie_unittest.dir/flags.make
 
 CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.o: ../src/test/flappie_test_runner.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/flappie_test_runner.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/flappie_test_runner.c
 
 CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/flappie_test_runner.c > CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/flappie_test_runner.c > CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/flappie_test_runner.c -o CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/flappie_test_runner.c -o CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/flappie_unittest.dir/src/test/flappie_test_runner.c.o.provides.build:
 
 CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.o: ../src/test/flappie_util.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/flappie_util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/flappie_util.c
 
 CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/flappie_util.c > CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/flappie_util.c > CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/flappie_util.c -o CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/flappie_util.c -o CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/flappie_unittest.dir/src/test/flappie_util.c.o.provides.build: CMakeF
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.o: ../src/test/test_flappie_convolution.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/test_flappie_convolution.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_convolution.c
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/test_flappie_convolution.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_convolution.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/test_flappie_convolution.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_convolution.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/flappie_unittest.dir/src/test/test_flappie_convolution.c.o.provides.b
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.o: ../src/test/test_flappie_elu.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/test_flappie_elu.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_elu.c
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/test_flappie_elu.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_elu.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/test_flappie_elu.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_elu.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/flappie_unittest.dir/src/test/test_flappie_elu.c.o.provides.build: CM
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.o: ../src/test/test_flappie_matrix.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/test_flappie_matrix.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_matrix.c
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/test_flappie_matrix.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_matrix.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/test_flappie_matrix.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_matrix.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/flappie_unittest.dir/src/test/test_flappie_matrix.c.o.provides.build:
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.o: ../src/test/test_flappie_signal.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/test_flappie_signal.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_signal.c
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/test_flappie_signal.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_signal.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/test_flappie_signal.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_signal.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/flappie_unittest.dir/src/test/test_flappie_signal.c.o.provides.build:
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.o: ../src/test/test_flappie_util.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/test_flappie_util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_util.c
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/test_flappie_util.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_util.c > CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/test_flappie_util.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_flappie_util.c -o CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/flappie_unittest.dir/src/test/test_flappie_util.c.o.provides.build: C
 
 CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.o: ../src/test/test_skeleton.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/test_skeleton.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_skeleton.c
 
 CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/test_skeleton.c > CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_skeleton.c > CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/test_skeleton.c -o CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_skeleton.c -o CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.o.requires:
 
@@ -251,16 +251,16 @@ CMakeFiles/flappie_unittest.dir/src/test/test_skeleton.c.o.provides.build: CMake
 
 CMakeFiles/flappie_unittest.dir/src/test/test_util.c.o: CMakeFiles/flappie_unittest.dir/flags.make
 CMakeFiles/flappie_unittest.dir/src/test/test_util.c.o: ../src/test/test_util.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_util.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_util.c.o   -c /raid/nanopore/shubham/flappie_new/src/test/test_util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/flappie_unittest.dir/src/test/test_util.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/flappie_unittest.dir/src/test/test_util.c.o   -c /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_util.c
 
 CMakeFiles/flappie_unittest.dir/src/test/test_util.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/flappie_unittest.dir/src/test/test_util.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/flappie_new/src/test/test_util.c > CMakeFiles/flappie_unittest.dir/src/test/test_util.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_util.c > CMakeFiles/flappie_unittest.dir/src/test/test_util.c.i
 
 CMakeFiles/flappie_unittest.dir/src/test/test_util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/flappie_unittest.dir/src/test/test_util.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/flappie_new/src/test/test_util.c -o CMakeFiles/flappie_unittest.dir/src/test/test_util.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /raid/nanopore/shubham/nanopore_dna_storage/flappie/src/test/test_util.c -o CMakeFiles/flappie_unittest.dir/src/test/test_util.c.s
 
 CMakeFiles/flappie_unittest.dir/src/test/test_util.c.o.requires:
 
@@ -300,7 +300,7 @@ flappie_unittest: CMakeFiles/flappie_unittest.dir/src/test/test_util.c.o
 flappie_unittest: CMakeFiles/flappie_unittest.dir/build.make
 flappie_unittest: libflappie.a
 flappie_unittest: CMakeFiles/flappie_unittest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/raid/nanopore/shubham/flappie_new/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable flappie_unittest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable flappie_unittest"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/flappie_unittest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -325,6 +325,6 @@ CMakeFiles/flappie_unittest.dir/clean:
 .PHONY : CMakeFiles/flappie_unittest.dir/clean
 
 CMakeFiles/flappie_unittest.dir/depend:
-	cd /raid/nanopore/shubham/flappie_new/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /raid/nanopore/shubham/flappie_new /raid/nanopore/shubham/flappie_new /raid/nanopore/shubham/flappie_new/build /raid/nanopore/shubham/flappie_new/build /raid/nanopore/shubham/flappie_new/build/CMakeFiles/flappie_unittest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /raid/nanopore/shubham/nanopore_dna_storage/flappie/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /raid/nanopore/shubham/nanopore_dna_storage/flappie /raid/nanopore/shubham/nanopore_dna_storage/flappie /raid/nanopore/shubham/nanopore_dna_storage/flappie/build /raid/nanopore/shubham/nanopore_dna_storage/flappie/build /raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/flappie_unittest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/flappie_unittest.dir/depend
 

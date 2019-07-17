@@ -7,4 +7,4 @@ m       rate        num successful decoded (100 trials)
 11      5/6             20
 14      1/2             77
 14      3/4             30
-14      5/6             still running
+14      5/6             27

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /raid/nanopore/shubham/flappie_new
+CMAKE_SOURCE_DIR = /raid/nanopore/shubham/nanopore_dna_storage/flappie
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /raid/nanopore/shubham/flappie_new/build
+CMAKE_BINARY_DIR = /raid/nanopore/shubham/nanopore_dna_storage/flappie/build
 
 # Utility rule file for test-verbose.
 
@@ -71,6 +71,6 @@ CMakeFiles/test-verbose.dir/clean:
 .PHONY : CMakeFiles/test-verbose.dir/clean
 
 CMakeFiles/test-verbose.dir/depend:
-	cd /raid/nanopore/shubham/flappie_new/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /raid/nanopore/shubham/flappie_new /raid/nanopore/shubham/flappie_new /raid/nanopore/shubham/flappie_new/build /raid/nanopore/shubham/flappie_new/build /raid/nanopore/shubham/flappie_new/build/CMakeFiles/test-verbose.dir/DependInfo.cmake --color=$(COLOR)
+	cd /raid/nanopore/shubham/nanopore_dna_storage/flappie/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /raid/nanopore/shubham/nanopore_dna_storage/flappie /raid/nanopore/shubham/nanopore_dna_storage/flappie /raid/nanopore/shubham/nanopore_dna_storage/flappie/build /raid/nanopore/shubham/nanopore_dna_storage/flappie/build /raid/nanopore/shubham/nanopore_dna_storage/flappie/build/CMakeFiles/test-verbose.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/test-verbose.dir/depend
 

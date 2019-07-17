@@ -152,7 +152,7 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
     end_barcode_len = len(end_barcode)
     if start_barcode_len + end_barcode_len > basecall_len:
         print('Too short read')
-        return (-1,-1)
+        return (-1,-1,np.inf,np.inf)
 
     start_bc_edit_distance = []
     for i in range(basecall_len//2+1-start_barcode_len): # only search in first half for start barcode
@@ -179,7 +179,9 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
     print('end_barcode',end_barcode)
     print('end_bcmatch',basecall[end_bc_first_base:end_bc_first_base+end_barcode_len])
 
-    assert end_pos >= start_pos
+    if end_pos < start_pos:
+        print('Barcode removal failure')
+        return (-1,-1,np.inf,np.inf)
     return (start_pos,end_pos,min(start_bc_edit_distance),min(end_bc_edit_distance))
 
 def truncate_post_file(old_post_filename, new_post_filename, start_pos, end_pos, bytes_per_blk = 160):

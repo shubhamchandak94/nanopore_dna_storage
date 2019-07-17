@@ -6,39 +6,39 @@
 
 #IncludeRegexTransform: 
 
-/raid/nanopore/shubham/flappie_new/src/decode.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/decode.c
 stdio.h
 -
 decode.h
-/raid/nanopore/shubham/flappie_new/src/decode.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/decode.h
 layers.h
-/raid/nanopore/shubham/flappie_new/src/layers.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/layers.h
 flappie_stdlib.h
-/raid/nanopore/shubham/flappie_new/src/flappie_stdlib.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_stdlib.h
 util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/decode.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/decode.h
 stdbool.h
 -
 flappie_matrix.h
-/raid/nanopore/shubham/flappie_new/src/flappie_matrix.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.h
 flappie_structures.h
-/raid/nanopore/shubham/flappie_new/src/flappie_structures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.h
 
-/raid/nanopore/shubham/flappie_new/src/flappie_common.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_common.c
 flappie_common.h
-/raid/nanopore/shubham/flappie_new/src/flappie_common.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_common.h
 flappie_stdlib.h
-/raid/nanopore/shubham/flappie_new/src/flappie_stdlib.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_stdlib.h
 util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/flappie_common.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_common.h
 flappie_structures.h
-/raid/nanopore/shubham/flappie_new/src/flappie_structures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.h
 
-/raid/nanopore/shubham/flappie_new/src/flappie_matrix.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.c
 Accelerate/Accelerate.h
 -
 cblas.h
@@ -48,13 +48,13 @@ float.h
 math.h
 -
 flappie_matrix.h
-/raid/nanopore/shubham/flappie_new/src/flappie_matrix.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.h
 flappie_stdlib.h
-/raid/nanopore/shubham/flappie_new/src/flappie_stdlib.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_stdlib.h
 util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/flappie_matrix.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.h
 immintrin.h
 -
 stdbool.h
@@ -64,7 +64,7 @@ stdint.h
 stdio.h
 -
 
-/raid/nanopore/shubham/flappie_new/src/flappie_output.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_output.c
 err.h
 -
 stdlib.h
@@ -72,17 +72,17 @@ stdlib.h
 string.h
 -
 flappie_output.h
-/raid/nanopore/shubham/flappie_new/src/flappie_output.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_output.h
 
-/raid/nanopore/shubham/flappie_new/src/flappie_output.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_output.h
 stdbool.h
 -
 stdio.h
 -
 flappie_structures.h
-/raid/nanopore/shubham/flappie_new/src/flappie_structures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.h
 
-/raid/nanopore/shubham/flappie_new/src/flappie_stdlib.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_stdlib.h
 assert.h
 -
 err.h
@@ -94,19 +94,19 @@ stdlib.h
 string.h
 -
 
-/raid/nanopore/shubham/flappie_new/src/flappie_structures.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.c
 stdlib.h
 -
 flappie_structures.h
-/raid/nanopore/shubham/flappie_new/src/flappie_structures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.h
 
-/raid/nanopore/shubham/flappie_new/src/flappie_structures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.h
 stddef.h
 -
 flappie_matrix.h
-/raid/nanopore/shubham/flappie_new/src/flappie_matrix.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.h
 
-/raid/nanopore/shubham/flappie_new/src/layers.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/layers.c
 Accelerate/Accelerate.h
 -
 cblas.h
@@ -114,81 +114,81 @@ cblas.h
 math.h
 -
 layers.h
-/raid/nanopore/shubham/flappie_new/src/layers.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/layers.h
 flappie_stdlib.h
-/raid/nanopore/shubham/flappie_new/src/flappie_stdlib.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_stdlib.h
 util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/layers.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/layers.h
 flappie_matrix.h
-/raid/nanopore/shubham/flappie_new/src/flappie_matrix.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.h
 
-/raid/nanopore/shubham/flappie_new/src/models/flipflop_r10Cpcr.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/models/flipflop_r10Cpcr.h
 ../util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/models/flipflop_r941native.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/models/flipflop_r941native.h
 ../util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/models/flipflop_r941native5mC.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/models/flipflop_r941native5mC.h
 ../util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/networks.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/networks.c
 layers.h
-/raid/nanopore/shubham/flappie_new/src/layers.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/layers.h
 models/flipflop_r941native.h
-/raid/nanopore/shubham/flappie_new/src/models/flipflop_r941native.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/models/flipflop_r941native.h
 models/flipflop_r941native5mC.h
-/raid/nanopore/shubham/flappie_new/src/models/flipflop_r941native5mC.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/models/flipflop_r941native5mC.h
 models/flipflop_r10Cpcr.h
-/raid/nanopore/shubham/flappie_new/src/models/flipflop_r10Cpcr.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/models/flipflop_r10Cpcr.h
 networks.h
-/raid/nanopore/shubham/flappie_new/src/networks.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/networks.h
 nnfeatures.h
-/raid/nanopore/shubham/flappie_new/src/nnfeatures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/nnfeatures.h
 flappie_stdlib.h
-/raid/nanopore/shubham/flappie_new/src/flappie_stdlib.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_stdlib.h
 util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/networks.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/networks.h
 stdbool.h
 -
 flappie_matrix.h
-/raid/nanopore/shubham/flappie_new/src/flappie_matrix.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.h
 flappie_structures.h
-/raid/nanopore/shubham/flappie_new/src/flappie_structures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.h
 
-/raid/nanopore/shubham/flappie_new/src/nnfeatures.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/nnfeatures.c
 math.h
 -
 stdio.h
 -
 nnfeatures.h
-/raid/nanopore/shubham/flappie_new/src/nnfeatures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/nnfeatures.h
 flappie_stdlib.h
-/raid/nanopore/shubham/flappie_new/src/flappie_stdlib.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_stdlib.h
 util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/nnfeatures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/nnfeatures.h
 stdbool.h
 -
 flappie_structures.h
-/raid/nanopore/shubham/flappie_new/src/flappie_structures.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_structures.h
 flappie_matrix.h
-/raid/nanopore/shubham/flappie_new/src/flappie_matrix.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_matrix.h
 
-/raid/nanopore/shubham/flappie_new/src/sse_mathfun.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/sse_mathfun.h
 xmmintrin.h
 -
 emmintrin.h
 -
 
-/raid/nanopore/shubham/flappie_new/src/util.c
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.c
 assert.h
 -
 err.h
@@ -196,11 +196,11 @@ err.h
 math.h
 -
 flappie_stdlib.h
-/raid/nanopore/shubham/flappie_new/src/flappie_stdlib.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/flappie_stdlib.h
 util.h
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 
-/raid/nanopore/shubham/flappie_new/src/util.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/util.h
 assert.h
 -
 immintrin.h
@@ -212,5 +212,5 @@ stdbool.h
 stdint.h
 -
 sse_mathfun.h
-/raid/nanopore/shubham/flappie_new/src/sse_mathfun.h
+/raid/nanopore/shubham/nanopore_dna_storage/flappie/src/sse_mathfun.h
 
