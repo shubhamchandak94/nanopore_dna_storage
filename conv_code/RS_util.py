@@ -9,7 +9,7 @@ import crc8
 import filecmp
 import util
 import sys
-PATH_TO_RS_CODE = '/raid/nanopore/shubham/RSCode_schifra/schifra-master/'
+PATH_TO_RS_CODE = '/raid/nanopore/shubham/nanopore_dna_storage/RSCode_schifra/'
 sys.path.insert(0, PATH_TO_RS_CODE)
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
