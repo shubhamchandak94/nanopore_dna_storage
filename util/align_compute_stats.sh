@@ -35,8 +35,17 @@ done
 # extract raw signal by experiment 
 mkdir -p $DATA_PATH/raw_signal
 for i in {0..12}; do
-    python extract_data_fast5.py $DATA_PATH/aligned/exp_aligned_$i.filtered.sam $DATA_PATH/aligned/fast5_pass $DATA_PATH/raw_signal/raw_signal_$i.hdf5
+    python extract_data_fast5.py $DATA_PATH/aligned/exp_aligned_$i.filtered.sam $DATA_PATH/fast5_pass $DATA_PATH/raw_signal/raw_signal_$i.hdf5
 done
+
+# convert to BAM and sort (for collecting stats)
+$SAMTOOLS view -b -o $DATA_PATH/aligned/merged.bam $DATA_PATH/aligned/merged.sam
+$SAMTOOLS sort -O BAM -o $DATA_PATH/aligned/merged.sorted.bam --reference $DATA_PATH/olig_files/merged.fa $DATA_PATH/aligned/merged.bam
+
+# run samtools stats for computing error rates
+mkdir -p $DATA_PATH/stats
+$SAMTOOLS stats -r $DATA_PATH/oligo_files/merged.fa $DATA_PATH/aligned/merged.sorted.bam > $DATA_PATH/stats/merged.sorted.stats
+
 
 ## convert to BAM and sort (for collecting stats)
 #for i in {1..12}; do
