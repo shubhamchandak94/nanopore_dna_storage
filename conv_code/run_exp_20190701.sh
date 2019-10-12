@@ -1,0 +1,9 @@
+stdbuf -oL python -u test_conv_codes_1.py |& tee -a logs/20190701/log_test_8_1
+stdbuf -oL python -u test_conv_codes_4.py |& tee -a logs/20190701/log_test_8_3
+stdbuf -oL python -u test_conv_codes_7.py |& tee -a logs/20190701/log_test_8_5
+stdbuf -oL python -u test_conv_codes_2.py |& tee -a logs/20190701/log_test_11_1
+stdbuf -oL python -u test_conv_codes_5.py |& tee -a logs/20190701/log_test_11_3
+stdbuf -oL python -u test_conv_codes_8.py |& tee -a logs/20190701/log_test_11_5
+stdbuf -oL python -u test_conv_codes_3.py |& tee -a logs/20190701/log_test_14_1
+stdbuf -oL python -u test_conv_codes_6.py |& tee -a logs/20190701/log_test_14_3
+stdbuf -oL python -u test_conv_codes_9.py |& tee -a logs/20190701/log_test_14_5
