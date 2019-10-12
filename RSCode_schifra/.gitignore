@@ -1,0 +1,9 @@
+*
+!*.cpp
+!*.hpp
+!*.py
+!*.txt
+!Makefile
+!readme.md
+!.travis.yml
+!.git*
