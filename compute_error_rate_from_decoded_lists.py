@@ -1,11 +1,14 @@
 import helper
 import os 
 
-LIST_SIZE = 4
-DECODED_LISTS_DIR = '../nanopore_dna_storage_data/decoded_lists/exp_0/'
-CONV_INPUT_FILE = '../nanopore_dna_storage_data/oligo_files/conv_input_0.txt'
+# PARAMETERS TO BE SET BEFORE RUNNING THE CODE
+LIST_SIZE = 8
+DECODED_LISTS_DIR = '../nanopore_dna_storage_data/decoded_lists/exp_7/'
+CONV_INPUT_FILE = '../nanopore_dna_storage_data/oligo_files/conv_input_7.txt'
 pad = False
-bytes_per_oligo = 10
+bytes_per_oligo = 18
+
+
 print('list size:',LIST_SIZE)
 with open(CONV_INPUT_FILE) as f:
     conv_input_list = [s.rstrip('\n') for s in f.readlines()]
@@ -52,14 +55,14 @@ print('num_correct:',num_correct)
 print('num_erasure_CRC_index:',num_erasure_CRC_index)
 print('num_error_CRC_index:',num_error_CRC_index)
 
-# print overall RS stats
-num_erasures = num_oligos - len(decoded_index_dict)
-num_errors = 0
-for index in decoded_index_dict:
-    if decoded_index_dict[index][0][0] != conv_input_list[index]:
-        num_errors += 1
-
-print('Stats for RS decoding')
-print('num_oligos:',num_oligos)
-print('num_errors:',num_errors)
-print('num_erasures:',num_erasures)
+# # print overall RS stats
+# num_erasures = num_oligos - len(decoded_index_dict)
+# num_errors = 0
+# for index in decoded_index_dict:
+#     if decoded_index_dict[index][0][0] != conv_input_list[index]:
+#         num_errors += 1
+# 
+# print('Stats for RS decoding')
+# print('num_oligos:',num_oligos)
+# print('num_errors:',num_errors)
+# print('num_erasures:',num_erasures)

@@ -4,16 +4,18 @@ import random
 import math
 import filecmp
 
+# SET THESE PARAMETERS BEFORE RUNNING
 NUM_TRIALS = 10
-LIST_SIZE = 64
-NUM_READS_TOTAL = 20000
-NUM_READS_TO_USE = 20000
-bytes_per_oligo  = 10
-DECODED_LISTS_DIR = '../nanopore_dna_storage_data/decoded_lists/exp_0/'
+LIST_SIZE = 8
+NUM_READS_TOTAL = 10000
+NUM_READS_TO_USE = 5500
+bytes_per_oligo  = 18
+DECODED_LISTS_DIR = '../nanopore_dna_storage_data/decoded_lists/exp_7/'
 RS_REDUNDANCY = 0.3
 pad = False
-
 ORIGINAL_FILE = '../nanopore_dna_storage_data/encoded_file/data_files.tar.bz2.enc' # for checking if decoding was successful
+
+
 data_file_size = os.path.getsize(ORIGINAL_FILE)
 data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
 
@@ -22,12 +24,12 @@ data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
 print('NUM_READS_TO_USE:',NUM_READS_TO_USE)
 print('list size:',LIST_SIZE)
 
-decoded_index_dict = {}
-# map from index to [[payload_bytes,count]]
 num_successes = 0
 
 for _ in range(NUM_TRIALS):
     list_read_ids = random.sample(list(range(NUM_READS_TOTAL)),NUM_READS_TO_USE)
+    decoded_index_dict = {}
+    # map from index to [[payload_bytes,count]]
     for i in list_read_ids:
         list_file = DECODED_LISTS_DIR+'list_'+str(i)
         if os.path.isfile(list_file):
@@ -52,7 +54,7 @@ for _ in range(NUM_TRIALS):
     RS_decoded_list = helper.RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos)
     decoded_data = b''.join(RS_decoded_list)
     decoded_data = decoded_data[:data_file_size]
-    decoded_data_file = 'tmpfile.12345'
+    decoded_data_file = 'tmpfile.'+str(random.randint(0,1000000))
     with open(decoded_data_file,'wb') as f:
         f.write(decoded_data)
     if filecmp.cmp(ORIGINAL_FILE, decoded_data_file):
