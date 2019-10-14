@@ -9,7 +9,7 @@ import random
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 OUT_DIR = '../../nanopore_dna_storage_data/decoded_lists/exp_7/'
 HDF5_FILE = '../../nanopore_dna_storage_data/raw_signal/raw_signal_7.hdf5'
-NUM_READS = 20000
+NUM_READS = 10000
 
 f_raw = h5py.File(HDF5_FILE)
 readid_list = list(f_raw.keys())
