@@ -54,15 +54,3 @@ print('num_reads:',num_reads)
 print('num_correct:',num_correct)
 print('num_erasure_CRC_index:',num_erasure_CRC_index)
 print('num_error_CRC_index:',num_error_CRC_index)
-
-# # print overall RS stats
-# num_erasures = num_oligos - len(decoded_index_dict)
-# num_errors = 0
-# for index in decoded_index_dict:
-#     if decoded_index_dict[index][0][0] != conv_input_list[index]:
-#         num_errors += 1
-# 
-# print('Stats for RS decoding')
-# print('num_oligos:',num_oligos)
-# print('num_errors:',num_errors)
-# print('num_erasures:',num_erasures)
