@@ -17,6 +17,9 @@ import filecmp
 PATH_TO_RS_CODE = 'RSCode_schifra/'
 PATH_TO_VITERBI_NANOPORE = 'viterbi/viterbi_nanopore.out'
 PATH_TO_FLAPPIE = "flappie/flappie"
+PATH_TO_GUPPY = "/raid/nanopore/shubham/ont-guppy/bin/guppy_basecaller"
+#GUPPY_MODEL_PATH = 
+
 sys.path.insert(0, PATH_TO_RS_CODE)
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -390,3 +393,39 @@ def decode_list_CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
 # encode(data_file = infile, oligo_file = infile+'.oligos', bytes_per_oligo = 12, RS_redundancy = RS_redundancy, conv_m = 6, conv_r = 1, pad=False)
 # simulate_and_decode(oligo_file = infile+'.oligos', decoded_data_file = infile+'.decoded', num_reads = 500, data_file_size = infile_size, bytes_per_oligo = 12, RS_redundancy = RS_redundancy, conv_m = 6, conv_r = 1, pad=False)
 # print('filecmp',filecmp.cmp(infile, infile+'.decoded'))
+
+
+
+########
+# Guppy helper functions
+########
+
+
+def guppy_output_transitions(input_fast5_file, output_trans_file):
+    # open fast5_file
+    f_fast5 = h5py.File(input_fast5_file,"r")
+    
+    # Obtain transition values
+    move_array = f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['Move']
+    trans_values = np.nonzero(move_array)[0]
+    
+    # write transition values to a file
+    with open(output_trans_file,"w") as f_trans_out:
+        for val in trans_values:
+            print(val, file = f_trans_out)    
+    
+    f_fast5.close()
+
+
+def guppy_output_state_data(input_fast5_file, output_post_file):
+    # open fast5_file
+    f_fast5 = h5py.File(input_fast5_file,"r")
+    
+    # Obtain transition values
+    state_data = np.array(f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['StateData'])
+
+    # write transition values to a file
+    with open(output_post_file,"w") as f_post:
+        state_data.astype(np.float32).tofile(f_post)
+    
+    f_fast5.close()
