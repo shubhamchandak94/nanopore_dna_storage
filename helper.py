@@ -93,7 +93,10 @@ def create_fast5(raw_data, fast5_filename):
     digitisation = 8192.0
     bins = np.arange(start, stop, rng / digitisation)
     # np.int16 is required, the library will refuse to write anything other
-    raw_data_binned = np.digitize(raw_data, bins).astype(np.int16)
+    #raw_data_binned = np.digitize(raw_data, bins).astype(np.int16)
+    
+    # For guppy, do not rescale
+    raw_data_binned = raw_data
 
     # The following are required meta data
     channel_id = {

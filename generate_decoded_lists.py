@@ -55,20 +55,23 @@ for i,readid in enumerate(readid_list):
     print(f_raw[readid].attrs['ref'])
     f_info.write(readid+'\t'+f_raw[readid].attrs['ref'].decode("utf-8")+'\n')
     # create fast5 from raw data
-    fast5_filename='tmp.'+rnd+'.fast5'
+    fast5_dir = 'tmp_input_' + str(readid)
+    fast5_filename = os.path.join(fast5_dir, 'tmp.'+rnd+'.fast5')
     helper.create_fast5(raw_data,fast5_filename)
 
     # call flappie to generate transition posterior table
     post_filename = 'tmp.'+rnd+'.post'
-    fastq_filename = 'tmp.'+rnd+'.fastq'
+    fastq_filename = os.path.join(fast5_dir, "fastq_runid_test_0_0.fastq") 
     trans_filename = 'tmp.'+rnd+'.trans'
-    subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename, '--trans-output-file', trans_filename, '-o',fastq_filename])
+    #subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename, '--trans-output-file', trans_filename, '-o',fastq_filename])
 
-    #subprocess.run([PATH_TO_GUPPY, '--input_path', fast5_dir, '--save_path', tmp_output_dir, '--flowcell', 'FLO-MIN106', '--kit', 'SQK-LSK109', '--device', 'auto', '--post_out', ' --fast5_out', '--num_callers', '30'])
+    tmp_output_dir = 'tmp_output_' + str(readid) 
+    subprocess.run([PATH_TO_GUPPY, '--input_path', fast5_dir, '--save_path', tmp_output_dir, '--flowcell', 'FLO-MIN106', '--kit', 'SQK-LSK109', '--device', 'auto', '--post_out', ' --fast5_out', '--num_callers', '30'])
     
     # Convert guppy output to post_file, trans_file
-    #guppy_output_transitions(guppy_output_fast5, trans_filename)
-    #guppy_output_state_data(guppy_output_fast5, post_filename) 
+    guppy_output_fast5 = os.path.join(tmp_output_dir,"/workspace/tmp." + rnd + ".fast5")
+    guppy_output_transitions(guppy_output_fast5, trans_filename)
+    guppy_output_state_data(guppy_output_fast5, post_filename) 
 
     # truncate post according to barcode
     (start_pos, end_pos, dist_start, dist_end) = helper.find_barcode_pos_in_post(trans_filename,fastq_filename,START_BARCODE,END_BARCODE)
