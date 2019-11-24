@@ -1,6 +1,6 @@
 import sys
 import numpy as np
-import scrappy
+#import scrappy
 from uuid import uuid4
 import scipy.stats as st
 import subprocess
@@ -13,6 +13,7 @@ import struct
 import os
 import crc8
 import filecmp
+import h5py
 
 PATH_TO_RS_CODE = 'RSCode_schifra/'
 PATH_TO_VITERBI_NANOPORE = 'viterbi/viterbi_nanopore.out'
@@ -111,13 +112,13 @@ def create_fast5(raw_data, fast5_filename):
         'duration': len(raw_data),
         'read_number': 1,
         'start_mux': 1,
-        'read_id': str(uuid4()),
+        'read_id': 'test',
         'scaling_used': 1,
         'median_before': 0,
     }
     tracking_id = {
         'exp_start_time': '1970-01-01T00:00:00Z',
-        'run_id': str(uuid4()).replace('-',''),
+        'run_id': 'test',
         'flow_cell_id': 'FAH00000',
     }
     context_tags = {}
@@ -419,13 +420,30 @@ def guppy_output_transitions(input_fast5_file, output_trans_file):
     
     f_fast5.close()
 
-
 def guppy_output_state_data(input_fast5_file, output_post_file):
     # open fast5_file
     f_fast5 = h5py.File(input_fast5_file,"r")
     
     # Obtain transition values
     state_data = np.array(f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['StateData'])
+    
+    # Find offset and scale
+    scale = f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['StateData'].attrs['scale']
+    offset = f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['StateData'].attrs['offset']
+    
+    
+    # rescaled data
+    rescaled_state_data = (state_data + offset)*scale
+
+    # find max per time sample
+    max_val = np.max(rescaled_state_data,axis = 1).reshape((-1,1))
+    print(max_val.shape)
+    logsumexp_val = np.log(np.sum(np.exp(rescaled_state_data - max_val), axis = 1)).reshape((-1,1)) + max_val 
+    
+    # final normalized state
+    normalized_state = rescaled_state_data - logsumexp_val
+    
+
 
     # write transition values to a file
     with open(output_post_file,"w") as f_post:
