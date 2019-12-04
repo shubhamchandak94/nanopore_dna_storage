@@ -1,6 +1,6 @@
 import sys
 import numpy as np
-#import scrappy
+import scrappy
 from uuid import uuid4
 import scipy.stats as st
 import subprocess
@@ -160,7 +160,7 @@ def read_seq(infile_seq):
     print(seq)
     return seq
 
-def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_barcode):
+def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_barcode,extend_len=0):
     '''
     find position of best edit distance match for barcodes in the post matrix
     looks at fastq to find the best match for barcode_start and barcode_end and then finds
@@ -168,7 +168,10 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
     start and end position of actual payload in the post matrix (both inclusive, zero-indexed). 
     One could then slightly extend these or not, depending on what works best. 
     If things fail, return (-1,-1)
+    extend_len: extra length at start and end to search for barcode match (useful if basecaller cuts
+    a bit of the barcode, e.g., with guppy)
     '''
+    assert extend_len >= 0
     # load basecalled read from fastq
     with open(fastq_filename,'r') as f:
         _ = f.readline()
@@ -185,15 +188,19 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
         return (-1,-1,np.inf,np.inf)
 
     start_bc_edit_distance = []
+    for i in range(-extend_len,0):
+        start_bc_edit_distance.append(distance.levenshtein(start_barcode,basecall[:start_barcode_len+i]))
     for i in range(basecall_len//2+1-start_barcode_len): # only search in first half for start barcode
         start_bc_edit_distance.append(distance.levenshtein(start_barcode,basecall[i:i+start_barcode_len]))
 
     end_bc_edit_distance = []
     for i in range(basecall_len//2,basecall_len-end_barcode_len): # only search in first half for end barcode (so that things don't break if start and end barcodes are same)
         end_bc_edit_distance.append(distance.levenshtein(end_barcode,basecall[i:i+end_barcode_len]))
+    for i in range(extend_len):
+        end_bc_edit_distance.append(distance.levenshtein(end_barcode,basecall[basecall_len-end_barcode_len+i:basecall_len]))
 
     # find best match positions
-    start_bc_first_base = start_bc_edit_distance.index(min(start_bc_edit_distance))
+    start_bc_first_base = start_bc_edit_distance.index(min(start_bc_edit_distance))-extend_len
     end_bc_first_base = basecall_len//2+end_bc_edit_distance.index(min(end_bc_edit_distance))
     start_bc_last_base = start_bc_first_base + start_barcode_len - 1
     start_pos = trans_arr[start_bc_last_base+1]-1
