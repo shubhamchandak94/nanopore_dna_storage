@@ -17,7 +17,7 @@ Install:
 ```
 ./install.sh
 ```
-Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct. Also, flappie needs certain dependencies listed in the `flappie/` directory.
+Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages.sh`). Also, flappie needs certain dependencies listed in the `flappie/` directory.
 
 ## General instructions
 In many of the scripts, you need to set the path for the corresponding data directories as well as the encoding parameters. 
