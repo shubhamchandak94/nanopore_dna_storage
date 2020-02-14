@@ -247,7 +247,7 @@ def encode(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, conv_r
     (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
     data_padded = data.ljust(data_size_padded,b'0')
     segmented_data = [data_padded[i*bytes_per_oligo:(i+1)*bytes_per_oligo] for i in range(num_oligos_data)]
-    segemented_data_with_RS = RSCode.MainEncoder(segmented_data, num_oligos_RS, path=PATH_TO_RS_CODE)
+    segemented_data_with_RS = RSCode.MainEncoder(segmented_data, num_oligos_RS)
 
     conv_input_file = oligo_file+'.conv_input'
     with open(conv_input_file, 'w') as f:
@@ -306,9 +306,10 @@ def encode_2crc(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, c
     data_size = len(data)
     data_size_padded = math.ceil(data_size/bytes_per_oligo)*bytes_per_oligo
     (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+    msg_len += crc_len
     data_padded = data.ljust(data_size_padded,b'0')
     segmented_data = [data_padded[i*bytes_per_oligo:(i+1)*bytes_per_oligo] for i in range(num_oligos_data)]
-    segemented_data_with_RS = RSCode.MainEncoder(segmented_data, num_oligos_RS, path=PATH_TO_RS_CODE)
+    segemented_data_with_RS = RSCode.MainEncoder(segmented_data, num_oligos_RS)
 
     conv_input_file = oligo_file+'.conv_input'
     with open(conv_input_file, 'w') as f:
@@ -334,6 +335,10 @@ def encode_2crc(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, c
             f.write(bit_string_oligo + '\n')
     
     # apply convolutional encoding to each oligo
+    print(msg_len)
+    print(conv_m)
+    print(conv_r)
+    print(conv_input_file)
     subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'encode','-i',conv_input_file,'-o',oligo_file,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-r',str(conv_r)])
     
     with open(oligo_file) as f:
@@ -479,7 +484,7 @@ def simulate_and_decode_new(oligo_file, decoded_data_file,  num_reads, data_file
         os.remove(decoded_filename)
     # do RS decoding
     decoded_list = [[k, decoded_dict[k]] for k in decoded_dict]
-    RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos, path=PATH_TO_RS_CODE)
+    RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos)
     assert len(RS_decoded_list) == num_oligos_data
     decoded_data = b''.join(RS_decoded_list)
     decoded_data = decoded_data[:data_file_size]
@@ -491,10 +496,12 @@ def simulate_and_decode_2CRC(oligo_file, decoded_data_file,  num_reads, data_fil
     # data_file_size in bytes
     data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
     (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+    msg_len += crc_len
+    num_RS_segments = bytes_per_oligo//2
     with open(oligo_file) as f:
         oligo_list = [l.rstrip('\n') for l in f.readlines()]
     print('oligo_len',len(oligo_list[0]))
-    decoded_index_dict = {}
+    decoded_index_dict = [{} for _ in range(num_RS_segments)]
     num_success = 0
     num_attempted = 0
     for _ in range(num_reads):
@@ -522,21 +529,22 @@ def simulate_and_decode_2CRC(oligo_file, decoded_data_file,  num_reads, data_fil
             decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
         
         
-	#output a list of index, pos and payload_bytes
-	output_list = helper.decode_list_CRC_index(decoded_msg_list,bytes_per_oligo,num_oligos,pad)
-	for (index, pos, payload_bytes) in output_list:
-	    if index in decoded_index_dict[pos]:
-		found = False
-		for tup in decoded_index_dict[pos][index]:
-		    if tup[0] == payload_bytes:
-			tup[1] += 1
-			found = True
-			break
-		    if not found:
-			decoded_index_dict[pos][index].append([payload_bytes,1])
-		decoded_index_dict[pos][index] = sorted(decoded_index_dict[pos][index],key=lambda x: -x[1])
-	    else:
-		decoded_index_dict[pos][index] = [[payload_bytes,1]]
+        #output a list of index, pos and payload_bytes
+        output_list = decode_list_2CRC_index(decoded_msg_list,bytes_per_oligo,num_oligos,pad)
+        print(output_list)
+        for (index, pos, payload_bytes) in output_list:
+            if index in decoded_index_dict[pos]:
+                found = False
+                for tup in decoded_index_dict[pos][index]:
+                    if tup[0] == payload_bytes:
+                        tup[1] += 1
+                        found = True
+                        break
+                    if not found:
+                        decoded_index_dict[pos][index].append([payload_bytes,1])
+                decoded_index_dict[pos][index] = sorted(decoded_index_dict[pos][index],key=lambda x: -x[1])
+            else:
+                decoded_index_dict[pos][index] = [[payload_bytes,1]]
     
     # Prepare data to be sent to RS decoder
     decoded_list = []
@@ -546,7 +554,7 @@ def simulate_and_decode_2CRC(oligo_file, decoded_data_file,  num_reads, data_fil
     # Decode each segment separately
     RS_decoded_list = []
     for segment_id in range(num_RS_segments):
-        RS_decoded_list.append(helper.RSCode.MainDecoder(decoded_list[segment_id], num_oligos_RS, num_oligos))
+        RS_decoded_list.append(RSCode.MainDecoder(decoded_list[segment_id], num_oligos_RS, num_oligos))
 
     # Combine the segments into a list
     decoded_oligos = [''.join(list(i)) for i in zip(*l)]
@@ -610,12 +618,14 @@ def get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len):
         return []
     
     # Get index
-    index_bit_string = bytestring2bitstring(decoded_index)
+    index_bit_string = bytestring2bitstring(decoded_index,8*math.ceil(index_len/8))
     index_bit_string = index_bit_string[-index_len:]
     index_prp = int(index_bit_string,2)
     index = (prp_a_inv*(index_prp-prp_b))%(2**index_len)
     oligo_RS_segments = []
     oligo1_len = (2*(oligo_len//4))
+    print('oligo1_len:',oligo1_len)
+    print('oligo_len:',oligo_len)
     oligo2_len = oligo_len - oligo1_len
     if decoded_oligo1 is None:
         oligo_RS_segments.extend([None for i in range(oligo1_len//2)])
@@ -630,7 +640,8 @@ def get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len):
 
     # rotate back the oligos
     oligo_RS_segments_rotated = rotate_right(oligo_RS_segments, index_prp)
-    
+    print(oligo_RS_segments)
+    print(oligo_RS_segments_rotated) 
     # generate output lists
     output_list = []
     for pos, segment in enumerate(oligo_RS_segments_rotated):
@@ -644,7 +655,6 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
     decoded_oligo1 = None
     decoded_oligo2 = None
     decoded_index = None
-
     for decoded_msg_ in decoded_msg_list:
         # remove padding, if any
         if pad:
@@ -657,7 +667,7 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
         index_bytes = bytestring_with_crc[:math.ceil(index_len/8)]
         oligo_len = length_with_crc - 2*crc_len//8 - math.ceil(index_len/8)
         oligo1_len = (2*(oligo_len//4))
-        index_len = len(index_bytes)
+#        index_len = len(index_bytes)
         oligo1 = bytestring_with_crc[index_len: oligo1_len+index_len ]
         oligo2 = bytestring_with_crc[index_len + oligo1_len: -2*crc_len//8]
         crc1_bytes = bytestring_with_crc[-2*crc_len//8:-crc_len//8]
@@ -669,13 +679,15 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
         crc2 = crc8.crc8(index_oligo2)
        
 
-        index_bit_string = bytestring2bitstring(index_bytes)
+        index_bit_string = bytestring2bitstring(index_bytes,8*math.ceil(index_len/8))
         index_bit_string = index_bit_string[-index_len:]
         index_prp = int(index_bit_string,2)
         index = (prp_a_inv*(index_prp-prp_b))%(2**index_len)
-        
+        print('crc1.digest() == crc1_bytes:',crc1.digest() == crc1_bytes) 
+        print('crc2.digest() == crc2_bytes:',crc2.digest() == crc2_bytes) 
         # If both the crcs match, extract the index etc.
-        if crc1.digest() == crc1_bytes and crc2.digest() == crc2_bytes: 
+        if crc1.digest() == crc1_bytes and crc2.digest() == crc2_bytes:
+            print('hello')
             if index < num_oligos:
                 decoded_oligo1 = oligo1
                 decoded_oligo2 = oligo2

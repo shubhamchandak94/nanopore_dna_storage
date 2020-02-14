@@ -1,0 +1,6 @@
+head -c 50 </dev/urandom >myfile
+
+in python:
+import helper
+helper.encode_2crc('myfile','myfile_oligo',10,0.3,6,1)
+helper.simulate_and_decode_2CRC('myfile_oligo','myfile_decoded',10,50,10,0.3,6,1,syn_sub_prob=0,syn_del_prob=0,syn_ins_prob=0,list_size=8)
