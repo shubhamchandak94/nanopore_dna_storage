@@ -557,7 +557,7 @@ def simulate_and_decode_2CRC(oligo_file, decoded_data_file,  num_reads, data_fil
         RS_decoded_list.append(RSCode.MainDecoder(decoded_list[segment_id], num_oligos_RS, num_oligos))
 
     # Combine the segments into a list
-    decoded_oligos = [''.join(list(i)) for i in zip(*l)]
+    decoded_oligos = [b''.join(list(i)) for i in zip(*RS_decoded_list)]
 
     decoded_data = b''.join(decoded_oligos)
 
@@ -627,6 +627,8 @@ def get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len):
     print('oligo1_len:',oligo1_len)
     print('oligo_len:',oligo_len)
     oligo2_len = oligo_len - oligo1_len
+
+
     if decoded_oligo1 is None:
         oligo_RS_segments.extend([None for i in range(oligo1_len//2)])
     else:
@@ -665,11 +667,11 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
         length_with_crc = math.ceil(len(decoded_msg)/8)*8
         bytestring_with_crc = bitstring2bytestring(decoded_msg, length_with_crc)
         index_bytes = bytestring_with_crc[:math.ceil(index_len/8)]
-        oligo_len = length_with_crc - 2*crc_len//8 - math.ceil(index_len/8)
+        oligo_len = length_with_crc//8 - 2*crc_len//8 - math.ceil(index_len/8)
         oligo1_len = (2*(oligo_len//4))
 #        index_len = len(index_bytes)
-        oligo1 = bytestring_with_crc[index_len: oligo1_len+index_len ]
-        oligo2 = bytestring_with_crc[index_len + oligo1_len: -2*crc_len//8]
+        oligo1 = bytestring_with_crc[len(index_bytes): oligo1_len+len(index_bytes) ]
+        oligo2 = bytestring_with_crc[len(index_bytes) + oligo1_len: -2*crc_len//8]
         crc1_bytes = bytestring_with_crc[-2*crc_len//8:-crc_len//8]
         crc2_bytes = bytestring_with_crc[-crc_len//8:]
 
@@ -678,7 +680,8 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
         crc1 = crc8.crc8(index_oligo1) 
         crc2 = crc8.crc8(index_oligo2)
        
-
+        print(len(oligo1))
+        print(len(oligo2))
         index_bit_string = bytestring2bitstring(index_bytes,8*math.ceil(index_len/8))
         index_bit_string = index_bit_string[-index_len:]
         index_prp = int(index_bit_string,2)
@@ -708,8 +711,8 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
                 decoded_index = index_bytes
 
         
-        # Create segments from the oligo_output
-        output_list = get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len)
+    # Create segments from the oligo_output
+    output_list = get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len)
 
     return output_list
 
