@@ -247,7 +247,7 @@ def encode(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, conv_r
     (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
     data_padded = data.ljust(data_size_padded,b'0')
     segmented_data = [data_padded[i*bytes_per_oligo:(i+1)*bytes_per_oligo] for i in range(num_oligos_data)]
-    segemented_data_with_RS = RSCode.MainEncoder(segmented_data, num_oligos_RS, path=PATH_TO_RS_CODE)
+    segemented_data_with_RS = RSCode.MainEncoder(segmented_data, num_oligos_RS)
 
     conv_input_file = oligo_file+'.conv_input'
     with open(conv_input_file, 'w') as f:
@@ -317,6 +317,7 @@ def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_siz
                 index = (prp_a_inv*((int(index_bit_string,2))-prp_b))%(2**index_len)
                 payload_bytes = bitstring2bytestring(decoded_msg[index_len:-crc_len], bytes_per_oligo*8)
                 if index < num_oligos:
+                    
                     num_success += 1
                     print('Success')
                     print('num success:',num_success)
@@ -328,6 +329,7 @@ def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_siz
                         print('Already seen index',index)
                     break
                 else:
+
                     print('Index out of range')
             else:
                 print('CRC failed')
@@ -339,7 +341,7 @@ def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_siz
     print(decoded_list)
     print(num_oligos_RS)
     print(num_oligos)
-    RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos, path=PATH_TO_RS_CODE)
+    RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos)
     assert len(RS_decoded_list) == num_oligos_data
     decoded_data = b''.join(RS_decoded_list)
     decoded_data = decoded_data[:data_file_size]
