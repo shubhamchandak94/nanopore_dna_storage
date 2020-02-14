@@ -546,6 +546,9 @@ def simulate_and_decode_2CRC(oligo_file, decoded_data_file,  num_reads, data_fil
             else:
                 decoded_index_dict[pos][index] = [[payload_bytes,1]]
     
+        os.remove(fast5_filename)
+        os.remove(post_filename)
+        os.remove(decoded_filename)
     # Prepare data to be sent to RS decoder
     decoded_list = []
     for segment_id in range(num_RS_segments):
@@ -561,9 +564,6 @@ def simulate_and_decode_2CRC(oligo_file, decoded_data_file,  num_reads, data_fil
 
     decoded_data = b''.join(decoded_oligos)
 
-    os.remove(fast5_filename)
-    os.remove(post_filename)
-    os.remove(decoded_filename)
     # do RS decoding
 
 
