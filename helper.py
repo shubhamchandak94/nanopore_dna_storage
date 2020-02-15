@@ -329,7 +329,7 @@ def encode_2crc(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, c
             oligo2 = oligo[2*(oligo_len//4):]
             crc1 = crc8.crc8(index_bytes+oligo1)
             crc2 = crc8.crc8(index_bytes+oligo2)
-            bit_string_oligo = bin_index_string + bytestring2bitstring(oligo+crc1.digest()+crc2.digest(),8*bytes_per_oligo+crc_len+crc_len)
+            bit_string_oligo = bin_index_string + bytestring2bitstring(crc1.digest()+oligo+crc2.digest(),8*bytes_per_oligo+crc_len+crc_len)
             if pad:
                 bit_string_oligo = bit_string_oligo + '0'
             f.write(bit_string_oligo + '\n')
@@ -669,11 +669,13 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
         index_bytes = bytestring_with_crc[:math.ceil(index_len/8)]
         oligo_len = length_with_crc//8 - 2*crc_len//8 - math.ceil(index_len/8)
         oligo1_len = (2*(oligo_len//4))
+        crc_len_in_bytes = crc_len//8
+        index_crc_len = len(index_bytes) + crc_len_in_bytes
 #        index_len = len(index_bytes)
-        oligo1 = bytestring_with_crc[len(index_bytes): oligo1_len+len(index_bytes) ]
-        oligo2 = bytestring_with_crc[len(index_bytes) + oligo1_len: -2*crc_len//8]
-        crc1_bytes = bytestring_with_crc[-2*crc_len//8:-crc_len//8]
-        crc2_bytes = bytestring_with_crc[-crc_len//8:]
+        crc1_bytes = bytestring_with_crc[len(index_bytes): index_crc_len]
+        oligo1 = bytestring_with_crc[index_crc_len: oligo1_len+index_crc_len ]
+        oligo2 = bytestring_with_crc[index_crc_len + oligo1_len: -crc_len_in_bytes]
+        crc2_bytes = bytestring_with_crc[-crc_len_in_bytes:]
 
         index_oligo1 = index_bytes + oligo1
         index_oligo2 = index_bytes + oligo2
