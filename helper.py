@@ -14,9 +14,10 @@ import os
 import crc8
 import filecmp
 
-PATH_TO_RS_CODE = 'RSCode_schifra/'
-PATH_TO_VITERBI_NANOPORE = 'viterbi/viterbi_nanopore.out'
-PATH_TO_FLAPPIE = "flappie/flappie"
+REPO_PATH = os.path.dirname(os.path.realpath(__file__))+'/'
+PATH_TO_RS_CODE = REPO_PATH+'RSCode_schifra/'
+PATH_TO_VITERBI_NANOPORE = REPO_PATH+'viterbi/viterbi_nanopore.out'
+PATH_TO_FLAPPIE = REPO_PATH+"flappie/flappie"
 sys.path.insert(0, PATH_TO_RS_CODE)
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
