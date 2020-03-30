@@ -9,7 +9,7 @@ Code tested on Ubuntu 18.04.1 and Python3.
 ## Download and install
 Download:
 ```
-git clone https://github.com/shubhamchandak94/nanopore_dna_storage/
+git clone --recursive https://github.com/shubhamchandak94/nanopore_dna_storage/
 ```
 Flappie models are stored using git lfs, see instructions in `flappie/` directory README in case of issues.
 
