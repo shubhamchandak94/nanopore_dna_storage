@@ -92,4 +92,4 @@ valgrind :
 		fi done;
 
 clean:
-	rm -f core.* *.o *.bak *stackdump *~
+	rm -f $(BUILD_LIST) core.* *.o *.bak *stackdump *~

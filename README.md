@@ -1,6 +1,8 @@
 # Nanopore DNA storage
 DNA storage for nanopore sequencing using convolutional coding and basecaller-decoder integration
 
+### [BioRxiv](https://www.biorxiv.org/content/10.1101/2019.12.20.871939v2)
+
 ### [Supplementary material](https://github.com/shubhamchandak94/nanopore_dna_storage/blob/master/supplementary_material.pdf)
 
 ### Data: https://github.com/shubhamchandak94/nanopore_dna_storage_data
@@ -17,7 +19,7 @@ Install:
 ```
 ./install.sh
 ```
-Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct. Also, flappie needs certain dependencies listed in the `flappie/` directory.
+Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages.sh`). Also, flappie needs certain dependencies listed in the `flappie/` directory.
 
 ## General instructions
 In many of the scripts, you need to set the path for the corresponding data directories as well as the encoding parameters. 
