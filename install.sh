@@ -1,7 +1,3 @@
-cd flappie/
-make clean
-make
-cd ../
 cd RSCode_schifra
 make clean
 make

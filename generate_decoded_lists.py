@@ -23,7 +23,6 @@ parser.add_argument('--list_size',type=int,required=True)
 parser.add_argument('--start_barcode',type=str,required=True)
 parser.add_argument('--end_barcode',type=str,required=True)
 parser.add_argument('--barcode_search_extend_len',type=int,default=0)
-parser.add_argument('--guppy_model_path',type=str,default="")
 parser.add_argument('--num_threads',type=int,default=1)
 args = parser.parse_args()
 print(args)
@@ -39,7 +38,6 @@ END_BARCODE_RC = helper.reverse_complement(START_BARCODE)
 OUT_PREFIX = args.out_prefix
 HDF5_FILE = args.hdf_file
 PATH_TO_CPP_EXEC = "viterbi/viterbi_nanopore.out"
-PATH_TO_FLAPPIE = "flappie/flappie"
 MSG_LEN = args.msg_len
 MEM_CONV = args.mem_conv
 RATE_CONV = args.rate_conv
@@ -65,24 +63,15 @@ for i,readid in enumerate(readid_list):
     fast5_filename = os.path.join(fast5_dir, 'tmp.'+rnd+'.fast5')
     helper.create_fast5(raw_data,fast5_filename)
 
-    # call guppy to generate transition posterior table
-    post_filename = 'tmp.'+rnd+'.post'
-    trans_filename = 'tmp.'+rnd+'.trans'
+    # call bonito to generate CTC posterior table
+    post_filename = 'tmp.'+rnd+'_'+readid+'.post'
+    trans_filename = 'tmp.'+rnd+'_'+readid+'.trans'
+    fastq_filename = 'tmp.'+rnd+'_'+readid+'.fastq'
 
-    tmp_output_dir = 'tmp_output_' +rnd + '_' + str(readid) 
-    fastq_filename = os.path.join(tmp_output_dir, "fastq_runid_test_0_0.fastq") 
-   
-    if args.guppy_model_path == "":
-        subprocess.run([helper.PATH_TO_GUPPY, '--input_path', fast5_dir, '--save_path', tmp_output_dir, '--flowcell', 'FLO-MIN106', '--kit', 'SQK-LSK109', '--post_out', '--fast5_out', '--num_callers', '30'])
-    else:
-        GUPPY_MODEL_PATH=args.guppy_model_path
-        subprocess.run([helper.PATH_TO_GUPPY, '--model_file', GUPPY_MODEL_PATH, '--input_path', fast5_dir, '--save_path', tmp_output_dir, '--flowcell', 'FLO-MIN106', '--kit', 'SQK-LSK109', '--post_out', '--fast5_out', '--num_callers', '30'])
+    subprocess.run(['bonito','basecaller', 'dna_r9.4.1', fast5_dir, '--post_file', post_filename])
 
-    # Convert guppy output to post_file, trans_file
-    guppy_output_fast5 = tmp_output_dir + "/workspace/tmp." + rnd + ".fast5"
-    print(guppy_output_fast5)
-    helper.guppy_output_transitions(guppy_output_fast5, trans_filename)
-    helper.guppy_output_state_data(guppy_output_fast5, post_filename)
+    # convert bonito post file to fastq and move (trans) files
+    helper.bonito_basecall_generate_move(post_filename,fastq_filename,trans_filename)
 
     # truncate post according to barcode
     (start_pos, end_pos, dist_start, dist_end) = helper.find_barcode_pos_in_post(trans_filename,fastq_filename,START_BARCODE,END_BARCODE,args.barcode_search_extend_len)
@@ -116,5 +105,4 @@ for i,readid in enumerate(readid_list):
     os.remove(trans_filename)
     os.remove(fastq_filename)
     shutil.rmtree(fast5_dir)
-    shutil.rmtree(tmp_output_dir)
 f_info.close()

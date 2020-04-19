@@ -15,19 +15,9 @@ import crc8
 import filecmp
 import h5py
 
-<<<<<<< HEAD
-PATH_TO_RS_CODE = 'RSCode_schifra/'
-PATH_TO_VITERBI_NANOPORE = 'viterbi/viterbi_nanopore.out'
-PATH_TO_FLAPPIE = "flappie/flappie"
-PATH_TO_GUPPY = "/raid/nanopore/shubham/ont-guppy/bin/guppy_basecaller"
-#GUPPY_MODEL_PATH = 
-
-=======
 REPO_PATH = os.path.dirname(os.path.realpath(__file__))+'/'
 PATH_TO_RS_CODE = REPO_PATH+'RSCode_schifra/'
 PATH_TO_VITERBI_NANOPORE = REPO_PATH+'viterbi/viterbi_nanopore.out'
-PATH_TO_FLAPPIE = REPO_PATH+"flappie/flappie"
->>>>>>> 57cf0b1f95f3a0664905fe4d6fc8bc72dee67990
 sys.path.insert(0, PATH_TO_RS_CODE)
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -101,11 +91,11 @@ def create_fast5(raw_data, fast5_filename):
     digitisation = 8192.0
     bins = np.arange(start, stop, rng / digitisation)
     # np.int16 is required, the library will refuse to write anything other
-    #raw_data_binned = np.digitize(raw_data, bins).astype(np.int16)
+    if raw_data.dtype == np.int16:
+        raw_data_binned = raw_data
+    else:
+        raw_data_binned = np.digitize(raw_data, bins).astype(np.int16)
     
-    # For guppy, do not rescale
-    raw_data_binned = raw_data
-
     # The following are required meta data
     channel_id = {
         'digitisation': digitisation,
@@ -228,11 +218,11 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
         return (-1,-1,np.inf,np.inf)
     return (start_pos,end_pos,min(start_bc_edit_distance),min(end_bc_edit_distance))
 
-def truncate_post_file(old_post_filename, new_post_filename, start_pos, end_pos, bytes_per_blk = 160):
+def truncate_post_file(old_post_filename, new_post_filename, start_pos, end_pos, bytes_per_blk = 20):
     '''
     Truncate post file to [start_pos,end_pos] and write to new_post_filename. 
-    bytes_per_blk is 160 by default
-    160 = sizeof(float)*40 (40 entries in transition matrix per timestep for flappie)
+    bytes_per_blk is 20 by default
+    20 = sizeof(float)*5 (5 entries in CTC posterior per timestep for bonito)
     '''
     with open(old_post_filename,'rb') as f:
         data = f.read()
@@ -292,83 +282,85 @@ def encode(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, conv_r
     print('writing rate (bits per base):', data_size*8/(oligo_len*num_oligos))
     return 
 
-def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_size, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False, syn_sub_prob = 0.005, syn_del_prob = 0.005, syn_ins_prob = 0.0005, deepsimdwell = False, num_thr = 16, list_size = 1):
-    # data_file_size in bytes
-    data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
-    (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
-    with open(oligo_file) as f:
-        oligo_list = [l.rstrip('\n') for l in f.readlines()]
-    print('oligo_len',len(oligo_list[0]))
-    decoded_dict = {}
-    num_success = 0
-    num_attempted = 0
-    for _ in range(num_reads):
-        num_attempted += 1
-        print('num_attempted:',num_attempted)
-        rnd = str(np.random.randint(10000000))
-        oligo = np.random.choice(oligo_list)
-        rc = np.random.choice([True, False])
-        if rc:
-            oligo = reverse_complement(oligo)
-        fast5_filename='tmp.'+rnd+'.fast5'
-        simulate_read(oligo, syn_sub_prob, syn_del_prob, syn_ins_prob, fast5_filename, deepSimDwellFlag = deepsimdwell)
-        # call flappie to generate transition posterior table
-        post_filename = 'tmp.'+rnd+'.post'
-        decoded_filename = 'tmp.'+rnd+'.dec'
-        subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
-        post_filename = 'tmp.'+rnd+'.post'
-        decoded_filename = 'tmp.'+rnd+'.dec'
-        subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
-        rc_flag = ''
-        if rc:
-            rc_flag = '--rc'
-        subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-l',str(list_size),'-t',str(num_thr),'-r',str(conv_r),rc_flag,'--max-deviation','20'])
-        with open(decoded_filename) as f:
-            decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
-        for decoded_msg in decoded_msg_list:
-            # remove padding, if any
-            if pad:
-                decoded_msg = decoded_msg[:-1]
-            length_with_crc = math.ceil(len(decoded_msg)/8)*8
-            bytestring_with_crc = bitstring2bytestring(decoded_msg, length_with_crc)
-            crc = crc8.crc8(bytestring_with_crc[:-crc_len//8])
-            if crc.digest() == bytestring_with_crc[-crc_len//8:]:
-                index_bit_string = bytestring2bitstring(bytestring_with_crc[:math.ceil(index_len/8)], 8*math.ceil(index_len/8))
-                index_bit_string = index_bit_string[-index_len:]
-                index = (prp_a_inv*((int(index_bit_string,2))-prp_b))%(2**index_len)
-                payload_bytes = bitstring2bytestring(decoded_msg[index_len:-crc_len], bytes_per_oligo*8)
-                if index < num_oligos:
-                    
-                    num_success += 1
-                    print('Success')
-                    print('num success:',num_success)
-                    if index not in decoded_dict:
-                        decoded_dict[index] = payload_bytes
-                        print('New index!',index)
-                        print('num_unique',len(decoded_dict))
-                    else:
-                        print('Already seen index',index)
-                    break
-                else:
-
-                    print('Index out of range')
-            else:
-                print('CRC failed')
-        os.remove(fast5_filename)
-        os.remove(post_filename)
-        os.remove(decoded_filename)
-    # do RS decoding
-    decoded_list = [[k, decoded_dict[k]] for k in decoded_dict]
-    print(decoded_list)
-    print(num_oligos_RS)
-    print(num_oligos)
-    RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos)
-    assert len(RS_decoded_list) == num_oligos_data
-    decoded_data = b''.join(RS_decoded_list)
-    decoded_data = decoded_data[:data_file_size]
-    with open(decoded_data_file,'wb') as f:
-        f.write(decoded_data)
-    return
+# TODO: update simulate_and_decode function for bonito basecalling 
+#
+# def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_size, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False, syn_sub_prob = 0.005, syn_del_prob = 0.005, syn_ins_prob = 0.0005, deepsimdwell = False, num_thr = 16, list_size = 1):
+#     # data_file_size in bytes
+#     data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
+#     (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+#     with open(oligo_file) as f:
+#         oligo_list = [l.rstrip('\n') for l in f.readlines()]
+#     print('oligo_len',len(oligo_list[0]))
+#     decoded_dict = {}
+#     num_success = 0
+#     num_attempted = 0
+#     for _ in range(num_reads):
+#         num_attempted += 1
+#         print('num_attempted:',num_attempted)
+#         rnd = str(np.random.randint(10000000))
+#         oligo = np.random.choice(oligo_list)
+#         rc = np.random.choice([True, False])
+#         if rc:
+#             oligo = reverse_complement(oligo)
+#         fast5_filename='tmp.'+rnd+'.fast5'
+#         simulate_read(oligo, syn_sub_prob, syn_del_prob, syn_ins_prob, fast5_filename, deepSimDwellFlag = deepsimdwell)
+#         # call flappie to generate transition posterior table
+#         post_filename = 'tmp.'+rnd+'.post'
+#         decoded_filename = 'tmp.'+rnd+'.dec'
+#         subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+#         post_filename = 'tmp.'+rnd+'.post'
+#         decoded_filename = 'tmp.'+rnd+'.dec'
+#         subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+#         rc_flag = ''
+#         if rc:
+#             rc_flag = '--rc'
+#         subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-l',str(list_size),'-t',str(num_thr),'-r',str(conv_r),rc_flag,'--max-deviation','20'])
+#         with open(decoded_filename) as f:
+#             decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
+#         for decoded_msg in decoded_msg_list:
+#             # remove padding, if any
+#             if pad:
+#                 decoded_msg = decoded_msg[:-1]
+#             length_with_crc = math.ceil(len(decoded_msg)/8)*8
+#             bytestring_with_crc = bitstring2bytestring(decoded_msg, length_with_crc)
+#             crc = crc8.crc8(bytestring_with_crc[:-crc_len//8])
+#             if crc.digest() == bytestring_with_crc[-crc_len//8:]:
+#                 index_bit_string = bytestring2bitstring(bytestring_with_crc[:math.ceil(index_len/8)], 8*math.ceil(index_len/8))
+#                 index_bit_string = index_bit_string[-index_len:]
+#                 index = (prp_a_inv*((int(index_bit_string,2))-prp_b))%(2**index_len)
+#                 payload_bytes = bitstring2bytestring(decoded_msg[index_len:-crc_len], bytes_per_oligo*8)
+#                 if index < num_oligos:
+#                     
+#                     num_success += 1
+#                     print('Success')
+#                     print('num success:',num_success)
+#                     if index not in decoded_dict:
+#                         decoded_dict[index] = payload_bytes
+#                         print('New index!',index)
+#                         print('num_unique',len(decoded_dict))
+#                     else:
+#                         print('Already seen index',index)
+#                     break
+#                 else:
+# 
+#                     print('Index out of range')
+#             else:
+#                 print('CRC failed')
+#         os.remove(fast5_filename)
+#         os.remove(post_filename)
+#         os.remove(decoded_filename)
+#     # do RS decoding
+#     decoded_list = [[k, decoded_dict[k]] for k in decoded_dict]
+#     print(decoded_list)
+#     print(num_oligos_RS)
+#     print(num_oligos)
+#     RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos)
+#     assert len(RS_decoded_list) == num_oligos_data
+#     decoded_data = b''.join(RS_decoded_list)
+#     decoded_data = decoded_data[:data_file_size]
+#     with open(decoded_data_file,'wb') as f:
+#         f.write(decoded_data)
+#     return
 
 def compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad):
     msg_len = index_len + crc_len + 8*bytes_per_oligo + pad
@@ -417,52 +409,37 @@ def decode_list_CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
 
 
 ########
-# Guppy helper functions
+# Bonito helper functions
 ########
 
+def bonito_basecall_generate_move(post_file, fastq_file, trans_file):
+    '''
+    perform CTC decoding (greedy) to generate fastq file and a file with 
+    the time steps when each new base starts.
+    The reason for working with greedy is that it allows us to make a trans 
+    (move) matrix which is not possible with beam search.
+    Note that the decoder still uses beam search later on, this is just for
+    the barcode removal
+    '''
+    labels = [ "N", "A", "C", "G", "T",]
+    posteriors = np.fromfile(post_file, dtype=np.float32)
+    posteriors = np.reshape(posteriors, (-1,5))
+    basecall = ""
+    trans = [] # times when new base arrives
+    prev_base = 'N'
+    for i in range(posteriors.shape[0]):
+        next_base = labels[np.argmax(posteriors[i,:])]
+        if next_base != prev_base:
+            prev_base = next_base
+            if next_base != 'N':
+                trans.append(i)
+                basecall = basecall + next_base
+    with open(fastq_file,'w') as f:
+        f.write('@read\n')
+        f.write(basecall+'\n')
+        f.write('+\n')
+        f.write('#'*len(basecall)+'\n')
+    with open(trans_file,'w') as f:
+        f.write(''.join([str(val)+'\n' for val in trans]))
+    return
 
-def guppy_output_transitions(input_fast5_file, output_trans_file):
-    # open fast5_file
-    f_fast5 = h5py.File(input_fast5_file,"r")
-    
-    # Obtain transition values
-    move_array = f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['Move']
-    trans_values = np.nonzero(move_array)[0]
-    
-    # write transition values to a file
-    with open(output_trans_file,"w") as f_trans_out:
-        for val in trans_values:
-            print(val, file = f_trans_out)    
-    
-    f_fast5.close()
-
-def guppy_output_state_data(input_fast5_file, output_post_file):
-    # open fast5_file
-    f_fast5 = h5py.File(input_fast5_file,"r")
-    
-    # Obtain transition values
-    state_data = np.array(f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['StateData'])
-    
-    # Find offset and scale
-    scale = f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['StateData'].attrs['scale']
-    offset = f_fast5['Analyses']['Basecall_1D_000']['BaseCalled_template']['StateData'].attrs['offset']
-    
-    
-    # rescaled data
-    rescaled_state_data = (state_data + offset)*scale
-
-    # find max per time sample
-    max_val = np.max(rescaled_state_data,axis = 1).reshape((-1,1))
-    print(max_val.shape)
-    logsumexp_val = np.log(np.sum(np.exp(rescaled_state_data - max_val), axis = 1)).reshape((-1,1)) + max_val 
-    
-    # final normalized state
-    normalized_state = rescaled_state_data - logsumexp_val
-    
-
-
-    # write transition values to a file
-    with open(output_post_file,"w") as f_post:
-        state_data.astype(np.float32).tofile(f_post)
-    
-    f_fast5.close()

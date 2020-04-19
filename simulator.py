@@ -28,7 +28,6 @@ args = parser.parse_args()
 print(args)
 
 PATH_TO_CPP_EXEC = "viterbi/viterbi_nanopore.out"
-PATH_TO_FLAPPIE = "flappie/flappie"
 NUM_TRIALS = args.num_trials
 LIST_SIZE = args.list_size
 NUM_THR = args.num_thr
@@ -72,13 +71,16 @@ for _ in range(NUM_TRIALS):
     if revcomp:
         seq = helper.reverse_complement(seq)
 
-    fast5_filename='tmp.'+rnd+'.fast5'
+    tmp_output_dir = 'tmp_output_' +rnd + '/'
+    os.mkdir(tmp_output_dir)
+    fast5_filename= tmp_output_dir+'tmp.'+rnd+'.fast5'
     helper.simulate_read(seq, SYN_SUB_PROB, SYN_DEL_PROB, SYN_INS_PROB, fast5_filename, deepSimDwellFlag = deepsimdwell)
 
-    # call flappie to generate transition posterior table
+    # call bonito to generate posterior table
     post_filename = 'tmp.'+rnd+'.post'
     decoded_filename = 'tmp.'+rnd+'.dec'
-    subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+
+    subprocess.run(['bonito','basecaller', 'dna_r9.4.1', tmp_output_dir, '--post_file', post_filename])
     rc_flag = ''
     if revcomp:
         rc_flag = '--rc'
@@ -112,6 +114,7 @@ for _ in range(NUM_TRIALS):
     os.remove(file_msg)
     os.remove(file_seq)
     os.remove(fast5_filename)
+    os.rmdir(tmp_output_dir)
     os.remove(post_filename)
     os.remove(decoded_filename)
 

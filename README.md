@@ -13,13 +13,13 @@ Download:
 ```
 git clone --recursive https://github.com/shubhamchandak94/nanopore_dna_storage/
 ```
-Flappie models are stored using git lfs, see instructions in `flappie/` directory README in case of issues.
 
 Install:
 ```
 ./install.sh
 ```
-Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages.sh`). Also, flappie needs certain dependencies listed in the `flappie/` directory.
+All the steps below should be run in a virtual environment created for bonito (see `bonito/` directory for details).
+Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages_bonito_venv.sh`).
 
 ## General instructions
 In many of the scripts, you need to set the path for the corresponding data directories as well as the encoding parameters. 
