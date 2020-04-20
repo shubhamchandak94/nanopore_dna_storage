@@ -16,42 +16,44 @@
 
 const uint8_t NBASE = 4;
 const char int2base[NBASE] = {'A', 'C', 'G', 'T'};
-const uint8_t nstate_crf = 8;
-// states are A+,C+,G+,T+,A-,C-,G-,T- (+ = flip, - = flop), you can enter from a
-// different base only into a flip base.
 
-typedef std::array<std::array<float, nstate_crf>, NBASE + 1> crf_mat_t;
-// for each input state, we have five (4+1) possible output states: e.g., A+ ->
-// A+,C+,G+,T+,A-; A- -> A+,C+,G+,T+,A-; A-; etc.
+typedef std::array<float, NBASE + 1> ctc_mat_t;
+// at each time step, we have probabilities for A,C,G,T,blank
+// uint8_t base: 0->A, 1->C, 2->G, 3->T
+
 
 // for parallel LVA
 const uint32_t BITSET_SIZE = 256;  // 32 bytes
 typedef std::bitset<BITSET_SIZE> bitset_t;
+
+// this is the main stucture to store the top paths for each state
 struct LVA_path_t {
   bitset_t msg;
-  float score;
+  float score_nonblank; // score for path ending with non-blank base
+  float score_blank; // score for path ending with non-blank base
+  float score; // logsumexp(score_nonblank,score_blank), used for sorting 
+  uint8_t last_base; // for computing updated score_nonblank for stay transition
+  bool operator<(const LVA_path_t &l) { return (score < l.score); }
+  LVA_path_t() {
+    float INF = std::numeric_limits<float>::infinity();
+    score_nonblank = -INF;
+    score_blank = -INF;
+    compute_score();
+  }
+  void compute_score() {
+    score = logsumexpf(score_nonblank, score_blank);
+  }
 };
 
 // struct for storing information about previous state for a current state and
 // the transition
 struct prev_state_info_t {
   uint32_t st_conv;
-  uint8_t st_crf;
-  uint8_t post_idx_0;
-  uint8_t
-      post_idx_1;     // the transition score is in post[post_idx_0][post_idx_1]
+  uint8_t new_base; // undefined for transition from same conv state, otherwise
+                    // stores the new base added in this transition 
   uint8_t msg_shift;  // shift in message in transition
   uint8_t msg_newbits;  // new bits in transition (new_msg = (old_msg <<
                         // msg_shift)|msg_newbits)
-};
-
-// heap element used for finding the top list_size elements
-struct heap_elem_t {
-  float score;
-  uint32_t pos_in_prev_state;
-  uint32_t pos_in_list;
-  uint32_t prev_state;
-  bool operator<(const heap_elem_t &h) { return (score < h.score); }
 };
 
 bool rc_flag = false;
@@ -100,18 +102,15 @@ void write_vector(const std::vector<T> &outvec, const std::string &outfile) {
 }
 
 float logsumexpf(float x, float y) {
+  if (x == -INF && y == -INF)
+    return -INF;    
   float max_x_y = std::max(x, y);
   return max_x_y + logf(expf(x - max_x_y) + expf(y - max_x_y));
 }
 
-std::vector<crf_mat_t> read_crf_post(const std::string &infile);
+std::vector<ctc_mat_t> read_ctc_post(const std::string &infile);
 
 std::vector<std::vector<uint8_t>> read_vocab_file(const std::string &infile);
-
-uint8_t to_idx_crf_in_post(uint8_t st2_crf);
-
-uint32_t get_state_idx(const uint32_t st_pos, const uint32_t st_conv,
-                       const uint32_t st_crf);
 
 uint32_t conv_next_state(const uint32_t cur_state, const bool bit);
 
@@ -124,12 +123,11 @@ bool is_valid_state(const uint32_t &st2_pos, const uint32_t &st2_conv,
                     const uint32_t &msg_len);
 
 std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
-    const std::vector<crf_mat_t> &post, const uint32_t msg_len,
+    const std::vector<ctc_mat_t> &post, const uint32_t msg_len,
     const uint32_t list_size, const uint32_t num_thr,
     const uint32_t max_deviation);
 
 std::vector<prev_state_info_t> find_prev_states(const uint32_t &st2_conv,
-                                                const uint32_t &st2_crf,
                                                 const uint8_t &punc_pattern);
 
 uint32_t reverse_integer_bits(const uint32_t &num, const uint32_t numbits);
@@ -225,14 +223,14 @@ int main(int argc, char **argv) {
       write_bit_array_in_bases(encoded_msg_vec, outfile);
     } else {
       // do list decoding
-      //
-      // find list_size top paths using Parallel LVA as described in
+      // 
+      // based on ideas from Parallel LVA algorithm as described in 
       // https://github.com/shubhamchandak94/kBestViterbi/blob/master/kBestViterbi.py
-      // or in ieeexplore.ieee.org/iel1/26/12514/00577040.pdf - if you get two
-      // paths coming to same state at same time with same message, then keep
-      // only one and take the max score - thus we try to get list_size unique
-      // msg at each stage (if we don't do this, we observed that most of the
-      // paths at the end correspond to the same msg)
+      // or in ieeexplore.ieee.org/iel1/26/12514/00577040.pdf
+      // and on beam search for CTC as described in https://distill.pub/2017/ctc/
+      // and in https://gist.github.com/awni/56369a90d03953e370f3964c826ed4b0
+      // 
+      // TODO: fill in a summary  
       //
 
       uint32_t max_deviation =
@@ -240,7 +238,7 @@ int main(int argc, char **argv) {
           1;  // don't restrict anything, do full exact Viterbi
       if (result.count("max-deviation"))
         max_deviation = result["max-deviation"].as<uint32_t>();
-      std::vector<crf_mat_t> post = read_crf_post(infile);
+      std::vector<ctc_mat_t> post = read_ctc_post(infile);
       uint32_t list_size = result["list-size"].as<uint32_t>();
       uint32_t num_thr = result["num-thr"].as<uint32_t>();
       auto decoded_msg_list = decode_post_conv_parallel_LVA(
@@ -550,23 +548,17 @@ void write_bit_array_in_bases(const std::vector<std::vector<bool>> &outvec_vec,
   fout.close();
 }
 
-std::vector<crf_mat_t> read_crf_post(const std::string &infile) {
+std::vector<ctc_mat_t> read_ctc_post(const std::string &infile) {
   std::ifstream fin(infile, std::ios::binary);
-  std::vector<crf_mat_t> post;
-  crf_mat_t post_mat;
+  std::vector<ctc_mat_t> post;
+  ctc_mat_t post_mat;
   float val;
   fin.read((char *)&val, sizeof(float));
   while (!fin.eof()) {
+    post_mat[NBASE] = val;
+    fin.read((char *)&val, sizeof(float));
     for (uint8_t i = 0; i < NBASE; i++) {
-      for (uint8_t j = 0; j < nstate_crf; j++) {
-        post_mat[i][j] = val;
-        fin.read((char *)&val, sizeof(float));
-      }
-    }
-    uint8_t i = NBASE;  // output state is one of the flop states now (for given
-                        // input state, only one possible output flop state)
-    for (uint8_t j = 0; j < nstate_crf; j++) {
-      post_mat[i][j] = val;
+      post_mat[i] = val;
       fin.read((char *)&val, sizeof(float));
     }
     post.push_back(post_mat);
@@ -574,25 +566,17 @@ std::vector<crf_mat_t> read_crf_post(const std::string &infile) {
   return post;
 }
 
-uint32_t get_state_idx(const uint32_t st_pos, const uint32_t st_conv,
-                       const uint32_t st_crf) {
-  return st_pos * nstate_conv * nstate_crf + st_conv * nstate_crf + st_crf;
-}
-
-uint8_t to_idx_crf_in_post(uint8_t st2_crf) {
-  // return index of the st2_crf state in the post matrix, we need this because
-  // we have 5 by 8 matrix and transitions to flop states are stored in the last
-  // row to save space since not all transitions to the flop state are allowed
-  return (st2_crf >= NBASE) ? NBASE : st2_crf;
+uint32_t get_state_idx(const uint32_t st_pos, const uint32_t st_conv) {
+  return st_pos * nstate_conv + st_conv;
 }
 
 std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
-    const std::vector<crf_mat_t> &post, const uint32_t msg_len,
+    const std::vector<ctc_mat_t> &post, const uint32_t msg_len,
     const uint32_t list_size, const uint32_t num_thr,
     const uint32_t max_deviation) {
   omp_set_num_threads(num_thr);
   float INF = std::numeric_limits<float>::infinity();
-  uint64_t nstate_total_64 = nstate_pos * nstate_crf * nstate_conv;
+  uint64_t nstate_total_64 = nstate_pos * nstate_conv;
   if (nstate_total_64 >= ((uint64_t)1 << 32))
     throw std::runtime_error("Too many states, can't fit in 32 bits");
   uint32_t nstate_total = (uint32_t)nstate_total_64;
@@ -604,19 +588,13 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
   if (msg_len > BITSET_SIZE)
     throw std::runtime_error("msg_len can't be above BITSET_SIZE");
 
-  bitset_t **curr_best_msg = new bitset_t *[nstate_total];
-  bitset_t **prev_best_msg = new bitset_t *[nstate_total];
-  float **curr_score = new float *[nstate_total];
-  float **prev_score = new float *[nstate_total];
+  // arrays for storing previous and current best paths
+  // [nstate_total][list_size]
+  LVA_path_t **curr_best_paths = new LVA_path_t *[nstate_total];
+  LVA_path_t **prev_best_paths = new LVA_path_t *[nstate_total];
   for (uint32_t i = 0; i < nstate_total; i++) {
-    curr_best_msg[i] = new bitset_t[list_size]();
-    prev_best_msg[i] = new bitset_t[list_size]();
-    curr_score[i] = new float[list_size]();
-    prev_score[i] = new float[list_size]();
-    for (uint32_t j = 0; j < list_size; j++) {
-      curr_score[i][j] = -INF;
-      prev_score[i][j] = -INF;
-    }
+    curr_best_paths[i] = new LVA_path_t[list_size];
+    prev_best_paths[i] = new LVA_path_t[list_size];
   }
 
   // find valid states based on intial and final states as well as
@@ -642,32 +620,27 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
                   puncturing_pattern + puncturing_pattern_len,
                   punc_pattern) == puncturing_pattern + puncturing_pattern_len)
       continue;
-    prev_state_vector[punc_pattern].resize(nstate_conv * nstate_crf);
+    prev_state_vector[punc_pattern].resize(nstate_conv);
     for (uint32_t st_conv = 0; st_conv < nstate_conv; st_conv++)
-      for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++)
-        prev_state_vector[punc_pattern][nstate_crf * st_conv + st_crf] =
-            find_prev_states(st_conv, st_crf, punc_pattern);
+        prev_state_vector[punc_pattern][st_conv] =
+            find_prev_states(st_conv, punc_pattern);
   }
 
+  // TODO: update comments here
   // unordered_sets used for finding duplicate messages while building list
   //  std::vector<std::unordered_set<bitset_t>> already_seen_set(num_thr);
   // NOT USING SET SINCE IT'S SLOWER THAN JUST SEARCHING THROUGH THE LIST FOR
   // SMALL LIST SIZES
 
-  for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++) {
-    curr_score[get_state_idx(0, initial_state_conv, st_crf)][0] =
-        0.0;  // only valid initial state is pos 0, conv code at
-              // initial_state_conv. crf state can be anything since we will
-              // later ignore everything before the first transition
-              // only populate one position in list (0), rest -INF
-  }
+  // set score_blank to zero for initial state
+  curr_best_paths[get_state_idx(0, initial_state_conv)][0].score_blank = 0.0;
+  curr_best_paths[get_state_idx(0, initial_state_conv)][0].compute_score();
 
   // forward Viterbi pass
 
   for (uint32_t t = 0; t < nblk; t++) {
     // swap prev and curr arrays
-    std::swap(curr_score, prev_score);
-    std::swap(curr_best_msg, prev_best_msg);
+    std::swap(curr_best_paths, prev_best_paths);
 
     // st is current state
     uint32_t st_pos_start =
@@ -803,41 +776,24 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
       }
     }
   }
-  std::vector<LVA_path_t> LVA_path_list_final;
+
   uint32_t st_pos = nstate_pos - 1, st_conv = final_state_conv;  // last state
-  for (uint8_t st_crf = 0; st_crf < nstate_crf; st_crf++) {
-    uint32_t st = get_state_idx(st_pos, st_conv, st_crf);
-    for (uint32_t list_pos = 0; list_pos < list_size; list_pos++) {
-      if (curr_score[st][list_pos] != -INF)
-        LVA_path_list_final.push_back(
-            {curr_best_msg[st][list_pos], curr_score[st][list_pos]});
-    }
-  }
-
-  // sort
-  std::sort(LVA_path_list_final.begin(), LVA_path_list_final.end(),
-            [](const LVA_path_t &p1, const LVA_path_t &p2) -> bool {
-              return p1.score > p2.score;
-            });
-
-  if (LVA_path_list_final.size() > list_size)
-    LVA_path_list_final.resize(list_size);
+  LVA_path_t *LVA_path_list_final = curr_best_paths[get_state_idx(st_pos, st_conv)];
 
   std::vector<std::vector<bool>> decoded_msg_list;
 
   // now convert bitset to bool vectors
-  for (auto LVA_path : LVA_path_list_final) {
+  for (uint32_t list_pos = 0; list_pos < list_size; list_pos++) {
     std::vector<bool> decoded_msg(msg_len);
     for (uint8_t i = 0; i < msg_len; i++)
       decoded_msg[i] =
-          LVA_path.msg[msg_len + mem_conv - 1 -
+          LVA_path_list_final[list_pos].msg[msg_len + mem_conv - 1 -
                        i];  // due to way bitset is stored in reverse
     if (rc_flag) std::reverse(decoded_msg.begin(), decoded_msg.end());
     decoded_msg_list.push_back(decoded_msg);
-
     // FOR DEBUGGING
     /*
-        std::cout << "score: " << LVA_path.score << "\n";
+        std::cout << "score: " << LVA_path_list_final[list_pos].score << "\n";
         for (auto b : decoded_msg_list.back()) std::cout << b;
         std::cout << "\n\n";
     */
@@ -845,20 +801,15 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
   //  std::cout << "Final list size: " << decoded_msg_list.size() << "\n";
 
   for (uint32_t i = 0; i < nstate_total; i++) {
-    delete[] curr_best_msg[i];
-    delete[] prev_best_msg[i];
-    delete[] curr_score[i];
-    delete[] prev_score[i];
+    delete[] curr_best_paths[i];
+    delete[] prev_best_paths[i];
   }
-  delete[] curr_best_msg;
-  delete[] prev_best_msg;
-  delete[] curr_score;
-  delete[] prev_score;
+  delete[] curr_best_paths;
+  delete[] prev_best_paths;
   return decoded_msg_list;
 }
 
 std::vector<prev_state_info_t> find_prev_states(const uint32_t &st2_conv,
-                                                const uint32_t &st2_crf,
                                                 const uint8_t &punc_pattern) {
   std::vector<prev_state_info_t> prev_state_vec;
   prev_state_info_t prev_state_info;
@@ -866,74 +817,51 @@ std::vector<prev_state_info_t> find_prev_states(const uint32_t &st2_conv,
   uint8_t curr_conv_bit_1 = (st2_conv >> (mem_conv - 2)) & 1;
   // first do stay
   uint32_t st1_conv = st2_conv;
-  uint8_t st1_crf = st2_crf;
   prev_state_info.st_conv = st1_conv;
-  prev_state_info.st_crf = st1_crf;
-  prev_state_info.post_idx_0 = to_idx_crf_in_post(st2_crf);
-  prev_state_info.post_idx_1 = st1_crf;
   prev_state_info.msg_shift = 0;
   prev_state_info.msg_newbits = 0;
   prev_state_vec.push_back(prev_state_info);
 
-  for (uint8_t st1_crf = 0; st1_crf < nstate_crf; st1_crf++) {
-    if (st2_crf >= NBASE &&
-        !((st1_crf == st2_crf) || st1_crf == st2_crf - NBASE))
-      continue;  // unallowed transition
-    if (st2_crf == st1_crf) {
-      // at same base, already done above
-      continue;
+  // now depending on the puncturing pattern, find the previous conv_state
+  // and the base outputted on the corresponding transition
+  if (punc_pattern == 0) {
+    for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
+      uint32_t st1_conv = conv_prev_state(st2_conv, conv_bit);
+      uint8_t new_base = 2 * conv_output(0, st1_conv, curr_conv_bit)
+                         + conv_output(1, st1_conv, curr_conv_bit);
+      prev_state_info.st_conv = st1_conv;
+      prev_state_info.new_base = new_base;
+      prev_state_info.msg_shift = 1;
+      prev_state_info.msg_newbits = curr_conv_bit;
+      prev_state_vec.push_back(prev_state_info);
     }
-    // new base, new position
-    // look at two possible previous states of convolutional code and
-    // see if the output for the transition matches the base st2_crf
-    uint8_t st2_crf_base = st2_crf % NBASE;
-    if (punc_pattern == 0) {
-      for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
-        uint32_t st1_conv = conv_prev_state(st2_conv, conv_bit);
-        if (2 * conv_output(0, st1_conv, curr_conv_bit) +
-                conv_output(1, st1_conv, curr_conv_bit) ==
-            st2_crf_base) {
-          prev_state_info.st_conv = st1_conv;
-          prev_state_info.st_crf = st1_crf;
-          prev_state_info.post_idx_0 = to_idx_crf_in_post(st2_crf);
-          prev_state_info.post_idx_1 = st1_crf;
-          prev_state_info.msg_shift = 1;
-          prev_state_info.msg_newbits = curr_conv_bit;
-          prev_state_vec.push_back(prev_state_info);
+  } else {
+    for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
+      for (uint8_t conv_bit_1 = 0; conv_bit_1 < 2; conv_bit_1++) {
+        uint32_t st1_5_conv = conv_prev_state(st2_conv, conv_bit);
+        uint32_t st1_conv = conv_prev_state(st1_5_conv, conv_bit_1);
+        uint8_t bit_0, bit_1, bit_2, bit_3;
+        bit_0 = conv_output(0, st1_conv, curr_conv_bit_1);
+        bit_1 = conv_output(1, st1_conv, curr_conv_bit_1);
+        bit_2 = conv_output(0, st1_5_conv, curr_conv_bit);
+        bit_3 = conv_output(1, st1_5_conv, curr_conv_bit);
+        uint8_t base = 0;
+        switch (punc_pattern) {
+          case 1:
+            base = rc_flag ? (2 * bit_2 + bit_1) : (2 * bit_1 + bit_2);
+            break;
+          case 2:
+            base = rc_flag ? (2 * bit_3 + bit_0) : (2 * bit_0 + bit_3);
+            break;
+          case 3:
+            base = rc_flag ? (2 * bit_3 + bit_1) : (2 * bit_1 + bit_3);
+            break;
         }
-      }
-    } else {
-      for (uint8_t conv_bit = 0; conv_bit < 2; conv_bit++) {
-        for (uint8_t conv_bit_1 = 0; conv_bit_1 < 2; conv_bit_1++) {
-          uint32_t st1_5_conv = conv_prev_state(st2_conv, conv_bit);
-          uint32_t st1_conv = conv_prev_state(st1_5_conv, conv_bit_1);
-          uint8_t bit_0, bit_1, bit_2, bit_3;
-          bit_0 = conv_output(0, st1_conv, curr_conv_bit_1);
-          bit_1 = conv_output(1, st1_conv, curr_conv_bit_1);
-          bit_2 = conv_output(0, st1_5_conv, curr_conv_bit);
-          bit_3 = conv_output(1, st1_5_conv, curr_conv_bit);
-          uint8_t base = 0;
-          switch (punc_pattern) {
-            case 1:
-              base = rc_flag ? (2 * bit_2 + bit_1) : (2 * bit_1 + bit_2);
-              break;
-            case 2:
-              base = rc_flag ? (2 * bit_3 + bit_0) : (2 * bit_0 + bit_3);
-              break;
-            case 3:
-              base = rc_flag ? (2 * bit_3 + bit_1) : (2 * bit_1 + bit_3);
-              break;
-          }
-          if (base == st2_crf_base) {
-            prev_state_info.st_conv = st1_conv;
-            prev_state_info.st_crf = st1_crf;
-            prev_state_info.post_idx_0 = to_idx_crf_in_post(st2_crf);
-            prev_state_info.post_idx_1 = st1_crf;
-            prev_state_info.msg_shift = 2;
-            prev_state_info.msg_newbits = 2 * curr_conv_bit_1 + curr_conv_bit;
-            prev_state_vec.push_back(prev_state_info);
-          }
-        }
+        prev_state_info.st_conv = st1_conv;
+        prev_state_info.new_base = base;
+        prev_state_info.msg_shift = 2;
+        prev_state_info.msg_newbits = 2 * curr_conv_bit_1 + curr_conv_bit;
+        prev_state_vec.push_back(prev_state_info);
       }
     }
   }
