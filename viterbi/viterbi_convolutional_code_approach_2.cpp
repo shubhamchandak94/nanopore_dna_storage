@@ -845,11 +845,11 @@ std::vector<std::vector<bool>> decode_post_conv_parallel_LVA(
     if (rc_flag) std::reverse(decoded_msg.begin(), decoded_msg.end());
     decoded_msg_list.push_back(decoded_msg);
     // FOR DEBUGGING
-     
+    /*     
         std::cout << "score: " << final_candidate_paths[list_pos].score << "\n";
         for (auto b : decoded_msg_list.back()) std::cout << b;
         std::cout << "\n\n";
-    
+    */
   }
   // std::cout << "Final list size: " << decoded_msg_list.size() << "\n";
 
