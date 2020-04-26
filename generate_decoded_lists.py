@@ -22,8 +22,11 @@ parser.add_argument('--rate_conv',type=int,required=True)
 parser.add_argument('--list_size',type=int,required=True)
 parser.add_argument('--start_barcode',type=str,required=True)
 parser.add_argument('--end_barcode',type=str,required=True)
-parser.add_argument('--barcode_search_extend_len',type=int,default=0)
+parser.add_argument('--barcode_search_extend_len',type=int,help='default: set to min of start and end barcode len')
+parser.add_argument('--barcode_extend_penalty',type=float,default=0.6)
 parser.add_argument('--num_threads',type=int,default=1)
+parser.add_argument('--bonito_model_path',type=str)
+
 args = parser.parse_args()
 print(args)
 
@@ -43,6 +46,14 @@ MEM_CONV = args.mem_conv
 RATE_CONV = args.rate_conv
 info_file = args.info_file
 read_id_file = args.read_id_file
+if args.bonito_model_path is None:
+    bonito_model_path = 'dna_r9.4.1'
+else:
+    bonito_model_path = args.bonito_model_path
+if args.barcode_search_extend_len is None:
+    barcode_search_extend_len = min(len(start_barcode),len(end_barcode))
+else:
+    barcode_search_extend_len = args.barcode_search_extend_len
 
 with open(read_id_file) as f:
     readid_list = [l.rstrip('\n') for l in f.readlines()]
@@ -68,14 +79,14 @@ for i,readid in enumerate(readid_list):
     trans_filename = 'tmp.'+rnd+'_'+readid+'.trans'
     fastq_filename = 'tmp.'+rnd+'_'+readid+'.fastq'
 
-    subprocess.run(['bonito','basecaller', 'dna_r9.4.1', fast5_dir, '--post_file', post_filename])
+    subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename])
 
     # convert bonito post file to fastq and move (trans) files
     helper.bonito_basecall_generate_move(post_filename,fastq_filename,trans_filename)
 
     # truncate post according to barcode
-    (start_pos, end_pos, dist_start, dist_end) = helper.find_barcode_pos_in_post(trans_filename,fastq_filename,START_BARCODE,END_BARCODE,args.barcode_search_extend_len)
-    (start_pos_RC, end_pos_RC, dist_start_RC, dist_end_RC) = helper.find_barcode_pos_in_post(trans_filename,fastq_filename,START_BARCODE_RC,END_BARCODE_RC,args.barcode_search_extend_len)
+    (start_pos, end_pos, dist_start, dist_end) = helper.find_barcode_pos_in_post(trans_filename,fastq_filename,START_BARCODE,END_BARCODE,barcode_search_extend_len,args.barcode_extend_penalty)
+    (start_pos_RC, end_pos_RC, dist_start_RC, dist_end_RC) = helper.find_barcode_pos_in_post(trans_filename,fastq_filename,START_BARCODE_RC,END_BARCODE_RC,barcode_search_extend_len,args.barcode_extend_penalty)
     rc = False
     if dist_start + dist_end > dist_start_RC + dist_end_RC:
         rc = True

@@ -157,7 +157,7 @@ def read_seq(infile_seq):
     print(seq)
     return seq
 
-def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_barcode,extend_len=0):
+def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_barcode,extend_len=0, extend_penalty=1.0):
     '''
     find position of best edit distance match for barcodes in the post matrix
     looks at fastq to find the best match for barcode_start and barcode_end and then finds
@@ -167,8 +167,11 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
     If things fail, return (-1,-1)
     extend_len: extra length at start and end to search for barcode match (useful if basecaller cuts
     a bit of the barcode, e.g., with guppy)
+    extend_penalty: float between 0.0 and 1.0 telling the penalty we impose per base on extend operation (i.e., barcode hanging off the sides). Setting to 1 just means we compute edit distance as it is (this can penalize a bit much and miss perfect match of say 10 bases out of 25 base barcode). Setting to 0 is bad because then there is chance that the empty match (completely hanging off) is selected.
     '''
     assert extend_len >= 0
+    assert 0.0 <= extend_penalty <= 1.0
+    one_minus_extend_penalty = 1.0-extend_penalty
     # load basecalled read from fastq
     with open(fastq_filename,'r') as f:
         _ = f.readline()
@@ -186,30 +189,37 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
 
     start_bc_edit_distance = []
     for i in range(-extend_len,0):
-        start_bc_edit_distance.append(distance.levenshtein(start_barcode,basecall[:start_barcode_len+i]))
-    for i in range(basecall_len//2+1-start_barcode_len): # only search in first half for start barcode
+        start_bc_edit_distance.append(distance.levenshtein(start_barcode,basecall[:start_barcode_len+i])+i*one_minus_extend_penalty)
+    for i in range(basecall_len-start_barcode_len):
         start_bc_edit_distance.append(distance.levenshtein(start_barcode,basecall[i:i+start_barcode_len]))
-
-    end_bc_edit_distance = []
-    for i in range(basecall_len//2,basecall_len-end_barcode_len): # only search in first half for end barcode (so that things don't break if start and end barcodes are same)
-        end_bc_edit_distance.append(distance.levenshtein(end_barcode,basecall[i:i+end_barcode_len]))
-    for i in range(extend_len):
-        end_bc_edit_distance.append(distance.levenshtein(end_barcode,basecall[basecall_len-end_barcode_len+i:basecall_len]))
 
     # find best match positions
     start_bc_first_base = start_bc_edit_distance.index(min(start_bc_edit_distance))-extend_len
-    end_bc_first_base = basecall_len//2+end_bc_edit_distance.index(min(end_bc_edit_distance))
     start_bc_last_base = start_bc_first_base + start_barcode_len - 1
-    start_pos = trans_arr[start_bc_last_base+1]-1
-    end_pos = trans_arr[end_bc_first_base-1]-1
+
+    end_bc_edit_distance = []
+    for i in range(start_bc_last_base,basecall_len-end_barcode_len+1): # end_bc must be after start_bc 
+        end_bc_edit_distance.append(distance.levenshtein(end_barcode,basecall[i:i+end_barcode_len]))
+    for i in range(1,extend_len+1):
+        end_bc_edit_distance.append(distance.levenshtein(end_barcode,basecall[basecall_len-end_barcode_len+i:basecall_len])-i*one_minus_extend_penalty)
+
+    # find best match positions
+    # need sanity check in case range(start_bc_last_base,basecall_len-end_barcode_len) is empty
+    if start_bc_last_base >= basecall_len-end_barcode_len:
+      end_bc_first_base = basecall_len-end_barcode_len + 1 + end_bc_edit_distance.index(min(end_bc_edit_distance))
+    else:
+      end_bc_first_base = start_bc_last_base+end_bc_edit_distance.index(min(end_bc_edit_distance))
     print('basecall_len', basecall_len)
     print('start_bc_last_base', start_bc_last_base)
     print('end_bc_first_base', end_bc_first_base)
+    
+    start_pos = trans_arr[start_bc_last_base+1]-1
+    end_pos = trans_arr[end_bc_first_base-1]-1
     print('start_pos_in_post',start_pos)
     print('end_pos_in_post',end_pos)
     print('basecall',basecall)
     print('start_barcode',start_barcode)
-    print('start_bcmatch',basecall[start_bc_first_base:start_bc_first_base+start_barcode_len])
+    print('start_bcmatch',basecall[max(0,start_bc_first_base):start_bc_first_base+start_barcode_len])
     print('end_barcode',end_barcode)
     print('end_bcmatch',basecall[end_bc_first_base:end_bc_first_base+end_barcode_len])
 
