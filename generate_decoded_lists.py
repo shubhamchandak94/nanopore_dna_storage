@@ -51,7 +51,7 @@ if args.bonito_model_path is None:
 else:
     bonito_model_path = args.bonito_model_path
 if args.barcode_search_extend_len is None:
-    barcode_search_extend_len = min(len(start_barcode),len(end_barcode))
+    barcode_search_extend_len = min(len(START_BARCODE),len(END_BARCODE))
 else:
     barcode_search_extend_len = args.barcode_search_extend_len
 
