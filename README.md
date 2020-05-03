@@ -94,5 +94,7 @@ Some analysis showed that the previous barcode removal strategy led to suboptima
 
 #### TODO
 [X] It seems 0.5 is doing better for trained models - so might want to switch to this (doesn't make a big difference for default model)
+
 [ ] Can potentially move to cutadapt in the future - currently there doesn't seem to be much incentive.
+
 [ ] One case where improvement possible: These were cases where the barcode on one or both sides is completely missing in read (or just a couple bases left). In such cases, our barcode removal tends to find a bad match elsewhere in the read. Whereas no trimming might do the trick. One way to fix this could be have a max error rate - that is remove barcode only if the match is at least X% edit distance. This will help only if the barcode is not present, but the payload portion is present. This is a relatively rare scenario so not doing this right now.
