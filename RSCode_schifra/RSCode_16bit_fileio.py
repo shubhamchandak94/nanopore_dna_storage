@@ -122,8 +122,7 @@ def RS_decode_16bit(inputbytestring,codeword_data_len,codeword_redundancy,proto_
         os.remove(REPO_PATH+"/RS_paramaters_from_python.hpp")
         os.remove(REPO_PATH+"/trialinput.dat")
         if (len(erasure_loc_list)!=0):
-                os.remove(REPO_PATH+"/trialerasurelocationfile.dat")
-
+            os.remove(REPO_PATH+"/trialerasurelocationfile.dat")
         return puncturedbytestring
 
 

@@ -8,12 +8,12 @@ import filecmp
 NUM_TRIALS = 10
 LIST_SIZE = 8
 NUM_READS_TOTAL = 10000
-NUM_READS_TO_USE = 5500
-bytes_per_oligo  = 18
-DECODED_LISTS_DIR = '../nanopore_dna_storage_data/decoded_lists/exp_7/'
+NUM_READS_TO_USE = 1500
+bytes_per_oligo  = 20
+DECODED_LISTS_DIR = 'data_real_exp/11_5_model_train_on_oligo_1_2_4_5_8_9_10_11_on_pretrained_lr_e-6_test_on_oligo_3_global_accuracy_weights_100_0.5_full/'
 RS_REDUNDANCY = 0.3
 pad = False
-ORIGINAL_FILE = '../nanopore_dna_storage_data/encoded_file/data_files.tar.bz2.enc' # for checking if decoding was successful
+ORIGINAL_FILE = '/raid/nanopore/shubham/nanopore_dna_storage_data/encoded_file/data_files.tar.bz2.enc' # for checking if decoding was successful
 
 
 data_file_size = os.path.getsize(ORIGINAL_FILE)

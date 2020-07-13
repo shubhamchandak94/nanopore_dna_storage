@@ -11,15 +11,15 @@ Code tested on Ubuntu 18.04.1 and Python3.
 ## Download and install
 Download:
 ```
-git clone https://github.com/shubhamchandak94/nanopore_dna_storage/
+git clone --recursive https://github.com/shubhamchandak94/nanopore_dna_storage/
 ```
-Flappie models are stored using git lfs, see instructions in `flappie/` directory README in case of issues.
 
 Install:
 ```
 ./install.sh
 ```
-Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages.sh`). Also, flappie needs certain dependencies listed in the `flappie/` directory.
+All the steps below should be run in a virtual environment created for bonito (see `bonito/` directory for details).
+Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages_bonito_venv.sh`).
 
 ## General instructions
 In many of the scripts, you need to set the path for the corresponding data directories as well as the encoding parameters. 
@@ -68,3 +68,33 @@ python3 simulator.py \
 --syn_ins_prob 0.0005
 ```
 The `mem_conv` parameter can be set to 6, 8, 11 or 14. The `rate` parameter can be set to 1, 2, 3, 4, 5 and 7 for convolutional code rates of 1/2, 2/3, 3/4, 4/5, 5/6 and 7/8, respectively. The `msg_len` parameter decides the length of the binary input to the convolutional encoder, and should be set depending upon the desired oligo length. Setting `deepsimdwell` to `True` uses the dwell time distribution from DeepSim which has higher variance (based on our experience, keeping this `False` gives results closer to reality). `reversecomp` can be set to True to simulate reverse complemented read decoding. Finally, the parameters `syn_sub_prob`, `syn_del_prob` and `syn_ins_prob` decide the iid substitution, deletion and insertion error rates introduced during the synthesis.
+
+## Notes on bonito integration
+We have implemented two approaches for bonito integration. Note that bonito outputs probabilities instead of log-probabilities, which caused issues in the earlier implementations that assumed the wrong thing.
+
+Both approaches are based on ideas from Parallel LVA algorithm as described in 
+https://github.com/shubhamchandak94/kBestViterbi/blob/master/kBestViterbi.py
+or in ieeexplore.ieee.org/iel1/26/12514/00577040.pdf and on beam search for CTC as described in https://distill.pub/2017/ctc/
+and in https://gist.github.com/awni/56369a90d03953e370f3964c826ed4b0.
+### Approach 1
+Implemented in `viterbi_convolutional_code_approach_1.cpp`. We have states correspoding to conv code state and pos in msg. Each state stores a list of messages with their score of ending in blank and non-blank. At next step, we add one character, add (logsumexp) the scores for all the ways a new message can be obtained, and take the top ones. This approach is very closely tied to the way beam search usually works, just keeping a beam for each state.
+
+One issue is that if we replace logsumexp with max and set list size to 1, this does not reduce to finding the best path satisfying the code constraint.
+
+### Approach 2
+Implemented in `viterbi_convolutional_code_approach_2.cpp`. We have states correspoding to conv code state, pos in msg and CTC state. Each state stores a list of messages with their score. At each time step, we consider the valid transitions (stay transitions to blank, stay transitions to same nonblank base, nonstay transitions to nonblank base). We also combine paths corresponding to same message using logsumexp. This approach is very similar to what we did for flappie integration (although the implementation is a bit different since we do logsumexp instead of max, so the heap strategy is no longer applicable).
+
+This does reduce to the best path satisfying code constraint if logsumexp is changed to max and list size is set to 1.
+
+### Improvements to barcode removal
+Some analysis showed that the previous barcode removal strategy led to suboptimal performance. The following issues were identified and fixed:
+- Earlier the start barcode was being searched only in first half of read, and end barcode only in second half. This is bad when read is long (adapters, chimeric, something else). So we allow search of start barcode throughout and end barcode anywhere after the start barcode.
+- Earlier barcode was searched only within the read, i.e., the possibility that part of the barcode is cut off was not entertained. While working on guppy, a barcode extend len parameter was included that allowed this to happen. The parameter determined how much overhang of barcode was allowed and was set to 10 arbitrarily. Now this has been set to the barcode length by default, which improves things a bit when more than 10 bases of the barcode are cut off. Note that the overhang portion contributes to the edit distance and is not "free".
+- As mentioned above, the extended barcode portion that is not part of read contributes to the edit distance. In some cases, this can be a bit bad, e.g., consider that last 15 bases of 25 length barcode perfectly match the first 25 bases of the read. In this case the edit distance for the appropriate shift is still 10 which can lead to a overall worse match being selected from within the read. To resolve this issue, we add a barcode extend penalty parameter. When the parameter is 1.0, this corresponds to the usual edit distance. When it is 0.0, that means we don't penalize the extension at all, which is bas because then the "match" with barcode completely outside read is very likely to get selected. We set it to 0.6 based on some experiments. In general, this can be chosen based on the likelihood of the barcode being not present in the read and amount of barcode generally present in the read.
+
+#### TODO
+[X] It seems 0.5 is doing better for trained models - so might want to switch to this (doesn't make a big difference for default model)
+
+[ ] Can potentially move to cutadapt in the future - currently there doesn't seem to be much incentive.
+
+[ ] One case where improvement possible: These were cases where the barcode on one or both sides is completely missing in read (or just a couple bases left). In such cases, our barcode removal tends to find a bad match elsewhere in the read. Whereas no trimming might do the trick. One way to fix this could be have a max error rate - that is remove barcode only if the match is at least X% edit distance. This will help only if the barcode is not present, but the payload portion is present. This is a relatively rare scenario so not doing this right now.

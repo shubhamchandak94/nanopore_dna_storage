@@ -2,11 +2,11 @@ import helper
 import os 
 
 # PARAMETERS TO BE SET BEFORE RUNNING THE CODE
-LIST_SIZE = 8
-DECODED_LISTS_DIR = '../nanopore_dna_storage_data/decoded_lists/exp_7/'
-CONV_INPUT_FILE = '../nanopore_dna_storage_data/oligo_files/conv_input_7.txt'
+LIST_SIZE = 1
+DECODED_LISTS_DIR = 'data/output_3_rescaled_no_trim_default_model/'
+CONV_INPUT_FILE = '/raid/nanopore/shubham/nanopore_dna_storage_data/oligo_files/conv_input_0.txt'
 pad = False
-bytes_per_oligo = 18
+bytes_per_oligo = 10
 
 
 print('list size:',LIST_SIZE)

@@ -13,11 +13,11 @@ import struct
 import os
 import crc8
 import filecmp
+import h5py
 
 REPO_PATH = os.path.dirname(os.path.realpath(__file__))+'/'
 PATH_TO_RS_CODE = REPO_PATH+'RSCode_schifra/'
 PATH_TO_VITERBI_NANOPORE = REPO_PATH+'viterbi/viterbi_nanopore.out'
-PATH_TO_FLAPPIE = REPO_PATH+"flappie/flappie"
 sys.path.insert(0, PATH_TO_RS_CODE)
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -91,8 +91,11 @@ def create_fast5(raw_data, fast5_filename):
     digitisation = 8192.0
     bins = np.arange(start, stop, rng / digitisation)
     # np.int16 is required, the library will refuse to write anything other
-    raw_data_binned = np.digitize(raw_data, bins).astype(np.int16)
-
+    if raw_data.dtype == np.int16:
+        raw_data_binned = raw_data
+    else:
+        raw_data_binned = np.digitize(raw_data, bins).astype(np.int16)
+    
     # The following are required meta data
     channel_id = {
         'digitisation': digitisation,
@@ -106,13 +109,13 @@ def create_fast5(raw_data, fast5_filename):
         'duration': len(raw_data),
         'read_number': 1,
         'start_mux': 1,
-        'read_id': str(uuid4()),
+        'read_id': 'test',
         'scaling_used': 1,
         'median_before': 0,
     }
     tracking_id = {
         'exp_start_time': '1970-01-01T00:00:00Z',
-        'run_id': str(uuid4()).replace('-',''),
+        'run_id': 'test',
         'flow_cell_id': 'FAH00000',
     }
     context_tags = {}
@@ -154,7 +157,7 @@ def read_seq(infile_seq):
     print(seq)
     return seq
 
-def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_barcode):
+def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_barcode,extend_len=0, extend_penalty=1.0):
     '''
     find position of best edit distance match for barcodes in the post matrix
     looks at fastq to find the best match for barcode_start and barcode_end and then finds
@@ -162,7 +165,13 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
     start and end position of actual payload in the post matrix (both inclusive, zero-indexed). 
     One could then slightly extend these or not, depending on what works best. 
     If things fail, return (-1,-1)
+    extend_len: extra length at start and end to search for barcode match (useful if basecaller cuts
+    a bit of the barcode, e.g., with guppy)
+    extend_penalty: float between 0.0 and 1.0 telling the penalty we impose per base on extend operation (i.e., barcode hanging off the sides). Setting to 1 just means we compute edit distance as it is (this can penalize a bit much and miss perfect match of say 10 bases out of 25 base barcode). Setting to 0 is bad because then there is chance that the empty match (completely hanging off) is selected.
     '''
+    assert extend_len >= 0
+    assert 0.0 <= extend_penalty <= 1.0
+    one_minus_extend_penalty = 1.0-extend_penalty
     # load basecalled read from fastq
     with open(fastq_filename,'r') as f:
         _ = f.readline()
@@ -179,27 +188,38 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
         return (-1,-1,np.inf,np.inf)
 
     start_bc_edit_distance = []
-    for i in range(basecall_len//2+1-start_barcode_len): # only search in first half for start barcode
+    for i in range(-extend_len,0):
+        start_bc_edit_distance.append(distance.levenshtein(start_barcode,basecall[:start_barcode_len+i])+i*one_minus_extend_penalty)
+    for i in range(basecall_len-start_barcode_len):
         start_bc_edit_distance.append(distance.levenshtein(start_barcode,basecall[i:i+start_barcode_len]))
 
+    # find best match positions
+    start_bc_first_base = start_bc_edit_distance.index(min(start_bc_edit_distance))-extend_len
+    start_bc_last_base = start_bc_first_base + start_barcode_len - 1
+
     end_bc_edit_distance = []
-    for i in range(basecall_len//2,basecall_len-end_barcode_len): # only search in first half for end barcode (so that things don't break if start and end barcodes are same)
+    for i in range(start_bc_last_base,basecall_len-end_barcode_len+1): # end_bc must be after start_bc 
         end_bc_edit_distance.append(distance.levenshtein(end_barcode,basecall[i:i+end_barcode_len]))
+    for i in range(1,extend_len+1):
+        end_bc_edit_distance.append(distance.levenshtein(end_barcode,basecall[basecall_len-end_barcode_len+i:basecall_len])-i*one_minus_extend_penalty)
 
     # find best match positions
-    start_bc_first_base = start_bc_edit_distance.index(min(start_bc_edit_distance))
-    end_bc_first_base = basecall_len//2+end_bc_edit_distance.index(min(end_bc_edit_distance))
-    start_bc_last_base = start_bc_first_base + start_barcode_len - 1
-    start_pos = trans_arr[start_bc_last_base+1]-1
-    end_pos = trans_arr[end_bc_first_base-1]-1
+    # need sanity check in case range(start_bc_last_base,basecall_len-end_barcode_len) is empty
+    if start_bc_last_base >= basecall_len-end_barcode_len:
+      end_bc_first_base = basecall_len-end_barcode_len + 1 + end_bc_edit_distance.index(min(end_bc_edit_distance))
+    else:
+      end_bc_first_base = start_bc_last_base+end_bc_edit_distance.index(min(end_bc_edit_distance))
     print('basecall_len', basecall_len)
     print('start_bc_last_base', start_bc_last_base)
     print('end_bc_first_base', end_bc_first_base)
+    
+    start_pos = trans_arr[start_bc_last_base+1]-1
+    end_pos = trans_arr[end_bc_first_base-1]-1
     print('start_pos_in_post',start_pos)
     print('end_pos_in_post',end_pos)
     print('basecall',basecall)
     print('start_barcode',start_barcode)
-    print('start_bcmatch',basecall[start_bc_first_base:start_bc_first_base+start_barcode_len])
+    print('start_bcmatch',basecall[max(0,start_bc_first_base):start_bc_first_base+start_barcode_len])
     print('end_barcode',end_barcode)
     print('end_bcmatch',basecall[end_bc_first_base:end_bc_first_base+end_barcode_len])
 
@@ -208,11 +228,11 @@ def find_barcode_pos_in_post(trans_filename,fastq_filename,start_barcode,end_bar
         return (-1,-1,np.inf,np.inf)
     return (start_pos,end_pos,min(start_bc_edit_distance),min(end_bc_edit_distance))
 
-def truncate_post_file(old_post_filename, new_post_filename, start_pos, end_pos, bytes_per_blk = 160):
+def truncate_post_file(old_post_filename, new_post_filename, start_pos, end_pos, bytes_per_blk = 20):
     '''
     Truncate post file to [start_pos,end_pos] and write to new_post_filename. 
-    bytes_per_blk is 160 by default
-    160 = sizeof(float)*40 (40 entries in transition matrix per timestep for flappie)
+    bytes_per_blk is 20 by default
+    20 = sizeof(float)*5 (5 entries in CTC posterior per timestep for bonito)
     '''
     with open(old_post_filename,'rb') as f:
         data = f.read()
@@ -272,6 +292,86 @@ def encode(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, conv_r
     print('writing rate (bits per base):', data_size*8/(oligo_len*num_oligos))
     return 
 
+# TODO: update simulate_and_decode function for bonito basecalling 
+#
+# def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_size, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False, syn_sub_prob = 0.005, syn_del_prob = 0.005, syn_ins_prob = 0.0005, deepsimdwell = False, num_thr = 16, list_size = 1):
+#     # data_file_size in bytes
+#     data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
+#     (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+#     with open(oligo_file) as f:
+#         oligo_list = [l.rstrip('\n') for l in f.readlines()]
+#     print('oligo_len',len(oligo_list[0]))
+#     decoded_dict = {}
+#     num_success = 0
+#     num_attempted = 0
+#     for _ in range(num_reads):
+#         num_attempted += 1
+#         print('num_attempted:',num_attempted)
+#         rnd = str(np.random.randint(10000000))
+#         oligo = np.random.choice(oligo_list)
+#         rc = np.random.choice([True, False])
+#         if rc:
+#             oligo = reverse_complement(oligo)
+#         fast5_filename='tmp.'+rnd+'.fast5'
+#         simulate_read(oligo, syn_sub_prob, syn_del_prob, syn_ins_prob, fast5_filename, deepSimDwellFlag = deepsimdwell)
+#         # call flappie to generate transition posterior table
+#         post_filename = 'tmp.'+rnd+'.post'
+#         decoded_filename = 'tmp.'+rnd+'.dec'
+#         subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+#         post_filename = 'tmp.'+rnd+'.post'
+#         decoded_filename = 'tmp.'+rnd+'.dec'
+#         subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+#         rc_flag = ''
+#         if rc:
+#             rc_flag = '--rc'
+#         subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-l',str(list_size),'-t',str(num_thr),'-r',str(conv_r),rc_flag,'--max-deviation','20'])
+#         with open(decoded_filename) as f:
+#             decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
+#         for decoded_msg in decoded_msg_list:
+#             # remove padding, if any
+#             if pad:
+#                 decoded_msg = decoded_msg[:-1]
+#             length_with_crc = math.ceil(len(decoded_msg)/8)*8
+#             bytestring_with_crc = bitstring2bytestring(decoded_msg, length_with_crc)
+#             crc = crc8.crc8(bytestring_with_crc[:-crc_len//8])
+#             if crc.digest() == bytestring_with_crc[-crc_len//8:]:
+#                 index_bit_string = bytestring2bitstring(bytestring_with_crc[:math.ceil(index_len/8)], 8*math.ceil(index_len/8))
+#                 index_bit_string = index_bit_string[-index_len:]
+#                 index = (prp_a_inv*((int(index_bit_string,2))-prp_b))%(2**index_len)
+#                 payload_bytes = bitstring2bytestring(decoded_msg[index_len:-crc_len], bytes_per_oligo*8)
+#                 if index < num_oligos:
+#                     
+#                     num_success += 1
+#                     print('Success')
+#                     print('num success:',num_success)
+#                     if index not in decoded_dict:
+#                         decoded_dict[index] = payload_bytes
+#                         print('New index!',index)
+#                         print('num_unique',len(decoded_dict))
+#                     else:
+#                         print('Already seen index',index)
+#                     break
+#                 else:
+# 
+#                     print('Index out of range')
+#             else:
+#                 print('CRC failed')
+#         os.remove(fast5_filename)
+#         os.remove(post_filename)
+#         os.remove(decoded_filename)
+#     # do RS decoding
+#     decoded_list = [[k, decoded_dict[k]] for k in decoded_dict]
+#     print(decoded_list)
+#     print(num_oligos_RS)
+#     print(num_oligos)
+#     RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos)
+#     assert len(RS_decoded_list) == num_oligos_data
+#     decoded_data = b''.join(RS_decoded_list)
+#     decoded_data = decoded_data[:data_file_size]
+#     with open(decoded_data_file,'wb') as f:
+#         f.write(decoded_data)
+#     return
+=======
 # TODO
 # - Add 2 CRC
 # - Implement RS code on rotated codeword
@@ -726,3 +826,41 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
 # encode(data_file = infile, oligo_file = infile+'.oligos', bytes_per_oligo = 12, RS_redundancy = RS_redundancy, conv_m = 6, conv_r = 1, pad=False)
 # simulate_and_decode(oligo_file = infile+'.oligos', decoded_data_file = infile+'.decoded', num_reads = 500, data_file_size = infile_size, bytes_per_oligo = 12, RS_redundancy = RS_redundancy, conv_m = 6, conv_r = 1, pad=False)
 # print('filecmp',filecmp.cmp(infile, infile+'.decoded'))
+
+
+
+########
+# Bonito helper functions
+########
+
+def bonito_basecall_generate_move(post_file, fastq_file, trans_file):
+    '''
+    perform CTC decoding (greedy) to generate fastq file and a file with 
+    the time steps when each new base starts.
+    The reason for working with greedy is that it allows us to make a trans 
+    (move) matrix which is not possible with beam search.
+    Note that the decoder still uses beam search later on, this is just for
+    the barcode removal
+    '''
+    labels = [ "N", "A", "C", "G", "T",]
+    posteriors = np.fromfile(post_file, dtype=np.float32)
+    posteriors = np.reshape(posteriors, (-1,5))
+    basecall = ""
+    trans = [] # times when new base arrives
+    prev_base = 'N'
+    for i in range(posteriors.shape[0]):
+        next_base = labels[np.argmax(posteriors[i,:])]
+        if next_base != prev_base:
+            prev_base = next_base
+            if next_base != 'N':
+                trans.append(i)
+                basecall = basecall + next_base
+    with open(fastq_file,'w') as f:
+        f.write('@read\n')
+        f.write(basecall+'\n')
+        f.write('+\n')
+        f.write('#'*len(basecall)+'\n')
+    with open(trans_file,'w') as f:
+        f.write(''.join([str(val)+'\n' for val in trans]))
+    return
+
