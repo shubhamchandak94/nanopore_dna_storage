@@ -1,0 +1,15 @@
+openssl enc -e -in data_files.tar.bz2 -out data_files.tar.bz2.enc.1 -aes256 -pbkdf2
+enter aes-256-cbc encryption password: dna_storage_1crc
+Verifying - enter aes-256-cbc encryption password: dna_storage_1crc
+
+openssl enc -d -in data_files.tar.bz2.enc.1 -out data_files.tar.bz2.dec.1 -aes256 -pbkdf2
+enter aes-256-cbc decryption password: dna_storage_1crc
+
+---------
+
+openssl enc -e -in data_files.tar.bz2 -out data_files.tar.bz2.enc.2 -aes256 -pbkdf2
+enter aes-256-cbc encryption password: dna_storage_2crc
+Verifying - enter aes-256-cbc encryption password: dna_storage_2crc
+
+openssl enc -d -in data_files.tar.bz2.enc.2 -out data_files.tar.bz2.dec.2 -aes256 -pbkdf2
+enter aes-256-cbc decryption password: dna_storage_2crc

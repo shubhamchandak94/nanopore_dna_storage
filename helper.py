@@ -371,6 +371,309 @@ def encode(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, conv_r
 #     with open(decoded_data_file,'wb') as f:
 #         f.write(decoded_data)
 #     return
+=======
+# TODO
+# - Add 2 CRC
+# - Implement RS code on rotated codeword
+
+def rotate_left(input_str, rot_val):
+    rot_val = rot_val % len(input_str)
+    out1 = input_str[rot_val:] 
+    out2 = input_str[:rot_val]
+    return out1+out2
+
+def rotate_right(input_str, rot_val):
+    rot_val = rot_val % len(input_str)
+    out1 = input_str[-rot_val:] 
+    out2 = input_str[:-rot_val]
+    return out1+out2
+
+
+def encode_2crc(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False):
+    # single bit padding might be needed depending on puncturing pattern for successful encoding
+    # RS_redundancy is a float representing the additional percent redundancy added (e.g. 0.1 for 10%)
+    # conv_r can be 1, 2, 3, 4, 5, 7
+    # conv_m can be 6, 8, 11, 14
+    # bytes_per_oligo is the number of message bytes per oligo. It should be a multiple of 2.
+
+    assert bytes_per_oligo%2 == 0
+    assert conv_m in [6,8,11,14]
+    assert conv_r in [1,2,3,4,5,7]
+
+    with open(data_file,'rb') as f:
+        data = f.read()
+    
+    # pad data to multiple of bytes_per_oligo
+    data_size = len(data)
+    data_size_padded = math.ceil(data_size/bytes_per_oligo)*bytes_per_oligo
+    (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+    msg_len += crc_len
+    data_padded = data.ljust(data_size_padded,b'0')
+    segmented_data = [data_padded[i*bytes_per_oligo:(i+1)*bytes_per_oligo] for i in range(num_oligos_data)]
+    segemented_data_with_RS = RSCode.MainEncoder(segmented_data, num_oligos_RS)
+
+    conv_input_file = oligo_file+'.conv_input'
+    with open(conv_input_file, 'w') as f:
+        # attach index, CRC and pad to each oligo and write to f
+        for index, oligo in enumerate(segemented_data_with_RS):
+            index_prp = (prp_a*index+prp_b)%(2**index_len)
+            bin_index_string = bin(index_prp)[2:].zfill(index_len)
+            index_bytes = bitstring2bytestring(bin_index_string, 8*math.ceil(index_len/8))
+
+            # Rotate the oligo
+            # RS code operates on 2 bytes at a time, so the shift is proportional
+            oligo = rotate_left(oligo, index_prp*2) 
+
+            # Generate 2 CRCs with first half and second half of the oligo
+            oligo_len = len(oligo)
+            oligo1 = oligo[:2*(oligo_len//4)]
+            oligo2 = oligo[2*(oligo_len//4):]
+            crc1 = crc8.crc8(index_bytes+oligo1)
+            crc2 = crc8.crc8(index_bytes+oligo2)
+            bit_string_oligo = bin_index_string + bytestring2bitstring(crc1.digest()+oligo+crc2.digest(),8*bytes_per_oligo+crc_len+crc_len)
+            if pad:
+                bit_string_oligo = bit_string_oligo + '0'
+            f.write(bit_string_oligo + '\n')
+    
+    # apply convolutional encoding to each oligo
+    print(msg_len)
+    print(conv_m)
+    print(conv_r)
+    print(conv_input_file)
+    subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'encode','-i',conv_input_file,'-o',oligo_file,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-r',str(conv_r)])
+    
+    with open(oligo_file) as f:
+        oligo_len = len(f.readline().rstrip('\n'))
+        print('oligo_len',oligo_len)
+    print('writing rate (bits per base):', data_size*8/(oligo_len*num_oligos))
+    return 
+
+def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_size, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False, syn_sub_prob = 0.005, syn_del_prob = 0.005, syn_ins_prob = 0.0005, deepsimdwell = False, num_thr = 16, list_size = 1):
+    # data_file_size in bytes
+    data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
+    (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+    with open(oligo_file) as f:
+        oligo_list = [l.rstrip('\n') for l in f.readlines()]
+    print('oligo_len',len(oligo_list[0]))
+    decoded_dict = {}
+    num_success = 0
+    num_attempted = 0
+    for _ in range(num_reads):
+        num_attempted += 1
+        print('num_attempted:',num_attempted)
+        rnd = str(np.random.randint(10000000))
+        oligo = np.random.choice(oligo_list)
+        rc = np.random.choice([True, False])
+        if rc:
+            oligo = reverse_complement(oligo)
+        fast5_filename='tmp.'+rnd+'.fast5'
+        simulate_read(oligo, syn_sub_prob, syn_del_prob, syn_ins_prob, fast5_filename, deepSimDwellFlag = deepsimdwell)
+        # call flappie to generate transition posterior table
+        post_filename = 'tmp.'+rnd+'.post'
+        decoded_filename = 'tmp.'+rnd+'.dec'
+        subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+        post_filename = 'tmp.'+rnd+'.post'
+        decoded_filename = 'tmp.'+rnd+'.dec'
+        subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+        rc_flag = ''
+        if rc:
+            rc_flag = '--rc'
+        subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-l',str(list_size),'-t',str(num_thr),'-r',str(conv_r),rc_flag,'--max-deviation','20'])
+        with open(decoded_filename) as f:
+            decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
+        for decoded_msg in decoded_msg_list:
+            # remove padding, if any
+            if pad:
+                decoded_msg = decoded_msg[:-1]
+            length_with_crc = math.ceil(len(decoded_msg)/8)*8
+            bytestring_with_crc = bitstring2bytestring(decoded_msg, length_with_crc)
+            crc = crc8.crc8(bytestring_with_crc[:-crc_len//8])
+            if crc.digest() == bytestring_with_crc[-crc_len//8:]:
+                index_bit_string = bytestring2bitstring(bytestring_with_crc[:math.ceil(index_len/8)], 8*math.ceil(index_len/8))
+                index_bit_string = index_bit_string[-index_len:]
+                index = (prp_a_inv*((int(index_bit_string,2))-prp_b))%(2**index_len)
+                payload_bytes = bitstring2bytestring(decoded_msg[index_len:-crc_len], bytes_per_oligo*8)
+                if index < num_oligos:
+                    
+                    num_success += 1
+                    print('Success')
+                    print('num success:',num_success)
+                    if index not in decoded_dict:
+                        decoded_dict[index] = payload_bytes
+                        print('New index!',index)
+                        print('num_unique',len(decoded_dict))
+                    else:
+                        print('Already seen index',index)
+                    break
+                else:
+
+                    print('Index out of range')
+            else:
+                print('CRC failed')
+        os.remove(fast5_filename)
+        os.remove(post_filename)
+        os.remove(decoded_filename)
+    # do RS decoding
+    decoded_list = [[k, decoded_dict[k]] for k in decoded_dict]
+    print(decoded_list)
+    print(num_oligos_RS)
+    print(num_oligos)
+    RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos, path=PATH_TO_RS_CODE)
+    assert len(RS_decoded_list) == num_oligos_data
+    decoded_data = b''.join(RS_decoded_list)
+    decoded_data = decoded_data[:data_file_size]
+    with open(decoded_data_file,'wb') as f:
+        f.write(decoded_data)
+    return
+
+
+def simulate_and_decode_new(oligo_file, decoded_data_file,  num_reads, data_file_size, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False, syn_sub_prob = 0.005, syn_del_prob = 0.005, syn_ins_prob = 0.0005, deepsimdwell = False, num_thr = 16, list_size = 1):
+    # data_file_size in bytes
+    data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
+    (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+    with open(oligo_file) as f:
+        oligo_list = [l.rstrip('\n') for l in f.readlines()]
+    print('oligo_len',len(oligo_list[0]))
+    decoded_dict = {}
+    num_success = 0
+    num_attempted = 0
+    for _ in range(num_reads):
+        num_attempted += 1
+        print('num_attempted:',num_attempted)
+        rnd = str(np.random.randint(10000000))
+        oligo = np.random.choice(oligo_list)
+        rc = np.random.choice([True, False])
+        if rc:
+            oligo = reverse_complement(oligo)
+        fast5_filename='tmp.'+rnd+'.fast5'
+        simulate_read(oligo, syn_sub_prob, syn_del_prob, syn_ins_prob, fast5_filename, deepSimDwellFlag = deepsimdwell)
+        # call flappie to generate transition posterior table
+        post_filename = 'tmp.'+rnd+'.post'
+        decoded_filename = 'tmp.'+rnd+'.dec'
+        subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+        post_filename = 'tmp.'+rnd+'.post'
+        decoded_filename = 'tmp.'+rnd+'.dec'
+        subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+        rc_flag = ''
+        if rc:
+            rc_flag = '--rc'
+        subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-l',str(list_size),'-t',str(num_thr),'-r',str(conv_r),rc_flag,'--max-deviation','20'])
+        with open(decoded_filename) as f:
+            decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
+        
+        
+        (index, payload_bytes, decoded_msg) = decode_list_CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad)
+        if index is None:
+            print('CRC failed')
+        else:
+            if index < num_oligos: 
+                num_success += 1
+                print('Success')
+                print('num success:',num_success)
+                if index not in decoded_dict:
+                    decoded_dict[index] = payload_bytes
+                    print('New index!',index)
+                    print('num_unique',len(decoded_dict))
+                else:
+                    print('Already seen index',index)
+                break
+            else:
+                print('Index out of range')
+        
+        os.remove(fast5_filename)
+        os.remove(post_filename)
+        os.remove(decoded_filename)
+    # do RS decoding
+    decoded_list = [[k, decoded_dict[k]] for k in decoded_dict]
+    RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos)
+    assert len(RS_decoded_list) == num_oligos_data
+    decoded_data = b''.join(RS_decoded_list)
+    decoded_data = decoded_data[:data_file_size]
+    with open(decoded_data_file,'wb') as f:
+        f.write(decoded_data)
+    return
+
+def simulate_and_decode_2CRC(oligo_file, decoded_data_file,  num_reads, data_file_size, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False, syn_sub_prob = 0.005, syn_del_prob = 0.005, syn_ins_prob = 0.0005, deepsimdwell = False, num_thr = 16, list_size = 1):
+    # data_file_size in bytes
+    data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
+    (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+    msg_len += crc_len
+    num_RS_segments = bytes_per_oligo//2
+    with open(oligo_file) as f:
+        oligo_list = [l.rstrip('\n') for l in f.readlines()]
+    print('oligo_len',len(oligo_list[0]))
+    decoded_index_dict = [{} for _ in range(num_RS_segments)]
+    num_success = 0
+    num_attempted = 0
+    for _ in range(num_reads):
+        num_attempted += 1
+        print('num_attempted:',num_attempted)
+        rnd = str(np.random.randint(10000000))
+        oligo = np.random.choice(oligo_list)
+        rc = np.random.choice([True, False])
+        if rc:
+            oligo = reverse_complement(oligo)
+        fast5_filename='tmp.'+rnd+'.fast5'
+        simulate_read(oligo, syn_sub_prob, syn_del_prob, syn_ins_prob, fast5_filename, deepSimDwellFlag = deepsimdwell)
+        # call flappie to generate transition posterior table
+        post_filename = 'tmp.'+rnd+'.post'
+        decoded_filename = 'tmp.'+rnd+'.dec'
+        subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+        post_filename = 'tmp.'+rnd+'.post'
+        decoded_filename = 'tmp.'+rnd+'.dec'
+        subprocess.run([PATH_TO_FLAPPIE, fast5_filename, '--post-output-file', post_filename])
+        rc_flag = ''
+        if rc:
+            rc_flag = '--rc'
+        subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-l',str(list_size),'-t',str(num_thr),'-r',str(conv_r),rc_flag,'--max-deviation','20'])
+        with open(decoded_filename) as f:
+            decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
+        
+        
+        #output a list of index, pos and payload_bytes
+        output_list = decode_list_2CRC_index(decoded_msg_list,bytes_per_oligo,num_oligos,pad)
+        print(output_list)
+        for (index, pos, payload_bytes) in output_list:
+            if index in decoded_index_dict[pos]:
+                found = False
+                for tup in decoded_index_dict[pos][index]:
+                    if tup[0] == payload_bytes:
+                        tup[1] += 1
+                        found = True
+                        break
+                    if not found:
+                        decoded_index_dict[pos][index].append([payload_bytes,1])
+                decoded_index_dict[pos][index] = sorted(decoded_index_dict[pos][index],key=lambda x: -x[1])
+            else:
+                decoded_index_dict[pos][index] = [[payload_bytes,1]]
+    
+        os.remove(fast5_filename)
+        os.remove(post_filename)
+        os.remove(decoded_filename)
+    # Prepare data to be sent to RS decoder
+    decoded_list = []
+    for segment_id in range(num_RS_segments):
+        decoded_list.append([[k, decoded_index_dict[segment_id][k][0][0]] for k in decoded_index_dict[segment_id]])
+    
+    # Decode each segment separately
+    RS_decoded_list = []
+    for segment_id in range(num_RS_segments):
+        RS_decoded_list.append(RSCode.MainDecoder(decoded_list[segment_id], num_oligos_RS, num_oligos))
+
+    # Combine the segments into a list
+    decoded_oligos = [b''.join(list(i)) for i in zip(*RS_decoded_list)]
+
+    decoded_data = b''.join(decoded_oligos)
+
+    # do RS decoding
+
+
+    assert len(decoded_oligos) == num_oligos_data
+    decoded_data = decoded_data[:data_file_size]
+    with open(decoded_data_file,'wb') as f:
+        f.write(decoded_data)
+    return
+
 
 def compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad):
     msg_len = index_len + crc_len + 8*bytes_per_oligo + pad
@@ -408,6 +711,114 @@ def decode_list_CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
             if index < num_oligos:
                 return (index, payload_bytes, decoded_msg_)
     return (None, None, None)
+
+
+def get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len):
+    
+    if decoded_index is None:
+        return []
+    
+    # Get index
+    index_bit_string = bytestring2bitstring(decoded_index,8*math.ceil(index_len/8))
+    index_bit_string = index_bit_string[-index_len:]
+    index_prp = int(index_bit_string,2)
+    index = (prp_a_inv*(index_prp-prp_b))%(2**index_len)
+    oligo_RS_segments = []
+    oligo1_len = (2*(oligo_len//4))
+    print('oligo1_len:',oligo1_len)
+    print('oligo_len:',oligo_len)
+    oligo2_len = oligo_len - oligo1_len
+
+
+    if decoded_oligo1 is None:
+        oligo_RS_segments.extend([None for i in range(oligo1_len//2)])
+    else:
+        oligo_RS_segments.extend([decoded_oligo1[i:i+2] for i in range(0, len(decoded_oligo1), 2)])
+
+    if decoded_oligo2 is None:
+        oligo_RS_segments.extend([None for i in range(oligo2_len//2)])
+    else:
+        oligo_RS_segments.extend([decoded_oligo2[i:i+2] for i in range(0, len(decoded_oligo2), 2)])
+
+
+    # rotate back the oligos
+    oligo_RS_segments_rotated = rotate_right(oligo_RS_segments, index_prp)
+    print(oligo_RS_segments)
+    print(oligo_RS_segments_rotated) 
+    # generate output lists
+    output_list = []
+    for pos, segment in enumerate(oligo_RS_segments_rotated):
+        if segment is not None:
+            output_list.append((index, pos, segment))
+
+    return output_list
+
+
+def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
+    decoded_oligo1 = None
+    decoded_oligo2 = None
+    decoded_index = None
+    for decoded_msg_ in decoded_msg_list:
+        # remove padding, if any
+        if pad:
+            decoded_msg = decoded_msg_[:-1]
+        else:
+            decoded_msg = decoded_msg_
+
+        length_with_crc = math.ceil(len(decoded_msg)/8)*8
+        bytestring_with_crc = bitstring2bytestring(decoded_msg, length_with_crc)
+        index_bytes = bytestring_with_crc[:math.ceil(index_len/8)]
+        oligo_len = length_with_crc//8 - 2*crc_len//8 - math.ceil(index_len/8)
+        oligo1_len = (2*(oligo_len//4))
+        crc_len_in_bytes = crc_len//8
+        index_crc_len = len(index_bytes) + crc_len_in_bytes
+#        index_len = len(index_bytes)
+        crc1_bytes = bytestring_with_crc[len(index_bytes): index_crc_len]
+        oligo1 = bytestring_with_crc[index_crc_len: oligo1_len+index_crc_len ]
+        oligo2 = bytestring_with_crc[index_crc_len + oligo1_len: -crc_len_in_bytes]
+        crc2_bytes = bytestring_with_crc[-crc_len_in_bytes:]
+
+        index_oligo1 = index_bytes + oligo1
+        index_oligo2 = index_bytes + oligo2
+        crc1 = crc8.crc8(index_oligo1) 
+        crc2 = crc8.crc8(index_oligo2)
+       
+        print(len(oligo1))
+        print(len(oligo2))
+        index_bit_string = bytestring2bitstring(index_bytes,8*math.ceil(index_len/8))
+        index_bit_string = index_bit_string[-index_len:]
+        index_prp = int(index_bit_string,2)
+        index = (prp_a_inv*(index_prp-prp_b))%(2**index_len)
+        print('crc1.digest() == crc1_bytes:',crc1.digest() == crc1_bytes) 
+        print('crc2.digest() == crc2_bytes:',crc2.digest() == crc2_bytes) 
+        # If both the crcs match, extract the index etc.
+        if crc1.digest() == crc1_bytes and crc2.digest() == crc2_bytes:
+            print('hello')
+            if index < num_oligos:
+                decoded_oligo1 = oligo1
+                decoded_oligo2 = oligo2
+                decoded_index = index_bytes
+                break
+        
+         
+        # Try to extract the first oligo
+        if crc1.digest() == crc1_bytes:
+            if (index < num_oligos) and (decoded_oligo1 is None):
+                decoded_oligo1 = oligo1
+                decoded_index = index_bytes
+
+        # Try to extract the first oligo
+        if crc2.digest() == crc2_bytes:
+            if (index < num_oligos) and (decoded_oligo2 is None):
+                decoded_oligo2 = oligo2
+                decoded_index = index_bytes
+
+        
+    # Create segments from the oligo_output
+    output_list = get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len)
+
+    return output_list
+
 # testing encode + simulate_and_decode
 # infile = 'myfile_1K'
 # infile_size = 1000
