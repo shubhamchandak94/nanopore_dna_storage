@@ -41,7 +41,7 @@ for _ in range(NUM_TRIALS):
                 decoded_msg_list = decoded_msg_list[:LIST_SIZE]
             
             # Output a list of index, pos and payload_bytes
-            output_list = helper.decode_list_CRC_index(decoded_msg_list,bytes_per_oligo,num_oligos,pad)
+            output_list = helper.decode_list_2CRC_index(decoded_msg_list,bytes_per_oligo,num_oligos,pad)
             for (index, pos, payload_bytes) in output_list:
                 if index in decoded_index_dict[pos]:
                     found = False

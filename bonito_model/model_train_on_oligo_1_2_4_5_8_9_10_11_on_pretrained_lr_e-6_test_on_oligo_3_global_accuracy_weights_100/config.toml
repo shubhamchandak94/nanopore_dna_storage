@@ -1,0 +1,108 @@
+model = "QuartzNet"
+[[block]]
+filters = 256
+repeat = 1
+kernel = [ 33,]
+stride = [ 3,]
+dilation = [ 1,]
+dropout = 0.0
+residual = false
+separable = false
+
+[[block]]
+filters = 256
+repeat = 5
+kernel = [ 33,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.0
+residual = true
+separable = true
+
+[[block]]
+filters = 256
+repeat = 5
+kernel = [ 39,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.0
+residual = true
+separable = true
+
+[[block]]
+filters = 512
+repeat = 5
+kernel = [ 51,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.0
+residual = true
+separable = true
+
+[[block]]
+filters = 512
+repeat = 5
+kernel = [ 63,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.0
+residual = true
+separable = true
+
+[[block]]
+filters = 512
+repeat = 5
+kernel = [ 75,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.0
+residual = true
+separable = true
+
+[[block]]
+filters = 512
+repeat = 1
+kernel = [ 87,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.0
+residual = false
+separable = true
+
+[[block]]
+filters = 1024
+repeat = 1
+kernel = [ 1,]
+stride = [ 1,]
+dilation = [ 1,]
+dropout = 0.0
+residual = false
+separable = false
+
+[labels]
+labels = [ "N", "A", "C", "G", "T",]
+
+[input]
+features = 1
+
+[encoder]
+activation = "relu"
+
+[training]
+command = "train_multi_gpu"
+training_directory = "model_train_on_oligo_1_2_4_5_8_9_10_11_on_pretrained_lr_e-6_test_on_oligo_3_global_accuracy"
+config = "model_train_on_oligo_1_2_4_5_8_9_10_11_on_pretrained_lr_e-6_test_on_oligo_3_global_accuracy/config.toml"
+directory = "/raid/nanopore/bonito_training_data_long_reads_1_2_4_5_8_9_10_11"
+test_directory = "/raid/nanopore/bonito_training_data_oligo_3_test"
+device = "cuda:0"
+multi_gpu = false
+lr = 1e-6
+seed = 25
+epochs = 100
+batch = 250
+chunks = 5000000
+test_chunks = 10000
+validation_split = 0.99
+amp = false
+force = true
+func = "<function main at 0x7f774edd87b8>"

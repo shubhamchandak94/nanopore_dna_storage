@@ -371,7 +371,6 @@ def encode(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, conv_r
 #     with open(decoded_data_file,'wb') as f:
 #         f.write(decoded_data)
 #     return
-=======
 # TODO
 # - Add 2 CRC
 # - Implement RS code on rotated codeword
@@ -436,10 +435,10 @@ def encode_2crc(data_file, oligo_file, bytes_per_oligo, RS_redundancy, conv_m, c
             f.write(bit_string_oligo + '\n')
     
     # apply convolutional encoding to each oligo
-    print(msg_len)
-    print(conv_m)
-    print(conv_r)
-    print(conv_input_file)
+    print('msg_len',msg_len)
+    print('conv_m',conv_m)
+    print('conv_r',conv_r)
+    print('conv_input_file',conv_input_file)
     subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'encode','-i',conv_input_file,'-o',oligo_file,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-r',str(conv_r)])
     
     with open(oligo_file) as f:
@@ -725,8 +724,6 @@ def get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len):
     index = (prp_a_inv*(index_prp-prp_b))%(2**index_len)
     oligo_RS_segments = []
     oligo1_len = (2*(oligo_len//4))
-    print('oligo1_len:',oligo1_len)
-    print('oligo_len:',oligo_len)
     oligo2_len = oligo_len - oligo1_len
 
 
@@ -743,8 +740,6 @@ def get_output_list(decoded_oligo1, decoded_oligo2, decoded_index, oligo_len):
 
     # rotate back the oligos
     oligo_RS_segments_rotated = rotate_right(oligo_RS_segments, index_prp)
-    print(oligo_RS_segments)
-    print(oligo_RS_segments_rotated) 
     # generate output lists
     output_list = []
     for pos, segment in enumerate(oligo_RS_segments_rotated):
@@ -783,17 +778,12 @@ def decode_list_2CRC_index(decoded_msg_list, bytes_per_oligo, num_oligos, pad):
         crc1 = crc8.crc8(index_oligo1) 
         crc2 = crc8.crc8(index_oligo2)
        
-        print(len(oligo1))
-        print(len(oligo2))
         index_bit_string = bytestring2bitstring(index_bytes,8*math.ceil(index_len/8))
         index_bit_string = index_bit_string[-index_len:]
         index_prp = int(index_bit_string,2)
         index = (prp_a_inv*(index_prp-prp_b))%(2**index_len)
-        print('crc1.digest() == crc1_bytes:',crc1.digest() == crc1_bytes) 
-        print('crc2.digest() == crc2_bytes:',crc2.digest() == crc2_bytes) 
         # If both the crcs match, extract the index etc.
         if crc1.digest() == crc1_bytes and crc2.digest() == crc2_bytes:
-            print('hello')
             if index < num_oligos:
                 decoded_oligo1 = oligo1
                 decoded_oligo2 = oligo2
