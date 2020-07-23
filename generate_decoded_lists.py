@@ -62,11 +62,17 @@ f_raw = h5py.File(HDF5_FILE,'r')
 
 for i,readid in enumerate(readid_list):
     print("i:",i)
-    rnd = str(np.random.randint(10000000))
-    raw_data = f_raw[readid]['raw_signal']
+    decoded_filename = OUT_PREFIX + '_' + str(i)
     print(readid)
     print(f_raw[readid].attrs['ref'])
     f_info.write(readid+'\t'+f_raw[readid].attrs['ref'].decode("utf-8")+'\n')
+    if os.path.isfile(decoded_filename):
+        print('Decoded file already exists. Skipping.')
+        continue
+
+    rnd = str(np.random.randint(10000000))
+    raw_data = f_raw[readid]['raw_signal']
+
     # create fast5 from raw data
     fast5_dir = 'tmp_input_' + rnd + '_' + str(readid)
     os.mkdir(fast5_dir)
@@ -104,7 +110,6 @@ for i,readid in enumerate(readid_list):
     new_post_filename = 'tmp.'+rnd+'.post.new'
     helper.truncate_post_file(post_filename, new_post_filename, start_pos, end_pos)
     
-    decoded_filename = OUT_PREFIX + '_' + str(i)
     rc_flag = ''
     if rc:
         rc_flag = '--rc'

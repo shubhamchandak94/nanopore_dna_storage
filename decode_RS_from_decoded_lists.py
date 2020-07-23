@@ -7,14 +7,13 @@ import filecmp
 # SET THESE PARAMETERS BEFORE RUNNING
 NUM_TRIALS = 10
 LIST_SIZE = 8
-NUM_READS_TOTAL = 10000
-NUM_READS_TO_USE = 1500
-bytes_per_oligo  = 20
-DECODED_LISTS_DIR = 'data_real_exp/11_5_model_train_on_oligo_1_2_4_5_8_9_10_11_on_pretrained_lr_e-6_test_on_oligo_3_global_accuracy_weights_100_0.5_full/'
-RS_REDUNDANCY = 0.3
+NUM_READS_TOTAL = 20000
+NUM_READS_TO_USE = 13000
+bytes_per_oligo  = 18
+DECODED_LISTS_DIR = '/raid/nanopore/shubham/20200214_nanopore_pool_data/data/decoded_lists/exp_1/'
+RS_REDUNDANCY = 0.28
 pad = False
-ORIGINAL_FILE = '/raid/nanopore/shubham/nanopore_dna_storage_data/encoded_file/data_files.tar.bz2.enc' # for checking if decoding was successful
-
+ORIGINAL_FILE = '/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/oligos_2_14_20/data_files.tar.bz2.enc.1' # for checking if decoding was successful
 
 data_file_size = os.path.getsize(ORIGINAL_FILE)
 data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
@@ -25,7 +24,7 @@ print('NUM_READS_TO_USE:',NUM_READS_TO_USE)
 print('list size:',LIST_SIZE)
 
 num_successes = 0
-
+random.seed(999)
 for _ in range(NUM_TRIALS):
     list_read_ids = random.sample(list(range(NUM_READS_TOTAL)),NUM_READS_TO_USE)
     decoded_index_dict = {}
