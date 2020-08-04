@@ -1,0 +1,828 @@
+-------------------------------------
+
+i 0
+bytes_per_oligo 18
+RS_redundancy 0.25
+conv_m 6
+conv_r 3
+pad True
+using encode with 1 CRC
+msg_len 165
+num_oligos_data 704
+num_oligos_RS 176
+num_oligos 880
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+oligo_len 114
+writing rate (bits per base): 1.0105263157894737
+-------------------------------------
+
+i 1
+bytes_per_oligo 18
+RS_redundancy 0.25
+conv_m 8
+conv_r 3
+pad False
+using encode with 1 CRC
+msg_len 164
+num_oligos_data 704
+num_oligos_RS 176
+num_oligos 880
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+oligo_len 115
+writing rate (bits per base): 1.0017391304347827
+-------------------------------------
+
+i 2
+bytes_per_oligo 18
+RS_redundancy 0.25
+conv_m 11
+conv_r 3
+pad False
+using encode with 1 CRC
+msg_len 164
+num_oligos_data 704
+num_oligos_RS 176
+num_oligos 880
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65359,176]
+oligo_len 117
+writing rate (bits per base): 0.9846153846153847
+-------------------------------------
+
+i 3
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 6
+conv_r 5
+pad False
+using encode with 1 CRC
+msg_len 180
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+oligo_len 112
+writing rate (bits per base): 1.1428571428571428
+-------------------------------------
+
+i 4
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 8
+conv_r 5
+pad False
+using encode with 1 CRC
+msg_len 180
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+oligo_len 113
+writing rate (bits per base): 1.1327433628318584
+-------------------------------------
+
+i 5
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 11
+conv_r 5
+pad False
+using encode with 1 CRC
+msg_len 180
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+oligo_len 115
+writing rate (bits per base): 1.1130434782608696
+-------------------------------------
+
+i 6
+bytes_per_oligo 22
+RS_redundancy 0.25
+conv_m 6
+conv_r 7
+pad True
+using encode with 1 CRC
+msg_len 197
+num_oligos_data 576
+num_oligos_RS 144
+num_oligos 720
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+oligo_len 116
+writing rate (bits per base): 1.2137931034482758
+-------------------------------------
+
+i 7
+bytes_per_oligo 22
+RS_redundancy 0.25
+conv_m 8
+conv_r 7
+pad False
+using encode with 1 CRC
+msg_len 196
+num_oligos_data 576
+num_oligos_RS 144
+num_oligos 720
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+oligo_len 117
+writing rate (bits per base): 1.2034188034188034
+-------------------------------------
+
+i 8
+bytes_per_oligo 22
+RS_redundancy 0.25
+conv_m 11
+conv_r 7
+pad True
+using encode with 1 CRC
+msg_len 197
+num_oligos_data 576
+num_oligos_RS 144
+num_oligos 720
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65391,144]
+oligo_len 119
+writing rate (bits per base): 1.1831932773109244
+-------------------------------------
+
+i 9
+bytes_per_oligo 16
+RS_redundancy 0.25
+conv_m 6
+conv_r 3
+pad False
+using encode with 2 CRCs
+msg_len 148
+num_oligos_data 792
+num_oligos_RS 198
+num_oligos 990
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+msg_len 156
+conv_m 6
+conv_r 3
+conv_input_file ./reads.9.conv_input
+oligo_len 108
+writing rate (bits per base): 0.9481481481481482
+-------------------------------------
+
+i 10
+bytes_per_oligo 16
+RS_redundancy 0.25
+conv_m 8
+conv_r 3
+pad True
+using encode with 2 CRCs
+msg_len 149
+num_oligos_data 792
+num_oligos_RS 198
+num_oligos 990
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+msg_len 157
+conv_m 8
+conv_r 3
+conv_input_file ./reads.10.conv_input
+oligo_len 110
+writing rate (bits per base): 0.9309090909090909
+-------------------------------------
+
+i 11
+bytes_per_oligo 16
+RS_redundancy 0.25
+conv_m 11
+conv_r 3
+pad True
+using encode with 2 CRCs
+msg_len 149
+num_oligos_data 792
+num_oligos_RS 198
+num_oligos 990
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65337,198]
+msg_len 157
+conv_m 11
+conv_r 3
+conv_input_file ./reads.11.conv_input
+oligo_len 112
+writing rate (bits per base): 0.9142857142857143
+-------------------------------------
+
+i 12
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 6
+conv_r 5
+pad True
+using encode with 2 CRCs
+msg_len 181
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+msg_len 189
+conv_m 6
+conv_r 5
+conv_input_file ./reads.12.conv_input
+oligo_len 117
+writing rate (bits per base): 1.0940170940170941
+-------------------------------------
+
+i 13
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 8
+conv_r 5
+pad False
+using encode with 2 CRCs
+msg_len 180
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+msg_len 188
+conv_m 8
+conv_r 5
+conv_input_file ./reads.13.conv_input
+oligo_len 118
+writing rate (bits per base): 1.0847457627118644
+-------------------------------------
+
+i 14
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 11
+conv_r 5
+pad True
+using encode with 2 CRCs
+msg_len 181
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+msg_len 189
+conv_m 11
+conv_r 5
+conv_input_file ./reads.14.conv_input
+oligo_len 120
+writing rate (bits per base): 1.0666666666666667
+-------------------------------------
+
+i 15
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 6
+conv_r 7
+pad False
+using encode with 2 CRCs
+msg_len 180
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+msg_len 188
+conv_m 6
+conv_r 7
+conv_input_file ./reads.15.conv_input
+oligo_len 111
+writing rate (bits per base): 1.1531531531531531
+-------------------------------------
+
+i 16
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 8
+conv_r 7
+pad False
+using encode with 2 CRCs
+msg_len 180
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+msg_len 188
+conv_m 8
+conv_r 7
+conv_input_file ./reads.16.conv_input
+oligo_len 112
+writing rate (bits per base): 1.1428571428571428
+-------------------------------------
+
+i 17
+bytes_per_oligo 20
+RS_redundancy 0.25
+conv_m 11
+conv_r 7
+pad False
+using encode with 2 CRCs
+msg_len 180
+num_oligos_data 634
+num_oligos_RS 158
+num_oligos 792
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialinput.dat
+/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/RSCode_schifra//trialoutput.schifra
+Encoder Parameters [65535,65377,158]
+msg_len 188
+conv_m 11
+conv_r 7
+conv_input_file ./reads.17.conv_input
+oligo_len 114
+writing rate (bits per base): 1.1228070175438596
