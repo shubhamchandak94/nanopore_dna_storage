@@ -3,6 +3,8 @@ DNA storage for nanopore sequencing using convolutional coding and basecaller-de
 
 ### [BioRxiv](https://www.biorxiv.org/content/10.1101/2019.12.20.871939v2)
 
+### [ICASSP 2020](https://ieeexplore.ieee.org/document/9053441)
+
 ### [Supplementary material](https://github.com/shubhamchandak94/nanopore_dna_storage/blob/master/supplementary_material.pdf)
 
 ### Data: https://github.com/shubhamchandak94/nanopore_dna_storage_data
