@@ -18,3 +18,4 @@ This directory contains:
 - Generated barcodes: `barcodes.txt`
 - Scripts for convolutional code decoding to generate decoded lists for each experiment (and with trained model for some cases): `decoding_scripts/`
 - Data associated with decoding: `decoding_data/`
+- Plotting notebook and plots: `plots/`
