@@ -5,3 +5,16 @@ Other differences from previous experiment:
 - try very high rate code: rate = 7/8, remove very low rate code: rate = 1/2
 - reduce RS slightly to get lower writing costs (0.25 as compared to 0.3)
 - added some poems since we had more space due to increased pool size and lower RS
+
+This directory contains:
+- The original data files in `data_files/`, and the corresponding compressed and encrypted versions: `data_files.tar.bz2`, `data_files.tar.bz2.enc.1`, `data_files.tar.bz2.enc.2`.
+- Instructions for encryption/decryption: `encryption_commands.txt`
+- Encoding script: `encode_experiments.py`
+- Encoding log: `encoding_log.txt`
+- Generated fasta files: `oligos_*.fa` (per-experiment), `merged.fa`
+- Oligos correspoding to fasta files (without header): `reads.[0-9]*`
+- Input to convolutional encoder for each experiment: `reads.[0-9]*.conv_input`
+- Script to generate barcodes: `generate_barcodes.py`
+- Generated barcodes: `barcodes.txt`
+- Scripts for convolutional code decoding to generate decoded lists for each experiment (and with trained model for some cases): `decoding_scripts/`
+- Data associated with decoding: `decoding_data/`
