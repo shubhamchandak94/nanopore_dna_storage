@@ -1,6 +1,8 @@
 # Nanopore DNA storage
 DNA storage for nanopore sequencing using convolutional coding and basecaller-decoder integration
 
+**Update**: See [bonito](https://github.com/shubhamchandak94/nanopore_dna_storage/tree/bonito) branch for improved performance and experiments using bonito basecalling and other improvements.
+
 ### [BioRxiv](https://www.biorxiv.org/content/10.1101/2019.12.20.871939v2)
 
 ### [ICASSP 2020](https://ieeexplore.ieee.org/document/9053441)
