@@ -1,13 +1,13 @@
 #!/bin/bash
 
-ROOT_PATH=/raid/nanopore/shubham/20200214_nanopore_pool_data/
+ROOT_PATH=/raid/nanopore/shubham/20200804_nanopore_pool_data/
 
 penalty=0.5
-model_folder=$ROOT_PATH/nanopore_dna_storage/bonito_model/model_train_on_oligo_1_2_4_5_8_9_10_11_on_pretrained_lr_e-6_test_on_oligo_3_global_accuracy_weights_100/
+model_folder=/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/bonito_model/model_train_on_oligo_1_2_4_5_8_9_10_11_on_pretrained_lr_e-6_test_on_oligo_3_global_accuracy_weights_100/
 
 HDF5_INPUT=$ROOT_PATH/data/raw_signal/raw_signal_2.hdf5
-DIRNAME=$ROOT_PATH/data/decoded_lists/exp_2/
-READ_ID_FILE=$ROOT_PATH/data/read_ids/exp_2_read_ids.10000.txt
+DIRNAME=$ROOT_PATH/data/decoded_lists/exp_2_bonito_trained_bcp_0.5/
+READ_ID_FILE=$ROOT_PATH/data/read_ids/exp_2_read_ids.1000.txt
 mkdir -p $DIRNAME
 python3 -u generate_decoded_lists.py \
 --hdf_file $HDF5_INPUT \
@@ -17,7 +17,7 @@ python3 -u generate_decoded_lists.py \
 --mem_conv 11 \
 --msg_len 164 \
 --rate_conv 3 \
---list_size 16 \
+--list_size 8 \
 --start_barcode TGAGATCACAGCTACATAGTGAGAG \
 --end_barcode GATAGAGCACTGTCGTGTGCAGTCA \
 --num_threads 8 \

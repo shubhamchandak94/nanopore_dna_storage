@@ -7,13 +7,13 @@ import filecmp
 # SET THESE PARAMETERS BEFORE RUNNING
 NUM_TRIALS = 10
 LIST_SIZE = 8
-NUM_READS_TOTAL = 20000
-NUM_READS_TO_USE = 10000
-bytes_per_oligo  = 16
-DECODED_LISTS_DIR = '/raid/nanopore/shubham/20200214_nanopore_pool_data/data/decoded_lists/exp_10/'
-RS_REDUNDANCY = 0.28
-pad = True
-ORIGINAL_FILE = '/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/oligos_2_14_20/data_files.tar.bz2.enc.2' # for checking if decoding was successful
+NUM_READS_TOTAL = 3600
+NUM_READS_TO_USE = 3000
+bytes_per_oligo  = 20
+DECODED_LISTS_DIR = '/raid/nanopore/shubham/20200804_nanopore_pool_data/data/decoded_lists/exp_17_bonito_default_bcp_0.6/'
+RS_REDUNDANCY = 0.25
+pad = False
+ORIGINAL_FILE = '/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/oligos_8_4_20/data_files.tar.bz2.enc.2' # for checking if decoding was successful
 
 data_file_size = os.path.getsize(ORIGINAL_FILE)
 data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo

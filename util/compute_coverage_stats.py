@@ -1,7 +1,9 @@
 '''
 Usage:
     python3 compute_coverage_stats.py aligned_sequence_list_file total_num_oligos coverage
-    aligned_sequence_list_file: file with each line having the sequence the read aligns to
+    aligned_sequence_list_file: file with each line having the sequence the read aligns to.
+    This can be computed from a sam file by running: 
+    grep "^[^@]" file.sam | cut -f 3 > file.refs.txt
 '''
 
 import sys
@@ -42,6 +44,7 @@ print('normalized variance',np.var(count_list)/np.mean(count_list))
 print('number of oligos with 0 reads',num_oligos-num_seen)
 print('fraction of oligos with 0 reads',1-num_seen/num_oligos)
 
-bincount = np.bincount(count_list)
-for b in bincount:
-    print(b)
+# Code below to print out histogram of coverages, useful for plotting
+#bincount = np.bincount(count_list)
+#for b in bincount:
+#    print(b)

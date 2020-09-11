@@ -23,7 +23,7 @@ parser.add_argument('--list_size',type=int,required=True)
 parser.add_argument('--start_barcode',type=str,required=True)
 parser.add_argument('--end_barcode',type=str,required=True)
 parser.add_argument('--barcode_search_extend_len',type=int,help='default: set to min of start and end barcode len')
-parser.add_argument('--barcode_extend_penalty',type=float,default=0.5)
+parser.add_argument('--barcode_extend_penalty',type=float,default=0.6)
 parser.add_argument('--num_threads',type=int,default=1)
 parser.add_argument('--bonito_model_path',type=str)
 

@@ -9,6 +9,7 @@ import helper
 import argparse
 import math
 import warnings
+import time
 warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
 
@@ -84,7 +85,10 @@ for _ in range(NUM_TRIALS):
     rc_flag = ''
     if revcomp:
         rc_flag = '--rc'
+    start = time.time()
     subprocess.run([PATH_TO_CPP_EXEC,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(MEM_CONV),'--msg-len',str(msg_len),'-l',str(LIST_SIZE),'-t',str(NUM_THR),'-r',str(RATE),rc_flag,'--max-deviation','20'])
+    stop = time.time()
+    print("Decoding time:",stop-start,"s")
     with open(decoded_filename) as f:
         decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
 
