@@ -16,7 +16,7 @@ Install:
 ```
 ./install.sh
 ```
-All the steps below should be run in a virtual environment created for bonito (see `bonito/` directory for details).
+All the steps below should be run in a virtual environment created for bonito (see `bonito/` directory for details, follow the steps in the section Developer Quickstart).
 Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages_bonito_venv.sh`).
 
 ## General instructions
