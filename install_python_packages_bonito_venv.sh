@@ -6,3 +6,5 @@ pip3 install crc8 \
             numpy \
             scipy \
             scrappie
+            
+pip3 install fast5_research
