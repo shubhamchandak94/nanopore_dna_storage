@@ -20,7 +20,7 @@ All the steps below should be run in a virtual environment created for bonito (s
 Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages_bonito_venv.sh`).
 
 ## General instructions
-In many of the scripts, you need to set the path for the corresponding data directories as well as the encoding parameters. Details about the experiments and corresponding files and scripts can be found in `oligos_8_4_20/`. 
+In many of the scripts, you need to set the path for the corresponding data directories as well as the encoding parameters. Details about the experiments and corresponding files and scripts can be found in `oligos_8_4_20/`. The file `helper.py` contains the major functions, and these are called from the different scripts.
 
 ## Parameters for experiments
 The file `oligos_8_4_20/encode_experiments.py` was used for generating the oligos and contains the parameters required for the decoding.
