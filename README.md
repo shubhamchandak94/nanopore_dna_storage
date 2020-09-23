@@ -9,7 +9,7 @@ Code tested on Ubuntu 18.04.1 and Python3.
 ## Download and install
 Download:
 ```
-git clone --recursive https://github.com/shubhamchandak94/nanopore_dna_storage/
+git clone --recursive -b bonito https://github.com/shubhamchandak94/nanopore_dna_storage/
 ```
 
 Install:
@@ -53,6 +53,8 @@ python3 simulator.py \
 --syn_ins_prob 0.0005
 ```
 The `mem_conv` parameter can be set to 6, 8, 11 or 14. The `rate` parameter can be set to 1, 2, 3, 4, 5 and 7 for convolutional code rates of 1/2, 2/3, 3/4, 4/5, 5/6 and 7/8, respectively. The `msg_len` parameter decides the length of the binary input to the convolutional encoder, and should be set depending upon the desired oligo length. Setting `deepsimdwell` to `True` uses the dwell time distribution from DeepSim which has higher variance (based on our experience, keeping this `False` gives results closer to reality). `reversecomp` can be set to True to simulate reverse complemented read decoding. Finally, the parameters `syn_sub_prob`, `syn_del_prob` and `syn_ins_prob` decide the iid substitution, deletion and insertion error rates introduced during the synthesis.
+
+In addition, we provide functions to simulate the entire pipeline including the Reed-Solomon outer code in `helper.py`. A small sample simulation is included in the `if __name__ == '__main__'` block and can be run by executing `python helper.py`.
 
 ## Updates 
 ### Notes on bonito integration

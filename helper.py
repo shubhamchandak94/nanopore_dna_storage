@@ -14,6 +14,7 @@ import os
 import crc8
 import filecmp
 import h5py
+import shutil
 
 REPO_PATH = os.path.dirname(os.path.realpath(__file__))+'/'
 PATH_TO_RS_CODE = REPO_PATH+'RSCode_schifra/'
@@ -116,7 +117,7 @@ def create_fast5(raw_data, fast5_filename):
     with Fast5.New(fast5_filename, 'w', tracking_id=tracking_id, context_tags=context_tags, channel_id=channel_id) as h:
         h.set_raw(raw_data_binned, meta=read_id, read_number=1)
 
-def simulate_read(seq, SYN_SUB_PROB, SYN_DEL_PROB, SYN_INS_PROB, fast5_filename, deepSimDwellFlag = True, deepSimAlpha = 0.1):
+def simulate_read(seq, SYN_SUB_PROB, SYN_DEL_PROB, SYN_INS_PROB, fast5_filename, deepSimDwellFlag = False, deepSimAlpha = 0.1):
     syn_seq = simulate_indelsubs(seq, sub_prob = SYN_SUB_PROB, del_prob = SYN_DEL_PROB, ins_prob = SYN_INS_PROB)
     print('Length of synthesized sequence', len(syn_seq))
     print(syn_seq)
@@ -528,3 +529,205 @@ def bonito_basecall_generate_move(post_file, fastq_file, trans_file):
         f.write(''.join([str(val)+'\n' for val in trans]))
     return
 
+
+'''
+simulate reads and perform decoding process (convolutional decoding + RS decoding) for the 1 CRC case
+'''
+def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_size, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False, syn_sub_prob = 0.005, syn_del_prob = 0.005, syn_ins_prob = 0.0005, deepsimdwell = False, num_thr = 16, list_size = 1):
+    bonito_model_path = 'dna_r9.4.1'
+    # data_file_size in bytes
+    data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
+    (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+    with open(oligo_file) as f:
+        oligo_list = [l.rstrip('\n') for l in f.readlines()]
+    print('oligo_len',len(oligo_list[0]))
+    decoded_dict = {}
+    num_success = 0
+    num_attempted = 0
+    for _ in range(num_reads):
+        num_attempted += 1
+        print('num_attempted:',num_attempted)
+        rnd = str(np.random.randint(10000000))
+        oligo = np.random.choice(oligo_list)
+        rc = np.random.choice([True, False])
+        if rc:
+            oligo = reverse_complement(oligo)
+        fast5_dir = 'tmp_input_' + rnd + '/'
+        os.mkdir(fast5_dir)
+        fast5_filename = fast5_dir+ 'tmp.'+rnd+'.fast5'
+        simulate_read(oligo, syn_sub_prob, syn_del_prob, syn_ins_prob, fast5_filename, deepSimDwellFlag = deepsimdwell)
+        # call bonito to generate CTC posterior table
+        post_filename = 'tmp.'+rnd+'.post'
+        decoded_filename = 'tmp.'+rnd+'.dec'
+        subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename]) 
+
+        rc_flag = ''
+        if rc:
+            rc_flag = '--rc'
+        subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-l',str(list_size),'-t',str(num_thr),'-r',str(conv_r),rc_flag,'--max-deviation','20'])
+        with open(decoded_filename) as f:
+            decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
+        for decoded_msg in decoded_msg_list:
+            # remove padding, if any
+            if pad:
+                decoded_msg = decoded_msg[:-1]
+            length_with_crc = math.ceil(len(decoded_msg)/8)*8
+            bytestring_with_crc = bitstring2bytestring(decoded_msg, length_with_crc)
+            crc = crc8.crc8(bytestring_with_crc[:-crc_len//8])
+            if crc.digest() == bytestring_with_crc[-crc_len//8:]:
+                index_bit_string = bytestring2bitstring(bytestring_with_crc[:math.ceil(index_len/8)], 8*math.ceil(index_len/8))
+                index_bit_string = index_bit_string[-index_len:]
+                index = (prp_a_inv*((int(index_bit_string,2))-prp_b))%(2**index_len)
+                payload_bytes = bitstring2bytestring(decoded_msg[index_len:-crc_len], bytes_per_oligo*8)
+                if index < num_oligos:
+                    num_success += 1
+                    print('Success')
+                    print('num success:',num_success)
+                    if index not in decoded_dict:
+                        decoded_dict[index] = payload_bytes
+                        print('New index!',index)
+                        print('num_unique',len(decoded_dict))
+                    else:
+                        print('Already seen index',index)
+                    break
+                else:
+
+                    print('Index out of range')
+            else:
+                print('CRC failed')
+        os.remove(fast5_filename)
+        os.remove(post_filename)
+        os.remove(decoded_filename)
+        shutil.rmtree(fast5_dir)
+    # do RS decoding
+    decoded_list = [[k, decoded_dict[k]] for k in decoded_dict]
+    print(decoded_list)
+    print(num_oligos_RS)
+    print(num_oligos)
+    RS_decoded_list = RSCode.MainDecoder(decoded_list, num_oligos_RS, num_oligos)
+    assert len(RS_decoded_list) == num_oligos_data
+    decoded_data = b''.join(RS_decoded_list)
+    decoded_data = decoded_data[:data_file_size]
+    with open(decoded_data_file,'wb') as f:
+        f.write(decoded_data)
+    return
+
+
+'''
+simulate reads and perform decoding process (convolutional decoding + RS decoding) for the 2 CRC case
+'''
+def simulate_and_decode_2crc(oligo_file, decoded_data_file,  num_reads, data_file_size, bytes_per_oligo, RS_redundancy, conv_m, conv_r, pad=False, syn_sub_prob = 0.005, syn_del_prob = 0.005, syn_ins_prob = 0.0005, deepsimdwell = False, num_thr = 16, list_size = 1):
+    bonito_model_path = 'dna_r9.4.1'
+    # data_file_size in bytes
+    data_size_padded = math.ceil(data_file_size/bytes_per_oligo)*bytes_per_oligo
+    (msg_len, num_oligos_data, num_oligos_RS, num_oligos) = compute_parameters(bytes_per_oligo, RS_redundancy, data_size_padded, pad)
+    msg_len += crc_len
+    num_RS_segments = bytes_per_oligo//2
+    with open(oligo_file) as f:
+        oligo_list = [l.rstrip('\n') for l in f.readlines()]
+    print('oligo_len',len(oligo_list[0]))
+    decoded_index_dict = [{} for _ in range(num_RS_segments)]
+    num_success = 0
+    num_attempted = 0
+    for _ in range(num_reads):
+        num_attempted += 1
+        print('num_attempted:',num_attempted)
+        rnd = str(np.random.randint(10000000))
+        oligo = np.random.choice(oligo_list)
+        rc = np.random.choice([True, False])
+        if rc:
+            oligo = reverse_complement(oligo)
+        fast5_dir = 'tmp_input_' + rnd + '/'
+        os.mkdir(fast5_dir)
+        fast5_filename = fast5_dir+ 'tmp.'+rnd+'.fast5'
+        simulate_read(oligo, syn_sub_prob, syn_del_prob, syn_ins_prob, fast5_filename, deepSimDwellFlag = deepsimdwell)
+        # call bonito to generate CTC posterior table
+        post_filename = 'tmp.'+rnd+'.post'
+        decoded_filename = 'tmp.'+rnd+'.dec'
+        subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename]) 
+        rc_flag = ''
+        if rc:
+            rc_flag = '--rc'
+        subprocess.run([PATH_TO_VITERBI_NANOPORE,'-m', 'decode','-i',post_filename,'-o',decoded_filename,'--mem-conv',str(conv_m),'--msg-len',str(msg_len),'-l',str(list_size),'-t',str(num_thr),'-r',str(conv_r),rc_flag,'--max-deviation','20'])
+        with open(decoded_filename) as f:
+            decoded_msg_list = [l.rstrip('\n') for l in f.readlines()]
+        
+        
+        #output a list of index, pos and payload_bytes
+        output_list = decode_list_2CRC_index(decoded_msg_list,bytes_per_oligo,num_oligos,pad)
+        print(output_list)
+        for (index, pos, payload_bytes) in output_list:
+            if index in decoded_index_dict[pos]:
+                found = False
+                for tup in decoded_index_dict[pos][index]:
+                    if tup[0] == payload_bytes:
+                        tup[1] += 1
+                        found = True
+                        break
+                    if not found:
+                        decoded_index_dict[pos][index].append([payload_bytes,1])
+                decoded_index_dict[pos][index] = sorted(decoded_index_dict[pos][index],key=lambda x: -x[1])
+            else:
+                decoded_index_dict[pos][index] = [[payload_bytes,1]]
+    
+        os.remove(fast5_filename)
+        os.remove(post_filename)
+        os.remove(decoded_filename)
+    # Prepare data to be sent to RS decoder
+    decoded_list = []
+    for segment_id in range(num_RS_segments):
+        decoded_list.append([[k, decoded_index_dict[segment_id][k][0][0]] for k in decoded_index_dict[segment_id]])
+    
+    # Decode each segment separately
+    RS_decoded_list = []
+    for segment_id in range(num_RS_segments):
+        RS_decoded_list.append(RSCode.MainDecoder(decoded_list[segment_id], num_oligos_RS, num_oligos))
+
+    # Combine the segments into a list
+    decoded_oligos = [b''.join(list(i)) for i in zip(*RS_decoded_list)]
+
+    decoded_data = b''.join(decoded_oligos)
+
+    assert len(decoded_oligos) == num_oligos_data
+    decoded_data = decoded_data[:data_file_size]
+    with open(decoded_data_file,'wb') as f:
+        f.write(decoded_data)
+    return
+
+if __name__ == '__main__':
+    # run simple example roundtrip for 1 CRC and 2 CRC cases
+    rnd = str(np.random.randint(10000000))
+    # create random file to encode of size 1 KB
+    file_size = 200
+    tmp_input_file = 'tmpfile.'+rnd
+    with open(tmp_input_file, 'wb') as fout:
+        fout.write(os.urandom(file_size)) 
+    # set parameters common to 1 CRC and 2 CRC cases
+    RS_redundancy = 0.25
+    conv_m = 8 # conv code memory
+    conv_r = 3 # conv code rate = 3/4
+    oligo_file = tmp_input_file + '.oligos'
+    decoded_data_file = tmp_input_file + '.decoded'
+    num_reads = 100
+
+    # 1 CRC experiments
+    bytes_per_oligo = 18 # number of payload bytes per oligo 
+    conv_pad = False # determined based on the convolutional code puncturing pattern and msg len
+    encode(data_file = tmp_input_file, oligo_file = oligo_file, bytes_per_oligo = bytes_per_oligo, RS_redundancy = RS_redundancy, conv_m = conv_m, conv_r = conv_r, pad=conv_pad)    
+    simulate_and_decode(oligo_file = oligo_file,decoded_data_file=decoded_data_file,num_reads=num_reads,data_file_size = file_size,bytes_per_oligo = bytes_per_oligo, RS_redundancy = RS_redundancy, conv_m = conv_m, conv_r = conv_r, pad=conv_pad)
+
+    print('filecmp',filecmp.cmp(tmp_input_file,decoded_data_file))
+    os.remove(oligo_file)
+    os.remove(decoded_data_file)
+
+    # 2 CRC experiments
+    bytes_per_oligo = 16 # number of payload bytes per oligo
+    conv_pad = True # determined based on the convolutional code puncturing pattern and msg len
+    encode_2crc(data_file = tmp_input_file, oligo_file = oligo_file, bytes_per_oligo = bytes_per_oligo, RS_redundancy = RS_redundancy, conv_m = conv_m, conv_r = conv_r, pad=conv_pad)    
+    simulate_and_decode_2crc(oligo_file = oligo_file,decoded_data_file=decoded_data_file,num_reads=num_reads,data_file_size = file_size,bytes_per_oligo = bytes_per_oligo, RS_redundancy = RS_redundancy, conv_m = conv_m, conv_r = conv_r, pad=conv_pad)
+
+    print('filecmp',filecmp.cmp(tmp_input_file,decoded_data_file))
+    os.remove(oligo_file)
+    os.remove(decoded_data_file)
+
+    os.remove(tmp_input_file)
