@@ -85,7 +85,7 @@ for i,readid in enumerate(readid_list):
     trans_filename = 'tmp.'+rnd+'_'+readid+'.trans'
     fastq_filename = 'tmp.'+rnd+'_'+readid+'.fastq'
 
-    subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename])
+    subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename, '--device','cpu'])
 
     # convert bonito post file to fastq and move (trans) files
     helper.bonito_basecall_generate_move(post_filename,fastq_filename,trans_filename)

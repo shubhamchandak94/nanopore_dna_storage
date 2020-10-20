@@ -81,7 +81,7 @@ for _ in range(NUM_TRIALS):
     post_filename = 'tmp.'+rnd+'.post'
     decoded_filename = 'tmp.'+rnd+'.dec'
 
-    subprocess.run(['bonito','basecaller', 'dna_r9.4.1', tmp_output_dir, '--post_file', post_filename])
+    subprocess.run(['bonito','basecaller', 'dna_r9.4.1', tmp_output_dir, '--post_file', post_filename,'--device','cpu'])
     rc_flag = ''
     if revcomp:
         rc_flag = '--rc'
