@@ -107,7 +107,7 @@ for i,readid in enumerate(readid_list):
         os.remove(fastq_filename)
         shutil.rmtree(fast5_dir)
         continue
-    new_post_filename = 'tmp.'+rnd+'.post.new'
+    new_post_filename = 'tmp.'+rnd+'_'+str(readid)+'.post.new'
     helper.truncate_post_file(post_filename, new_post_filename, start_pos, end_pos)
     
     rc_flag = ''
