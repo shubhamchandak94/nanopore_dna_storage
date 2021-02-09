@@ -7,8 +7,8 @@ int main(int argc, char **argv)
 	std::string file_name = std::string(argv[1]);
 	std::ifstream f(file_name);
 	long linenum = 0;
-	long a[2048];
-	for(int i = 0; i < 2048; i++)
+	long a[200000];
+	for(int i = 0; i < 200000; i++)
 		a[i] = 0;
 	std::string line;
 	while(std::getline(f,line))
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 		if(linenum%4 == 2)
 			a[line.length()]++;
 	}
-	for(int i = 0; i < 2048; i++)
+	for(int i = 0; i < 200000; i++)
 		std::cout << i <<"\t" << a[i] <<"\n";
 	return 0;
 }

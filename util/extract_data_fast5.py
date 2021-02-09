@@ -3,14 +3,21 @@ import os
 import h5py
 import sys
 import numpy as np
-if len(sys.argv) != 4:
+import random
+
+if len(sys.argv) < 4:
     print('Incorrect usage')
-    print('python extract_data_fast5.py SAMFILENAME FAST5DIR OUTFILE.hdf5')
+    print('python extract_data_fast5.py SAMFILENAME FAST5DIR OUTFILE.hdf5 [NUM_READS_TO_EXTRACT]')
     sys.exit(1)
 
 infile_sam = sys.argv[1]
 fast5_dir = sys.argv[2]
 outfile = sys.argv[3]
+
+if len(sys.argv) == 5:
+    num_reads_to_extract = int(sys.argv[4])
+else:
+    num_reads_to_extract = None        
 
 print('SAM file:',infile_sam)
 print('FAST5 dir:',fast5_dir)
@@ -28,6 +35,14 @@ with open(infile_sam,'r') as f:
         sam_dict[read_id] = ref
 
 print('number of read ids in sam', len(sam_dict))
+
+if num_reads_to_extract is None:
+    num_reads_to_extract = len(sam_dict)
+
+read_ids_to_extract = random.sample(list(sam_dict),num_reads_to_extract)
+sam_dict = {k:sam_dict[k] for k in read_ids_to_extract}
+
+print('extracting',len(sam_dict),'read ids')
 
 # now go through each of the fast5 files and if the read_id is in sam_dict then put the reference and the raw signals (after conversion to float) into an hdf5 file
 fout = h5py.File(outfile,'w')
