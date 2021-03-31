@@ -7,7 +7,13 @@ DNA storage for nanopore sequencing using convolutional coding and basecaller-de
 
 Code tested on Ubuntu 18.04 with Python3. 
 
-## Download and install
+#### Table of Contents
+- [Download and installation](#download-and-installation)
+- [Usage of provided scripts](#usage-of-provided-scripts)
+- [Analysis workflow](#analysis-workflow)
+- [Updates](#updates)
+
+## Download and installation
 Download:
 ```
 git clone --recursive -b bonito https://github.com/shubhamchandak94/nanopore_dna_storage/
@@ -18,7 +24,7 @@ Install (compile RS code and convolutional code):
 ```
 ./install.sh
 ```
-All the commands should be run in a virtual environment created for bonito (see [`bonito/`](bonito/) directory for details, follow the steps in the section Developer Quickstart). For convenience, we provide the steps below as well (you can use conda environments instead of venv if you wish):
+All the commands should be run in a virtual environment created for bonito (see `bonito/` directory for details, follow the steps in the section Developer Quickstart). For convenience, we provide the steps below as well (you can use conda environments instead of venv if you wish):
 ```
 cd bonito
 python3 -m venv venv3
@@ -32,28 +38,28 @@ Other than this, you might need to install the following Python3 packages: crc8,
 
 Finally, to verify the dependencies are installed correctly, run `python helper.py` which runs some basic encoding and decoding roundtrip tests.
 
-## General instructions
+## Usage of provided scripts
 In many of the scripts, you need to set the path for the corresponding data directories as well as the encoding parameters. Details about the experiments and corresponding files and scripts can be found in `oligos_8_4_20/`. The file `helper.py` contains the major functions, and these are called from the different scripts.
 
-## Parameters for experiments
+### Parameters for experiments
 The file `oligos_8_4_20/encode_experiments.py` was used for generating the oligos and contains the parameters required for the decoding.
 
-## Convolutional code decoding of raw signal data
+### Convolutional code decoding of raw signal data
 First, generate a list of read ids to decode using the script `util/generate_read_ids.py` (changing the parameters as needed). Then, run `generate_decoded_lists.py` with the relevant parameters. See the directory `oligos_8_4_20/decoding_scripts/` for some examples.
 
 Note that the `rate_conv` parameter is set to 1, 2, 3, 4, 5 and 7 for convolutional code rates of 1/2, 2/3, 3/4, 4/5, 5/6 and 7/8, respectively. The `msg_len` parameter is the length of the binary input to the convolutional code encoder. This writes the decoded lists to files named `list_0, list_1, ...` in the output directory and also generates an `info.txt` file listing the decoded reads.
 The parameters for the different experiments can be found in the files `oligos_8_4_20/encode_experiments.py` and `oligos_8_4_20/encoding_log.txt`.
 
-## Computing error rates of convolutional code decoding
+### Computing error rates of convolutional code decoding
 To compute the number of errors (due to no CRC match being found and due to incorrect CRC match) from the decoded lists, use `compute_error_rate_from_decoded_lists.py` after setting the parameters. For experiments employing the two-CRC strategy, use `compute_error_rate_from_decoded_lists_2CRC.py`.
 
-## Performing RS decoding of the lists
+### Performing RS decoding of the lists
 To perform RS decoding from the lists, use `decode_RS_from_decoded_lists.py` after setting the parameters. `NUM_TRIALS` denotes the number of decoding trials performed. Each trial involves a subsampling of `NUM_READS_TO_USE` reads from the set of decoded lists of size `NUM_READS_TOTAL`, an attempt at RS decoding and comparison with the original encoded file to ensure successful decoding. For experiments employing the two-CRC strategy, use `decode_RS_from_decoded_lists_2CRC.py`.
 
-## Finding minimum number of reads required for RS decoding of the lists
+### Finding minimum number of reads required for RS decoding of the lists
 To find the minimum number of reads required for successful RS decoding from the lists, use `compute_min_reads_for_decoding.py` after setting the parameters. `NUM_TRIALS` denotes the number of decoding trials performed (success declared when all trials succeed). Each trial involves a subsampling of `NUM_READS_TO_USE` reads from the set of decoded lists of size `NUM_READS_TOTAL`, an attempt at RS decoding and comparison with the original encoded file to ensure successful decoding. You should specify the `NUM_READS_TO_USE_START` (the initial value of `NUM_READS_TO_USE`) and `NUM_READS_TO_USE_STEP` (the value by which `NUM_READS_TO_USE` is incremented until we get success). For experiments employing the two-CRC strategy, use `compute_min_reads_for_decoding_2CRC.py`.
 
-## Running simulations
+### Running simulations
 The script `simulator.py` can be used to perform simulations to test various parameters for the convolutional code. The simulation of the raw signal is performed using the [scrappie](https://github.com/nanoporetech/scrappie) simulator with an optional mode to use dwell time distribution from [DeepSimulator](https://github.com/lykaust15/DeepSimulator). An example execution is shown below:
 ```
 python3 simulator.py \
@@ -72,8 +78,11 @@ The `mem_conv` parameter can be set to 6, 8, 11 or 14. The `rate` parameter can 
 
 In addition, we provide functions to simulate the entire pipeline including the Reed-Solomon outer code in `helper.py`. A small sample simulation is included in the `if __name__ == '__main__'` block and can be run by executing `python helper.py`.
 
-## Utility scripts
+### Utility scripts
 The [`util/`](util/) directory contains several utility scripts used for preparing data in a format that `generate_decoded_lists.py` can interpret, and also for performing various forms of statistical analysis of the data based on alignment.
+
+## Analysis workflow
+TODO
 
 ## Updates 
 ### Notes on bonito integration
