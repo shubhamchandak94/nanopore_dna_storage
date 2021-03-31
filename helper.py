@@ -559,7 +559,7 @@ def simulate_and_decode(oligo_file, decoded_data_file,  num_reads, data_file_siz
         # call bonito to generate CTC posterior table
         post_filename = 'tmp.'+rnd+'.post'
         decoded_filename = 'tmp.'+rnd+'.dec'
-        subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename]) 
+        subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename,'--device','cpu']) 
 
         rc_flag = ''
         if rc:
@@ -644,7 +644,7 @@ def simulate_and_decode_2crc(oligo_file, decoded_data_file,  num_reads, data_fil
         # call bonito to generate CTC posterior table
         post_filename = 'tmp.'+rnd+'.post'
         decoded_filename = 'tmp.'+rnd+'.dec'
-        subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename]) 
+        subprocess.run(['bonito','basecaller', bonito_model_path, fast5_dir, '--post_file', post_filename,'--device','cpu']) 
         rc_flag = ''
         if rc:
             rc_flag = '--rc'
