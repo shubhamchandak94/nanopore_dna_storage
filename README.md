@@ -18,7 +18,7 @@ Install (compile RS code and convolutional code):
 ```
 ./install.sh
 ```
-All the commands should be run in a virtual environment created for bonito (see `bonito/` directory for details, follow the steps in the section Developer Quickstart). For convenience, we provide the steps below as well (you can use conda environments instead of venv if you wish):
+All the commands should be run in a virtual environment created for bonito (see [`bonito/`](bonito/) directory for details, follow the steps in the section Developer Quickstart). For convenience, we provide the steps below as well (you can use conda environments instead of venv if you wish):
 ```
 cd bonito
 python3 -m venv venv3
@@ -50,6 +50,9 @@ To compute the number of errors (due to no CRC match being found and due to inco
 ## Performing RS decoding of the lists
 To perform RS decoding from the lists, use `decode_RS_from_decoded_lists.py` after setting the parameters. `NUM_TRIALS` denotes the number of decoding trials performed. Each trial involves a subsampling of `NUM_READS_TO_USE` reads from the set of decoded lists of size `NUM_READS_TOTAL`, an attempt at RS decoding and comparison with the original encoded file to ensure successful decoding. For experiments employing the two-CRC strategy, use `decode_RS_from_decoded_lists_2CRC.py`.
 
+## Finding minimum number of reads required for RS decoding of the lists
+To find the minimum number of reads required for successful RS decoding from the lists, use `compute_min_reads_for_decoding.py` after setting the parameters. `NUM_TRIALS` denotes the number of decoding trials performed (success declared when all trials succeed). Each trial involves a subsampling of `NUM_READS_TO_USE` reads from the set of decoded lists of size `NUM_READS_TOTAL`, an attempt at RS decoding and comparison with the original encoded file to ensure successful decoding. You should specify the `NUM_READS_TO_USE_START` (the initial value of `NUM_READS_TO_USE`) and `NUM_READS_TO_USE_STEP` (the value by which `NUM_READS_TO_USE` is incremented until we get success). For experiments employing the two-CRC strategy, use `compute_min_reads_for_decoding_2CRC.py`.
+
 ## Running simulations
 The script `simulator.py` can be used to perform simulations to test various parameters for the convolutional code. The simulation of the raw signal is performed using the [scrappie](https://github.com/nanoporetech/scrappie) simulator with an optional mode to use dwell time distribution from [DeepSimulator](https://github.com/lykaust15/DeepSimulator). An example execution is shown below:
 ```
@@ -68,6 +71,9 @@ python3 simulator.py \
 The `mem_conv` parameter can be set to 6, 8, 11 or 14. The `rate` parameter can be set to 1, 2, 3, 4, 5 and 7 for convolutional code rates of 1/2, 2/3, 3/4, 4/5, 5/6 and 7/8, respectively. The `msg_len` parameter decides the length of the binary input to the convolutional encoder, and should be set depending upon the desired oligo length. Setting `deepsimdwell` to `True` uses the dwell time distribution from DeepSim which has higher variance (based on our experience, keeping this `False` gives results closer to reality). `reversecomp` can be set to True to simulate reverse complemented read decoding. Finally, the parameters `syn_sub_prob`, `syn_del_prob` and `syn_ins_prob` decide the iid substitution, deletion and insertion error rates introduced during the synthesis.
 
 In addition, we provide functions to simulate the entire pipeline including the Reed-Solomon outer code in `helper.py`. A small sample simulation is included in the `if __name__ == '__main__'` block and can be run by executing `python helper.py`.
+
+## Utility scripts
+The [`util/`](util/) directory contains several utility scripts used for preparing data in a format that `generate_decoded_lists.py` can interpret, and also for performing various forms of statistical analysis of the data based on alignment.
 
 ## Updates 
 ### Notes on bonito integration
