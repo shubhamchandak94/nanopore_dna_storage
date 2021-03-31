@@ -5,19 +5,32 @@ DNA storage for nanopore sequencing using convolutional coding and basecaller-de
 
 ### [ICASSP 2020](https://ieeexplore.ieee.org/document/9053441)
 
-Code tested on Ubuntu 18.04.1 and Python3.
+Code tested on Ubuntu 18.04 with Python3. 
+
 ## Download and install
 Download:
 ```
 git clone --recursive -b bonito https://github.com/shubhamchandak94/nanopore_dna_storage/
+cd nanopore_dna_storage/
 ```
 
-Install:
+Install (compile RS code and convolutional code):
 ```
 ./install.sh
 ```
-All the steps below should be run in a virtual environment created for bonito (see `bonito/` directory for details, follow the steps in the section Developer Quickstart).
-Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (see `install_python_packages_bonito_venv.sh`).
+All the commands should be run in a virtual environment created for bonito (see `bonito/` directory for details, follow the steps in the section Developer Quickstart). For convenience, we provide the steps below as well (you can use conda environments instead of venv if you wish):
+```
+cd bonito
+python3 -m venv venv3
+source venv3/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+python setup.py develop
+```
+
+Other than this, you might need to install the following Python3 packages: crc8, distance, fast5_research, h5py, numpy, scipy, scrappy, struct (just run `./install_python_packages_bonito_venv.sh`).
+
+Finally, to verify the dependencies are installed correctly, run `python helper.py` which runs some basic encoding and decoding roundtrip tests.
 
 ## General instructions
 In many of the scripts, you need to set the path for the corresponding data directories as well as the encoding parameters. Details about the experiments and corresponding files and scripts can be found in `oligos_8_4_20/`. The file `helper.py` contains the major functions, and these are called from the different scripts.
@@ -80,10 +93,5 @@ Some analysis showed that the previous barcode removal strategy led to suboptima
 - Earlier barcode was searched only within the read, i.e., the possibility that part of the barcode is cut off was not entertained. While working on guppy, a barcode extend len parameter was included that allowed this to happen. The parameter determined how much overhang of barcode was allowed and was set to 10 arbitrarily. Now this has been set to the barcode length by default, which improves things a bit when more than 10 bases of the barcode are cut off. Note that the overhang portion contributes to the edit distance and is not "free".
 - As mentioned above, the extended barcode portion that is not part of read contributes to the edit distance. In some cases, this can be a bit bad, e.g., consider that last 15 bases of 25 length barcode perfectly match the first 25 bases of the read. In this case the edit distance for the appropriate shift is still 10 which can lead to a overall worse match being selected from within the read. To resolve this issue, we add a barcode extend penalty parameter. When the parameter is 1.0, this corresponds to the usual edit distance. When it is 0.0, that means we don't penalize the extension at all, which is bas because then the "match" with barcode completely outside read is very likely to get selected. We set it to 0.6 based on some experiments. In general, this can be chosen based on the likelihood of the barcode being not present in the read and amount of barcode generally present in the read.
 
-#### TODO
-[ ] Can potentially move to cutadapt in the future - currently there doesn't seem to be much incentive.
-
-[ ] One case where improvement possible: These were cases where the barcode on one or both sides is completely missing in read (or just a couple bases left). In such cases, our barcode removal tends to find a bad match elsewhere in the read. Whereas no trimming might do the trick. One way to fix this could be have a max error rate - that is remove barcode only if the match is at least X% edit distance. This will help only if the barcode is not present, but the payload portion is present. This is a relatively rare scenario so not doing this right now.
-
 ### Two-CRC stategy
-Idea is to use 2 CRCs so that we can use part of the decoded message from convolutional coding if the whole thing doesn't succeed. This can help because the errors are often localized, and so as long as the index + first/second half of the payload is correct, we get useful information. Since the index is closer to the first half, we observed that the correct decoding in the index happened more frequently with the correct decoding of the first half. This is not ideal because the RS outer coding is applied per columnar segment, and we need a threshold number of correct segments in each column. To make sure each column has roughly equal number of correctly decoded segments, we cyclically rotate the segments in the oligos after RS encoding so that each RS code has equal number of segments in different parts of the oligo.
+Idea is to use 2 CRCs so that we can use part of the decoded message from convolutional coding if the whole thing doesn't succeed. This can help because the errors are often localized, and so as long as the index + first/second half of the payload is correct, we get useful information. Since the index is closer to the first half, we observed that the correct decoding in the index happened more frequently with the correct decoding of the first half. This is not ideal because the RS outer coding is applied per columnar segment, and we need a threshold number of correct segments in each column. To make sure each column has roughly equal number of correctly decoded segments, we cyclically rotate the segments in the oligos after RS encoding so that each RS code has equal number of segments in different parts of the oligo.  
