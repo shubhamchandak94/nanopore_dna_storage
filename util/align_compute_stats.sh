@@ -19,6 +19,7 @@ MINIMAP2='/raid/shubham/minimap2/minimap2'
 SAMTOOLS='/raid/shubham/samtools-1.9/samtools'
 DATA_PATH='/raid/nanopore/shubham/20200804_nanopore_pool_data/data/'
 FAST5_PATH='/raid/nanopore/shubham/20200804_nanopore_pool_data/20200814_MIN_0880/dnastorage_convcode3_agilent/20200812_2310_MN19956_FAN33721_41215942/fast5'
+NUM_READS_FOR_DECODING=10000
 
 # create .bed files from .fa files (will be used later for separating reads from different experiments)
 for i in {0..17}; do
@@ -59,5 +60,5 @@ done
 # extract raw signal by experiment 
 mkdir -p $DATA_PATH/raw_signal
 for i in {0..17}; do
-    python3 extract_data_fast5.py $DATA_PATH/aligned/exp_aligned_$i.filtered.sam $FAST5_PATH $DATA_PATH/raw_signal/raw_signal_$i.hdf5
+    python3 extract_data_fast5.py $DATA_PATH/aligned/exp_aligned_$i.filtered.sam $FAST5_PATH $DATA_PATH/raw_signal/raw_signal_$i.hdf5 $NUM_READS_FOR_DECODING
 done

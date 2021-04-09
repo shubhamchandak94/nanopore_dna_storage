@@ -17,8 +17,8 @@ set -e
 # and minimap2 version 2.13 (https://github.com/lh3/minimap2/releases/tag/v2.13)
 MINIMAP2='/raid/shubham/minimap2/minimap2'
 SAMTOOLS='/raid/shubham/samtools-1.9/samtools'
-DATA_PATH='/raid/nanopore/shubham/20200804_nanopore_pool_data/data_20210205_MIN_0952/'
-FAST5_PATH='//raid/nanopore/20210205_MIN_0952/dnastorage_hifi_apex/20210204_0014_MN19956_FAO47706_eb4e84b9/fast5'
+DATA_PATH='/raid/nanopore/shubham/20200804_nanopore_pool_data/data_20210304_MIN_0964/'
+FAST5_PATH='//raid/nanopore/20210304_MIN_0964/no_sample/20210303_0030_MN34468_FAP56950_d01ac31c/fast5/'
 
 REPLICATE=$1
 EXPERIMENTS="0 1 2 5 8"

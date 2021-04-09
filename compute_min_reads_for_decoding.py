@@ -7,11 +7,11 @@ import filecmp
 # SET THESE PARAMETERS BEFORE RUNNING
 NUM_TRIALS = 10
 LIST_SIZE = 8
-NUM_READS_TOTAL = 5900
-NUM_READS_TO_USE_START = 4000 # starting point
+NUM_READS_TOTAL = 10000
+NUM_READS_TO_USE_START = 2750 # starting point
 NUM_READS_TO_USE_STEP = 250 # step by which we increase num reads at each step
-bytes_per_oligo = 22
-DECODED_LISTS_DIR = '/mnt/ix1/Projects_lite/20180528_HJL_DGI/riskyKmer/shubham/nanopore_dna_storage/data_20210205_MIN_0952/decoded_lists/barcode04/exp_8_bonito_default_bcp_0.6/'
+bytes_per_oligo = 18
+DECODED_LISTS_DIR = '/mnt/ix1/Projects_lite/20180528_HJL_DGI/riskyKmer/shubham/nanopore_dna_storage/data_20210304_MIN_0964/decoded_lists/barcode01/exp_0_bonito_default_bcp_0.6/'
 RS_REDUNDANCY = 0.25
 pad = True
 ORIGINAL_FILE = '/mnt/ix1/Projects_lite/20180528_HJL_DGI/riskyKmer/shubham/nanopore_dna_storage/nanopore_dna_storage/oligos_8_4_20/data_files.tar.bz2.enc.1' # for checking if decoding was successful

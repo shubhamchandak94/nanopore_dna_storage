@@ -3,9 +3,9 @@ import os
 
 # PARAMETERS TO BE SET BEFORE RUNNING THE CODE
 LIST_SIZE = 8
-DECODED_LISTS_DIR = '/raid/nanopore/shubham/20200804_nanopore_pool_data/data/decoded_lists/exp_1_bonito_default_bcp_0.6/'
-CONV_INPUT_FILE = '/raid/nanopore/shubham/20200214_nanopore_pool_data/nanopore_dna_storage/oligos_8_4_20/reads.1.conv_input'
-pad = False
+DECODED_LISTS_DIR = '/mnt/ix1/Projects_lite/20180528_HJL_DGI/riskyKmer/shubham/nanopore_dna_storage/data_20210304_MIN_0964/decoded_lists/barcode01/exp_0_bonito_default_bcp_0.6/'
+CONV_INPUT_FILE = '/mnt/ix1/Projects_lite/20180528_HJL_DGI/riskyKmer/shubham/nanopore_dna_storage/nanopore_dna_storage/oligos_8_4_20/reads.0.conv_input'
+pad = True
 bytes_per_oligo = 18
 
 print('list size:',LIST_SIZE)
