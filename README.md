@@ -177,6 +177,21 @@ This can take up to a few days depending on the parameters and the number of rea
 
 All the decoded lists from this step are made available [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/decoded_lists/).
 
+### Analyzing decoded lists
+The final step involves obtaining the final results from the decoded lists from the previous step (made available [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/decoded_lists/)). 
+
+The script [`compute_min_reads_for_decoding.py`](compute_min_reads_for_decoding.py) can be used to find the minimum number of reads needed for successful decoding, which is used to calculate our chief metric (reading cost). The script attempts decoding with progressively larger number of reads until we have success. There are several parameters in the script that need to be set before running:
+
+- `NUM_READS_TOTAL`: total number of reads used for decoding, set to 10000 for this example.
+- `NUM_READS_TO_USE_START`: initial number of reads (`NUM_READS_TO_USE`) to start testing the decoding (can set this as small as desired, but it's better to start with a reasonable value so we get success sooner).
+- `NUM_READS_TO_USE_STEP`: the value by which `NUM_READS_TO_USE` is incremented until we get success
+- `NUM_TRIALS`: number of decoding trials performed at each value of `NUM_READS_TO_USE` (success declared when all trials succeed) 
+- `LIST_SIZE`: list size (should be less than or equal to the list size in the Viterbi decoding)
+- `bytes_per_oligo`, `pad`: related to the convolutional code parameters, use the value for your experiment from [`oligos_8_4_20/encoding_log.txt`](oligos_8_4_20/encoding_log.txt).
+- `DECODED_LISTS_DIR`: set to the `DIRNAME` parameter from the previous step.
+- `ORIGINAL_FILE`: set to `oligos_8_4_20/data_files.tar.bz2.enc.1` (this is used to verify that the decoding succeeded)
+
+Another useful script is [`compute_error_rate_from_decoded_lists.py`](compute_error_rate_from_decoded_lists.py) which can help calculate the number of reads that were decoded successfully. The parameters in this are a subset of the parameters in [`compute_min_reads_for_decoding.py`](compute_min_reads_for_decoding.py), and should be set in the same way.
 
 ## Updates 
 ### Notes on bonito integration
