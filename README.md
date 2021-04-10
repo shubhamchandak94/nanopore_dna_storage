@@ -84,7 +84,9 @@ In addition, we provide functions to simulate the entire pipeline including the 
 The [`util/`](util/) directory contains several utility scripts used for preparing data in a format that `generate_decoded_lists.py` can interpret, and also for performing various forms of statistical analysis of the data based on alignment.
 
 ## Analysis workflow
-In this section, we describe the decoding workflow (as mentioned above, the file [`oligos_8_4_20/encode_experiments.py`](oligos_8_4_20/encode_experiments.py) was used for generating the oligos and contains the parameters required for the decoding). We start from the fast5 files and discuss the steps involved in getting to the decoded file. We have provided the raw files as well as several intermediate analysis files at https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito. _Note that the intermediate analysis files can be used to test parts of the pipeline without needing to go through the entire process._ For concreteness, we will focus on an example of a specific sequencing run with multiple replicates/barcodes (`20210304_MIN_0964` in the data repo), and specifically the subpool experiment 0 (convolutional code m=6, r=3/4). We also include the minor modifications (mostly in path names) required for sequencing run with no barcode multiplexing. 
+In this section, we describe the decoding workflow (as mentioned above, the file [`oligos_8_4_20/encode_experiments.py`](oligos_8_4_20/encode_experiments.py) was used for generating the oligos and contains the parameters required for the decoding). We start from the fast5 files and discuss the steps involved in getting to the decoded file. We have provided the raw files as well as several intermediate analysis files at https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito. _Note that the intermediate analysis files can be used to test parts of the pipeline without needing to go through the entire process._ 
+
+For concreteness, we will focus on an example of a specific sequencing run with multiple replicates/barcodes (`20210304_MIN_0964` in the data repo), and specifically the subpool experiment 0 (convolutional code m=6, r=3/4) for `barcode01`. We also include the minor modifications (mostly in path names) required for sequencing run with no barcode multiplexing. 
 
 For context, note that we included 18 experiments in a single synthesis pool with different PCR primers. The 18 experiments correspond to different convolutional code memory, rate and number of CRCs used, with all the parameters described in [`oligos_8_4_20/encode_experiments.py`](oligos_8_4_20/encode_experiments.py)
 
@@ -117,7 +119,7 @@ cat $DATA/fastq/ont_guppy/*.fastq > $DATA/fastq/merged.fastq
 ```
 
 ### Alignment, separating by experiment and preparing raw data for decoding
-The next step involves aligning the reads to the original oligo files (only to separate the experiments, this is not used for decoding). In addition we generate some statistics and extract a random subset of raw signals for each experiment that will be used for the decoding in subsequent steps. We provide a script for this in `util/align_compute_stats_replicates.sh`. First step is to set the variables at the top of the script:
+The next step involves aligning the reads to the original oligo files (only to separate the experiments, the original oligos are not used for decoding). In addition we generate some statistics and extract a random subset of raw signals for each experiment that will be used for the decoding in subsequent steps. We provide a script for this in [`util/align_compute_stats_replicates.sh`](util/align_compute_stats_replicates.sh). First step is to set the variables at the top of the script:
 - `MINIMAP2`: path to minimap2 aligner executable
 - `SAMTOOLS`: path to samtools executable
 - `DATA_PATH`: the `$DATA` directory
@@ -140,13 +142,13 @@ After this step, the `$DATA` directory contains the following subdirectories (wi
 - `oligo_files`: the original oligos (made available [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/oligo_files))
 - `fastq`: basecalled and demultiplexed reads
 - `aligned`: aligned reads, before and after separating by experiments
-- `raw_signal`: Contains the raw signals in hdf5 format for the different experiments (made available [here]([here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/raw_signal/)))
+- `raw_signal`: Contains the raw signals in hdf5 format for the different experiments (made available [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/raw_signal/))
 - `stats`: Contains statistics for the basecalling errors and alignment (made available [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/stats))
 
 One further analysis step described in the paper is the coverage analysis. We describe an example execution below:
 ```
 grep "^[^@]" $DATA/aligned/barcode01/exp_aligned_0.filtered.sam | cut -f 3 > $DATA/aligned/barcode01/exp_aligned_0.filtered.txt
-python compute_coverage_stats.py $DATA/aligned/barcode01/exp_aligned_0.filtered.txt 880 5
+python util/compute_coverage_stats.py $DATA/aligned/barcode01/exp_aligned_0.filtered.txt 880 5
 ```
 The first step extracts the reference sequence of the different aligned oligos, and the second step uses this to determine the coverage variance and the fraction of oligos with zero coverage. For consistency across experiments with different overall coverage, we determine these metrics for a subsampling with 5x coverage (the third parameter). The second parameter `880` denotes the number of oligos for the specific experiment which can be seen in the supplementary tables provided, or in [`oligos_8_4_20/encoding_log.txt`](oligos_8_4_20/encoding_log.txt).
 
@@ -167,13 +169,13 @@ This will generate a file `$DATA/read_ids/exp_0_read_ids.10000.txt` which contai
 We have made available all the read id files used in our analysis [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/raw_signal).
 
 ### Convolutional code Viterbi decoding
-This is the main decoding step in the pipeline, and the one that takes the most time. Note that all the inputs as well as the outputs are already available in the data repo (https://github.com/shubhamchandak94/nanopore_dna_storage_data/). All the decoding scripts are available in this repository, the ones for the `20200814_MIN_0880` pool (all 18 experiments, no barcoding) are at [`oligos_8_4_20/decoding_scripts`](oligos_8_4_20/decoding_scripts), and the ones for the `20210304_MIN_0964` pool (5 experiments, 6 replicates) are at [`oligos_8_4_20/replicates`](oligos_8_4_20/replicates). The only difference is the path convention, otherwise the scripts are similar. Note that we have one script per experiment since they pass different convolutional code parameters and primer sequences to the `generate_decoded_lists.py` file which actually does the decoding.
+This is the main decoding step in the pipeline, and the one that takes the most time. Note that all the inputs as well as the outputs are already available in the [data repo](https://github.com/shubhamchandak94/nanopore_dna_storage_data/). All the decoding scripts are available in this repository, the ones for the `20200814_MIN_0880` pool (all 18 experiments, no barcoding) are at [`oligos_8_4_20/decoding_scripts`](oligos_8_4_20/decoding_scripts), and the ones for the `20210304_MIN_0964` pool (5 experiments, 6 replicates) are at [`oligos_8_4_20/replicates`](oligos_8_4_20/replicates). The only difference is the path convention, otherwise the scripts are similar. Note that we have one script per experiment since they pass different convolutional code parameters and primer sequences to [`generate_decoded_lists.py`](generate_decoded_lists.py) which actually does the decoding.
 
-Let's focus on an example for `barcode01` and experiment 0, with the decoding script at [`oligos_8_4_20/replicates/run_decoder_exp_0_bonito_default.sh`](oligos_8_4_20/replicates/run_decoder_exp_0_bonito_default.sh). We first make the following change to this file: on line 3, set `ROOT_PATH` to the `$DATA` directory. You might also want to change the `--num_threads` or the `--list_size` parameter to manage the speed. We also provide the possibility of passing a non-default model, but we weren't able to get any benefits from the finetuning, and we used just the default parameters throughout. Finally, you should verify that the `HDF5_INPUT` and the `READ_ID_FILE` files follow the correct path convention you used (and edit if not). You can also modify the `DIRNAME` line to obtain the output in a different directory. Next we run,
+Let's focus on an example for `barcode01` and experiment 0, with the decoding script at [`oligos_8_4_20/replicates/run_decoder_exp_0_bonito_default.sh`](oligos_8_4_20/replicates/run_decoder_exp_0_bonito_default.sh). We first make the following change to this file: on line 3, set `ROOT_PATH` to the `$DATA` directory. You might also want to change the `--num_threads` or the `--list_size` parameter to manage the speed. We also provide the possibility of passing a non-default model, but we weren't able to get any benefits from the finetuning, and we used just the default parameters throughout. Finally, you should verify that the `HDF5_INPUT` and the `READ_ID_FILE` files follow the correct path convention you used (and edit them if not). You can also modify the `DIRNAME` line to obtain the output in a different directory. Next we run,
 ```
-./oligos_8_4_20/replicates/run_decoder_exp_0_bonito_default.sh
+./oligos_8_4_20/replicates/run_decoder_exp_0_bonito_default.sh barcode01/
 ```
-This can take up to a few days depending on the parameters and the number of reads in question. Once this finishes, we obtain the decoded lists for all the reads in the `DIRNAME` directory, with one file per read, named as `list_0`, `list_1`, etc. Missing file denotes that the primer removal failed and the convolutional code decoding was not performed. Note that the list files correspond to the read ids file provided as input to the script. 
+This can take up to a few days depending on the parameters and the number of reads in question. Once this finishes, we obtain the decoded lists for all the reads in the `DIRNAME` directory, with one file per read, named as `list_0`, `list_1`, etc. Missing file denotes that the primer removal failed and the convolutional code decoding was not performed. Note that the list files correspond to the read ids in the file provided as input to the script. 
 
 All the decoded lists from this step are made available [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/decoded_lists/).
 
@@ -183,7 +185,7 @@ The final step involves obtaining the final results from the decoded lists from 
 The script [`compute_min_reads_for_decoding.py`](compute_min_reads_for_decoding.py) can be used to find the minimum number of reads needed for successful decoding, which is used to calculate our chief metric (reading cost). The script attempts decoding with progressively larger number of reads until we have success. There are several parameters in the script that need to be set before running:
 
 - `NUM_READS_TOTAL`: total number of reads used for decoding, set to 10000 for this example.
-- `NUM_READS_TO_USE_START`: initial number of reads (`NUM_READS_TO_USE`) to start testing the decoding (can set this as small as desired, but it's better to start with a reasonable value so we get success sooner).
+- `NUM_READS_TO_USE_START`: initial number of reads to start testing the decoding (can set this as small as desired, but it's better to start with a reasonable value so we get success sooner). We set `NUM_READS_TO_USE = NUM_READS_TO_USE_START` at the start.
 - `NUM_READS_TO_USE_STEP`: the value by which `NUM_READS_TO_USE` is incremented until we get success
 - `NUM_TRIALS`: number of decoding trials performed at each value of `NUM_READS_TO_USE` (success declared when all trials succeed) 
 - `LIST_SIZE`: list size (should be less than or equal to the list size in the Viterbi decoding)
@@ -192,6 +194,8 @@ The script [`compute_min_reads_for_decoding.py`](compute_min_reads_for_decoding.
 - `ORIGINAL_FILE`: set to `oligos_8_4_20/data_files.tar.bz2.enc.1` (this is used to verify that the decoding succeeded)
 
 Another useful script is [`compute_error_rate_from_decoded_lists.py`](compute_error_rate_from_decoded_lists.py) which can help calculate the number of reads that were decoded successfully. The parameters in this are a subset of the parameters in [`compute_min_reads_for_decoding.py`](compute_min_reads_for_decoding.py), and should be set in the same way.
+
+Note that there is another set of scripts for the 2CRC case (experiments 9 to 17 in the oligo pool), with similar parameters.
 
 ## Updates 
 ### Notes on bonito integration
