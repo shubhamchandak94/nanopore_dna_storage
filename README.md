@@ -5,6 +5,8 @@ DNA storage for nanopore sequencing using convolutional coding and basecaller-de
 
 ### [ICASSP 2020](https://ieeexplore.ieee.org/document/9053441)
 
+### Data for bonito branch: https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito
+
 Code tested on Ubuntu 18.04 with Python3. 
 
 #### Table of Contents
@@ -82,7 +84,70 @@ In addition, we provide functions to simulate the entire pipeline including the 
 The [`util/`](util/) directory contains several utility scripts used for preparing data in a format that `generate_decoded_lists.py` can interpret, and also for performing various forms of statistical analysis of the data based on alignment.
 
 ## Analysis workflow
-TODO
+In this section, we describe the decoding workflow (as mentioned above, the file `oligos_8_4_20/encode_experiments.py` was used for generating the oligos and contains the parameters required for the decoding). We start from the fast5 files and discuss the steps involved in getting to the decoded file. We have provided the raw files as well as several intermediate analysis files at https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito. For concreteness, we will focus on an example of a specific sequencing run with multiple replicates/barcodes (`20210304_MIN_0964` in the data repo), and specifically the subpool experiment 0 (convolutional code m=6, r=3/4). We also include the minor modifications (mostly in path names) required for sequencing run with no barcode multiplexing.
+
+### Directory structure
+We will assume the fast5 files are in `$FAST5_PATH` and the analysis data is in `$DATA`. The `$DATA` directory has further subdirectories, initially just the `$DATA/oligo_files/` that contains the files included [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/oligo_files).
+
+### Basecalling
+First step is to basecall the fast5 so the reads can be separated according to the different experiments and barcodes. We generated the fastq files from the fast5 files using Guppy 4.0.14 basecaller. The results should be similar with more recent versions of the basecaller.
+
+Downloading basecaller:
+```
+wget https://mirror.oxfordnanoportal.com/software/analysis/ont-guppy_4.0.14_linux64.tar.gz
+tar -xzvf ont-guppy_4.0.14_linux64.tar.gz
+```
+To basecall, run:
+```
+./ont-guppy/bin/guppy_basecaller -i $FAST5_PATH -s $DATA/fastq/ont_guppy -c dna_r9.4.1_450bps_hac.cfg -x cuda:all
+```
+For multiplexed experiments (pool `20210304_MIN_0964`), run the barcoder:
+```
+./ont-guppy/bin/guppy_barcoder --input_path $DATA/fastq/ont_guppy --save_path $DATA/fastq/ont_guppy_demultiplexed --config configuration.cfg --barcode_kits "EXP-NBD104 EXP-NBD114" -x cuda:0
+```
+Next we need to merge the fastq files produced by a basecaller into a single file using a command like:
+```
+cat $DATA/fastq/ont_guppy_demultiplexed/barcode01/*.fastq > $DATA/fastq/barcode01/merged.fastq
+```
+In case of no barcoding, just run
+```
+cat $DATA/fastq/ont_guppy/*.fastq > $DATA/fastq/merged.fastq
+```
+
+### Alignment, separating by experiment and preparing raw data for decoding
+The next step involves aligning the reads to the original oligo files (only to separate the experiments, this is not used for decoding). In addition we generate some statistics and extract a random subset of raw signals for each experiment that will be used for the decoding in subsequent steps. We provide a script for this in `util/align_compute_stats_replicates.sh`. First step is to set the variables at the top of the script:
+- `MINIMAP2`: path to minimap2 aligner executable
+- `SAMTOOLS`: path to samtools executable
+- `DATA_PATH`: the `$DATA` directory
+- `FAST5_PATH`: the `$FAST5_PATH` directory
+- `EXPERIMENTS`: which experiments are included in the sequencing run (e.g., `"0 1 2 5 8"` for the `20210304_MIN_0964` run)
+- `NUM_READS_FOR_DECODING`: how many reads we decode with the Viterbi decoder. Since Viterbi decoding is a slow process, we keep this to a small number which is more than sufficient for successful decoding.
+
+Once these parameters are set, you can just run
+```
+./util/align_compute_stats_replicates.sh barcode01
+```
+to process the `barcode01` replicate.
+
+In case of no barcoding, use the `util/align_compute_stats.sh` script with same variables to be set, and run it as
+```
+./util/align_compute_stats.sh
+```
+
+After this step, the `$DATA` directory contains the following subdirectories (with further subsubdirectories for each barcode if applicable):
+- `oligo_files`: the original oligos (made available [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/oligo_files))
+- `fastq`: basecalled and demultiplexed reads
+- `aligned`: aligned reads, before and after separating by experiments
+- `raw_data`: Contains the raw signals in hdf5 format for the different experiments (made available [here]([here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/raw_data/)))
+- `stats`: Contains statistics for the basecalling errors and alignment (made available [here](https://github.com/shubhamchandak94/nanopore_dna_storage_data/tree/bonito/stats))
+
+One further analysis step described in the paper is the coverage analysis. We describe an example execution below:
+```
+grep "^[^@]" $DATA/aligned/barcode01/exp_aligned_0.filtered.sam | cut -f 3 > $DATA/aligned/barcode01/exp_aligned_0.filtered.txt
+python compute_coverage_stats.py $DATA/aligned/barcode01/exp_aligned_0.filtered.txt 880 5
+```
+The first step extracts the reference sequence of the different aligned oligos, and the second step uses this to determine the coverage variance and the fraction of oligos with zero coverage. For consistency across experiments with different overall coverage, we determine these metrics for a subsampling with 5x coverage (the third parameter). The second parameter `880` denotes the number of oligos for the specific experiment which can be seen in the supplementary tables provided, or in the encoding log [here](https://github.com/shubhamchandak94/nanopore_dna_storage/blob/bonito/oligos_8_4_20/encoding_log.txt).
+
 
 ## Updates 
 ### Notes on bonito integration
