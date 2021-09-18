@@ -1,7 +1,8 @@
 # Nanopore DNA storage
-DNA storage for nanopore sequencing using convolutional coding and basecaller-decoder integration. This branch improves upon the original results described in the papers below by switching to bonito basecalling and some other improvements. The updates are briefly described [later](#updates) on this page.
 
 ### [BioRxiv](https://www.biorxiv.org/content/10.1101/2021.09.15.460571v1)
+
+DNA storage for nanopore sequencing using convolutional coding and basecaller-decoder integration. This branch improves upon the original results described in the papers below by switching to bonito basecalling and some other improvements. The updates are briefly described [later](#updates) on this page.
 
 ### [BioRxiv - flappie version](https://www.biorxiv.org/content/10.1101/2019.12.20.871939v2)
 
